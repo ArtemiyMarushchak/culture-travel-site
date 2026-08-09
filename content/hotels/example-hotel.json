@@ -1,0 +1,11 @@
+{
+  "slug": "example-hotel",
+  "name": "Four Seasons Example",
+  "location": "Мальдивы",
+  "stars": 5,
+  "themes": ["beach"],
+  "description": "Пример карточки отеля. Overwater villas, private butler, эксклюзивный остров.",
+  "media": [
+    { "type": "image", "src": "/assets/images/placeholder.svg", "alt": "Four Seasons" }
+  ]
+}

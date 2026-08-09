@@ -1,0 +1,7 @@
+.about {
+  background: var(--color-bg-elevated);
+}
+
+.about__text {
+  font-size: var(--text-lg);
+}

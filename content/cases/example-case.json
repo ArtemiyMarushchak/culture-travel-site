@@ -1,0 +1,22 @@
+{
+  "slug": "example-case",
+  "title": "Private Safari — Кения",
+  "subtitle": "14 дней для семьи из 4 человек",
+  "cover": "/assets/images/placeholder.svg",
+  "coverImage": "/assets/images/placeholder.svg",
+  "gallery": [
+    "/assets/images/placeholder.svg"
+  ],
+  "story": "Пример кейса. Замените этот файл своим контентом — скопируйте _template.json и заполните поля.",
+  "highlights": [
+    "Частный трансфер и перелёт business class",
+    "6 luxury lodges по маршруту",
+    "Персональный гид-натуралист"
+  ],
+  "published": "2026-01-15",
+  "featured": true,
+  "seo": {
+    "title": "Private Safari Kenya | Culture Travel",
+    "description": "Индивидуальный safari-тур в Кению для VIP-клиентов."
+  }
+}

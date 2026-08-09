@@ -1,0 +1,53 @@
+.cases-slider__track {
+  display: flex;
+  gap: var(--space-lg);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-sm);
+  scrollbar-width: thin;
+}
+
+.cases-slider__card {
+  flex: 0 0 min(85vw, 22rem);
+  scroll-snap-align: start;
+}
+
+.cases-slider__link {
+  display: block;
+  transition: transform var(--transition);
+}
+
+.cases-slider__link:hover {
+  transform: translateY(-4px);
+}
+
+.cases-slider__media {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.cases-slider__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+
+.cases-slider__link:hover img {
+  transform: scale(1.04);
+}
+
+.cases-slider__body {
+  padding-top: var(--space-md);
+}
+
+.cases-slider__title {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-xs);
+}
+
+.cases-slider__subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}

@@ -1,0 +1,25 @@
+.reviews {
+  background: var(--color-bg-elevated);
+}
+
+.reviews__list {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.reviews__item {
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-lg);
+}
+
+.reviews__item p {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-md);
+}
+
+.reviews__item footer {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}

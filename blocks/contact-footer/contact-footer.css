@@ -1,0 +1,10 @@
+.contact {
+  border-top: 1px solid var(--color-border);
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}

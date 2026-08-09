@@ -1,0 +1,21 @@
+<article class="news-layout section" data-block="news-layout">
+  <div class="container container--narrow">
+    <nav class="news-layout__breadcrumb text-muted" aria-label="Хлебные крошки">
+      <a href="{{basePath}}/">Главная</a> / <a href="{{basePath}}/news/">Новости</a> / <span>{{title}}</span>
+    </nav>
+
+    <header class="news-layout__header">
+      <time class="news-layout__date" datetime="{{dateIso}}">{{dateFormatted}}</time>
+      <h1 class="news-layout__title">{{title}}</h1>
+      <p class="news-layout__excerpt">{{excerpt}}</p>
+    </header>
+
+    <div class="news-layout__cover">
+      <img src="{{basePath}}{{cover}}" alt="{{title}}" width="800" height="450" loading="eager">
+    </div>
+
+    <div class="news-layout__body prose">
+      {{body}}
+    </div>
+  </div>
+</article>

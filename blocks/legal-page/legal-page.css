@@ -1,0 +1,9 @@
+.legal-page__body h2 {
+  font-size: var(--text-xl);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+}
+
+.legal-page__body h2:first-child {
+  margin-top: 0;
+}

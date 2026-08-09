@@ -1,0 +1,21 @@
+{
+  "_comment": "Скопируйте этот файл, переименуйте (без _template) и заполните поля",
+  "slug": "your-case-slug",
+  "title": "Название кейса",
+  "subtitle": "Краткий подзаголовок",
+  "cover": "/assets/images/cases/your-cover.webp",
+  "gallery": [
+    "/assets/images/cases/photo-1.webp"
+  ],
+  "story": "История проекта — 2-4 абзаца текста.",
+  "highlights": [
+    "Ключевой момент 1",
+    "Ключевой момент 2"
+  ],
+  "published": "2026-01-01",
+  "featured": true,
+  "seo": {
+    "title": "Название | Culture Travel",
+    "description": "Meta description для поисковиков (до 160 символов)."
+  }
+}

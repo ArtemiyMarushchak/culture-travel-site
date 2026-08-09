@@ -1,0 +1,12 @@
+{
+  "titleSuffix": " | Culture Travel",
+  "defaultDescription": "Индивидуальные VIP-путешествия по всему миру.",
+  "defaultOgImage": "/assets/images/og/default.webp",
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Culture Travel",
+    "description": "Режиссёр индивидуальных VIP-путешествий",
+    "url": "https://culture-travel.ru"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "template": "case",
+  "type": "case",
+  "blocks": [
+    { "type": "header" },
+    { "type": "case-layout" },
+    { "type": "contact-footer" },
+    { "type": "footer" },
+    { "type": "modal" }
+  ]
+}

@@ -1,0 +1,37 @@
+<section class="hotel-catalog section" data-block="hotel-catalog">
+  <div class="container">
+    <p class="section__label">Отели</p>
+    <h1 class="section__title">Эксклюзивные отели мира</h1>
+    <p class="prose mb-lg">Каталог тематических люкс-отелей — для тех, кто ценит атмосферу, сервис и уникальность.</p>
+
+    <div class="hotel-catalog__filters" role="group" aria-label="Фильтры">
+      <button class="hotel-catalog__filter is-active" type="button" data-filter="all">Все</button>
+      <button class="hotel-catalog__filter" type="button" data-filter="beach">Пляж</button>
+      <button class="hotel-catalog__filter" type="button" data-filter="city">Город</button>
+      <button class="hotel-catalog__filter" type="button" data-filter="mountain">Горы</button>
+      <button class="hotel-catalog__filter" type="button" data-filter="safari">Safari</button>
+    </div>
+
+    <div class="hotel-catalog__grid">
+      {{#each items}}
+      <article class="hotel-card" data-themes="{{themes}}">
+        <div class="hotel-card__header">
+          <h2 class="hotel-card__name">{{name}}</h2>
+          <p class="hotel-card__stars" aria-label="{{stars}} звёзд">{{stars}} ★</p>
+        </div>
+        <p class="hotel-card__location">{{location}}</p>
+        <p class="hotel-card__desc">{{description}}</p>
+        <button
+          class="btn hotel-card__btn"
+          type="button"
+          data-hotel-gallery
+          data-name="{{name}}"
+          data-media='{{mediaJson}}'
+        >Смотреть фото и видео</button>
+      </article>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="hotels-data">{{hotelsJson}}</script>

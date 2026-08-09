@@ -1,0 +1,36 @@
+{
+  "name": "Culture Travel",
+  "tagline": "Режиссёр индивидуальных туров",
+  "url": "https://culture-travel.ru",
+  "basePath": "",
+  "locale": "ru_RU",
+  "language": "ru",
+  "author": {
+    "name": "Анна Баглай",
+    "title": "Режиссёр индивидуальных туров"
+  },
+  "contacts": {
+    "phone": "",
+    "email": "",
+    "telegram": "",
+    "whatsapp": ""
+  },
+  "legal": {
+    "companyName": "",
+    "inn": "",
+    "ogrn": "",
+    "registryNumber": "",
+    "registryUrl": "https://tourism.gov.ru/operators/",
+    "address": ""
+  },
+  "social": {
+    "instagram": "",
+    "telegram": ""
+  },
+  "seo": {
+    "titleSuffix": " | Culture Travel",
+    "defaultDescription": "Индивидуальные VIP-путешествия по всему миру. Culture Travel — режиссёр персональных туров для discerning travelers.",
+    "defaultOgImage": "/assets/images/og/default.webp",
+    "twitterHandle": ""
+  }
+}

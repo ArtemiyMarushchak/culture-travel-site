@@ -1,0 +1,12 @@
+{
+  "slug": "welcome",
+  "title": "Culture Travel — новый сайт",
+  "date": "2026-08-01",
+  "cover": "/assets/images/placeholder.svg",
+  "excerpt": "Мы готовим новую версию сайта — editorial-подача, VIP-путешествия, индивидуальный подход.",
+  "body": "<p>Добро пожаловать в Culture Travel. Здесь будут появляться новости о новых маршрутах, отелях и проектах.</p><p>Чтобы добавить новость — создайте JSON-файл в папке content/news/ по шаблону _template.json.</p>",
+  "seo": {
+    "title": "Culture Travel — новый сайт",
+    "description": "Новости Culture Travel — VIP-путешествия."
+  }
+}

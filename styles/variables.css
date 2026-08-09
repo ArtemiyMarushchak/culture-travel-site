@@ -1,0 +1,54 @@
+:root {
+  /* Brand — editorial luxury dark */
+  --color-bg: #0a0a0a;
+  --color-bg-elevated: #141414;
+  --color-surface: #1a1a1a;
+  --color-text: #f5f5f0;
+  --color-text-muted: #a8a8a0;
+  --color-accent: #c9a962;
+  --color-accent-hover: #dbbe78;
+  --color-border: rgba(245, 245, 240, 0.12);
+  --color-overlay: rgba(10, 10, 10, 0.72);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.82rem + 0.25vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  --text-2xl: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --text-hero: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+
+  --leading-tight: 1.15;
+  --leading-normal: 1.6;
+  --tracking-wide: 0.08em;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: clamp(4rem, 3rem + 5vw, 8rem);
+  --space-section: clamp(4rem, 6vw, 7rem);
+
+  /* Layout */
+  --container-narrow: 42rem;
+  --container-default: 72rem;
+  --container-wide: 90rem;
+  --container-padding: clamp(1rem, 4vw, 2.5rem);
+
+  /* Effects */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index */
+  --z-header: 100;
+  --z-modal: 200;
+  --z-overlay: 150;
+}

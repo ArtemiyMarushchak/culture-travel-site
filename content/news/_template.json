@@ -1,0 +1,13 @@
+{
+  "_comment": "Скопируйте, переименуйте в YYYY-MM-slug.json и заполните",
+  "slug": "2026-03-new-route",
+  "title": "Заголовок новости",
+  "date": "2026-03-01",
+  "cover": "/assets/images/news/cover.webp",
+  "excerpt": "Короткий анонс для списка новостей.",
+  "body": "<p>Текст новости. Можно использовать HTML: &lt;p&gt;, &lt;h2&gt;, &lt;ul&gt;.</p>",
+  "seo": {
+    "title": "Заголовок | Culture Travel",
+    "description": "Meta description."
+  }
+}

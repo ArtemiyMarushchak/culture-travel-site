@@ -1,0 +1,22 @@
+<section class="brochure section" data-block="brochure">
+  <div class="container">
+    <header class="brochure__hero">
+      <p class="section__label">{{label}}</p>
+      <h1 class="brochure__title">{{title}}</h1>
+      <p class="brochure__lead">{{lead}}</p>
+    </header>
+
+    <div class="brochure__sections">
+      {{#each sections}}
+      <article class="brochure__section">
+        <h2>{{heading}}</h2>
+        <p>{{text}}</p>
+      </article>
+      {{/each}}
+    </div>
+
+    <div class="brochure__cta text-center mt-lg">
+      <a class="btn btn--solid" href="{{basePath}}/#contact">Обсудить проект</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+<section class="news-list section" data-block="news-list">
+  <div class="container">
+    <p class="section__label">Новости</p>
+    <h1 class="section__title">Из мира Culture Travel</h1>
+
+    <div class="news-list__grid">
+      {{#each items}}
+      <article class="news-list__item">
+        <a href="{{basePath}}/news/{{slug}}/">
+          <time datetime="{{dateIso}}">{{dateFormatted}}</time>
+          <h2>{{title}}</h2>
+          <p>{{excerpt}}</p>
+        </a>
+      </article>
+      {{/each}}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+# Build output (deployed via GitHub Actions artifact, not committed)
+dist/
+
+# Local tooling (portable Node — optional local install)
+.tools/
+
+# OS & editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets — NEVER commit
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp
+tmp/
+.temp/

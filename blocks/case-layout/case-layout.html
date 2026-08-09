@@ -1,0 +1,32 @@
+<article class="case-layout section" data-block="case-layout">
+  <div class="container">
+    <nav class="case-layout__breadcrumb text-muted" aria-label="Хлебные крошки">
+      <a href="{{basePath}}/">Главная</a> / <a href="{{basePath}}/#cases">Кейсы</a> / <span>{{title}}</span>
+    </nav>
+
+    <header class="case-layout__header">
+      <p class="section__label">Кейс</p>
+      <h1 class="case-layout__title">{{title}}</h1>
+      <p class="case-layout__subtitle">{{subtitle}}</p>
+    </header>
+
+    <div class="case-layout__cover">
+      <img src="{{basePath}}{{coverImage}}" alt="{{title}}" width="1200" height="675" loading="eager">
+    </div>
+
+    <div class="container container--narrow case-layout__body prose">
+      <p>{{story}}</p>
+      <ul class="case-layout__highlights">
+      {{#each highlights}}
+        <li>{{item}}</li>
+      {{/each}}
+      </ul>
+    </div>
+
+    <div class="case-layout__gallery grid-3">
+      {{#each gallery}}
+      <img src="{{basePath}}{{item}}" alt="{{title}}" loading="lazy" width="400" height="300">
+      {{/each}}
+    </div>
+  </div>
+</article>

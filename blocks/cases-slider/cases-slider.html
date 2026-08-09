@@ -1,0 +1,24 @@
+<section class="cases section" id="cases" data-block="cases-slider">
+  <div class="container">
+    <p class="section__label">Кейсы</p>
+    <h2 class="section__title">Индивидуальные проекты</h2>
+
+    <div class="cases-slider">
+      <div class="cases-slider__track">
+        {{#each items}}
+        <article class="cases-slider__card">
+          <a class="cases-slider__link" href="{{basePath}}/cases/{{slug}}/">
+            <div class="cases-slider__media">
+              <img src="{{basePath}}{{cover}}" alt="{{title}}" loading="lazy" width="640" height="800">
+            </div>
+            <div class="cases-slider__body">
+              <h3 class="cases-slider__title">{{title}}</h3>
+              <p class="cases-slider__subtitle">{{subtitle}}</p>
+            </div>
+          </a>
+        </article>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>
