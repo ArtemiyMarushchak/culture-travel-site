@@ -1,8 +1,8 @@
 export function initHeroVideo(root) {
   const box = root?.querySelector('#avb') || document.getElementById('avb');
-  const frame = box?.querySelector('#avbFrame') || document.getElementById('avbFrame');
+  const media = box?.querySelector('#avbFrame') || document.getElementById('avbFrame');
 
-  if (!box || !frame) return;
+  if (!box || !media) return;
 
   let lastWidth = window.innerWidth;
   let lockedHeight = window.innerHeight;
@@ -47,8 +47,8 @@ export function initHeroVideo(root) {
       w = h * aspect;
     }
 
-    frame.style.width = `${Math.ceil(w)}px`;
-    frame.style.height = `${Math.ceil(h)}px`;
+    media.style.width = `${Math.ceil(w)}px`;
+    media.style.height = `${Math.ceil(h)}px`;
   }
 
   function initFallback() {
@@ -59,6 +59,10 @@ export function initHeroVideo(root) {
     }
   }
 
+  function markReady() {
+    box.classList.add('is-ready');
+  }
+
   function refresh(force) {
     setStableHeight(force);
     coverResize();
@@ -67,9 +71,18 @@ export function initHeroVideo(root) {
   initFallback();
   refresh(true);
 
-  frame.addEventListener('load', () => {
-    setTimeout(() => box.classList.add('is-ready'), 500);
-  });
+  if (media.tagName === 'VIDEO') {
+    media.addEventListener('loadeddata', markReady, { once: true });
+    media.addEventListener('canplay', markReady, { once: true });
+    const playPromise = media.play?.();
+    if (playPromise?.catch) {
+      playPromise.catch(() => markReady());
+    }
+  } else {
+    media.addEventListener('load', () => {
+      setTimeout(markReady, 500);
+    });
+  }
 
   window.addEventListener('resize', () => refresh(false), { passive: true });
   window.addEventListener('orientationchange', () => {
@@ -79,4 +92,5 @@ export function initHeroVideo(root) {
   document.addEventListener('DOMContentLoaded', () => refresh(false));
   setTimeout(() => refresh(false), 300);
   setTimeout(() => refresh(false), 1200);
+  setTimeout(markReady, 2500);
 }

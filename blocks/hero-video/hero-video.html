@@ -2,24 +2,22 @@
   <div
     id="avb"
     data-aspect="16/9"
-    data-fallback="https://static.tildacdn.com/tild3164-3032-4233-b166-373739363534/filefe9148a9-3013-4d.jpg"
+    data-fallback="{{basePath}}/assets/images/hero/poster.jpg"
   >
     <div class="avb__fallback"></div>
     <div class="avb__carrier">
-      <iframe
+      <video
         id="avbFrame"
-        src="https://kinescope.io/embed/xhih7hGJz8QEYEXH61WgJZ"
-        allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-        allowfullscreen
-        loading="eager"
-        title="Сайт в разработке"
-      ></iframe>
+        src="{{basePath}}/assets/videos/hero.mp4"
+        poster="{{basePath}}/assets/images/hero/poster.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-label="Culture Travel — видео"
+      ></video>
     </div>
     <div class="avb__overlay"></div>
-    <div class="avb__content">
-      <div class="avb__inner">
-        <h1 class="avb__title">Сайт в разработке</h1>
-      </div>
-    </div>
   </div>
 </div>

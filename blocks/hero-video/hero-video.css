@@ -98,7 +98,8 @@
   background: var(--color-black);
 }
 
-#avb .avb__carrier iframe {
+#avb .avb__carrier iframe,
+#avb .avb__carrier video {
   position: absolute;
   top: 50%;
   left: 50%;
