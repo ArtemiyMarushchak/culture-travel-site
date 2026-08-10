@@ -14,13 +14,25 @@ const DIST = join(ROOT, 'dist');
 const isWatch = process.argv.includes('--watch');
 
 const site = JSON.parse(readFileSync(join(ROOT, 'core/site.json'), 'utf8'));
-const seoDefaults = JSON.parse(readFileSync(join(ROOT, 'seo/defaults.json'), 'utf8'));
+
+if (process.env.GITHUB_PAGES === 'true' && process.env.GITHUB_REPOSITORY) {
+  const [, repoName] = process.env.GITHUB_REPOSITORY.split('/');
+  site.url = `https://${process.env.GITHUB_REPOSITORY_OWNER}.github.io`;
+  site.basePath = `/${repoName}`;
+}
+const seoDefaults = {
+  ...JSON.parse(readFileSync(join(ROOT, 'seo/defaults.json'), 'utf8')),
+  ...(site.seo || {}),
+};
+const blockRegistry = JSON.parse(readFileSync(join(ROOT, 'core/blocks.registry.json'), 'utf8'));
+const pageLayout = JSON.parse(readFileSync(join(ROOT, 'core/page-layout.json'), 'utf8'));
 const layoutTemplate = readFileSync(join(ROOT, 'layouts/default.html'), 'utf8');
 const headTemplate = readFileSync(join(ROOT, 'seo/templates/head.html'), 'utf8');
 
 const PAGE_TEMPLATES = {
   case: JSON.parse(readFileSync(join(ROOT, 'templates/case.page.json'), 'utf8')),
   news: JSON.parse(readFileSync(join(ROOT, 'templates/news.page.json'), 'utf8')),
+  hotel: JSON.parse(readFileSync(join(ROOT, 'templates/hotel.page.json'), 'utf8')),
 };
 
 /** @type {{ slug: string, title: string, lastmod?: string }[]} */
@@ -132,39 +144,84 @@ function prepareNewsList() {
 
 function resolveBlockData(block, pageData) {
   const data = { ...pageData, ...(block.data || {}) };
+  const meta = blockRegistry.blocks[block.type] || {};
+  const source = block.data?.source || meta.dataSource;
+  const prepare = meta.dataPrepare;
 
-  if (block.data?.source === 'content/cases' || block.type === 'cases-slider') {
+  if (prepare === 'casesFeatured' || source === 'content/cases' || block.type === 'cases-slider') {
     data.items = prepareCasesFeatured();
   }
-  if (block.data?.source === 'content/news' || block.type === 'news-list') {
+  if (prepare === 'newsList' || source === 'content/news' || block.type === 'news-list') {
     data.items = prepareNewsList();
   }
-  if (block.data?.source === 'content/hotels' || block.type === 'hotel-catalog') {
+  if (prepare === 'hotelsCatalog' || source === 'content/hotels' || block.type === 'hotel-catalog') {
     data.items = prepareHotelsCatalog();
     data.hotelsJson = JSON.stringify(listContentJson('content/hotels'));
+  }
+
+  if (block.type === 'hotel-layout' && Array.isArray(data.media)) {
+    data.images = data.media.filter((item) => item.type === 'image');
+    data.videos = data.media.filter((item) => item.type === 'video');
   }
 
   return normalizeContentData(data);
 }
 
+function resolvePageBlocks(pageConfig) {
+  if (pageConfig.layout === 'minimal') {
+    return pageConfig.blocks || [];
+  }
+
+  const middle = (pageConfig.blocks || []).filter(
+    (block) => !['header', 'footer', 'modal'].includes(block.type),
+  );
+
+  return [...(pageLayout.before || []), ...middle, ...(pageLayout.after || [])];
+}
+
+function blockFolder(type) {
+  const meta = blockRegistry.blocks[type] || {};
+  return meta.group === 'secondary' ? 'blocks-secondary' : 'blocks';
+}
+
+function formatPhoneDisplay(phone = '') {
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length === 11 && digits.startsWith('7')) {
+    return `+7 ${digits.slice(1, 4)} ${digits.slice(4, 7)}-${digits.slice(7, 9)}-${digits.slice(9, 11)}`;
+  }
+  return phone;
+}
+
+function telegramHandle(url = '') {
+  const match = url.match(/t\.me\/([^/?]+)/);
+  return match ? `@${match[1]}` : url;
+}
+
 function loadBlockHtml(blockType, blockData = {}) {
-  const htmlPath = join(ROOT, 'blocks', blockType, `${blockType}.html`);
+  const folder = blockFolder(blockType);
+  const htmlPath = join(ROOT, folder, blockType, `${blockType}.html`);
   if (!existsSync(htmlPath)) {
     console.warn(`  ⚠ Block not found: ${blockType}`);
     return `<!-- missing block: ${blockType} -->`;
   }
   let html = readFileSync(htmlPath, 'utf8');
 
-  const merged = { ...blockData, basePath: site.basePath || '' };
+  const merged = {
+    ...blockData,
+    basePath: site.basePath || '',
+    telegram: site.contacts?.telegram || site.social?.telegram || '',
+    phone: site.contacts?.phone || '',
+    phoneRaw: (site.contacts?.phone || '').replace(/\s/g, ''),
+    phoneDisplay: formatPhoneDisplay(site.contacts?.phone || ''),
+    telegramHandle: telegramHandle(site.contacts?.telegram || site.social?.telegram || ''),
+    email: site.contacts?.email || '',
+    registryUrl: site.legal?.registryUrl || '',
+    developerName: site.developer?.name || '',
+    developerUrl: site.developer?.url || '',
+    year: String(new Date().getFullYear()),
+    nav: blockType === 'header' ? readJson('core/nav.json') : blockData.nav,
+  };
   const rawFields = ['body', 'content'];
-
-  // Simple {{key}} replacement
-  html = html.replace(/\{\{(\w+)\}\}/g, (_, key) => {
-    if (rawFields.includes(key) && merged[key]) return String(merged[key]);
-    return escapeHtml(String(merged[key] ?? ''));
-  });
-
-  // {{#each array}}...{{/each}}
   html = html.replace(/\{\{#each (\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, itemTpl) => {
     const arr = merged[key];
     if (!Array.isArray(arr)) return '';
@@ -172,6 +229,12 @@ function loadBlockHtml(blockType, blockData = {}) {
       const ctx = typeof item === 'object' ? { ...merged, ...item, index: i } : { ...merged, item, index: i };
       return itemTpl.replace(/\{\{(\w+)\}\}/g, (__, k) => escapeHtml(String(ctx[k] ?? '')));
     }).join('');
+  });
+
+  // Simple {{key}} replacement
+  html = html.replace(/\{\{(\w+)\}\}/g, (_, key) => {
+    if (rawFields.includes(key) && merged[key]) return String(merged[key]);
+    return escapeHtml(String(merged[key] ?? ''));
   });
 
   return html;
@@ -204,6 +267,7 @@ function buildHead(meta) {
     description,
     canonical,
     author: site.author?.name || site.name,
+    robots: meta.robots || 'index, follow',
     ogType: meta.ogType || 'website',
     siteName: site.name,
     ogTitle: meta.ogTitle || title,
@@ -231,15 +295,16 @@ function buildPage(pageConfig, contentData = {}) {
   const title = normalized.title || pageConfig.title || site.name;
   const description = normalized.description || pageConfig.description || seoDefaults.defaultDescription;
 
-  const blocks = pageConfig.blocks || [];
+  const blocks = resolvePageBlocks(pageConfig);
   const content = renderBlocks(blocks, { ...normalized, slug: slugPath });
 
   const jsonLd = buildJsonLd(pageConfig, contentData, slugPath);
 
   const head = buildHead({
-    title: title.includes('Culture Travel') ? title : `${title}${seoDefaults.titleSuffix || ''}`,
+    title: title.includes('Culture Travel') || title.includes('Культура') ? title : `${title}${seoDefaults.titleSuffix || ''}`,
     description,
     slug: slugPath,
+    robots: pageConfig.robots === 'noindex' ? 'noindex, follow' : 'index, follow',
     ogImage: normalized.ogImage || normalized.coverImage || normalized.cover || seoDefaults.defaultOgImage,
     ogType: pageConfig.ogType || 'website',
     jsonLd,
@@ -341,7 +406,11 @@ function loadContentPages(contentDir, templateName, urlPrefix) {
 
     buildPage(
       { ...template, slug: slugPath, type: templateName },
-      { ...data, slugPath }
+      {
+        ...data,
+        slugPath,
+        title: data.seo?.title?.replace(/\s*\|\s*Culture Travel$/, '') || data.title || data.name,
+      },
     );
     console.log(`  ✓ ${slugPath}`);
   }
@@ -372,6 +441,14 @@ function copyStaticAssets() {
   const blocksDir = join(ROOT, 'blocks');
   if (existsSync(blocksDir)) {
     cpSync(blocksDir, join(DIST, 'blocks'), { recursive: true, filter: (src) => !src.endsWith('.html') });
+  }
+
+  const blocksSecondaryDir = join(ROOT, 'blocks-secondary');
+  if (existsSync(blocksSecondaryDir)) {
+    cpSync(blocksSecondaryDir, join(DIST, 'blocks-secondary'), {
+      recursive: true,
+      filter: (src) => !src.endsWith('.html'),
+    });
   }
 }
 
@@ -459,9 +536,29 @@ function generate404() {
   }
 }
 
+function generateBlocksCss() {
+  const lines = [
+    '/* Auto-generated by tools/build.mjs — do not edit manually */',
+  ];
+
+  for (const [type, meta] of Object.entries(blockRegistry.blocks)) {
+    if (!meta.css) continue;
+    const folder = blockFolder(type);
+    const cssPath = join(ROOT, folder, type, `${type}.css`);
+    if (existsSync(cssPath)) {
+      lines.push(`@import url('../${folder}/${type}/${type}.css');`);
+    }
+  }
+
+  writeFileSync(join(ROOT, 'styles/blocks.css'), `${lines.join('\n')}\n`, 'utf8');
+}
+
 function build() {
   console.log('🏗  Culture Travel — сборка сайта...\n');
   sitemapEntries.length = 0;
+
+  generateBlocksCss();
+  console.log('  ✓ styles/blocks.css (из registry)');
 
   if (existsSync(DIST)) rmSync(DIST, { recursive: true });
   ensureDir(DIST);
@@ -476,6 +573,7 @@ function build() {
   loadManualPages();
   loadContentPages('content/cases', 'case', 'cases');
   loadContentPages('content/news', 'news', 'news');
+  loadContentPages('content/hotels', 'hotel', 'hotels');
 
   generate404();
 

@@ -15,9 +15,17 @@
 - [ ] Actions → workflow зелёный
 - [ ] Сайт доступен по URL Pages
 
-### Приватный репо + Pages
+### Бесплатно — без GitHub Pro
 
-Требуется **GitHub Pro** ($4/мес). На Free plan Pages работает только с public repo.
+На Free plan **GitHub Pages = 0 ₽** только для **public** репозитория.
+
+| Вариант | Цена |
+|---------|------|
+| Public repo + GitHub Pages | **0 ₽** ← рекомендуем |
+| Private repo + GitHub Pages | ~$4/мес (Pro) — **не нужен** |
+| Cloudflare Pages (public или private git) | **0 ₽** ← альтернатива |
+
+Подробнее: `docs/БЕСПЛАТНО.md`
 
 ---
 

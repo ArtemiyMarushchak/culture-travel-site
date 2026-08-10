@@ -1,0 +1,27 @@
+body {
+  background: var(--color-bg);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: var(--text-body-desktop);
+  line-height: var(--line-height-text);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--letter-spacing-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100dvh;
+}
+
+html {
+  scroll-padding-top: var(--header-height);
+}
+
+body.is-nav-open {
+  overflow: hidden;
+}
+
+#allrecords,
+.site-root {
+  overflow: visible !important;
+  background: var(--color-bg);
+}

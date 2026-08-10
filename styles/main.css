@@ -1,22 +1,23 @@
-@import url('./variables.css');
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./utilities.css');
+/**
+ * Culture Travel — CSS entry point
+ *
+ * Порядок:
+ * 1. tokens     — CSS-переменные (дизайн-система)
+ * 2. foundation — reset, fonts, base
+ * 3. ui         — типографика, spacing, кнопки, ссылки
+ * 4. themes     — тёмные секции
+ * 5. utilities  — хелперы, interaction rules
+ * 6. blocks     — стили блоков (по мере готовности)
+ */
 
-/* Blocks */
-@import url('../blocks/header/header.css');
-@import url('../blocks/footer/footer.css');
-@import url('../blocks/hero-video/hero-video.css');
-@import url('../blocks/about/about.css');
-@import url('../blocks/cases-slider/cases-slider.css');
-@import url('../blocks/services/services.css');
-@import url('../blocks/reviews/reviews.css');
-@import url('../blocks/contact-footer/contact-footer.css');
-@import url('../blocks/case-layout/case-layout.css');
-@import url('../blocks/news-layout/news-layout.css');
-@import url('../blocks/news-list/news-list.css');
-@import url('../blocks/hotel-catalog/hotel-catalog.css');
-@import url('../blocks/brochure/brochure.css');
-@import url('../blocks/modal/modal.css');
-@import url('../blocks/error-404/error-404.css');
-@import url('../blocks/legal-page/legal-page.css');
+@import url('./tokens/index.css');
+@import url('./foundation/fonts.css');
+@import url('./foundation/reset.css');
+@import url('./foundation/base.css');
+@import url('./ui/index.css');
+@import url('./themes/theme-dark.css');
+@import url('./utilities/helpers.css');
+@import url('./utilities/interaction-rules.css');
+
+/* Blocks — генерируется из core/blocks.registry.json */
+@import url('./blocks.css');

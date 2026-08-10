@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typography — Culture Travel</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .page { padding: var(--space-xl) var(--container-padding) var(--space-4xl); max-width: 960px; margin: 0 auto; }
+    .page > h1 { font-size: var(--font-h2); margin-bottom: var(--space-xl); }
+    .page > h2 { font-size: var(--font-h4); margin: var(--space-2xl) 0 var(--space-md); color: var(--color-gold); }
+    .specimen { padding: var(--space-xl); background: var(--color-paper-soft); margin-bottom: var(--space-lg); }
+    .specimen--dark { background: var(--color-black); }
+    .label { font-size: var(--font-caption); color: var(--color-text-muted); margin-bottom: var(--space-sm); font-family: monospace; }
+    .weights { display: grid; gap: var(--space-md); }
+    .w400 { font-weight: 400; }
+    .w500 { font-weight: 500; }
+    .w600 { font-weight: 600; }
+  </style>
+</head>
+<body class="theme-light">
+
+  <div class="page">
+    <h1>Typography — Montserrat</h1>
+    <p class="ui-text-muted">400 Regular · 500 Medium · 600 SemiBold · Latin + Cyrillic</p>
+
+    <h2>Начертания</h2>
+    <div class="specimen weights">
+      <div><span class="label">400 Regular — body</span><p class="w400 ui-body">Путешествия, написанные для вас — с историей в каждой детали.</p></div>
+      <div><span class="label">500 Medium — overline</span><p class="w500 ui-overline">Кейсы · Обо мне · Услуги</p></div>
+      <div><span class="label">600 SemiBold — заголовки, nav</span><p class="w600" style="font-size:var(--font-h3)">Анна Баглай</p></div>
+    </div>
+
+    <h2>Иерархия на paper</h2>
+    <div class="specimen">
+      <p class="ui-overline">Обо мне</p>
+      <h2 class="ui-h2" style="margin-bottom:var(--space-md)">Режиссёр индивидуальных туров</h2>
+      <p class="ui-lead" style="margin-bottom:var(--space-lg)">Делаю путешествия в сегменте люкс — более 18 лет в индустрии.</p>
+      <div class="ui-prose">
+        <p>Более 18 лет работаю в туристической индустрии, специализируюсь на организации персональных путешествий по всему миру. Каждая поездка создаётся индивидуально — с учётом интересов, привычек и ожиданий гостей.</p>
+        <p>Основное направление — уникальные маршруты: от премиальных курортов до экспедиций в удалённые уголки мира. Ссылка в тексте <a class="ui-link-editorial" href="#">подчёркнута editorial</a>.</p>
+      </div>
+    </div>
+
+    <h2>На чёрном (footer / hero)</h2>
+    <div class="specimen specimen--dark theme-dark">
+      <p class="ui-overline">Контакты</p>
+      <h2 class="ui-h3" style="margin-bottom:var(--space-md)">Обсудим ваше путешествие</h2>
+      <p class="ui-body">Работаем только с индивидуальными запросами.</p>
+      <p class="ui-text-muted" style="margin-top:var(--space-sm)">baglayam.travel@yandex.ru · +7 903 462-61-10</p>
+    </div>
+
+    <h2>Размеры (clamp)</h2>
+    <div class="specimen" style="display:grid;gap:var(--space-md)">
+      <div><span class="label">--font-hero</span><p class="ui-display">Hero 66px max</p></div>
+      <div><span class="label">--font-h1</span><p class="ui-h1">H1 заголовок</p></div>
+      <div><span class="label">--font-h2</span><p class="ui-h2">H2 секция</p></div>
+      <div><span class="label">--font-h3</span><p class="ui-h3">H3 подзаголовок</p></div>
+      <div><span class="label">--font-body-size · leading 1.65</span><p class="ui-body">Body 15–17px — оптимально для длинного чтения на paper-фоне.</p></div>
+      <div><span class="label">--font-nav · 600 · 0.14em</span><p style="font-size:var(--font-nav);font-weight:600;letter-spacing:var(--tracking-nav);text-transform:uppercase">Обо мне · Кейсы · Связаться</p></div>
+    </div>
+  </div>
+
+</body>
+</html>

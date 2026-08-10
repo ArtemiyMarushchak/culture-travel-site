@@ -1,5 +1,6 @@
 {
-  "name": "Culture Travel",
+  "name": "Культура Путешествий",
+  "brandName": "Culture Travel",
   "tagline": "Режиссёр индивидуальных туров",
   "url": "https://culture-travel.ru",
   "basePath": "",
@@ -10,27 +11,32 @@
     "title": "Режиссёр индивидуальных туров"
   },
   "contacts": {
-    "phone": "",
-    "email": "",
-    "telegram": "",
+    "phone": "+79034626110",
+    "email": "baglayam.travel@yandex.ru",
+    "telegram": "https://t.me/baglay_anna",
     "whatsapp": ""
   },
   "legal": {
-    "companyName": "",
-    "inn": "",
-    "ogrn": "",
+    "companyName": "ИП Баглай Анна Михайловна",
+    "inn": "616117921737",
+    "ogrn": "323508100276585",
     "registryNumber": "",
-    "registryUrl": "https://tourism.gov.ru/operators/",
+    "registryUrl": "https://ev.economy.gov.ru/lk_exp/registry/ta/785761d5-0602-40dc-aa0f-f10903ba7cf0",
+    "companyPage": "/company/",
+    "copyrightPage": "/copyright/",
     "address": ""
   },
   "social": {
-    "instagram": "",
-    "telegram": ""
+    "telegram": "https://t.me/baglay_anna"
   },
   "seo": {
-    "titleSuffix": " | Culture Travel",
-    "defaultDescription": "Индивидуальные VIP-путешествия по всему миру. Culture Travel — режиссёр персональных туров для discerning travelers.",
+    "titleSuffix": " | Культура Путешествий",
+    "defaultDescription": "Путешествия, написанные для вас и о вас — с историей в каждой детали",
     "defaultOgImage": "/assets/images/og/default.webp",
     "twitterHandle": ""
+  },
+  "developer": {
+    "name": "Марущак Артемий Игоревич",
+    "url": "https://t.me/ArtemiyMarushchak"
   }
 }

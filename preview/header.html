@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Preview — Culture Travel</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .hero-mock {
+      min-height: 100vh;
+      background: #1a1008 linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.55));
+      display: flex;
+      align-items: flex-end;
+      padding: calc(var(--header-height) + 48px) var(--container-padding-desktop) 64px;
+      color: var(--color-white);
+    }
+    .hero-mock h1 { font-size: var(--text-hero-desktop); line-height: var(--line-height-title); }
+    .content-mock { background: var(--color-paper-soft); padding: 80px var(--container-padding-desktop); }
+  </style>
+</head>
+<body>
+  <header class="lh" id="lux-header" data-block="header">
+    <div class="lh__inner">
+      <a class="lh__logo" href="#"><img src="../assets/icons/logo-white.svg" alt="Культура путешествий" height="52"></a>
+      <nav class="lh__nav">
+        <a href="#about" data-anchor=".uc-about">Обо мне</a>
+        <a href="#cases" data-anchor=".uc-cases">Кейсы</a>
+        <a href="#services" data-anchor=".uc-services">Услуги</a>
+        <a href="#reviews" data-anchor=".uc-reviews">Отзывы</a>
+        <a href="#">Новости</a>
+        <a href="#">Отели</a>
+        <a href="#">Круизы</a>
+        <a href="#">Бизнес авиация</a>
+      </nav>
+      <a class="lh__cta" href="https://t.me/baglay_anna" target="_blank" rel="noopener">
+        <img src="../assets/icons/concierge-tilda.svg" alt="" width="15" height="15"><span>Связаться</span>
+      </a>
+      <button class="lh__burger" type="button" aria-label="Открыть меню"><span><i></i><i></i><i></i></span></button>
+    </div>
+    <div class="lh__topmenu">
+      <div class="lh__topmenu-inner">
+        <div class="lh__menu-links">
+          <a href="#about" data-anchor=".uc-about">Обо мне</a>
+          <a href="#cases" data-anchor=".uc-cases">Кейсы</a>
+          <a href="#services" data-anchor=".uc-services">Услуги</a>
+          <a href="#reviews" data-anchor=".uc-reviews">Отзывы</a>
+          <a href="#">Новости</a>
+          <a href="#">Отели</a>
+          <a href="#">Круизы</a>
+          <a href="#">Бизнес авиация</a>
+        </div>
+        <a class="lh__menu-cta" href="https://t.me/baglay_anna" target="_blank" rel="noopener">
+          <span>Связаться</span>
+          <img src="../assets/icons/concierge-tilda.svg" alt="" width="15" height="15">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-mock"><h1>Сайт в разработке</h1></section>
+  <section class="content-mock uc-about" id="about"><h2>Обо мне — paper фон</h2></section>
+
+  <script type="module">
+    import { initHeader } from '../blocks/header/header.js';
+    initHeader(document.getElementById('lux-header'));
+  </script>
+</body>
+</html>

@@ -1,7 +1,133 @@
-.about {
-  background: var(--color-bg-elevated);
+.uc-about {
+  position: relative;
+  z-index: var(--z-content);
 }
 
-.about__text {
-  font-size: var(--text-lg);
+#anna-about {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: calc(100vh - var(--header-height-desktop));
+  padding: var(--space-xl) 0 var(--space-2xl);
+  background: var(--color-paper-soft);
+  color: var(--color-text-dark);
+  overflow: hidden;
+}
+
+#anna-about .ui-container {
+  min-height: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.about-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(58px, 6vw, 92px);
+}
+
+.about-grid__content {
+  max-width: 700px;
+}
+
+.about-grid__content .ui-h1 {
+  margin: 0;
+}
+
+.about-grid__content .ui-overline {
+  margin: 0;
+  color: var(--color-text-dark-soft);
+}
+
+.about-grid__content .ui-prose {
+  max-width: 680px;
+}
+
+.about-grid__photo {
+  margin: 0;
+  max-width: 570px;
+  justify-self: end;
+  height: clamp(540px, 42vw, 680px);
+  overflow: hidden;
+}
+
+.about-grid__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 51% 74%;
+  transform: scale(1.18);
+  transform-origin: 51% 74%;
+}
+
+@media (max-width: 1180px) {
+  #anna-about {
+    min-height: auto;
+    padding: var(--space-lg) 0 var(--space-2xl);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .about-grid__content {
+    order: 2;
+    max-width: none;
+  }
+
+  .about-grid__photo {
+    order: 1;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    justify-self: stretch;
+  }
+
+  .about-grid__photo img {
+    object-position: 50% 82%;
+    transform: scale(1.05);
+    transform-origin: 50% 82%;
+  }
+}
+
+@media (max-width: 640px) {
+  #anna-about {
+    padding: 18px 0 var(--space-xl);
+  }
+
+  .about-grid {
+    gap: 26px;
+  }
+
+  .about-grid__photo {
+    aspect-ratio: 4 / 3.2;
+  }
+
+  .about-grid__photo img {
+    object-position: 50% 86%;
+    transform: scale(1.01);
+    transform-origin: 50% 86%;
+  }
+
+  .about-grid__content .ui-h1 {
+    font-size: 38px;
+    line-height: 1;
+  }
+}
+
+@media (max-width: 420px) {
+  #anna-about {
+    padding-top: 16px;
+  }
+
+  .about-grid__photo {
+    aspect-ratio: 4 / 3.3;
+  }
+
+  .about-grid__photo img {
+    object-position: 50% 88%;
+    transform: scale(1);
+  }
 }

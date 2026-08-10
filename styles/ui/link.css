@@ -1,0 +1,72 @@
+/* Editorial / journal links — подчёркивание как на culture-travel.ru */
+
+:root {
+  --ui-underline-height: 1px;
+  --ui-underline-offset: 8px;
+}
+
+.ui-link-editorial,
+.prose a:not(.ui-btn):not(.btn) {
+  position: relative;
+  display: inline;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ui-link-editorial::after,
+.prose a:not(.ui-btn):not(.btn)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--ui-underline-offset) * -1);
+  height: var(--ui-underline-height);
+  background: currentColor;
+  opacity: 0.52;
+  transition: opacity var(--transition-fast);
+}
+
+.ui-link-editorial:hover,
+.prose a:not(.ui-btn):not(.btn):hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+.ui-link-editorial:hover::after,
+.prose a:not(.ui-btn):not(.btn):hover::after {
+  opacity: 0.5;
+}
+
+.theme-light .prose a:not(.ui-btn):not(.btn) {
+  color: var(--color-gold);
+}
+
+/* Nav «Связаться» — подчёркнутая, hover = opacity (Tilda) */
+.ui-link-nav-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-white);
+  text-decoration: none;
+  opacity: var(--ui-link-opacity);
+  transition: opacity var(--transition-fast);
+}
+
+.ui-link-nav-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--ui-underline-offset) * -1);
+  height: var(--ui-underline-height);
+  background: currentColor;
+  opacity: 1;
+}
+
+.ui-link-nav-underline:hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+.theme-light .ui-link-nav-underline {
+  color: inherit;
+}

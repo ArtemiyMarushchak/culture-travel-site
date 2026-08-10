@@ -1,0 +1,10 @@
+[
+  { "label": "Обо мне", "href": "/#about", "anchor": ".uc-about" },
+  { "label": "Кейсы", "href": "/#cases", "anchor": ".uc-cases" },
+  { "label": "Услуги", "href": "/#services", "anchor": ".uc-services" },
+  { "label": "Отзывы", "href": "/#reviews", "anchor": ".uc-reviews" },
+  { "label": "Новости", "href": "/news/", "anchor": "" },
+  { "label": "Отели", "href": "/hotels/", "anchor": "" },
+  { "label": "Круизы", "href": "/cruises/", "anchor": "" },
+  { "label": "Бизнес авиация", "href": "/business-aviation/", "anchor": "" }
+]

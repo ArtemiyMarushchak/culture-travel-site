@@ -1,23 +1,38 @@
-<header class="header" data-block="header">
-  <div class="header__inner container">
-    <a class="header__logo" href="{{basePath}}/" aria-label="Culture Travel — на главную">
-      <span class="header__logo-text">Culture Travel</span>
+<header class="lh" id="lux-header" data-block="header">
+  <div class="lh__inner">
+    <a class="lh__logo" href="{{basePath}}/" aria-label="Культура путешествий — на главную">
+      <img src="{{basePath}}/assets/icons/logo-white.svg" alt="Культура путешествий" width="144" height="52" decoding="async">
     </a>
 
-    <button class="header__burger" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню">
-      <span></span><span></span>
-    </button>
-
-    <nav class="header__nav" id="site-nav" aria-label="Основная навигация">
-      <ul class="header__menu">
-        <li><a href="{{basePath}}/#about">Обо мне</a></li>
-        <li><a href="{{basePath}}/#cases">Кейсы</a></li>
-        <li><a href="{{basePath}}/hotels/">Отели</a></li>
-        <li><a href="{{basePath}}/news/">Новости</a></li>
-        <li><a href="{{basePath}}/cruises/">Круизы</a></li>
-        <li><a href="{{basePath}}/aviation/">Бизнес-авиация</a></li>
-        <li><a class="header__cta" href="{{basePath}}/#contact">Связаться</a></li>
-      </ul>
+    <nav class="lh__nav" aria-label="Основная навигация">
+      {{#each nav}}
+      <a href="{{basePath}}{{href}}" data-anchor="{{anchor}}">{{label}}</a>
+      {{/each}}
     </nav>
+
+    <a class="lh__cta" href="{{telegram}}" target="_blank" rel="noopener noreferrer">
+      <img src="{{basePath}}/assets/icons/concierge-tilda.svg" alt="" width="15" height="15" decoding="async">
+      <span>Связаться</span>
+    </a>
+
+    <button class="lh__burger" type="button" aria-expanded="false" aria-controls="lh-topmenu" aria-label="Открыть меню">
+      <span aria-hidden="true">
+        <i></i><i></i><i></i>
+      </span>
+    </button>
+  </div>
+
+  <div class="lh__topmenu" id="lh-topmenu" aria-hidden="true">
+    <div class="lh__topmenu-inner">
+      <div class="lh__menu-links">
+        {{#each nav}}
+        <a href="{{basePath}}{{href}}" data-anchor="{{anchor}}">{{label}}</a>
+        {{/each}}
+      </div>
+      <a class="lh__menu-cta" href="{{telegram}}" target="_blank" rel="noopener noreferrer">
+        <span>Связаться</span>
+        <img src="{{basePath}}/assets/icons/concierge-tilda.svg" alt="" width="15" height="15" decoding="async">
+      </a>
+    </div>
   </div>
 </header>

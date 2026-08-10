@@ -1,0 +1,232 @@
+/* Онлайн-визитка — /contact/ */
+
+#ab-contact-card {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  padding: var(--space-xl) var(--space-md);
+  align-items: center;
+  justify-content: center;
+  background: var(--color-paper-soft, #f7f3ed);
+  color: var(--color-black);
+  font-family: var(--font-family-base);
+}
+
+#ab-contact-card .ab-card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 920px;
+  min-height: 560px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+  align-items: center;
+  gap: 56px;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid rgb(0 0 0 / 10%);
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgb(0 0 0 / 10%);
+}
+
+#ab-contact-card .ab-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--color-gold);
+}
+
+#ab-contact-card .ab-photo-wrap {
+  flex: 0 0 300px;
+  width: 300px;
+  height: 300px;
+  padding: 8px;
+  overflow: hidden;
+  background: var(--color-paper-soft, #f7f3ed);
+  border: 1px solid rgb(168 134 94 / 45%);
+  border-radius: 50%;
+}
+
+#ab-contact-card .ab-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+#ab-contact-card .ab-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#ab-contact-card .ab-label {
+  margin: 0 0 14px;
+  color: var(--color-gold);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+#ab-contact-card .ab-name {
+  margin: 0;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+#ab-contact-card .ab-description {
+  margin: 18px 0 32px;
+  color: rgb(0 0 0 / 58%);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+#ab-contact-card .ab-contacts {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 0 30px;
+  border-top: 1px solid rgb(0 0 0 / 10%);
+}
+
+#ab-contact-card .ab-contact {
+  display: flex;
+  width: 100%;
+  min-height: 76px;
+  padding: 16px 0;
+  align-items: center;
+  gap: 16px;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+  transition: opacity var(--transition-base, 0.25s ease);
+}
+
+#ab-contact-card .ab-contact:hover {
+  opacity: var(--hover-opacity, 0.7);
+}
+
+#ab-contact-card .ab-icon {
+  display: flex;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  background: var(--color-gold);
+  border-radius: 50%;
+}
+
+#ab-contact-card .ab-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+#ab-contact-card .ab-contact-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 4px;
+}
+
+#ab-contact-card .ab-contact-label {
+  color: rgb(0 0 0 / 42%);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#ab-contact-card .ab-contact-value {
+  overflow-wrap: anywhere;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+#ab-contact-card .ab-save {
+  display: inline-flex;
+  min-width: 240px;
+  min-height: 58px;
+  padding: 0 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  color: var(--color-white);
+  background: var(--color-black);
+  border: 1px solid var(--color-black);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition: opacity var(--transition-base, 0.25s ease);
+}
+
+#ab-contact-card .ab-save:hover {
+  opacity: var(--hover-opacity, 0.7);
+}
+
+#ab-contact-card .ab-save-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+@media (max-width: 760px) {
+  #ab-contact-card {
+    min-height: 100svh;
+    padding: 20px 14px;
+    align-items: flex-start;
+  }
+
+  #ab-contact-card .ab-card {
+    flex-direction: column;
+    min-height: 0;
+    padding: 34px 22px 28px;
+    gap: 26px;
+    border-radius: 20px;
+  }
+
+  #ab-contact-card .ab-photo-wrap {
+    flex: 0 0 190px;
+    width: 190px;
+    height: 190px;
+  }
+
+  #ab-contact-card .ab-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  #ab-contact-card .ab-contact {
+    text-align: left;
+  }
+
+  #ab-contact-card .ab-save {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  #ab-contact-card .ab-photo-wrap {
+    flex-basis: 160px;
+    width: 160px;
+    height: 160px;
+  }
+
+  #ab-contact-card .ab-name {
+    font-size: 33px;
+  }
+}

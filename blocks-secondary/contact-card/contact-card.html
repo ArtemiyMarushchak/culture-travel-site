@@ -1,0 +1,67 @@
+<div id="ab-contact-card" data-block="contact-card">
+  <div class="ab-card">
+    <div class="ab-photo-wrap">
+      <img
+        class="ab-photo"
+        src="{{basePath}}/assets/images/anna-baglay.webp"
+        alt="Анна Баглай"
+        width="300"
+        height="300"
+        loading="eager"
+      >
+    </div>
+
+    <div class="ab-content">
+      <div class="ab-label">Luxury Travel Advisor</div>
+      <h1 class="ab-name">Анна Баглай</h1>
+      <p class="ab-description">Делаю путешествия в сегменте люкс</p>
+
+      <div class="ab-contacts">
+        <a class="ab-contact ui-link" href="tel:{{phoneRaw}}">
+          <span class="ab-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.62 10.79a15.46 15.46 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </span>
+          <span class="ab-contact-text">
+            <span class="ab-contact-label">Телефон</span>
+            <span class="ab-contact-value">{{phoneDisplay}}</span>
+          </span>
+        </a>
+
+        <a class="ab-contact ui-link" href="mailto:{{email}}">
+          <span class="ab-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 5h18a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V7a2 2 0 012-2zm0 2v.4l9 5.4 9-5.4V7H3zm18 10V9.73l-8.49 5.09a1 1 0 01-1.02 0L3 9.73V17h18z"/>
+            </svg>
+          </span>
+          <span class="ab-contact-text">
+            <span class="ab-contact-label">Электронная почта</span>
+            <span class="ab-contact-value">{{email}}</span>
+          </span>
+        </a>
+
+        <a class="ab-contact ui-link" href="{{telegram}}" target="_blank" rel="noopener noreferrer">
+          <span class="ab-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.7 3.3a1.55 1.55 0 00-1.61-.23L2.9 9.72a1.38 1.38 0 00.08 2.61l4.23 1.42 1.65 5.16a1.25 1.25 0 002.14.46l2.4-2.47 4.67 3.43a1.5 1.5 0 002.36-.91l3.35-14.55a1.55 1.55 0 00-.08-1.57zM9.17 13.15l8.23-5.21-6.69 6.42-.72 2.85-.82-4.06z"/>
+            </svg>
+          </span>
+          <span class="ab-contact-text">
+            <span class="ab-contact-label">Telegram</span>
+            <span class="ab-contact-value">{{telegramHandle}}</span>
+          </span>
+        </a>
+      </div>
+
+      <button class="ab-save ui-button" id="ab-save-contact" type="button">
+        <span class="ab-save-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a1 1 0 011 1v8h3a1 1 0 01.71 1.71l-4 4a1 1 0 01-1.42 0l-4-4A1 1 0 018 11h3V3a1 1 0 011-1zm-7 17a1 1 0 011 1v1h12v-1a1 1 0 112 0v1a2 2 0 01-2 2H6a2 2 0 01-2-2v-1a1 1 0 011-1z"/>
+          </svg>
+        </span>
+        Сохранить контакт
+      </button>
+    </div>
+  </div>
+</div>

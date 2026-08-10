@@ -25,6 +25,10 @@ jobs:
           node-version: '20'
 
       - name: Build site
+        env:
+          GITHUB_PAGES: 'true'
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: node tools/build.mjs
 
       - name: Upload artifact

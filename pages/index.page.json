@@ -3,7 +3,6 @@
   "title": "Culture Travel — режиссёр индивидуальных VIP-туров",
   "description": "Индивидуальные VIP-путешествия по всему миру. Culture Travel — персональные маршруты для discerning travelers.",
   "blocks": [
-    { "type": "header" },
     { "type": "hero-video" },
     { "type": "about" },
     {
@@ -12,8 +11,6 @@
     },
     { "type": "services" },
     { "type": "reviews" },
-    { "type": "contact-footer" },
-    { "type": "footer" },
-    { "type": "modal" }
+    { "type": "contact-footer" }
   ]
 }

@@ -1,0 +1,5 @@
+{
+  "_comment": "Header и footer на КАЖДОЙ странице автоматически. В *.page.json пиши только середину.",
+  "before": [{ "type": "header" }],
+  "after": [{ "type": "footer" }, { "type": "modal" }]
+}

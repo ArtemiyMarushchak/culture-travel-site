@@ -1,0 +1,41 @@
+:root {
+  --font-main: 'Montserrat', Arial, sans-serif;
+
+  --font-weight-title: 600;
+  --font-weight-text: 400;
+  --font-weight-overline: 500;
+  --font-weight-ui: 600;
+
+  /* Scale — clamp с потолком на 4K */
+  --font-hero: clamp(40px, 3.2vw + 1rem, 66px);
+  --font-h1: clamp(36px, 2.8vw + 1rem, 64px);
+  --font-h2: clamp(28px, 2.2vw + 0.75rem, 54px);
+  --font-h3: clamp(22px, 1.6vw + 0.5rem, 36px);
+  --font-h4: clamp(18px, 1.2vw + 0.5rem, 28px);
+  --font-lead: clamp(17px, 0.35vw + 15px, 20px);
+  --font-body-size: clamp(15px, 0.25vw + 14px, 17px);
+  --font-small: 14px;
+  --font-caption: 12px;
+  --font-overline: 11px;
+  --font-nav: 11px;
+  --font-menu: 15px;
+
+  --leading-display: 1.08;
+  --leading-heading: 1.2;
+  --leading-snug: 1.35;
+  --leading-body: 1.65;
+  --leading-relaxed: 1.75;
+  --leading-normal: 1.65;
+  --leading-tight: 1.15;
+
+  --tracking-display: -0.02em;
+  --tracking-heading: -0.015em;
+  --tracking-wide: 0.12em;
+  --tracking-nav: 0.14em;
+  --letter-spacing-wide: 0.18em;
+  --letter-spacing-menu: 0.14em;
+  --letter-spacing-nav: 0.12em;
+  --letter-spacing-medium: 0.08em;
+  --letter-spacing-body: 0.035em;
+  --letter-spacing-tight: -0.02em;
+}

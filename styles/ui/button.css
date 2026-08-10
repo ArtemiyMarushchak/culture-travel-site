@@ -1,0 +1,98 @@
+/* Кнопки — как на culture-travel.ru */
+
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: 0.85rem 1.6rem;
+  font-family: var(--font-main);
+  font-size: var(--font-nav);
+  font-weight: var(--font-weight-ui);
+  letter-spacing: var(--tracking-nav);
+  text-transform: uppercase;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  background: transparent;
+  text-decoration: none;
+  opacity: var(--ui-link-opacity);
+  transition: opacity var(--transition-fast);
+  cursor: pointer;
+}
+
+.ui-btn:hover {
+  opacity: var(--ui-button-hover-opacity);
+}
+
+.ui-btn--solid {
+  background: var(--color-gold);
+  color: var(--color-white);
+  border-color: var(--color-gold);
+}
+
+.ui-btn--solid:hover {
+  opacity: var(--ui-button-hover-opacity);
+}
+
+.ui-btn--outline-light {
+  border-color: var(--line-light);
+  color: var(--color-white);
+  opacity: var(--ui-link-opacity);
+}
+
+.ui-btn--outline-light:hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+.ui-btn--text {
+  border-color: transparent;
+  padding-inline: 0;
+}
+
+.ui-btn--text:hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+/* Nav link — как Tilda: белый + opacity hover */
+.ui-link {
+  font-size: var(--font-nav);
+  font-weight: var(--font-weight-ui);
+  letter-spacing: var(--tracking-nav);
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-decoration: none;
+  opacity: var(--ui-link-opacity);
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.ui-link:hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+.theme-light .ui-link {
+  color: var(--text-primary);
+}
+
+.theme-light .ui-link:hover {
+  opacity: var(--ui-link-hover-opacity);
+  color: var(--text-primary);
+}
+
+.theme-light .ui-link.is-active {
+  color: var(--color-gold);
+  opacity: var(--ui-link-opacity);
+}
+
+.theme-dark .ui-link.is-active {
+  color: var(--color-white);
+  opacity: var(--ui-link-opacity);
+}
+
+.ui-link--gold {
+  color: var(--color-gold);
+  opacity: 1;
+}
+
+.ui-link--gold:hover {
+  opacity: var(--ui-link-hover-opacity);
+}

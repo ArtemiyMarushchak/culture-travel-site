@@ -1,0 +1,38 @@
+:root {
+  --header-height-desktop: 78px;
+  --header-height-tablet: 72px;
+  --header-height-mobile: 68px;
+  --header-height: var(--header-height-desktop);
+  --header-nav-gap-desktop: clamp(22px, 3vw, 34px);
+  --header-nav-gap-tablet: 22px;
+  --header-nav-gap: var(--header-nav-gap-desktop);
+  --header-bg-transparent: rgba(0, 0, 0, 0.08);
+  --header-bg-solid: var(--color-black);
+  --header-bg-scrolled: rgba(0, 0, 0, 0.96);
+  --header-blur: blur(2px);
+  --logo-height-header: 52px;
+
+  --mobile-menu-padding-desktop: 42px var(--container-padding-desktop);
+  --mobile-menu-padding-tablet: 42px var(--container-padding-tablet);
+  --mobile-menu-padding-mobile: 38px var(--container-padding-mobile) 20px;
+  --mobile-menu-link-padding-desktop: 22px 34px 22px 0;
+  --mobile-menu-link-padding-mobile: 20px 30px 30px 0;
+
+  --footer-padding-desktop: 88px var(--container-padding-desktop) 48px;
+  --footer-padding-tablet: 76px var(--container-padding-tablet) 48px;
+  --footer-padding-mid: 72px var(--container-padding-tablet) 46px;
+  --footer-padding-mobile: 64px var(--container-padding-mobile) 42px;
+  --footer-grid-gap-desktop: clamp(42px, 5.2vw, 88px);
+  --footer-grid-gap-tablet: 58px 48px;
+  --footer-grid-gap-mid: 54px 40px;
+  --footer-grid-gap-mobile: 46px;
+  --footer-title-margin-desktop: 34px;
+  --footer-title-margin-tablet: 26px;
+  --footer-title-margin-mobile: 22px;
+  --footer-link-gap-desktop: 22px;
+  --footer-link-gap-tablet: 19px;
+  --footer-link-gap-mobile: 17px;
+  --footer-bottom-margin-desktop: 82px;
+  --footer-bottom-margin-tablet: 66px;
+  --footer-bottom-margin-mobile: 54px;
+}

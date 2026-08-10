@@ -3,7 +3,6 @@
   "title": "Круизы",
   "description": "Индивидуальные круизные программы — Culture Travel.",
   "blocks": [
-    { "type": "header" },
     {
       "type": "brochure",
       "data": {
@@ -25,8 +24,6 @@
           }
         ]
       }
-    },
-    { "type": "footer" },
-    { "type": "modal" }
+    }
   ]
 }

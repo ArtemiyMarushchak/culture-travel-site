@@ -1,0 +1,73 @@
+/* ── Icon component ──
+   Использование:
+   <span class="ui-icon ui-icon--sm" aria-hidden="true">
+     <img src="/assets/icons/concierge.svg" alt="">
+   </span>
+   или inline SVG
+*/
+
+.ui-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.ui-icon svg,
+.ui-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ui-icon--xs  { width: 14px; height: 14px; }
+.ui-icon--sm  { width: 18px; height: 18px; }
+.ui-icon--md  { width: 24px; height: 24px; }
+.ui-icon--lg  { width: 32px; height: 32px; }
+.ui-icon--xl  { width: 48px; height: 48px; }
+
+/* Цвет через currentColor — задай color на родителе */
+.ui-icon--gold   { color: var(--color-gold); }
+.ui-icon--white  { color: var(--color-white); }
+.ui-icon--black  { color: var(--color-black); }
+
+/* Логотип */
+.ui-logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.ui-logo img,
+.ui-logo svg {
+  display: block;
+  height: var(--logo-height, 50px);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.ui-logo--header { --logo-height: 50px; }
+.ui-logo--footer { --logo-height: 22px; }
+
+/* Split logo: компас + живой текст Montserrat (опционально, позже) */
+.ui-logo--split {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.ui-logo__text {
+  font-family: var(--font-main);
+  font-size: var(--logo-font-size, var(--font-nav));
+  font-weight: var(--logo-font-weight, 600);
+  letter-spacing: var(--logo-letter-spacing, var(--tracking-nav));
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.theme-dark .ui-logo__text { color: var(--color-white); }
+.theme-light .ui-logo__text { color: var(--color-black); }

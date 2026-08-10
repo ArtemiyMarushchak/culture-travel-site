@@ -1,0 +1,65 @@
+/* ── Тёмный фон: только белое, hover = opacity 70%, без золота ✅ УТВЕРЖДЕНО ──
+   Применяй .theme-dark на секцию ИЛИ используй .header / .ui-section--dark
+*/
+
+.theme-dark .ui-overline,
+.theme-dark .section__label,
+.ui-section--dark .ui-overline,
+.ui-section--dark .section__label,
+.header .ui-overline {
+  color: var(--color-white);
+}
+
+.theme-dark .ui-link,
+.theme-dark .ui-link:hover,
+.theme-dark .ui-link.is-active,
+.theme-dark .ui-link--gold,
+.theme-dark .ui-link--gold:hover,
+.theme-dark .ui-link-nav-underline,
+.theme-dark .ui-link-nav-underline:hover,
+.theme-dark .nav-link,
+.theme-dark .nav-link:hover,
+.theme-dark .nav-link.is-active,
+.header .ui-link,
+.header .ui-link:hover,
+.header .ui-link.is-active,
+.header .ui-link-nav-underline,
+.header .ui-link-nav-underline:hover,
+.header__menu a,
+.header__menu a:hover,
+.header__menu a.is-active {
+  color: var(--color-white);
+}
+
+.theme-dark .prose a:not(.ui-btn):not(.btn),
+.theme-dark .prose a:not(.ui-btn):not(.btn):hover,
+.theme-dark .ui-link-editorial,
+.theme-dark .ui-link-editorial:hover {
+  color: var(--color-white);
+}
+
+.theme-dark .ui-btn:not(.ui-btn--solid),
+.header .ui-btn:not(.ui-btn--solid) {
+  border-color: var(--line-light);
+  color: var(--color-white);
+}
+
+.theme-dark .ui-icon--gold {
+  color: var(--color-white);
+}
+
+/* Серый текст на тёмном фоне */
+.theme-dark,
+.ui-section--dark,
+.header,
+.footer {
+  --color-text: var(--text-light);
+  --color-text-muted: var(--text-light-muted);
+  --color-text-subtle: var(--text-light-soft);
+  --color-text-dark-muted: var(--text-light-secondary);
+}
+
+.theme-dark a:not(.ui-btn--solid):focus-visible,
+.header a:focus-visible {
+  outline-color: var(--color-white);
+}

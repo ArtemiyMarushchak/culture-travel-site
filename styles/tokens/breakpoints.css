@@ -1,0 +1,9 @@
+:root {
+  /* Reference values for media queries in CSS */
+  --bp-mobile: 480px;
+  --bp-tablet: 768px;
+  --bp-laptop: 1024px;
+  --bp-desktop: 1280px;
+  --bp-wide: 1600px;
+  --bp-4k: 2560px;
+}

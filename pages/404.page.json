@@ -4,9 +4,6 @@
   "description": "Запрашиваемая страница не существует.",
   "robots": "noindex",
   "blocks": [
-    { "type": "header" },
-    { "type": "error-404" },
-    { "type": "footer" },
-    { "type": "modal" }
+    { "type": "error-404" }
   ]
 }

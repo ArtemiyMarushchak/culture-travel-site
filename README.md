@@ -28,7 +28,13 @@ blocks/          ← UI-блоки (html + css + js) — как Zero Block в Ti
 content/         ← JSON-контент (кейсы, новости, отели)
 pages/           ← конфигурация страниц
 templates/       ← шаблоны для JSON-страниц
-styles/          ← дизайн-система (токены, reset, base)
+styles/          ← дизайн-система → см. styles/README.md
+  tokens/        ← CSS-переменные (цвета, типографика, spacing)
+  foundation/    ← reset, fonts, base
+  ui/            ← .ui-h1, .ui-stack, кнопки, ссылки
+  themes/        ← theme-dark
+  utilities/     ← хелперы
+components/ui/   ← shim (старый путь → styles/ui/)
 core/            ← ядро (config, init.js)
 seo/             ← SEO-шаблоны
 tools/           ← сборщик build.mjs

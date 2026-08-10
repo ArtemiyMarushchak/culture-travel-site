@@ -21,13 +21,16 @@
         </div>
         <p class="hotel-card__location">{{location}}</p>
         <p class="hotel-card__desc">{{description}}</p>
-        <button
-          class="btn hotel-card__btn"
-          type="button"
-          data-hotel-gallery
-          data-name="{{name}}"
-          data-media='{{mediaJson}}'
-        >Смотреть фото и видео</button>
+        <div class="hotel-card__actions">
+          <a class="btn btn--ghost hotel-card__link" href="{{basePath}}/hotels/{{slug}}/">Подробнее</a>
+          <button
+            class="btn hotel-card__btn"
+            type="button"
+            data-hotel-gallery
+            data-name="{{name}}"
+            data-media='{{mediaJson}}'
+          >Фото и видео</button>
+        </div>
       </article>
       {{/each}}
     </div>

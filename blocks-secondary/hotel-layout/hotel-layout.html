@@ -1,0 +1,31 @@
+<article class="hotel-layout section" data-block="hotel-layout">
+  <div class="container">
+    <nav class="hotel-layout__breadcrumb text-muted" aria-label="Хлебные крошки">
+      <a href="{{basePath}}/">Главная</a> / <a href="{{basePath}}/hotels/">Отели</a> / <span>{{name}}</span>
+    </nav>
+
+    <header class="hotel-layout__header">
+      <p class="section__label">Отель</p>
+      <h1 class="hotel-layout__title">{{name}}</h1>
+      <p class="hotel-layout__meta">{{location}} · {{stars}} ★</p>
+    </header>
+
+    <div class="hotel-layout__body container container--narrow prose">
+      <p>{{description}}</p>
+      {{body}}
+    </div>
+
+    <div class="hotel-layout__gallery grid-3">
+      {{#each images}}
+      <figure class="hotel-layout__media">
+        <img src="{{basePath}}{{src}}" alt="{{alt}}" loading="lazy" width="400" height="300">
+      </figure>
+      {{/each}}
+      {{#each videos}}
+      <figure class="hotel-layout__media">
+        <video src="{{basePath}}{{src}}" controls preload="metadata"></video>
+      </figure>
+      {{/each}}
+    </div>
+  </div>
+</article>

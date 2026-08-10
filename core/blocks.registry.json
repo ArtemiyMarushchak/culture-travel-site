@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "blocks": {
+    "header": {
+      "label": "Шапка",
+      "css": true,
+      "js": true,
+      "scope": "layout",
+      "group": "main",
+      "auto": true
+    },
+    "footer": {
+      "label": "Подвал",
+      "css": true,
+      "js": false,
+      "scope": "layout",
+      "group": "main",
+      "auto": true
+    },
+    "hero-video": {
+      "label": "Hero — видео",
+      "css": true,
+      "js": true,
+      "scope": "home"
+    },
+    "about": {
+      "label": "Обо мне",
+      "css": true,
+      "js": false,
+      "scope": "home"
+    },
+    "cases-slider": {
+      "label": "Кейсы — слайдер",
+      "css": true,
+      "js": true,
+      "scope": "home",
+      "dataSource": "content/cases",
+      "dataPrepare": "casesFeatured"
+    },
+    "services": {
+      "label": "Услуги",
+      "css": true,
+      "js": false,
+      "scope": "home"
+    },
+    "reviews": {
+      "label": "Отзывы",
+      "css": true,
+      "js": false,
+      "scope": "home"
+    },
+    "contact-footer": {
+      "label": "Связаться",
+      "css": true,
+      "js": false,
+      "scope": "home"
+    },
+    "case-layout": {
+      "label": "Страница кейса",
+      "css": true,
+      "js": false,
+      "scope": "content"
+    },
+    "news-layout": {
+      "label": "Страница новости",
+      "css": true,
+      "js": false,
+      "scope": "content"
+    },
+    "news-list": {
+      "label": "Список новостей",
+      "css": true,
+      "js": false,
+      "scope": "page",
+      "dataSource": "content/news",
+      "dataPrepare": "newsList"
+    },
+    "hotel-catalog": {
+      "label": "Каталог отелей",
+      "css": true,
+      "js": true,
+      "scope": "page",
+      "dataSource": "content/hotels",
+      "dataPrepare": "hotelsCatalog"
+    },
+    "brochure": {
+      "label": "Брошюра / лендинг",
+      "css": true,
+      "js": false,
+      "scope": "page"
+    },
+    "legal-page": {
+      "label": "Юридическая страница",
+      "css": true,
+      "js": false,
+      "scope": "page"
+    },
+    "error-404": {
+      "label": "404",
+      "css": true,
+      "js": false,
+      "scope": "system"
+    },
+    "modal": {
+      "label": "Модалка",
+      "css": true,
+      "js": true,
+      "scope": "global",
+      "globalInit": true,
+      "group": "secondary"
+    },
+    "contact-card": {
+      "label": "Онлайн-визитка",
+      "css": true,
+      "js": true,
+      "scope": "page",
+      "group": "secondary"
+    },
+    "hotel-layout": {
+      "label": "Страница отеля",
+      "css": true,
+      "js": false,
+      "scope": "content",
+      "group": "secondary"
+    }
+  },
+  "core": {
+    "anchors": true,
+    "videoOverlay": true
+  }
+}

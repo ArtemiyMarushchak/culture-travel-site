@@ -2,9 +2,6 @@
   "template": "news",
   "type": "news",
   "blocks": [
-    { "type": "header" },
-    { "type": "news-layout" },
-    { "type": "footer" },
-    { "type": "modal" }
+    { "type": "news-layout" }
   ]
 }

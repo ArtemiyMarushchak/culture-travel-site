@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spacing — Culture Travel</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .guide { padding-block: var(--space-xl); }
+    .guide__title { font-size: var(--font-h2); margin-bottom: var(--space-md); }
+    .guide__lead { margin-bottom: var(--space-2xl); max-width: 52ch; }
+    .guide h2 { font-size: var(--font-h4); color: var(--color-gold); margin: var(--space-2xl) 0 var(--space-md); }
+    .token { font-family: monospace; font-size: var(--font-caption); color: var(--color-text-muted); }
+    .bar { height: 32px; background: var(--color-gold-faint); border-left: 3px solid var(--color-gold); display: flex; align-items: center; padding-left: var(--space-sm); margin-bottom: var(--space-xs); font-size: var(--font-small); }
+    .edge-demo { background: var(--color-paper-soft); border: 1px dashed var(--line-dark-soft); position: relative; }
+    .edge-demo__content { background: var(--color-paper); padding-block: var(--space-lg); }
+    .edge-label { position: absolute; top: 4px; right: 8px; font-size: var(--font-caption); color: var(--color-gold); }
+    .mock-section { border: 1px solid var(--line-dark-soft); }
+    .mock-card { min-height: 100px; display: flex; align-items: center; justify-content: center; font-size: var(--font-small); color: var(--color-text-muted); }
+  </style>
+</head>
+<body class="theme-light">
+
+  <!-- Пример полной секции -->
+  <section class="ui-section ui-section--paper">
+    <div class="ui-container">
+      <div class="guide">
+        <h1 class="guide__title">Spacing — отступы</h1>
+        <p class="guide__lead ui-body">Единая система для всего сайта. Только <code>var(--space-*)</code> — без magic numbers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ui-section ui-section--paper" style="padding-top:0">
+    <div class="ui-container">
+      <h2>1. От края экрана</h2>
+      <p class="ui-text-muted mb-lg">Mobile <strong>15px</strong> · Desktop <strong>40px</strong> · max-width <strong>1440px</strong></p>
+      <div class="edge-demo mb-xl">
+        <span class="edge-label">container-padding</span>
+        <div class="ui-container edge-demo__content">
+          <p class="token">padding-inline: clamp(15px, 5vw, 40px)</p>
+        </div>
+      </div>
+
+      <h2>2. Между секциями</h2>
+      <p class="ui-text-muted mb-lg">Mobile 72px → Desktop 120px</p>
+      <div class="bar" style="width:100%">--space-section · clamp(72px, 8vw, 120px)</div>
+
+      <h2>3. Scale — базовые шаги</h2>
+      <div class="ui-stack--sm" style="display:flex;flex-direction:column;gap:8px;margin-bottom:var(--space-xl)">
+        <div class="bar" style="width:4px">3xs 4</div>
+        <div class="bar" style="width:8px">2xs 8</div>
+        <div class="bar" style="width:12px">xs 12</div>
+        <div class="bar" style="width:16px">sm 16</div>
+        <div class="bar" style="width:24px">md 24</div>
+        <div class="bar" style="width:32px">lg 32</div>
+        <div class="bar" style="width:48px">xl 48</div>
+        <div class="bar" style="width:64px">2xl 64</div>
+      </div>
+
+      <h2>4. Семантика (используй в блоках)</h2>
+      <table style="width:100%;font-size:var(--font-small);border-collapse:collapse;margin-bottom:var(--space-xl)">
+        <tr style="border-bottom:1px solid var(--line-dark-soft)"><td style="padding:12px 0"><code>--space-section-head</code></td><td>24px</td><td>overline → title</td></tr>
+        <tr style="border-bottom:1px solid var(--line-dark-soft)"><td style="padding:12px 0"><code>--space-title-body</code></td><td>32px</td><td>title → текст</td></tr>
+        <tr style="border-bottom:1px solid var(--line-dark-soft)"><td style="padding:12px 0"><code>--space-stack-md</code></td><td>24px</td><td>элементы в колонке</td></tr>
+        <tr style="border-bottom:1px solid var(--line-dark-soft)"><td style="padding:12px 0"><code>--space-stack-xl</code></td><td>48px</td><td>head → контент секции</td></tr>
+        <tr style="border-bottom:1px solid var(--line-dark-soft)"><td style="padding:12px 0"><code>--gap-block</code></td><td>32px</td><td>сетка карточек</td></tr>
+        <tr><td style="padding:12px 0"><code>--space-card-padding</code></td><td>32px</td><td>padding внутри карточки</td></tr>
+      </table>
+
+      <h2>5. Пример секции «Кейсы»</h2>
+      <div class="mock-section ui-inset--lg mb-xl">
+        <div class="ui-section-head">
+          <p class="ui-overline">Кейсы</p>
+          <h2 class="ui-h2">Индивидуальные проекты</h2>
+          <p class="ui-lead">Путешествия, написанные для вас — с историей в каждой детали.</p>
+        </div>
+        <div class="ui-grid ui-grid--3">
+          <div class="ui-card mock-card">Карточка · gap 32px</div>
+          <div class="ui-card mock-card">Карточка</div>
+          <div class="ui-card mock-card">Карточка</div>
+        </div>
+      </div>
+
+      <h2>6. ui-stack · ui-cluster</h2>
+      <div class="ui-grid ui-grid--2 mb-xl">
+        <div class="ui-card">
+          <p class="token mb-sm">.ui-stack</p>
+          <div class="ui-stack">
+            <p class="ui-body">Параграф 1</p>
+            <p class="ui-body">Параграф 2 · gap 24px</p>
+            <p class="ui-body">Параграф 3</p>
+          </div>
+        </div>
+        <div class="ui-card">
+          <p class="token mb-sm">.ui-cluster</p>
+          <div class="ui-cluster">
+            <button class="ui-btn" type="button">Кнопка 1</button>
+            <button class="ui-btn ui-btn--solid" type="button">Кнопка 2</button>
+            <span class="ui-text-muted">gap 24px</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>7. Footer</h2>
+      <div class="ui-footer theme-dark" style="margin-inline:calc(var(--container-padding) * -1);padding-inline:var(--container-padding)">
+        <div class="ui-footer__inner">
+          <img src="../assets/icons/logo-white.svg" alt="" height="22" style="opacity:.85">
+          <p class="ui-text-muted">padding-block: --space-footer-y (64px)</p>
+          <div class="ui-cluster--tight">
+            <span class="ui-text-muted">Telegram</span>
+            <span class="ui-text-muted">Email</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

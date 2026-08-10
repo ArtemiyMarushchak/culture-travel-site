@@ -1,0 +1,31 @@
+.hotel-layout__breadcrumb {
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.hotel-layout__title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-sm);
+}
+
+.hotel-layout__meta {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.hotel-layout__body {
+  margin-bottom: var(--space-xl);
+}
+
+.hotel-layout__gallery {
+  margin-top: var(--space-xl);
+}
+
+.hotel-layout__media img,
+.hotel-layout__media video {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-surface);
+}

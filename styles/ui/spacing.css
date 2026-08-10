@@ -1,0 +1,115 @@
+/* Spacing — единая система отступов Culture Travel */
+
+/* Вертикальный stack (колонка элементов) */
+.ui-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-stack-md);
+}
+
+.ui-stack--tight { gap: var(--gap-tight); }
+.ui-stack--sm    { gap: var(--space-stack-sm); }
+.ui-stack--lg    { gap: var(--space-stack-lg); }
+.ui-stack--xl    { gap: var(--space-stack-xl); }
+
+/* Горизонтальная группа (кнопки, tags) */
+.ui-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-inline);
+}
+
+.ui-cluster--tight { gap: var(--gap-tight); }
+
+/* Сетка карточек */
+.ui-grid {
+  display: grid;
+  gap: var(--gap-block);
+}
+
+.ui-grid--2 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .ui-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ui-grid--3 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .ui-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ui-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Шапка секции: overline + title + lead */
+.ui-section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section-head);
+  margin-bottom: var(--space-stack-xl);
+  max-width: var(--container-narrow-max);
+}
+
+.ui-section-head .ui-h2,
+.ui-section-head .ui-h3,
+.ui-section-head h2,
+.ui-section-head h3 {
+  margin: 0;
+}
+
+.ui-section-head .ui-lead {
+  margin-top: calc(var(--space-title-body) - var(--space-section-head));
+}
+
+/* Карточка */
+.ui-card {
+  padding: var(--space-card-padding);
+  background: var(--color-paper-soft);
+}
+
+.ui-card--outline {
+  background: transparent;
+  border: 1px solid var(--line-dark-soft);
+}
+
+/* Секция — контент внутри container */
+.ui-section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-stack-lg);
+}
+
+/* Footer shell */
+.ui-footer {
+  padding-block: var(--space-footer-y);
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+.ui-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-stack-lg);
+}
+
+/* Inset — внутренний padding блока (не от края экрана) */
+.ui-inset {
+  padding: var(--space-card-padding);
+}
+
+.ui-inset--lg {
+  padding: var(--space-xl);
+}

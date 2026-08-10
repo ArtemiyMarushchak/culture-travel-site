@@ -1,0 +1,106 @@
+/* Typography — Montserrat, editorial luxury */
+
+.ui-display {
+  font-size: var(--font-hero);
+  font-weight: var(--font-weight-title);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-text-dark);
+}
+
+.ui-h1 {
+  font-size: var(--font-h1);
+  font-weight: var(--font-weight-title);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text-dark);
+}
+
+.ui-h2 {
+  font-size: var(--font-h2);
+  font-weight: var(--font-weight-title);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text-dark);
+}
+
+.ui-h3 {
+  font-size: var(--font-h3);
+  font-weight: var(--font-weight-title);
+  line-height: var(--leading-heading);
+  color: var(--color-text-dark);
+}
+
+.ui-h4 {
+  font-size: var(--font-h4);
+  font-weight: var(--font-weight-title);
+  line-height: var(--leading-snug);
+  color: var(--color-text-dark);
+}
+
+.ui-lead {
+  font-size: var(--font-lead);
+  font-weight: var(--font-weight-text);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.ui-body {
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+}
+
+/* Длинный текст — журнал, «Обо мне», кейсы */
+.ui-prose,
+.prose {
+  max-width: var(--container-text-max);
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+}
+
+.ui-prose > * + *,
+.prose > * + * {
+  margin-top: var(--space-stack-md);
+}
+
+.ui-prose h2,
+.prose h2 {
+  font-size: var(--font-h3);
+  font-weight: var(--font-weight-title);
+  line-height: var(--leading-heading);
+  color: var(--text-primary);
+  margin-top: var(--space-stack-xl);
+}
+
+.ui-prose h3,
+.prose h3 {
+  font-size: var(--font-h4);
+  font-weight: var(--font-weight-title);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+  margin-top: var(--space-stack-lg);
+}
+
+.ui-prose p,
+.prose p {
+  max-width: 62ch;
+}
+
+.theme-dark .ui-display,
+.theme-dark .ui-h1,
+.theme-dark .ui-h2,
+.theme-dark .ui-h3,
+.theme-dark .ui-h4 {
+  color: var(--text-light);
+}
+
+.theme-dark .ui-lead,
+.theme-dark .ui-body,
+.theme-dark .ui-prose,
+.theme-dark .prose {
+  color: var(--text-light-secondary);
+}

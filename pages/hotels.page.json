@@ -3,9 +3,6 @@
   "title": "Люкс-отели",
   "description": "Каталог эксклюзивных отелей мира — Culture Travel.",
   "blocks": [
-    { "type": "header" },
-    { "type": "hotel-catalog", "data": { "source": "content/hotels" } },
-    { "type": "footer" },
-    { "type": "modal" }
+    { "type": "hotel-catalog", "data": { "source": "content/hotels" } }
   ]
 }

@@ -1,0 +1,10 @@
+/**
+ * Montserrat — Google CDN (временно, пока нет woff2 локально)
+ * Веса: 400 Regular, 500 Medium, 600 SemiBold
+ * Subsets: latin, cyrillic
+ *
+ * Переключение на локальные файлы:
+ *   styles/foundation/fonts.css → импорт fonts.local.css вместо fonts.cdn.css
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap&subset=latin,cyrillic');

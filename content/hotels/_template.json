@@ -1,13 +1,18 @@
 {
-  "_comment": "Отели отображаются в каталоге /hotels/ — отдельные страницы не создаются",
+  "_comment": "Скопируйте _template.json → my-hotel.json. Build сам: карточка на /hotels/ + страница /hotels/my-hotel/",
   "slug": "hotel-slug",
   "name": "Название отеля",
   "location": "Страна, город",
   "stars": 5,
   "themes": ["beach", "city"],
   "description": "Короткое описание для карточки (2-3 предложения).",
+  "body": "<p>Дополнительный текст на странице отеля. HTML: &lt;p&gt;, &lt;h2&gt;</p>",
   "media": [
     { "type": "image", "src": "/assets/images/hotels/photo.webp", "alt": "Описание фото" },
     { "type": "video", "src": "/assets/videos/hotels/hotel.mp4" }
-  ]
+  ],
+  "seo": {
+    "title": "Название отеля | Culture Travel",
+    "description": "Meta description до 160 символов."
+  }
 }

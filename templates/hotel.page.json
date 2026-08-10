@@ -1,0 +1,7 @@
+{
+  "template": "hotel",
+  "type": "hotel",
+  "blocks": [
+    { "type": "hotel-layout" }
+  ]
+}

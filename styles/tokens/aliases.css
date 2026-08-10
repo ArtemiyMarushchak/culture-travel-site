@@ -1,0 +1,33 @@
+:root {
+  /* Legacy / block aliases — для совместимости с блоками и Tilda-именами */
+  --text-hero-desktop: var(--font-hero);
+  --text-hero-tablet: clamp(36px, 7vw, 48px);
+  --text-hero-mobile: 34px;
+  --text-h1-desktop: var(--font-h1);
+  --text-h2-desktop: var(--font-h2);
+  --text-h2-tablet: clamp(32px, 5vw, 42px);
+  --text-h2-mobile: 30px;
+  --text-body-desktop: var(--font-body-size);
+  --text-body-tablet: var(--font-body-size);
+  --text-body-mobile: 16px;
+  --text-overline-desktop: 12px;
+  --text-overline-mobile: 11px;
+  --text-small-desktop: var(--font-small);
+  --text-body-small-desktop: 15px;
+  --text-body-small-mobile: 14px;
+
+  --line-height-title: var(--leading-display);
+  --line-height-title-mobile: 1.04;
+  --line-height-h2: var(--leading-heading);
+  --line-height-text: var(--leading-body);
+  --line-height-text-mobile: 1.62;
+  --line-height-small: 1.45;
+  --line-height-ui: 1;
+
+  --ui-nav-font-size-desktop: var(--font-nav);
+  --ui-nav-font-size-tablet: 10px;
+  --ui-menu-font-size-desktop: var(--font-menu);
+  --ui-menu-font-size-mobile: 14px;
+  --ui-footer-bottom-font-size: 11px;
+  --ui-footer-bottom-font-size-mobile: 10px;
+}

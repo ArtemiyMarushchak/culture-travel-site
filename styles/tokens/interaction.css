@@ -1,0 +1,31 @@
+:root {
+  /* Hover = opacity only ✅ */
+  --ui-link-opacity: 1;
+  --ui-link-hover-opacity: 0.7;
+  --ui-link-muted-hover-opacity: 0.7;
+  --ui-button-hover-opacity: 0.7;
+
+  --ui-underline-height: 1px;
+  --ui-underline-offset: 8px;
+  --ui-underline-color: rgba(248, 247, 244, 0.52);
+  --ui-underline-hover-color: rgba(248, 247, 244, 0.18);
+  --ui-underline-dark-color: rgba(0, 0, 0, 0.52);
+  --ui-underline-dark-hover-color: rgba(0, 0, 0, 0.18);
+
+  --ui-icon-size-xs: 12px;
+  --ui-icon-size-sm: 15px;
+  --ui-icon-size-md: 17px;
+  --ui-icon-size-lg: 22px;
+
+  --ui-touch-size: 44px;
+  --ui-touch-size-mobile: 44px;
+  --ui-button-height-desktop: 56px;
+  --ui-button-height-mobile: 56px;
+  --ui-button-bg: var(--color-gold);
+  --ui-button-color: var(--color-white);
+
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s ease;
+  --transition-page: 0.55s ease;
+}

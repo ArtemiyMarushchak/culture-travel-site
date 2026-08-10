@@ -71,6 +71,14 @@
   margin-bottom: var(--space-md);
 }
 
+.hotel-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.hotel-card__link,
 .hotel-card__btn {
-  width: 100%;
+  flex: 1 1 calc(50% - var(--space-sm));
+  min-width: 8rem;
 }

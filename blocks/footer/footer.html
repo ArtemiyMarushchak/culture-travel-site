@@ -1,17 +1,70 @@
-<footer class="footer" data-block="footer">
-  <div class="footer__inner container">
-    <div class="footer__brand">
-      <p class="footer__logo">Culture Travel</p>
-      <p class="footer__tagline">Режиссёр индивидуальных туров</p>
+<footer id="lux-footer" class="uc-footer" data-block="footer">
+  <div class="lf">
+    <div class="lf__grid">
+      <div class="lf__col">
+        <div class="lf__title">Сайт обновлён — 2026</div>
+        <div class="lf__company">
+          <span>ИП Баглай Анна Михайловна</span>
+          <span>ИНН: 616117921737</span>
+          <span>ОГРН: 323508100276585</span>
+        </div>
+        <div class="lf__contacts">
+          <a class="lf__contact" href="{{telegram}}" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.7 4.2 18.5 19c-.2 1-.8 1.2-1.6.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 12.8 1.8 11.3c-1-.3-1-1 .2-1.5L20.2 2.8c.9-.3 1.7.2 1.5 1.4Z"/>
+            </svg>
+          </a>
+          <a class="lf__contact" href="tel:{{phone}}" aria-label="Телефон">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7.2 4.5 9.1 8c.3.6.2 1.2-.3 1.7l-1 1c1.2 2.4 3.1 4.3 5.5 5.5l1-1c.5-.5 1.1-.6 1.7-.3l3.5 1.9c.6.3.9 1 .7 1.7-.4 1.5-1.8 2.5-3.4 2.5C9.5 21 3 14.5 3 6.2c0-1.6 1-3 2.5-3.4.7-.2 1.4.1 1.7.7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="lf__contact" href="mailto:{{email}}" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="lf__col">
+        <div class="lf__title">Главная</div>
+        <nav class="lf__nav">
+          <a href="{{basePath}}/#about">Обо мне</a>
+          <a href="{{basePath}}/#cases">Кейсы</a>
+          <a href="{{basePath}}/#services">Услуги</a>
+          <a href="{{basePath}}/#reviews">Отзывы</a>
+        </nav>
+      </div>
+
+      <div class="lf__col">
+        <div class="lf__title">Навигация</div>
+        <nav class="lf__nav">
+          <a href="{{basePath}}/news/">Новости</a>
+          <a href="{{basePath}}/hotels/">Отели</a>
+          <a href="{{basePath}}/cruises/">Круизы</a>
+          <a href="{{basePath}}/business-aviation/">Бизнес авиация</a>
+        </nav>
+      </div>
+
+      <div class="lf__col">
+        <div class="lf__title">Документы для контроля</div>
+        <nav class="lf__nav">
+          <a href="{{basePath}}/privacy/">Политика конфиденциальности</a>
+          <a href="{{registryUrl}}" target="_blank" rel="noopener noreferrer">В реестре тур-агентств</a>
+          <a href="{{basePath}}/company/">Данные компании</a>
+          <a href="{{basePath}}/copyright/">Авторское право</a>
+        </nav>
+      </div>
     </div>
 
-    <nav class="footer__nav" aria-label="Дополнительная навигация">
-      <a href="{{basePath}}/privacy/">Политика КФД</a>
-      <button type="button" data-modal-open="company">Реквизиты</button>
-      <button type="button" data-modal-open="copyright">Авторские права</button>
-      <a href="https://tourism.gov.ru/operators/" target="_blank" rel="noopener noreferrer">Реестр турагентов</a>
-    </nav>
-
-    <p class="footer__copy">© {{year}} Culture Travel. Все права защищены.</p>
+    <div class="lf__bottom">
+      <span class="lf__bottom-left">Копирование материалов запрещено</span>
+      <span class="lf__bottom-right">
+        Разработал —
+        <a href="{{developerUrl}}" target="_blank" rel="noopener noreferrer">{{developerName}}</a>
+      </span>
+    </div>
   </div>
 </footer>

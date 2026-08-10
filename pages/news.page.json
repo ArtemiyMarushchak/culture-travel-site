@@ -3,9 +3,6 @@
   "title": "Новости",
   "description": "Новости и анонсы Culture Travel — индивидуальные VIP-путешествия.",
   "blocks": [
-    { "type": "header" },
-    { "type": "news-list", "data": { "source": "content/news" } },
-    { "type": "footer" },
-    { "type": "modal" }
+    { "type": "news-list", "data": { "source": "content/news" } }
   ]
 }

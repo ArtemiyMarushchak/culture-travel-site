@@ -1,0 +1,13 @@
+{
+  "slug": "/contact/",
+  "layout": "minimal",
+  "title": "Анна Баглай — контакт",
+  "description": "Онлайн-визитка: телефон, email, Telegram. Luxury Travel Advisor — Culture Travel.",
+  "blocks": [
+    { "type": "contact-card" }
+  ],
+  "seo": {
+    "title": "Анна Баглай — контакт | Culture Travel",
+    "description": "Сохраните контакт Анны Баглай: телефон, email, Telegram. Персональный travel advisor."
+  }
+}

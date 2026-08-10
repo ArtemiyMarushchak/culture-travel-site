@@ -1,0 +1,29 @@
+:root {
+  /* Edge padding — luxury editorial */
+  --edge-mobile: 15px;
+  --edge-tablet: 40px;
+  --edge-desktop: 40px;
+  --container-padding-desktop: 40px;
+  --container-padding-tablet: 40px;
+  --container-padding-mobile: 20px;
+  --container-padding: clamp(var(--edge-mobile), 5vw, var(--edge-desktop));
+
+  --container-width: 100%;
+  --container-max-width: 1440px;
+  --container-wide-max: 1600px;
+  --container-narrow-max: 720px;
+  --container-text-max: 640px;
+
+  --content-width-wide: 980px;
+  --content-width-text: 720px;
+  --content-width-text-small: 620px;
+  --content-width-narrow: 520px;
+
+  --radius: 0;
+  --radius-none: 0;
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+}

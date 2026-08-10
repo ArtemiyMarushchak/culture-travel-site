@@ -1,0 +1,37 @@
+{
+  "_comment": "Один JSON-файл → карточка в списке + отдельная SEO-страница. Build делает сам.",
+  "types": {
+    "cases": {
+      "label": "Кейсы",
+      "dataDir": "content/cases",
+      "urlPrefix": "cases",
+      "template": "case",
+      "listBlocks": {
+        "home": "cases-slider",
+        "page": null
+      },
+      "cardOnHome": true,
+      "featuredField": "featured"
+    },
+    "news": {
+      "label": "Новости",
+      "dataDir": "content/news",
+      "urlPrefix": "news",
+      "template": "news",
+      "listBlocks": {
+        "page": "news-list"
+      },
+      "listPage": "/news/"
+    },
+    "hotels": {
+      "label": "Отели",
+      "dataDir": "content/hotels",
+      "urlPrefix": "hotels",
+      "template": "hotel",
+      "listBlocks": {
+        "page": "hotel-catalog"
+      },
+      "listPage": "/hotels/"
+    }
+  }
+}

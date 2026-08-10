@@ -1,0 +1,38 @@
+:root {
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 88px;
+  --space-4xl: 120px;
+
+  /* Semantic spacing */
+  --space-section-head: var(--space-md);
+  --space-title-body: var(--space-lg);
+  --space-stack-sm: var(--space-sm);
+  --space-stack-md: var(--space-md);
+  --space-stack-lg: var(--space-lg);
+  --space-stack-xl: var(--space-xl);
+  --space-card-padding: var(--space-lg);
+  --space-footer-y: var(--space-2xl);
+  --space-block-end: var(--space-xl);
+
+  --gap-block: var(--space-lg);
+  --gap-inline: var(--space-md);
+  --gap-tight: var(--space-sm);
+  --gap-nav: var(--header-nav-gap);
+
+  /* Section vertical rhythm */
+  --section-space-mobile: 72px;
+  --section-space-tablet: 96px;
+  --section-space-desktop: 120px;
+  --space-section: clamp(var(--section-space-mobile), 8vw, var(--section-space-desktop));
+
+  --section-gap-mobile: 32px;
+  --section-gap-tablet: 48px;
+  --section-gap-desktop: 64px;
+}

@@ -1,0 +1,8 @@
+:root {
+  --z-video: 1;
+  --z-content: 5;
+  --z-overlay: 150;
+  --z-header-menu: 9999;
+  --z-header: 10000;
+  --z-modal: 10001;
+}
