@@ -15,6 +15,7 @@
   --text-small-desktop: var(--font-small);
   --text-body-small-desktop: 15px;
   --text-body-small-mobile: 14px;
+  --text-caption-desktop: 12px;
 
   --line-height-title: var(--leading-display);
   --line-height-title-mobile: 1.04;

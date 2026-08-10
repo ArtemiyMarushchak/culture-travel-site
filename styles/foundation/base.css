@@ -16,7 +16,8 @@ html {
   scroll-padding-top: var(--header-height);
 }
 
-body.is-nav-open {
+body.is-nav-open,
+html.is-nav-open {
   overflow: hidden;
 }
 

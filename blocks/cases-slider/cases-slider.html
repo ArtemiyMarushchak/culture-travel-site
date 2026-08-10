@@ -1,24 +1,59 @@
-<section class="cases section" id="cases" data-block="cases-slider">
-  <div class="container">
-    <p class="section__label">Кейсы</p>
-    <h2 class="section__title">Индивидуальные проекты</h2>
+<section class="uc-cases" id="my-cases-slider" data-block="cases-slider" aria-labelledby="mcs-title">
+  <div class="mcs">
+    <div class="mcs__head">
+      <h2 class="mcs__title" id="mcs-title">Мои кейсы</h2>
+    </div>
 
-    <div class="cases-slider">
-      <div class="cases-slider__track">
-        {{#each items}}
-        <article class="cases-slider__card">
-          <a class="cases-slider__link" href="{{basePath}}/cases/{{slug}}/">
-            <div class="cases-slider__media">
-              <img src="{{basePath}}{{cover}}" alt="{{title}}" loading="lazy" width="640" height="800">
-            </div>
-            <div class="cases-slider__body">
-              <h3 class="cases-slider__title">{{title}}</h3>
-              <p class="cases-slider__subtitle">{{subtitle}}</p>
-            </div>
-          </a>
-        </article>
+    <div class="mcs__tabs" role="tablist" aria-label="Регионы">
+      <div class="mcs__tabs-track">
+        {{#each regions}}
+        <button
+          class="mcs__tab{{tabClass}}"
+          type="button"
+          role="tab"
+          data-case-filter="{{id}}"
+          aria-selected="{{ariaSelected}}"
+        >{{label}}</button>
         {{/each}}
       </div>
     </div>
+
+    <div class="mcs__stage" data-case-stage>
+      <article class="mcs__slide is-active" data-case-slide aria-live="polite">
+        <div class="mcs__image">
+          <img data-case-image src="" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="mcs__shade" aria-hidden="true"></div>
+        <div class="mcs__content">
+          <div class="mcs__copy">
+            <p class="mcs__counter">
+              <span data-case-current>01</span> / <span data-case-total>01</span>
+            </p>
+            <h3 class="mcs__case-title" data-case-title></h3>
+            <p class="mcs__case-text" data-case-text></p>
+            <a class="mcs__link" data-case-link href="#">
+              Подробнее
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M13 5l7 7-7 7M20 12H4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+          <div class="mcs__controls">
+            <button class="mcs__arrow" type="button" data-case-prev aria-label="Предыдущий кейс">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="mcs__arrow" type="button" data-case-next aria-label="Следующий кейс">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
+
+  <script type="application/json" id="mcs-data">{{casesJson}}</script>
 </section>

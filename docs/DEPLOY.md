@@ -9,11 +9,12 @@
 
 ### Первый деплой — checklist
 
-- [ ] Репозиторий создан (private)
+- [ ] Репозиторий создан (**public** — для бесплатного Pages на Free plan)
 - [ ] GitHub → **Settings → Pages → Source: GitHub Actions**
 - [ ] Push в `main` выполнен
 - [ ] Actions → workflow зелёный
 - [ ] Сайт доступен по URL Pages
+- [ ] Включена **2FA** и защита ветки `main` — см. [SECURITY.md](SECURITY.md)
 
 ### Бесплатно — без GitHub Pro
 

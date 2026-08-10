@@ -1,0 +1,119 @@
+{
+  "regions": [
+    { "id": "all", "label": "Все" },
+    { "id": "africa", "label": "Африка" },
+    { "id": "asia", "label": "Азия" },
+    { "id": "europe", "label": "Европа" },
+    { "id": "southAmerica", "label": "Южная Америка" },
+    { "id": "northAmerica", "label": "Северная Америка" },
+    { "id": "australia", "label": "Австралия" },
+    { "id": "antarctica", "label": "Антарктида" }
+  ],
+  "cases": {
+    "africa": [
+      {
+        "title": "Южная Африка",
+        "text": "Сафари Большого Крюгера, океанские панорамы Кейптауна и винные долины Западного Кейпа.",
+        "image": "/assets/images/cases/south-africa/fquqbf9uhv7js450n4hd.jpg",
+        "slug": "south-africa"
+      },
+      {
+        "title": "Намибия",
+        "text": "Пустыни, бескрайние дороги, лоджи среди дюн и спокойная экспедиционная эстетика.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Кения и Танзания",
+        "text": "Саванна, Великая миграция, сафари-лоджи и одно из самых сильных природных впечатлений Африки.",
+        "image": "/assets/images/placeholder.svg"
+      }
+    ],
+    "asia": [
+      {
+        "title": "Япония",
+        "text": "Токио, Киото, сезонные маршруты, гастрономия и private-ритм путешествия.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Китай",
+        "text": "Горы Чжанцзяцзе, древние города, панорамные ландшафты и сильная культурная программа.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Индонезия",
+        "text": "Острова, виллы, океан, храмы и мягкий маршрут с акцентом на отдых и атмосферу.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Мальдивы",
+        "text": "Виллы над водой, приватность, высокий сервис и подбор курорта под конкретный стиль отдыха.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Шри-Ланка",
+        "text": "Чайные плантации, океан, колониальные отели и маршрут в спокойном премиальном ритме.",
+        "image": "/assets/images/placeholder.svg"
+      }
+    ],
+    "europe": [
+      {
+        "title": "Италия",
+        "text": "Озера, виллы, гастрономия, города искусства и отели с настоящим европейским характером.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Франция",
+        "text": "Париж, Прованс, Лазурный берег и маршруты с акцентом на гастрономию и стиль.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Балканы",
+        "text": "Сараево, Мостар, Котор, Албания и красивая программа с частными гидами и логистикой.",
+        "image": "/assets/images/placeholder.svg"
+      }
+    ],
+    "southAmerica": [
+      {
+        "title": "Перу",
+        "text": "Анды, Мачу-Пикчу, колониальные города и сильная культурная программа.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Патагония",
+        "text": "Ледники, горы, редкая география и путешествие для тех, кто любит масштаб природы.",
+        "image": "/assets/images/placeholder.svg"
+      }
+    ],
+    "northAmerica": [
+      {
+        "title": "США",
+        "text": "Калифорния, Лас-Вегас, каньоны, Нью-Йорк и маршрут с красивой динамикой переездов.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Бермуды",
+        "text": "Атлантика, розовые пляжи, спокойные отели и камерный островной отдых.",
+        "image": "/assets/images/placeholder.svg"
+      }
+    ],
+    "australia": [
+      {
+        "title": "Австралия",
+        "text": "Сидней, океанские дороги, природа и маршрут с большим количеством воздуха.",
+        "image": "/assets/images/placeholder.svg"
+      },
+      {
+        "title": "Новая Зеландия",
+        "text": "Озера, фьорды, вертолетные впечатления и редкая природная драматургия.",
+        "image": "/assets/images/placeholder.svg"
+      }
+    ],
+    "antarctica": [
+      {
+        "title": "Антарктида",
+        "text": "Экспедиционный круиз, ледяные ландшафты, пингвины и путешествие на край света.",
+        "image": "/assets/images/placeholder.svg"
+      }
+    ]
+  }
+}

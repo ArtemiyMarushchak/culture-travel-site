@@ -1,25 +1,22 @@
-<section class="services section" id="services" data-block="services">
-  <div class="container">
-    <p class="section__label">Услуги</p>
-    <h2 class="section__title">Что мы создаём</h2>
+<section id="anna-services" class="uc-services" data-block="services" aria-labelledby="anna-services-title">
+  <div class="sv">
+    <div class="sv__head">
+      <p class="sv__overline">{{overline}}</p>
+      <h2 class="sv__title" id="anna-services-title">{{title}}</h2>
+      <p class="sv__lead">{{lead}}</p>
+    </div>
 
-    <div class="services__grid grid-2">
-      <a class="services__card" href="{{basePath}}/#cases">
-        <h3>Индивидуальные туры</h3>
-        <p>Персональные маршруты под ваш ритм, интересы и уровень комфорта.</p>
-      </a>
-      <a class="services__card" href="{{basePath}}/hotels/">
-        <h3>Люкс-отели</h3>
-        <p>Эксклюзивные отели мира — для тех, кто ценит тематику и сервис.</p>
-      </a>
-      <a class="services__card" href="{{basePath}}/cruises/">
-        <h3>Круизы</h3>
-        <p>Морские и речные программы с приватным подходом к маршруту.</p>
-      </a>
-      <a class="services__card" href="{{basePath}}/business-aviation/">
-        <h3>Бизнес-авиация</h3>
-        <p>Чартерные перелёты и сложная логистика для VIP-клиентов.</p>
-      </a>
+    <div class="sv__grid">
+      {{#each items}}
+      <article class="sv__card">
+        <div class="sv__card-top">
+          <span class="sv__index">{{indexPad}}</span>
+          <span class="sv__line" aria-hidden="true"></span>
+        </div>
+        <h3 class="sv__card-title">{{title}}</h3>
+        <p class="sv__card-text">{{text}}</p>
+      </article>
+      {{/each}}
     </div>
   </div>
 </section>

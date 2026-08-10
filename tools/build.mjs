@@ -97,8 +97,25 @@ function formatDate(dateStr) {
 
 function normalizeContentData(data) {
   const cover = data.cover?.image || data.cover || '';
+  let body = data.body || '';
+
+  if (data.bodyFile) {
+    const bodyPath = data.bodyFile.startsWith('content/') ? data.bodyFile : join('content', data.bodyFile);
+    if (existsSync(join(ROOT, bodyPath))) {
+      body = read(bodyPath);
+    } else {
+      console.warn(`  ⚠ bodyFile not found: ${bodyPath}`);
+    }
+  }
+
+  const basePath = site.basePath || '';
+  if (body.includes('{{basePath}}')) {
+    body = body.replace(/\{\{basePath\}\}/g, basePath);
+  }
+
   return {
     ...data,
+    body,
     cover,
     coverImage: data.coverImage || cover,
     dateIso: data.date || data.published || '',
@@ -126,8 +143,73 @@ function prepareCasesFeatured() {
       slug: c.slug,
       title: c.title,
       subtitle: c.subtitle || '',
-      cover: c.cover?.image || c.cover || '/assets/images/placeholder.webp',
+      cover: c.cover?.image || c.cover || '/assets/images/placeholder.svg',
     }));
+}
+
+function prepareServicesCatalog() {
+  const catalog = readJson('content/services/catalog.json');
+  return {
+    overline: catalog.overline || '',
+    title: catalog.title || '',
+    lead: catalog.lead || '',
+    items: (catalog.items || []).map((item, index) => ({
+      ...item,
+      indexPad: String(index + 1).padStart(2, '0'),
+    })),
+  };
+}
+
+function prepareReviewsCatalog() {
+  const catalog = readJson('content/reviews/catalog.json');
+  const yandexUrl = catalog.platforms?.yandex?.reviewUrl || site.reviews?.yandexUrl || '';
+  return {
+    overline: catalog.overline || '',
+    title: catalog.title || '',
+    lead: catalog.lead || '',
+    tabSiteLabel: catalog.tabs?.site || 'Отзывы гостей',
+    tabYandexLabel: catalog.tabs?.yandex || 'Яндекс',
+    siteNote: catalog.siteNote || '',
+    items: catalog.items || [],
+    ctaTitle: catalog.cta?.title || '',
+    ctaText: catalog.cta?.text || '',
+    ctaButton: catalog.cta?.button || '',
+    widgetNote: catalog.platforms?.yandex?.widgetNote || '',
+    yandexReviewUrl: yandexUrl || '#',
+    yandexBtnClass: yandexUrl ? '' : ' rv__btn--soon',
+  };
+}
+
+function prepareCasesSlider(basePath = '') {
+  const catalog = readJson('content/cases-slider/catalog.json');
+  const bp = basePath.replace(/\/$/, '');
+  const cases = {};
+
+  for (const [region, items] of Object.entries(catalog.cases || {})) {
+    cases[region] = (items || []).map((item) => {
+      const imagePath = item.image || '/assets/images/placeholder.svg';
+      const image = imagePath.startsWith('/') ? `${bp}${imagePath}` : imagePath;
+      const link = item.slug ? `${bp}/cases/${item.slug}/`.replace(/([^:]\/)\/+/g, '$1') : '';
+      return {
+        title: item.title || '',
+        text: item.text || '',
+        image,
+        link,
+      };
+    });
+  }
+
+  const regions = (catalog.regions || []).map((region, index) => ({
+    id: region.id,
+    label: region.label,
+    tabClass: index === 0 ? ' is-active' : '',
+    ariaSelected: index === 0 ? 'true' : 'false',
+  }));
+
+  return {
+    regions,
+    casesJson: JSON.stringify({ cases }).replace(/</g, '\\u003c'),
+  };
 }
 
 function prepareNewsList() {
@@ -148,7 +230,16 @@ function resolveBlockData(block, pageData) {
   const source = block.data?.source || meta.dataSource;
   const prepare = meta.dataPrepare;
 
-  if (prepare === 'casesFeatured' || source === 'content/cases' || block.type === 'cases-slider') {
+  if (prepare === 'casesSlider' || block.type === 'cases-slider') {
+    Object.assign(data, prepareCasesSlider(site.basePath || ''));
+  }
+  if (prepare === 'servicesCatalog' || block.type === 'services') {
+    Object.assign(data, prepareServicesCatalog());
+  }
+  if (prepare === 'reviewsCatalog' || block.type === 'reviews') {
+    Object.assign(data, prepareReviewsCatalog());
+  }
+  if (prepare === 'casesFeatured' || source === 'content/cases') {
     data.items = prepareCasesFeatured();
   }
   if (prepare === 'newsList' || source === 'content/news' || block.type === 'news-list') {
@@ -216,12 +307,15 @@ function loadBlockHtml(blockType, blockData = {}) {
     telegramHandle: telegramHandle(site.contacts?.telegram || site.social?.telegram || ''),
     email: site.contacts?.email || '',
     registryUrl: site.legal?.registryUrl || '',
+    legalCompanyName: site.legal?.companyName || '',
+    inn: site.legal?.inn || '',
+    ogrn: site.legal?.ogrn || '',
     developerName: site.developer?.name || '',
     developerUrl: site.developer?.url || '',
     year: String(new Date().getFullYear()),
     nav: blockType === 'header' ? readJson('core/nav.json') : blockData.nav,
   };
-  const rawFields = ['body', 'content'];
+  const rawFields = ['body', 'content', 'casesJson'];
   html = html.replace(/\{\{#each (\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, itemTpl) => {
     const arr = merged[key];
     if (!Array.isArray(arr)) return '';
@@ -405,7 +499,12 @@ function loadContentPages(contentDir, templateName, urlPrefix) {
     const slugPath = `/${urlPrefix}/${slug}/`;
 
     buildPage(
-      { ...template, slug: slugPath, type: templateName },
+      {
+        ...template,
+        slug: slugPath,
+        type: templateName,
+        blocks: data.blocks || template.blocks,
+      },
       {
         ...data,
         slugPath,

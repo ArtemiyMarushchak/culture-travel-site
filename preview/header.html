@@ -15,50 +15,57 @@
       color: var(--color-white);
     }
     .hero-mock h1 { font-size: var(--text-hero-desktop); line-height: var(--line-height-title); }
-    .content-mock { background: var(--color-paper-soft); padding: 80px var(--container-padding-desktop); }
+    .content-mock { background: var(--color-paper-soft); padding: 80px var(--container-padding-desktop); min-height: 80vh; }
+    .content-mock + .content-mock { background: var(--color-paper); }
   </style>
 </head>
-<body>
+<body data-page="home">
   <header class="lh" id="lux-header" data-block="header">
     <div class="lh__inner">
-      <a class="lh__logo" href="#"><img src="../assets/icons/logo-white.svg" alt="Культура путешествий" height="52"></a>
-      <nav class="lh__nav">
-        <a href="#about" data-anchor=".uc-about">Обо мне</a>
-        <a href="#cases" data-anchor=".uc-cases">Кейсы</a>
-        <a href="#services" data-anchor=".uc-services">Услуги</a>
-        <a href="#reviews" data-anchor=".uc-reviews">Отзывы</a>
-        <a href="#">Новости</a>
-        <a href="#">Отели</a>
-        <a href="#">Круизы</a>
-        <a href="#">Бизнес авиация</a>
-      </nav>
-      <a class="lh__cta" href="https://t.me/baglay_anna" target="_blank" rel="noopener">
-        <img src="../assets/icons/concierge-tilda.svg" alt="" width="15" height="15"><span>Связаться</span>
+      <a class="lh__logo" href="#">
+        <img class="lh__logo-mark" src="../assets/icons/logo-mark-white.svg" alt="" width="32" height="32">
+        <span class="lh__logo-text" aria-hidden="true">
+          <span class="lh__logo-line">Культура</span>
+          <span class="lh__logo-line">Путешествий</span>
+        </span>
       </a>
-      <button class="lh__burger" type="button" aria-label="Открыть меню"><span><i></i><i></i><i></i></span></button>
+      <nav class="lh__nav">
+        <a class="lh__nav-link" href="#about" data-anchor=".uc-about">Обо мне</a>
+        <a class="lh__nav-link" href="#cases" data-anchor=".uc-cases">Кейсы</a>
+        <a class="lh__nav-link" href="#services" data-anchor=".uc-services">Услуги</a>
+        <a class="lh__nav-link" href="#reviews" data-anchor=".uc-reviews">Отзывы</a>
+        <a class="lh__nav-link" href="#">Новости</a>
+        <a class="lh__nav-link" href="#">Отели</a>
+      </nav>
+      <div class="lh__actions">
+        <a class="lh__cta" href="https://t.me/baglay_anna" target="_blank" rel="noopener">
+          <svg class="lh__cta-icon" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M13 6h6v2h-6V6Zm3 3c-6.3 0-11.43 4.84-11.94 11H2v5h28v-5h-2.06C27.43 13.84 22.3 9 16 9Zm0 2c5.23 0 9.45 3.91 9.94 9H6.06C6.55 14.91 10.77 11 16 11ZM4 22h24v1H4v-1Z"/></svg>
+          <span>Связаться</span>
+        </a>
+      </div>
+      <button class="lh__burger" type="button" aria-label="Открыть меню"><span class="lh__burger-box"><i></i><i></i><i></i></span></button>
     </div>
-    <div class="lh__topmenu">
+    <div class="lh__topmenu" id="lh-topmenu">
       <div class="lh__topmenu-inner">
-        <div class="lh__menu-links">
-          <a href="#about" data-anchor=".uc-about">Обо мне</a>
-          <a href="#cases" data-anchor=".uc-cases">Кейсы</a>
-          <a href="#services" data-anchor=".uc-services">Услуги</a>
-          <a href="#reviews" data-anchor=".uc-reviews">Отзывы</a>
-          <a href="#">Новости</a>
-          <a href="#">Отели</a>
-          <a href="#">Круизы</a>
-          <a href="#">Бизнес авиация</a>
-        </div>
+        <nav class="lh__menu-links">
+          <a class="lh__menu-link" href="#about" data-anchor=".uc-about">Обо мне</a>
+          <a class="lh__menu-link" href="#cases" data-anchor=".uc-cases">Кейсы</a>
+          <a class="lh__menu-link" href="#services" data-anchor=".uc-services">Услуги</a>
+          <a class="lh__menu-link" href="#reviews" data-anchor=".uc-reviews">Отзывы</a>
+        </nav>
         <a class="lh__menu-cta" href="https://t.me/baglay_anna" target="_blank" rel="noopener">
           <span>Связаться</span>
-          <img src="../assets/icons/concierge-tilda.svg" alt="" width="15" height="15">
+          <svg class="lh__cta-icon" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M13 6h6v2h-6V6Zm3 3c-6.3 0-11.43 4.84-11.94 11H2v5h28v-5h-2.06C27.43 13.84 22.3 9 16 9Zm0 2c5.23 0 9.45 3.91 9.94 9H6.06C6.55 14.91 10.77 11 16 11ZM4 22h24v1H4v-1Z"/></svg>
         </a>
       </div>
     </div>
   </header>
 
-  <section class="hero-mock"><h1>Сайт в разработке</h1></section>
-  <section class="content-mock uc-about" id="about"><h2>Обо мне — paper фон</h2></section>
+  <section class="hero-mock uc-video"><h1>Сайт в разработке</h1></section>
+  <section class="content-mock uc-about" id="anna-about"><h2>Обо мне</h2></section>
+  <section class="content-mock uc-cases"><h2>Кейсы</h2></section>
+  <section class="content-mock uc-services"><h2>Услуги</h2></section>
+  <section class="content-mock uc-reviews"><h2>Отзывы</h2></section>
 
   <script type="module">
     import { initHeader } from '../blocks/header/header.js';

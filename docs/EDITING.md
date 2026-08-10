@@ -81,20 +81,11 @@
 
 ## Изменить контакты / реквизиты
 
-Файл: **`core/site.json`**
+Файл: **`core/site.json`** — секции `contacts`, `legal`, `social`.
 
-```json
-"contacts": {
-  "phone": "+7 ...",
-  "email": "info@culture-travel.ru"
-},
-"legal": {
-  "companyName": "ООО ...",
-  "inn": "...",
-  "ogrn": "...",
-  "registryNumber": "..."
-}
-```
+После изменения — commit и push; деплой обновит сайт автоматически.
+
+> Эти данные **публичные** (отображаются на сайте). Не добавляйте в git пароли и API-ключи.
 
 ---
 
@@ -110,14 +101,9 @@
 
 ## Изменить цвета / шрифты
 
-Файл: **`styles/variables.css`**
+Папка: **`styles/tokens/`** (`colors.css`, `typography.css`, `spacing.css`, `layout.css`)
 
-```css
---color-accent: #c9a962;   /* золото */
---color-bg: #0a0a0a;       /* фон */
-```
-
-Шрифты: положите `.woff2` в `assets/fonts/` и пропишите в `styles/base.css`.
+Шрифты: `assets/fonts/montserrat/` — см. [FONTS.md](FONTS.md)
 
 ---
 

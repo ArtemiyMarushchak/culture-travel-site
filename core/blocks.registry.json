@@ -34,20 +34,24 @@
       "css": true,
       "js": true,
       "scope": "home",
-      "dataSource": "content/cases",
-      "dataPrepare": "casesFeatured"
+      "dataSource": "content/cases-slider/catalog.json",
+      "dataPrepare": "casesSlider"
     },
     "services": {
       "label": "Услуги",
       "css": true,
       "js": false,
-      "scope": "home"
+      "scope": "home",
+      "dataSource": "content/services/catalog.json",
+      "dataPrepare": "servicesCatalog"
     },
     "reviews": {
       "label": "Отзывы",
       "css": true,
-      "js": false,
-      "scope": "home"
+      "js": true,
+      "scope": "home",
+      "dataSource": "content/reviews/catalog.json",
+      "dataPrepare": "reviewsCatalog"
     },
     "contact-footer": {
       "label": "Связаться",
@@ -60,6 +64,13 @@
       "css": true,
       "js": false,
       "scope": "content"
+    },
+    "case-tour": {
+      "label": "Кейс — программа тура",
+      "css": true,
+      "js": true,
+      "scope": "content",
+      "group": "secondary"
     },
     "news-layout": {
       "label": "Страница новости",

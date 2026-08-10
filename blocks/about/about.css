@@ -1,25 +1,28 @@
-.uc-about {
-  position: relative;
-  z-index: var(--z-content);
-}
+/* #anna-about — Обо мне */
 
 #anna-about {
+  position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   min-height: calc(100vh - var(--header-height-desktop));
-  padding: var(--space-xl) 0 var(--space-2xl);
   background: var(--color-paper-soft);
   color: var(--color-text-dark);
   overflow: hidden;
 }
 
-#anna-about .ui-container {
-  min-height: inherit;
+#anna-about,
+#anna-about * {
+  box-sizing: border-box;
+}
+
+.aa {
+  min-height: calc(100vh - var(--header-height-desktop));
+  padding: var(--space-xl) var(--container-padding-desktop) var(--space-2xl);
   display: flex;
   align-items: center;
 }
 
-.about-grid {
+.aa__frame {
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -27,107 +30,180 @@
   gap: clamp(58px, 6vw, 92px);
 }
 
-.about-grid__content {
+.aa__content {
+  min-width: 0;
   max-width: 700px;
 }
 
-.about-grid__content .ui-h1 {
-  margin: 0;
+.aa__title {
+  margin: 0 0 18px;
+  font-size: var(--text-hero-desktop);
+  line-height: var(--line-height-title);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-dark);
 }
 
-.about-grid__content .ui-overline {
-  margin: 0;
+.aa__role {
+  margin: 0 0 42px;
+  font-size: var(--font-overline);
+  line-height: 1;
+  font-weight: var(--font-weight-overline);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
   color: var(--color-text-dark-soft);
 }
 
-.about-grid__content .ui-prose {
+.aa__text {
   max-width: 680px;
 }
 
-.about-grid__photo {
-  margin: 0;
-  max-width: 570px;
-  justify-self: end;
-  height: clamp(540px, 42vw, 680px);
-  overflow: hidden;
+.aa__text p {
+  margin: 0 0 var(--space-md);
+  font-size: var(--font-body-size);
+  line-height: 1.68;
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-dark-muted);
 }
 
-.about-grid__photo img {
+.aa__text p:last-child {
+  margin-bottom: 0;
+}
+
+.aa__photo {
+  position: relative;
+  width: 100%;
+  max-width: 570px;
+  height: clamp(540px, 42vw, 680px);
+  justify-self: end;
+  overflow: hidden;
+  background: transparent;
+}
+
+.aa__photo img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
   object-position: 51% 74%;
   transform: scale(1.18);
   transform-origin: 51% 74%;
 }
 
+.aa__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(7, 7, 6, 0.08));
+  pointer-events: none;
+}
+
 @media (max-width: 1180px) {
   #anna-about {
     min-height: auto;
-    padding: var(--space-lg) 0 var(--space-2xl);
   }
 
-  .about-grid {
+  .aa {
+    min-height: auto;
+    padding: var(--space-lg) var(--container-padding-tablet) var(--space-2xl);
+  }
+
+  .aa__frame {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
   }
 
-  .about-grid__content {
+  .aa__content {
     order: 2;
     max-width: none;
   }
 
-  .about-grid__photo {
+  .aa__photo {
     order: 1;
+    width: 100%;
     max-width: none;
     height: auto;
     aspect-ratio: 4 / 3;
-    justify-self: stretch;
+    justify-self: center;
   }
 
-  .about-grid__photo img {
+  .aa__photo img {
     object-position: 50% 82%;
     transform: scale(1.05);
     transform-origin: 50% 82%;
   }
+
+  .aa__title {
+    font-size: var(--text-hero-tablet);
+  }
+
+  .aa__text {
+    max-width: none;
+  }
 }
 
 @media (max-width: 640px) {
-  #anna-about {
-    padding: 18px 0 var(--space-xl);
+  .aa {
+    padding: var(--space-edge) var(--container-padding-mobile) var(--space-xl);
   }
 
-  .about-grid {
-    gap: 26px;
+  .aa__frame {
+    gap: var(--space-md);
   }
 
-  .about-grid__photo {
+  .aa__photo {
     aspect-ratio: 4 / 3.2;
   }
 
-  .about-grid__photo img {
+  .aa__photo img {
     object-position: 50% 86%;
     transform: scale(1.01);
     transform-origin: 50% 86%;
   }
 
-  .about-grid__content .ui-h1 {
+  .aa__title {
+    margin-bottom: 14px;
     font-size: 38px;
     line-height: 1;
+  }
+
+  .aa__role {
+    margin-bottom: 26px;
+    font-size: var(--font-overline);
+    line-height: 1.4;
+  }
+
+  .aa__text p {
+    margin-bottom: 22px;
+    font-size: var(--font-body-base);
+    line-height: 1.68;
+    letter-spacing: 0.02em;
   }
 }
 
 @media (max-width: 420px) {
-  #anna-about {
-    padding-top: 16px;
+  .aa {
+    padding-top: var(--space-edge);
   }
 
-  .about-grid__photo {
+  .aa__title {
+    font-size: var(--text-hero-mobile);
+  }
+
+  .aa__photo {
     aspect-ratio: 4 / 3.3;
   }
 
-  .about-grid__photo img {
+  .aa__photo img {
     object-position: 50% 88%;
     transform: scale(1);
+    transform-origin: 50% 88%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aa__photo img {
+    transform: scale(1.05);
   }
 }

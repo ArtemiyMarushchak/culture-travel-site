@@ -99,6 +99,17 @@ def normalize_content_data(data: dict) -> dict:
     if isinstance(cover, dict):
         cover = cover.get("image", "")
     cover = cover or ""
+    body = data.get("body") or ""
+    body_file = data.get("bodyFile")
+    if body_file:
+        body_path = ROOT / body_file if body_file.startswith("content/") else ROOT / "content" / body_file
+        if body_path.exists():
+            body = body_path.read_text(encoding="utf-8")
+        else:
+            print(f"  ⚠ bodyFile not found: {body_path}")
+    base_path = site.get("basePath") or ""
+    if "{{basePath}}" in body:
+        body = body.replace("{{basePath}}", base_path)
     seo = data.get("seo") or {}
     title = seo.get("title", "")
     if title:
@@ -107,6 +118,7 @@ def normalize_content_data(data: dict) -> dict:
         title = data.get("title") or data.get("name") or ""
     return {
         **data,
+        "body": body,
         "cover": cover,
         "coverImage": data.get("coverImage") or cover,
         "dateIso": data.get("date") or data.get("published") or "",
@@ -166,6 +178,79 @@ def prepare_cases_featured() -> list[dict]:
     return items
 
 
+def prepare_cases_slider(base_path: str = "") -> dict:
+    catalog = read_json("content/cases-slider/catalog.json")
+    bp = (base_path or "").rstrip("/")
+    cases = {}
+
+    for region, items in (catalog.get("cases") or {}).items():
+        processed = []
+        for item in items or []:
+            image_path = item.get("image") or "/assets/images/placeholder.svg"
+            image = f"{bp}{image_path}" if image_path.startswith("/") else image_path
+            slug = item.get("slug")
+            link = f"{bp}/cases/{slug}/".replace("//", "/") if slug else ""
+            if link.startswith("/") and bp and not link.startswith(bp):
+                link = f"{bp}{link}"
+            processed.append(
+                {
+                    "title": item.get("title") or "",
+                    "text": item.get("text") or "",
+                    "image": image,
+                    "link": link,
+                }
+            )
+        cases[region] = processed
+
+    regions = []
+    for index, region in enumerate(catalog.get("regions") or []):
+        regions.append(
+            {
+                "id": region.get("id"),
+                "label": region.get("label"),
+                "tabClass": " is-active" if index == 0 else "",
+                "ariaSelected": "true" if index == 0 else "false",
+            }
+        )
+
+    cases_json = json.dumps({"cases": cases}, ensure_ascii=False).replace("<", "\\u003c")
+    return {"regions": regions, "casesJson": cases_json}
+
+
+def prepare_services_catalog() -> dict:
+    catalog = read_json("content/services/catalog.json")
+    items = []
+    for index, item in enumerate(catalog.get("items") or []):
+        items.append({**item, "indexPad": str(index + 1).zfill(2)})
+    return {
+        "overline": catalog.get("overline") or "",
+        "title": catalog.get("title") or "",
+        "lead": catalog.get("lead") or "",
+        "items": items,
+    }
+
+
+def prepare_reviews_catalog() -> dict:
+    catalog = read_json("content/reviews/catalog.json")
+    yandex_url = (catalog.get("platforms") or {}).get("yandex", {}).get("reviewUrl") or (site.get("reviews") or {}).get("yandexUrl") or ""
+    tabs = catalog.get("tabs") or {}
+    return {
+        "overline": catalog.get("overline") or "",
+        "title": catalog.get("title") or "",
+        "lead": catalog.get("lead") or "",
+        "tabSiteLabel": tabs.get("site") or "Отзывы гостей",
+        "tabYandexLabel": tabs.get("yandex") or "Яндекс",
+        "siteNote": catalog.get("siteNote") or "",
+        "items": catalog.get("items") or [],
+        "ctaTitle": (catalog.get("cta") or {}).get("title") or "",
+        "ctaText": (catalog.get("cta") or {}).get("text") or "",
+        "ctaButton": (catalog.get("cta") or {}).get("button") or "",
+        "widgetNote": (catalog.get("platforms") or {}).get("yandex", {}).get("widgetNote") or "",
+        "yandexReviewUrl": yandex_url or "#",
+        "yandexBtnClass": "" if yandex_url else " rv__btn--soon",
+    }
+
+
 def prepare_news_list() -> list[dict]:
     return sorted(
         [
@@ -190,7 +275,13 @@ def resolve_block_data(block: dict, page_data: dict) -> dict:
     prepare = meta.get("dataPrepare")
     block_type = block["type"]
 
-    if prepare == "casesFeatured" or source == "content/cases" or block_type == "cases-slider":
+    if prepare == "casesSlider" or block_type == "cases-slider":
+        data.update(prepare_cases_slider(site.get("basePath") or ""))
+    if prepare == "servicesCatalog" or block_type == "services":
+        data.update(prepare_services_catalog())
+    if prepare == "reviewsCatalog" or block_type == "reviews":
+        data.update(prepare_reviews_catalog())
+    if prepare == "casesFeatured" or source == "content/cases":
         data["items"] = prepare_cases_featured()
     if prepare == "newsList" or source == "content/news" or block_type == "news-list":
         data["items"] = prepare_news_list()
@@ -237,6 +328,9 @@ def load_block_html(block_type: str, block_data: dict | None = None) -> str:
         "telegramHandle": telegram_handle(telegram),
         "email": contacts.get("email") or "",
         "registryUrl": legal.get("registryUrl") or "",
+        "legalCompanyName": legal.get("companyName") or "",
+        "inn": legal.get("inn") or "",
+        "ogrn": legal.get("ogrn") or "",
         "developerName": developer.get("name") or "",
         "developerUrl": developer.get("url") or "",
         "year": str(datetime.now().year),
@@ -244,7 +338,7 @@ def load_block_html(block_type: str, block_data: dict | None = None) -> str:
     if block_type == "header":
         merged["nav"] = read_json("core/nav.json")
 
-    raw_fields = {"body", "content"}
+    raw_fields = {"body", "content", "casesJson"}
 
     def render_each(match):
         key = match.group(1)
@@ -446,7 +540,7 @@ def load_content_pages(content_dir: str, template_name: str, url_prefix: str) ->
         seo_title = (data.get("seo") or {}).get("title") or ""
         seo_title = re.sub(r"\s*\|\s*Culture Travel$", "", seo_title)
         build_page(
-            {**template, "slug": slug_path, "type": template_name},
+            {**template, "slug": slug_path, "type": template_name, "blocks": data.get("blocks") or template.get("blocks")},
             {**data, "slugPath": slug_path, "title": seo_title or data.get("title") or data.get("name")},
         )
         print(f"  ✓ {slug_path}")

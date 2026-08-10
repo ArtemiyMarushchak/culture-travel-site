@@ -1,35 +1,43 @@
 # Шрифты — Culture Travel
 
-## Сейчас (временно)
+## Montserrat (активно)
 
-Подключение через **Google CDN** — файл:
+Подключение **локально** — файл `assets/fonts/montserrat/fonts.local.css`, импорт из `styles/foundation/fonts.css`.
 
-`assets/fonts/montserrat/fonts.cdn.css`
+| Weight | Файлы | Где на сайте |
+|--------|-------|--------------|
+| **400** Regular | `montserrat-regular-*.woff2` | body, длинный текст |
+| **500** Medium | `montserrat-medium-*.woff2` | overline («Кейсы», «Обо мне») |
+| **600** SemiBold | `montserrat-semibold-*.woff2` | заголовки, nav, кнопки |
 
-Импортируется из `styles/foundation/fonts.css`.
-
-**Плюсы:** ничего не качаем, работает сразу локально.  
-**Минусы:** нужен интернет при первой загрузке; зависимость от Google (на проде лучше self-host).
+Подмножества: **Latin + Cyrillic** (ru + en).
 
 ---
 
-## Позже (self-hosted woff2)
+## Скачать Montserrat
 
-1. Скачать Montserrat 400 / 500 / 600, Latin + Cyrillic  
-   Удобный сервис: https://gwfh.mranftl.com/fonts/montserrat?subsets=cyrillic,latin
+Если нужно обновить файлы или поставить на другой проект:
 
-2. Положить `.woff2` в эту папку (`assets/fonts/montserrat/`)
+**https://gwfh.mranftl.com/fonts/montserrat?subsets=cyrillic,latin**
 
-3. Раскомментировать `@font-face` в `fonts.local.css`
+1. Выбери weights: **400, 500, 600**
+2. Скачай `.woff2`
+3. Положи в `assets/fonts/montserrat/`
+4. Имена должны совпадать с `fonts.local.css` (или обнови `@font-face`)
 
-4. В `styles/foundation/fonts.css` заменить:
-   ```css
-   @import url('../../assets/fonts/montserrat/fonts.cdn.css');
-   ```
-   на:
-   ```css
-   @import url('../../assets/fonts/montserrat/fonts.local.css');
-   ```
+Альтернатива: [Google Fonts — Montserrat](https://fonts.google.com/specimen/Montserrat) (скачать family → конвертировать в woff2).
+
+---
+
+## CDN (запасной вариант)
+
+`assets/fonts/montserrat/fonts.cdn.css` — Google CDN, если локальные файлы недоступны.
+
+В `styles/foundation/fonts.css` замени импорт:
+
+```css
+@import url('../../assets/fonts/montserrat/fonts.cdn.css');
+```
 
 ---
 
@@ -38,11 +46,11 @@
 ```
 assets/fonts/
 ├── montserrat/
-│   ├── fonts.cdn.css      ← Google (активно)
-│   ├── fonts.local.css    ← woff2 (заготовка)
-│   └── *.woff2            ← добавите позже
-├── inter/                 ← резерв (не используется)
-└── cormorant/             ← резерв (не используется)
+│   ├── fonts.local.css      ← активно (woff2)
+│   ├── fonts.cdn.css        ← запасной CDN
+│   └── *.woff2              ← 6 файлов (400/500/600 × latin/cyrillic)
+├── inter/                   ← резерв
+└── cormorant/               ← резерв
 ```
 
-Никаких установок на компьютер не требуется.
+Никаких установок шрифта на компьютер не требуется — всё self-hosted в репозитории.

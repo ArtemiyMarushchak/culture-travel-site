@@ -1,11 +1,13 @@
 :root {
-  /* Edge padding — luxury editorial */
+  /* Edge padding — luxury editorial (утверждено: 15 / 40) */
   --edge-mobile: 15px;
   --edge-tablet: 40px;
   --edge-desktop: 40px;
-  --container-padding-desktop: 40px;
-  --container-padding-tablet: 40px;
-  --container-padding-mobile: 20px;
+
+  --container-padding-mobile: var(--edge-mobile);
+  --container-padding-tablet: var(--edge-tablet);
+  --container-padding-desktop: var(--edge-desktop);
+  /* clamp: min 15px, растёт до 40px, на 4K не больше 40px */
   --container-padding: clamp(var(--edge-mobile), 5vw, var(--edge-desktop));
 
   --container-width: 100%;

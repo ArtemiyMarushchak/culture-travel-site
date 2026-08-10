@@ -151,13 +151,13 @@
 
 @supports (height: 100svh) {
   #avb {
-    height: 100svh;
+    height: var(--avb-vh, 100svh);
   }
 }
 
 @media (min-width: 981px) {
   #avb {
-    height: 100vh;
+    height: var(--avb-vh, 100vh);
   }
 }
 

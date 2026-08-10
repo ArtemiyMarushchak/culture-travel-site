@@ -40,7 +40,7 @@
   position: relative;
   margin: 0 0 var(--footer-title-margin-desktop);
   padding-bottom: var(--space-sm);
-  color: var(--color-gold);
+  color: rgba(248, 247, 244, 0.78);
   font-size: var(--text-overline-desktop);
   line-height: var(--line-height-ui);
   font-weight: var(--font-weight-ui);
@@ -55,8 +55,7 @@
   bottom: 0;
   width: 32px;
   height: var(--ui-underline-height);
-  background: var(--color-gold);
-  opacity: 0.58;
+  background: rgba(248, 247, 244, 0.28);
 }
 
 .lf__company {
@@ -98,7 +97,7 @@
   border: 0;
   border-radius: 0;
   background: transparent;
-  color: var(--color-bg) !important;
+  color: var(--color-white) !important;
   text-decoration: none !important;
   opacity: 0.64;
   transition: opacity var(--transition);
@@ -124,7 +123,7 @@
   right: 0;
   bottom: 0;
   height: var(--ui-underline-height);
-  background: var(--color-bg);
+  background: var(--color-white);
   opacity: 0.16;
   transition: opacity var(--transition);
 }
@@ -143,7 +142,7 @@
   display: block;
   width: 16px;
   height: 16px;
-  color: var(--color-gold);
+  color: rgba(248, 247, 244, 0.72);
 }
 
 .lf__nav {
@@ -158,7 +157,7 @@
   width: max-content;
   max-width: 100%;
   padding-bottom: var(--space-3xs);
-  color: var(--color-bg) !important;
+  color: var(--color-white) !important;
   text-decoration: none !important;
   font-size: var(--text-small-desktop);
   line-height: var(--line-height-small);
@@ -175,7 +174,7 @@
   right: 0;
   bottom: 0;
   height: var(--ui-underline-height);
-  background: var(--color-bg);
+  background: var(--color-white);
   opacity: 0;
   transition: opacity var(--transition);
 }
@@ -205,7 +204,7 @@
   left: 0;
   right: 0;
   height: var(--ui-underline-height);
-  background: var(--color-bg);
+  background: var(--color-white);
   opacity: 0.1;
 }
 
@@ -230,7 +229,7 @@
 }
 
 .lf__bottom a {
-  color: var(--color-bg) !important;
+  color: var(--color-white) !important;
   text-decoration: none !important;
   opacity: 0.76;
   transition: opacity var(--transition);
@@ -311,5 +310,13 @@
     justify-self: start;
     text-align: left;
     font-size: var(--ui-footer-bottom-font-size-mobile, 10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lf__contact,
+  .lf__nav a,
+  .lf__bottom a {
+    transition: none;
   }
 }

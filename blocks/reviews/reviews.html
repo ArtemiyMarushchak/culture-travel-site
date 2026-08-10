@@ -1,17 +1,81 @@
-<section class="reviews section" id="reviews" data-block="reviews">
-  <div class="container container--narrow">
-    <p class="section__label">Отзывы</p>
-    <h2 class="section__title">Слово клиентов</h2>
+<section id="anna-reviews" class="uc-reviews" data-block="reviews" aria-labelledby="anna-reviews-title">
+  <div class="rv">
+    <div class="rv__head">
+      <p class="rv__overline">{{overline}}</p>
+      <h2 class="rv__title" id="anna-reviews-title">{{title}}</h2>
+      <p class="rv__lead">{{lead}}</p>
+    </div>
 
-    <div class="reviews__list">
-      <blockquote class="reviews__item">
-        <p>«Каждая деталь была продумана — от трансфера до ужина в месте, о котором не напишут в путеводителях. Это другой уровень путешествий.»</p>
-        <footer>— Постоянный клиент, семейное путешествие</footer>
-      </blockquote>
-      <blockquote class="reviews__item">
-        <p>«Работаем с Анной годами. Важно, что она знает наши предпочтения и каждый раз предлагает что-то неожиданное, но абсолютно в наш вкус.»</p>
-        <footer>— VIP-клиент, частные маршруты</footer>
-      </blockquote>
+    <div class="rv__tabs" role="tablist" aria-label="Источник отзывов">
+      <button
+        class="rv__tab is-active"
+        type="button"
+        role="tab"
+        id="rv-tab-site"
+        aria-selected="true"
+        aria-controls="rv-panel-site"
+        data-review-tab="site"
+      >{{tabSiteLabel}}</button>
+      <button
+        class="rv__tab"
+        type="button"
+        role="tab"
+        id="rv-tab-yandex"
+        aria-selected="false"
+        aria-controls="rv-panel-yandex"
+        data-review-tab="yandex"
+      >{{tabYandexLabel}}</button>
+    </div>
+
+    <div class="rv__panels">
+      <div
+        class="rv__panel is-active"
+        role="tabpanel"
+        id="rv-panel-site"
+        aria-labelledby="rv-tab-site"
+        data-review-panel="site"
+      >
+        <div class="rv__grid">
+          {{#each items}}
+          <blockquote class="rv__quote">
+            <span class="rv__quote-mark" aria-hidden="true">«</span>
+            <p class="rv__quote-text">{{text}}</p>
+            <footer class="rv__quote-foot">
+              <cite class="rv__quote-author">{{author}}</cite>
+              <span class="rv__quote-meta">{{meta}}</span>
+            </footer>
+          </blockquote>
+          {{/each}}
+        </div>
+        <p class="rv__site-note">{{siteNote}}</p>
+      </div>
+
+      <div
+        class="rv__panel"
+        role="tabpanel"
+        id="rv-panel-yandex"
+        aria-labelledby="rv-tab-yandex"
+        data-review-panel="yandex"
+        hidden
+      >
+        <div class="rv__yandex">
+          <div class="rv__yandex-copy">
+            <h3 class="rv__yandex-title">{{ctaTitle}}</h3>
+            <p class="rv__yandex-text">{{ctaText}}</p>
+            <a
+              class="rv__btn rv__btn--yandex{{yandexBtnClass}}"
+              href="{{yandexReviewUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ctaButton}}
+            </a>
+          </div>
+          <div class="rv__widget-slot" id="yandex-reviews-widget" data-widget-placeholder>
+            <p class="rv__widget-note">{{widgetNote}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

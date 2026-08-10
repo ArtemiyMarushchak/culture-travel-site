@@ -1,29 +1,33 @@
 :root {
+  /* Базовый ритм — утверждено: 15px / 40px */
+  --space-edge: 15px;
+  --space-edge-lg: 40px;
+
   --space-3xs: 4px;
   --space-2xs: 8px;
   --space-xs: 12px;
-  --space-sm: 16px;
+  --space-sm: var(--space-edge);
   --space-md: 24px;
   --space-lg: 32px;
-  --space-xl: 48px;
+  --space-xl: var(--space-edge-lg);
   --space-2xl: 64px;
   --space-3xl: 88px;
   --space-4xl: 120px;
 
   /* Semantic spacing */
-  --space-section-head: var(--space-md);
+  --space-section-head: var(--space-edge);
   --space-title-body: var(--space-lg);
-  --space-stack-sm: var(--space-sm);
+  --space-stack-sm: var(--space-edge);
   --space-stack-md: var(--space-md);
-  --space-stack-lg: var(--space-lg);
-  --space-stack-xl: var(--space-xl);
-  --space-card-padding: var(--space-lg);
+  --space-stack-lg: var(--space-edge-lg);
+  --space-stack-xl: var(--space-edge-lg);
+  --space-card-padding: var(--space-edge-lg);
   --space-footer-y: var(--space-2xl);
-  --space-block-end: var(--space-xl);
+  --space-block-end: var(--space-edge-lg);
 
-  --gap-block: var(--space-lg);
+  --gap-block: var(--space-edge-lg);
   --gap-inline: var(--space-md);
-  --gap-tight: var(--space-sm);
+  --gap-tight: var(--space-edge);
   --gap-nav: var(--header-nav-gap);
 
   /* Section vertical rhythm */

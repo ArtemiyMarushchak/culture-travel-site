@@ -7,7 +7,7 @@
     { "type": "about" },
     {
       "type": "cases-slider",
-      "data": { "source": "content/cases" }
+      "data": { "source": "content/cases-slider/catalog.json" }
     },
     { "type": "services" },
     { "type": "reviews" },
