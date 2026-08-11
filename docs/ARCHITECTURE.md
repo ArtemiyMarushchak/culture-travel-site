@@ -28,10 +28,10 @@ content/*/*.json        ← контент (кейсы, новости, отел
 
         │
         ▼
-  tools/build.mjs
+  tools/build.mjs   (или tools/build.py)
         │
         ├── inline block HTML в страницу
-        ├── head + JSON-LD + canonical
+        ├── head + JSON-LD (raw, без HTML-escape) + canonical
         ├── styles/blocks.css (из registry)
         ├── copy assets / styles / core / blocks/*.js
         └── robots.txt, sitemap.xml, llms.txt
@@ -58,9 +58,10 @@ content/*/*.json        ← контент (кейсы, новости, отел
 | `styles/ui/` | UI-классы (.ui-h1, .ui-stack…) |
 | `seo/` | defaults + шаблон head |
 | `layouts/` | Оболочка HTML (`default.html`) |
-| `tools/` | build.mjs, preview.mjs |
+| `tools/` | build.mjs / build.py, preview |
 | `dist/` | Результат сборки (не коммитить) |
 | `preview/` | Превью дизайн-системы (не в dist) |
+| `content/cases-slider/` | Каталог слайдера кейсов на главной |
 
 ---
 

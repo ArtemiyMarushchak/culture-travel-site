@@ -27,6 +27,7 @@ block_registry = json.loads((ROOT / "core/blocks.registry.json").read_text(encod
 page_layout = json.loads((ROOT / "core/page-layout.json").read_text(encoding="utf-8"))
 layout_template = (ROOT / "layouts/default.html").read_text(encoding="utf-8")
 head_template = (ROOT / "seo/templates/head.html").read_text(encoding="utf-8")
+BUILD_ID = datetime.now().strftime("%Y%m%d%H%M%S")
 
 PAGE_TEMPLATES = {
     name: json.loads((ROOT / "templates" / f"{name}.page.json").read_text(encoding="utf-8"))
@@ -50,9 +51,15 @@ def escape_html(value="") -> str:
     )
 
 
-def interpolate(template: str, data: dict) -> str:
+def interpolate(template: str, data: dict, raw_fields: set | None = None) -> str:
+    raw = raw_fields or set()
+
     def repl(match):
-        return escape_html(data.get(match.group(1), ""))
+        key = match.group(1)
+        val = data.get(key, "")
+        if key in raw:
+            return str(val)
+        return escape_html(val)
 
     return re.sub(r"\{\{(\w+)\}\}", repl, template)
 
@@ -338,7 +345,7 @@ def load_block_html(block_type: str, block_data: dict | None = None) -> str:
     if block_type == "header":
         merged["nav"] = read_json("core/nav.json")
 
-    raw_fields = {"body", "content", "casesJson"}
+    raw_fields = {"body", "content", "casesJson", "hotelsJson", "mediaJson"}
 
     def render_each(match):
         key = match.group(1)
@@ -409,6 +416,7 @@ def build_head(meta: dict) -> str:
             "basePath": site.get("basePath") or "",
             "jsonLd": json_ld,
         },
+        raw_fields={"jsonLd"},
     )
 
 
@@ -506,7 +514,7 @@ def build_page(page_config: dict, content_data: dict | None = None) -> Path:
         }
     )
     bp = site.get("basePath") or ""
-    scripts = f'<script type="module" src="{bp}/core/init.js"></script>'
+    scripts = f'<script type="module" src="{bp}/core/init.js?v={BUILD_ID}"></script>'
     html = (
         layout_template.replace("{{lang}}", site.get("language") or "ru")
         .replace("{{head}}", head)
@@ -576,6 +584,17 @@ def copy_static_assets() -> None:
             dst,
             ignore=shutil.ignore_patterns("*.html"),
         )
+    bust_module_imports()
+
+
+def bust_module_imports() -> None:
+    """Append ?v=BUILD_ID to relative .js imports so browsers reload modules after build."""
+    pattern = re.compile(r"(from\s+['\"][^'\"]+\.js)(['\"])")
+    for path in DIST.rglob("*.js"):
+        text = path.read_text(encoding="utf-8")
+        updated = pattern.sub(rf"\1?v={BUILD_ID}\2", text)
+        if updated != text:
+            path.write_text(updated, encoding="utf-8")
 
 
 def generate_blocks_css() -> None:

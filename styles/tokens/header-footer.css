@@ -6,17 +6,17 @@
   --header-nav-gap-desktop: clamp(22px, 3vw, 34px);
   --header-nav-gap-tablet: 22px;
   --header-nav-gap: var(--header-nav-gap-desktop);
-  --header-bg-transparent: rgba(0, 0, 0, 0.08);
-  --header-bg-top: rgba(0, 0, 0, 0.18);
+  --header-bg-transparent: transparent;
+  --header-bg-top: rgba(0, 0, 0, 0.1);
   --header-bg-solid: var(--color-black);
-  --header-bg-scrolled: rgba(0, 0, 0, 0.94);
-  --header-blur-top: blur(14px) saturate(120%);
-  --header-blur-scrolled: blur(10px);
+  --header-bg-scrolled: #000000;
+  --header-blur-top: blur(8px);
+  --header-blur-scrolled: none;
   --header-blur: var(--header-blur-top);
-  --header-border-scrolled: rgba(248, 247, 244, 0.08);
-  --header-shadow-scrolled: 0 8px 32px rgba(0, 0, 0, 0.18);
-  --header-link-opacity: 0.82;
-  --logo-height-header: 32px;
+  --header-border-scrolled: transparent;
+  --header-shadow-scrolled: 0 8px 28px rgba(0, 0, 0, 0.16);
+  --header-link-opacity: 1;
+  --logo-height-header: 40px;
 
   --mobile-menu-padding-desktop: 42px var(--container-padding-desktop);
   --mobile-menu-padding-tablet: 42px var(--container-padding-tablet);

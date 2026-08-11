@@ -1,16 +1,12 @@
-/* #anna-reviews — отзывы: вкладки «гости» / «Яндекс» */
+/* #anna-reviews — отзывы на белом фоне */
 
 #anna-reviews {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
-  background: var(
-    --bg-luxury-dark,
-    radial-gradient(circle at 12% 0%, rgba(168, 134, 94, 0.14), transparent 34%),
-    linear-gradient(180deg, #0a0a09 0%, #000 100%)
-  );
-  color: var(--color-white);
+  background: var(--color-paper);
+  color: var(--color-text-dark);
 }
 
 #anna-reviews,
@@ -44,7 +40,7 @@
   line-height: var(--line-height-h2);
   font-weight: var(--font-weight-title);
   letter-spacing: var(--letter-spacing-tight);
-  color: var(--color-white);
+  color: var(--color-text-dark);
 }
 
 .rv__lead {
@@ -53,10 +49,8 @@
   line-height: 1.72;
   font-weight: var(--font-weight-text);
   letter-spacing: var(--letter-spacing-body);
-  color: var(--text-light-secondary);
+  color: var(--color-text-dark-muted);
 }
-
-/* Tabs */
 
 .rv__tabs {
   display: flex;
@@ -78,7 +72,7 @@
   padding: 0 0 14px;
   border: 0;
   background: transparent;
-  color: var(--text-light-muted);
+  color: var(--color-text-dark-soft);
   cursor: pointer;
   font-size: var(--text-overline-desktop);
   line-height: 1;
@@ -91,7 +85,7 @@
 
 .rv__tab:hover,
 .rv__tab.is-active {
-  color: var(--color-white);
+  color: var(--color-text-dark);
 }
 
 .rv__tab.is-active::after {
@@ -103,13 +97,6 @@
   height: 1px;
   background: var(--color-gold);
 }
-
-.rv__tab:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 4px;
-}
-
-/* Panels */
 
 .rv__panel {
   display: none;
@@ -123,59 +110,41 @@
   display: none !important;
 }
 
-/* Site quotes grid */
-
 .rv__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(24px, 2.5vw, 32px);
+  gap: clamp(28px, 3vw, 40px) clamp(36px, 4vw, 56px);
 }
 
 .rv__quote {
   margin: 0;
-  min-height: 100%;
-  padding: clamp(32px, 3vw, 44px) clamp(28px, 2.8vw, 40px);
-  border: 1px solid rgba(248, 247, 244, 0.1);
-  background: rgba(255, 255, 255, 0.035);
-  position: relative;
-}
-
-.rv__quote::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, var(--color-gold), rgba(168, 134, 94, 0.15));
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .rv__quote-mark {
   display: block;
-  margin: 0 0 18px;
-  font-size: clamp(36px, 3vw, 48px);
+  margin: 0 0 14px;
+  font-size: 32px;
   line-height: 1;
   font-weight: var(--font-weight-title);
   color: var(--color-gold);
-  opacity: 0.72;
 }
 
 .rv__quote-text {
-  margin: 0 0 28px;
-  font-size: clamp(19px, 1.35vw, 24px);
-  line-height: 1.48;
+  margin: 0 0 22px;
+  font-size: clamp(17px, 1.15vw, 19px);
+  line-height: 1.68;
   font-weight: var(--font-weight-text);
   letter-spacing: var(--letter-spacing-body);
-  color: var(--color-white);
+  color: var(--color-text-dark-muted);
 }
 
 .rv__quote-foot {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px 16px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(248, 247, 244, 0.08);
+  flex-direction: column;
+  gap: 6px;
   font-style: normal;
 }
 
@@ -185,14 +154,14 @@
   font-weight: var(--font-weight-overline);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-text-dark);
   font-style: normal;
 }
 
 .rv__quote-meta {
   font-size: var(--text-body-small-desktop);
   line-height: 1.5;
-  color: var(--text-light-muted);
+  color: var(--color-text-dark-soft);
 }
 
 .rv__site-note {
@@ -203,16 +172,14 @@
   font-size: 15px;
   line-height: 1.68;
   letter-spacing: var(--letter-spacing-body);
-  color: var(--text-light-muted);
+  color: var(--color-text-dark-soft);
 }
-
-/* Yandex panel */
 
 .rv__yandex {
   max-width: 720px;
-  padding: clamp(32px, 3vw, 44px);
-  border: 1px solid rgba(248, 247, 244, 0.12);
-  background: rgba(255, 255, 255, 0.03);
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .rv__yandex-title {
@@ -221,7 +188,7 @@
   line-height: 1.2;
   font-weight: var(--font-weight-title);
   letter-spacing: var(--letter-spacing-tight);
-  color: var(--color-white);
+  color: var(--color-text-dark);
 }
 
 .rv__yandex-text {
@@ -229,7 +196,7 @@
   font-size: var(--text-body-desktop);
   line-height: 1.68;
   letter-spacing: var(--letter-spacing-body);
-  color: var(--text-light-secondary);
+  color: var(--color-text-dark-muted);
 }
 
 .rv__btn {
@@ -238,9 +205,9 @@
   justify-content: center;
   min-height: 52px;
   padding: 0 24px;
-  border: 1px solid rgba(248, 247, 244, 0.28);
+  border: 1px solid var(--color-line-dark);
   background: transparent;
-  color: var(--color-white);
+  color: var(--color-text-dark);
   text-decoration: none;
   font-size: var(--text-overline-desktop);
   line-height: 1;
@@ -250,7 +217,7 @@
   transition:
     background var(--transition, 0.2s ease),
     border-color var(--transition, 0.2s ease),
-    opacity var(--transition, 0.2s ease);
+    color var(--transition, 0.2s ease);
 }
 
 .rv__btn:hover {
@@ -269,8 +236,8 @@
   min-height: 96px;
   margin-top: clamp(28px, 3vw, 36px);
   padding: 20px 22px;
-  border: 1px dashed rgba(168, 134, 94, 0.34);
-  background: rgba(0, 0, 0, 0.24);
+  border: 1px dashed var(--color-gold-muted);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .rv__widget-note {
@@ -278,7 +245,7 @@
   font-size: 13px;
   line-height: 1.55;
   letter-spacing: 0.02em;
-  color: var(--text-light-muted);
+  color: var(--color-text-dark-soft);
 }
 
 @media (max-width: 1180px) {
@@ -300,71 +267,12 @@
     margin-bottom: 32px;
   }
 
-  .rv__overline {
-    font-size: var(--text-overline-mobile);
-  }
-
   .rv__title {
     font-size: var(--text-h2-mobile);
   }
 
-  .rv__lead {
-    font-size: var(--text-body-mobile);
-    line-height: 1.66;
-  }
-
-  .rv__tabs {
-    margin-bottom: 28px;
-    gap: 24px;
-  }
-
-  .rv__tab {
-    font-size: var(--text-overline-mobile);
-  }
-
   .rv__grid {
     grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .rv__quote {
-    padding: 28px 22px;
-  }
-
-  .rv__quote-text {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 22px;
-  }
-
-  .rv__quote-author {
-    font-size: var(--text-overline-mobile);
-  }
-
-  .rv__quote-meta {
-    font-size: 14px;
-  }
-
-  .rv__site-note {
-    margin-top: 28px;
-    padding-left: 16px;
-    font-size: 14px;
-  }
-
-  .rv__yandex {
-    padding: 28px 22px;
-  }
-
-  .rv__btn {
-    width: 100%;
-    min-height: 48px;
-    font-size: var(--text-overline-mobile);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .rv__tab,
-  .rv__btn {
-    transition: none;
+    gap: 32px;
   }
 }

@@ -117,8 +117,7 @@
       "css": true,
       "js": true,
       "scope": "global",
-      "globalInit": true,
-      "group": "secondary"
+      "globalInit": true
     },
     "contact-card": {
       "label": "Онлайн-визитка",

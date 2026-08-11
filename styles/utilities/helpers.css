@@ -10,6 +10,32 @@
   border: 0;
 }
 
+.skip-link {
+  position: absolute;
+  left: var(--container-padding-mobile, 15px);
+  top: 0;
+  z-index: calc(var(--z-header, 10000) + 1);
+  padding: 10px 14px;
+  background: var(--color-black);
+  color: var(--color-white);
+  text-decoration: none;
+  transform: translateY(-120%);
+  transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(12px);
+}
+
+/* Data blobs must never paint on screen */
+script[type='application/json'],
+script[type='application/ld+json'],
+#mcs-data,
+#hotels-data {
+  display: none !important;
+}
+
 .text-center { text-align: center; }
 
 .text-muted {

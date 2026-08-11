@@ -16,6 +16,9 @@ export function initVideoOverlay() {
   stage.appendChild(placeholder);
   stage.appendChild(second);
 
+  let rafId = 0;
+  let lastMode = '';
+
   function getHeight(el) {
     const h = el.offsetHeight;
     return !h || h < 200 ? window.innerHeight : h;
@@ -28,6 +31,23 @@ export function initVideoOverlay() {
     stage.style.height = `${firstH + secondH}px`;
   }
 
+  function updateScrollDim(mode) {
+    const avb = first.querySelector('#avb');
+    if (!avb) return;
+
+    let dim = 0;
+
+    if (mode === 'fixed') {
+      const aboutTop = second.getBoundingClientRect().top;
+      const viewportH = window.innerHeight || 1;
+      dim = Math.min(1, Math.max(0, 1 - aboutTop / viewportH));
+    } else if (mode === 'absolute') {
+      dim = 1;
+    }
+
+    avb.style.setProperty('--avb-scroll-dim', dim.toFixed(3));
+  }
+
   function update() {
     syncStage();
 
@@ -36,23 +56,33 @@ export function initVideoOverlay() {
     const start = rect.top;
     const end = rect.bottom - firstH;
 
+    let mode = 'static';
+    if (start <= 0 && end > 0) mode = 'fixed';
+    else if (end <= 0) mode = 'absolute';
+
     first.classList.remove('is-video-fixed', 'is-video-absolute');
+    if (mode === 'fixed') first.classList.add('is-video-fixed');
+    if (mode === 'absolute') first.classList.add('is-video-absolute');
 
-    if (start <= 0 && end > 0) {
-      first.classList.add('is-video-fixed');
+    updateScrollDim(mode);
+
+    if (mode !== lastMode) {
+      lastMode = mode;
+      document.dispatchEvent(new CustomEvent('page:layout'));
     }
+  }
 
-    if (end <= 0) {
-      first.classList.add('is-video-absolute');
-    }
-
-    document.dispatchEvent(new CustomEvent('page:layout'));
+  function scheduleUpdate() {
+    if (rafId) return;
+    rafId = window.requestAnimationFrame(() => {
+      rafId = 0;
+      update();
+    });
   }
 
   update();
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update, { passive: true });
-  setTimeout(update, 300);
-  setTimeout(update, 900);
-  setTimeout(update, 1600);
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate, { passive: true });
+  window.setTimeout(update, 300);
+  window.setTimeout(update, 900);
 }

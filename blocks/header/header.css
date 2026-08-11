@@ -56,13 +56,12 @@
   z-index: 2;
 }
 
-/* ── Logo: компас + Montserrat ── */
+/* ── Logo: полный lockup (компас + набор) ── */
 .lh__logo {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none !important;
-  line-height: 1;
+  line-height: 0;
   min-width: 0;
   transition: opacity var(--transition-fast);
 }
@@ -71,30 +70,13 @@
   opacity: var(--ui-link-hover-opacity);
 }
 
-.lh__logo-mark {
+.lh__logo-img {
   display: block;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
+  height: var(--logo-height-header);
+  width: auto;
+  max-width: min(148px, 42vw);
   object-fit: contain;
-}
-
-.lh__logo-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.lh__logo-line {
-  display: block;
-  font-size: 10px;
-  font-weight: var(--font-weight-ui);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  line-height: 1.05;
-  color: var(--color-white);
-  white-space: nowrap;
+  object-position: left center;
 }
 
 /* ── Desktop nav ── */
@@ -360,10 +342,6 @@
     letter-spacing: var(--letter-spacing-medium);
   }
 
-  .lh__logo-line {
-    font-size: 9px;
-    letter-spacing: 0.14em;
-  }
 }
 
 @media (max-width: 980px) {
@@ -394,22 +372,8 @@
 @media (max-width: 640px) {
   #lux-header {
     --h: var(--header-height-mobile);
-    --pad: var(--container-padding-mobile);
-  }
-
-  .lh__logo {
-    gap: 10px;
-  }
-
-  .lh__logo-mark {
-    width: 28px;
-    height: 28px;
-    flex-basis: 28px;
-  }
-
-  .lh__logo-line {
-    font-size: 8px;
-    letter-spacing: 0.12em;
+    --pad: max(20px, var(--container-padding-mobile));
+    --logo-height-header: 32px;
   }
 
   .lh__topmenu-inner {

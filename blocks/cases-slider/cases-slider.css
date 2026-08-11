@@ -130,6 +130,7 @@
   object-fit: cover;
   object-position: center center;
   transform: scale(1.045);
+  color: transparent;
   transition: transform 7s ease;
 }
 

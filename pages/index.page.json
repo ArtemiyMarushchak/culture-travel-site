@@ -10,7 +10,6 @@
       "data": { "source": "content/cases-slider/catalog.json" }
     },
     { "type": "services" },
-    { "type": "reviews" },
-    { "type": "contact-footer" }
+    { "type": "reviews" }
   ]
 }

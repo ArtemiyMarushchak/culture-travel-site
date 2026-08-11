@@ -35,9 +35,9 @@
 
 ## Добавить кейс
 
-1. `content/cases/` → новый файл `my-case.json`
+1. `content/cases/` → новый файл `my-case.json` + при необходимости HTML программы в `content/cases/my-case/`
 2. Шаблон: `content/cases/_template.json`
-3. `"featured": true` — показывается в слайдере на главной
+3. Чтобы кейс был в слайдере на главной — добавьте его в **`content/cases-slider/catalog.json`** (регион + title/text/image/slug)
 
 **URL:** `https://culture-travel.ru/cases/my-case/`
 
@@ -97,7 +97,19 @@
 
 Порядок блоков на главной: `pages/index.page.json` → массив `"blocks"`.
 
+Шапка и подвал подключаются автоматически через `core/page-layout.json` — их не нужно дублировать в `pages/*.page.json`.
+
 ---
+
+## Локальная сборка
+
+```bash
+python3 tools/build.py
+# или
+node tools/build.mjs
+```
+
+Результат: папка `dist/`. Локальный просмотр: сервер из `dist/` (например порт 4173).
 
 ## Изменить цвета / шрифты
 

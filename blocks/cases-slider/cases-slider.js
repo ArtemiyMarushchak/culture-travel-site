@@ -55,7 +55,8 @@ export function initCasesSlider(root) {
     if (!item) return;
 
     image.src = item.image || '';
-    image.alt = item.title || '';
+    image.alt = '';
+    image.setAttribute('aria-hidden', 'true');
     title.textContent = item.title || '';
     text.textContent = item.text || '';
 

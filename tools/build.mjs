@@ -28,6 +28,7 @@ const blockRegistry = JSON.parse(readFileSync(join(ROOT, 'core/blocks.registry.j
 const pageLayout = JSON.parse(readFileSync(join(ROOT, 'core/page-layout.json'), 'utf8'));
 const layoutTemplate = readFileSync(join(ROOT, 'layouts/default.html'), 'utf8');
 const headTemplate = readFileSync(join(ROOT, 'seo/templates/head.html'), 'utf8');
+const BUILD_ID = new Date().toISOString().replace(/\D/g, '').slice(0, 14);
 
 const PAGE_TEMPLATES = {
   case: JSON.parse(readFileSync(join(ROOT, 'templates/case.page.json'), 'utf8')),
@@ -64,8 +65,12 @@ function escapeHtml(str = '') {
     .replace(/"/g, '&quot;');
 }
 
-function interpolate(template, data) {
-  return template.replace(/\{\{(\w+)\}\}/g, (_, key) => escapeHtml(data[key] ?? ''));
+function interpolate(template, data, rawFields = new Set()) {
+  return template.replace(/\{\{(\w+)\}\}/g, (_, key) => {
+    const val = data[key] ?? '';
+    if (rawFields.has(key)) return String(val);
+    return escapeHtml(val);
+  });
 }
 
 function fullUrl(path) {
@@ -315,13 +320,16 @@ function loadBlockHtml(blockType, blockData = {}) {
     year: String(new Date().getFullYear()),
     nav: blockType === 'header' ? readJson('core/nav.json') : blockData.nav,
   };
-  const rawFields = ['body', 'content', 'casesJson'];
+  const rawFields = ['body', 'content', 'casesJson', 'hotelsJson', 'mediaJson'];
   html = html.replace(/\{\{#each (\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, itemTpl) => {
     const arr = merged[key];
     if (!Array.isArray(arr)) return '';
     return arr.map((item, i) => {
       const ctx = typeof item === 'object' ? { ...merged, ...item, index: i } : { ...merged, item, index: i };
-      return itemTpl.replace(/\{\{(\w+)\}\}/g, (__, k) => escapeHtml(String(ctx[k] ?? '')));
+      return itemTpl.replace(/\{\{(\w+)\}\}/g, (__, k) => {
+        if (rawFields.includes(k) && ctx[k]) return String(ctx[k]);
+        return escapeHtml(String(ctx[k] ?? ''));
+      });
     }).join('');
   });
 
@@ -371,7 +379,7 @@ function buildHead(meta) {
     locale: site.locale || 'ru_RU',
     basePath: bp,
     jsonLd,
-  });
+  }, new Set(['jsonLd']));
 }
 
 function buildPage(pageConfig, contentData = {}) {
@@ -405,7 +413,7 @@ function buildPage(pageConfig, contentData = {}) {
   });
 
   const bp = site.basePath || '';
-  const scripts = `<script type="module" src="${bp}/core/init.js"></script>`;
+  const scripts = `<script type="module" src="${bp}/core/init.js?v=${BUILD_ID}"></script>`;
 
   const html = layoutTemplate
     .replace('{{lang}}', site.language || 'ru')
@@ -549,6 +557,29 @@ function copyStaticAssets() {
       filter: (src) => !src.endsWith('.html'),
     });
   }
+
+  bustModuleImports();
+}
+
+function bustModuleImports() {
+  const pattern = /(from\s+['"][^'"]+\.js)(['"])/g;
+  function walk(dir) {
+    if (!existsSync(dir)) return;
+    for (const name of readdirSync(dir)) {
+      const full = join(dir, name);
+      if (statSync(full).isDirectory()) {
+        walk(full);
+        continue;
+      }
+      if (!name.endsWith('.js')) continue;
+      const text = readFileSync(full, 'utf8');
+      const updated = text.replace(pattern, `$1?v=${BUILD_ID}$2`);
+      if (updated !== text) writeFileSync(full, updated, 'utf8');
+    }
+  }
+  walk(join(DIST, 'core'));
+  walk(join(DIST, 'blocks'));
+  walk(join(DIST, 'blocks-secondary'));
 }
 
 function generateRobots() {

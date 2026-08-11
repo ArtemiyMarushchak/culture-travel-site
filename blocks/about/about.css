@@ -1,11 +1,16 @@
 /* #anna-about — Обо мне */
 
+.uc-about {
+  position: relative;
+  z-index: var(--z-content, 5);
+}
+
 #anna-about {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   min-height: calc(100vh - var(--header-height-desktop));
-  background: var(--color-paper-soft);
+  background: var(--color-paper);
   color: var(--color-text-dark);
   overflow: hidden;
 }

@@ -2,8 +2,7 @@
 
 .uc-case-tour [id^='tour-'] {
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
   overflow: hidden;
   color: var(--color-text-dark);
 }
@@ -21,7 +20,15 @@
 
 .ts {
   width: 100%;
-  padding: calc(var(--header-height-desktop) + 57px) var(--container-padding-desktop) 84px;
+  max-width: var(--container-wide-max);
+  margin-inline: auto;
+  padding: calc(var(--header-height-desktop) + 57px) var(--container-padding) 84px;
+  box-sizing: border-box;
+}
+
+.ts__inner {
+  width: 100%;
+  min-width: 0;
 }
 
 .ts__overline {
@@ -586,7 +593,7 @@
 
 @media (max-width: 1180px) {
   .ts {
-    padding: calc(var(--header-height-tablet) + 43px) var(--container-padding-tablet) 72px;
+    padding: calc(var(--header-height-tablet) + 43px) var(--container-padding) 72px;
   }
 
   .ts__title {
@@ -632,7 +639,7 @@
 
 @media (max-width: 640px) {
   .ts {
-    padding: calc(var(--header-height-mobile) + 40px) var(--container-padding-mobile) 72px;
+    padding: calc(var(--header-height-mobile) + 40px) max(20px, var(--container-padding)) 72px;
   }
 
   .ts__overline {

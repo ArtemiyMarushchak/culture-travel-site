@@ -66,6 +66,7 @@
   z-index: var(--z-video, 1);
   color: var(--color-white);
   font-family: var(--font-main);
+  --avb-scroll-dim: 0;
 }
 
 #avb,
@@ -118,8 +119,20 @@
   position: absolute;
   inset: 0;
   z-index: 4;
-  background: var(--video-overlay-bg);
   pointer-events: none;
+  background: rgba(
+    0,
+    0,
+    0,
+    calc(0.16 + var(--avb-scroll-dim, 0) * 0.42)
+  );
+  transition: background 0.12s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avb__overlay {
+    transition: none;
+  }
 }
 
 .avb__content {
