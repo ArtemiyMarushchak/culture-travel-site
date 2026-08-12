@@ -8,6 +8,7 @@
 .ui-image {
   position: relative;
   overflow: hidden;
+  border-radius: var(--radius);
   background: var(--color-paper-deep);
 }
 

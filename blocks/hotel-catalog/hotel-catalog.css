@@ -8,6 +8,7 @@
 .hotel-catalog__filter {
   padding: 0.5rem 1rem;
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
@@ -35,6 +36,7 @@
 .hotel-card {
   padding: var(--space-lg);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   background: var(--color-bg-elevated);
 }
 

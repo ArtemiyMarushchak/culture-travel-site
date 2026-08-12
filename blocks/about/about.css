@@ -83,6 +83,7 @@
   height: clamp(540px, 42vw, 680px);
   justify-self: end;
   overflow: hidden;
+  border-radius: var(--radius);
   background: transparent;
 }
 

@@ -1,59 +1,79 @@
 <section class="uc-cases" id="my-cases-slider" data-block="cases-slider" aria-labelledby="mcs-title">
   <div class="mcs">
-    <div class="mcs__head">
+    <div class="mcs__toolbar">
       <h2 class="mcs__title" id="mcs-title">Мои кейсы</h2>
-    </div>
 
-    <div class="mcs__tabs" role="tablist" aria-label="Регионы">
-      <div class="mcs__tabs-track">
-        {{#each regions}}
+      <div class="mcs__locale" data-case-locale>
         <button
-          class="mcs__tab{{tabClass}}"
+          class="mcs__locale-btn"
           type="button"
-          role="tab"
-          data-case-filter="{{id}}"
-          aria-selected="{{ariaSelected}}"
-        >{{label}}</button>
-        {{/each}}
+          data-case-locale-btn
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="mcs-locale-list"
+        >
+          <svg class="mcs__locale-pin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+          <span data-case-locale-label>Выбор локации</span>
+          <svg class="mcs__locale-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="mcs__locale-menu" id="mcs-locale-list" role="listbox" hidden data-case-locale-menu>
+          {{#each regions}}
+          <button
+            class="mcs__locale-option{{tabClass}}"
+            type="button"
+            role="option"
+            data-case-filter="{{id}}"
+            aria-selected="{{ariaSelected}}"
+          >{{label}}</button>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="mcs__controls">
+        <button class="mcs__arrow" type="button" data-case-prev aria-label="Предыдущие кейсы">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="mcs__arrow" type="button" data-case-next aria-label="Следующие кейсы">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
     </div>
 
-    <div class="mcs__stage" data-case-stage>
-      <article class="mcs__slide is-active" data-case-slide aria-live="polite">
-        <div class="mcs__image">
-          <img data-case-image src="" alt="" loading="lazy" decoding="async">
-        </div>
-        <div class="mcs__shade" aria-hidden="true"></div>
-        <div class="mcs__content">
-          <div class="mcs__copy">
-            <p class="mcs__counter">
-              <span data-case-current>01</span> / <span data-case-total>01</span>
-            </p>
-            <h3 class="mcs__case-title" data-case-title></h3>
-            <p class="mcs__case-text" data-case-text></p>
-            <a class="mcs__link" data-case-link href="#">
-              Подробнее
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M13 5l7 7-7 7M20 12H4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          </div>
-          <div class="mcs__controls">
-            <button class="mcs__arrow" type="button" data-case-prev aria-label="Предыдущий кейс">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <button class="mcs__arrow" type="button" data-case-next aria-label="Следующий кейс">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </article>
+    <div class="mcs__viewport" data-case-stage>
+      <div class="mcs__track" data-case-track></div>
     </div>
   </div>
+
+  <template id="mcs-card-template">
+    <article class="mcs__card">
+      <a class="mcs__media" data-card-media href="#" tabindex="-1" aria-hidden="true">
+        <img data-card-image src="" alt="" loading="lazy" decoding="async">
+        <span class="mcs__badge" data-card-badge></span>
+        <div class="mcs__dashes" data-card-dashes aria-hidden="true"></div>
+      </a>
+      <div class="mcs__body">
+        <h3 class="mcs__card-title" data-card-title></h3>
+        <p class="mcs__card-text" data-card-text></p>
+        <div class="mcs__card-foot">
+          <a class="mcs__more" data-card-link href="#">
+            <span>Подробнее</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </article>
+  </template>
 
   <script type="application/json" id="mcs-data" hidden>{{casesJson}}</script>
 </section>

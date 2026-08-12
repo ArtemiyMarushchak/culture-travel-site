@@ -13,17 +13,26 @@
     "africa": [
       {
         "title": "Южная Африка",
+        "badge": "ЮАР",
         "text": "Сафари Большого Крюгера, океанские панорамы Кейптауна и винные долины Западного Кейпа.",
         "image": "/assets/images/cases/south-africa/fquqbf9uhv7js450n4hd.jpg",
+        "gallery": [
+          "/assets/images/cases/south-africa/fquqbf9uhv7js450n4hd.jpg",
+          "/assets/images/cases/south-africa/angels-view-aerial-m.jpg",
+          "/assets/images/cases/south-africa/652516587.webp",
+          "/assets/images/cases/south-africa/pa6sni97r7v43bu8cj0h.jpg"
+        ],
         "slug": "south-africa"
       },
       {
         "title": "Намибия",
+        "badge": "NAM",
         "text": "Пустыни, бескрайние дороги, лоджи среди дюн и спокойная экспедиционная эстетика.",
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Кения и Танзания",
+        "badge": "KE / TZ",
         "text": "Саванна, Великая миграция, сафари-лоджи и одно из самых сильных природных впечатлений Африки.",
         "image": "/assets/images/placeholder.svg"
       }

@@ -21,11 +21,12 @@
   --content-width-text-small: 620px;
   --content-width-narrow: 520px;
 
-  --radius: 0;
+  --radius: 10px;
   --radius-none: 0;
-  --radius-xs: 0;
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
+  --radius-xs: 8px;
+  --radius-sm: 10px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-pill: 999px;
 }

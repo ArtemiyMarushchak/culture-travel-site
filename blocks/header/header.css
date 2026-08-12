@@ -147,7 +147,7 @@
   min-height: 36px;
   padding: 0 14px;
   border: 1px solid rgba(248, 247, 244, 0.28);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   color: var(--color-white) !important;
   text-decoration: none !important;
   font-size: var(--ui-nav-font-size-desktop);

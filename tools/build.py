@@ -189,6 +189,10 @@ def prepare_cases_slider(base_path: str = "") -> dict:
     catalog = read_json("content/cases-slider/catalog.json")
     bp = (base_path or "").rstrip("/")
     cases = {}
+    region_labels = {
+        region.get("id"): region.get("label")
+        for region in (catalog.get("regions") or [])
+    }
 
     for region, items in (catalog.get("cases") or {}).items():
         processed = []
@@ -199,12 +203,24 @@ def prepare_cases_slider(base_path: str = "") -> dict:
             link = f"{bp}/cases/{slug}/".replace("//", "/") if slug else ""
             if link.startswith("/") and bp and not link.startswith(bp):
                 link = f"{bp}{link}"
+            gallery_src = item.get("gallery") or []
+            if isinstance(gallery_src, list) and gallery_src:
+                gallery = [
+                    f"{bp}{src}" if isinstance(src, str) and src.startswith("/") else src
+                    for src in gallery_src
+                ]
+            else:
+                gallery = [image]
             processed.append(
                 {
                     "title": item.get("title") or "",
                     "text": item.get("text") or "",
                     "image": image,
+                    "gallery": gallery,
                     "link": link,
+                    "badge": item.get("badge") or "",
+                    "regionId": region,
+                    "regionLabel": region_labels.get(region) or "",
                 }
             )
         cases[region] = processed
@@ -220,7 +236,10 @@ def prepare_cases_slider(base_path: str = "") -> dict:
             }
         )
 
-    cases_json = json.dumps({"cases": cases}, ensure_ascii=False).replace("<", "\\u003c")
+    cases_json = json.dumps(
+        {"cases": cases, "regions": regions},
+        ensure_ascii=False,
+    ).replace("<", "\\u003c")
     return {"regions": regions, "casesJson": cases_json}
 
 

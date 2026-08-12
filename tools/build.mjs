@@ -189,17 +189,27 @@ function prepareCasesSlider(basePath = '') {
   const catalog = readJson('content/cases-slider/catalog.json');
   const bp = basePath.replace(/\/$/, '');
   const cases = {};
+  const regionLabels = Object.fromEntries(
+    (catalog.regions || []).map((region) => [region.id, region.label])
+  );
 
   for (const [region, items] of Object.entries(catalog.cases || {})) {
     cases[region] = (items || []).map((item) => {
       const imagePath = item.image || '/assets/images/placeholder.svg';
       const image = imagePath.startsWith('/') ? `${bp}${imagePath}` : imagePath;
       const link = item.slug ? `${bp}/cases/${item.slug}/`.replace(/([^:]\/)\/+/g, '$1') : '';
+      const gallery = Array.isArray(item.gallery) && item.gallery.length
+        ? item.gallery.map((src) => (src.startsWith('/') ? `${bp}${src}` : src))
+        : [image];
       return {
         title: item.title || '',
         text: item.text || '',
         image,
+        gallery,
         link,
+        badge: item.badge || '',
+        regionId: region,
+        regionLabel: regionLabels[region] || '',
       };
     });
   }
@@ -213,7 +223,7 @@ function prepareCasesSlider(basePath = '') {
 
   return {
     regions,
-    casesJson: JSON.stringify({ cases }).replace(/</g, '\\u003c'),
+    casesJson: JSON.stringify({ cases, regions }).replace(/</g, '\\u003c'),
   };
 }
 

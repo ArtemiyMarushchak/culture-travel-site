@@ -15,9 +15,41 @@
   color: var(--color-gold);
   background: transparent;
   text-decoration: none;
+  border-radius: var(--radius-pill);
   opacity: var(--ui-link-opacity);
   transition: opacity var(--transition-fast);
   cursor: pointer;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-gold);
+  font-family: var(--font-main);
+  font-size: var(--font-nav);
+  font-weight: var(--font-weight-ui);
+  letter-spacing: var(--tracking-nav);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn--solid {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn--ghost {
+  border-color: var(--line-dark);
+  color: var(--color-text-dark);
 }
 
 .ui-btn:hover {

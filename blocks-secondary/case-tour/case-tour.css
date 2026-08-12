@@ -290,6 +290,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+  border-radius: var(--radius);
   background: var(--color-paper-deep, #ded8ce);
 }
 
@@ -331,6 +332,7 @@
   display: flex;
   align-items: center;
   background: rgba(7, 7, 6, 0.52);
+  border-radius: var(--radius-pill);
   color: var(--color-white);
   font-size: var(--text-caption-desktop, 12px);
   line-height: 1;
@@ -349,6 +351,7 @@
   height: 46px;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
   background: rgba(7, 7, 6, 0.52);
   color: var(--color-white);
   display: flex;
@@ -391,6 +394,7 @@
   margin-top: var(--space-2xl);
   position: relative;
   overflow: hidden;
+  border-radius: var(--radius);
   background: var(--color-paper-deep, #ded8ce);
 }
 
