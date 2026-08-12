@@ -74,7 +74,7 @@
   display: block;
   height: var(--logo-height-header);
   width: auto;
-  max-width: min(148px, 42vw);
+  max-width: min(220px, 58vw);
   object-fit: contain;
   object-position: left center;
 }
@@ -373,7 +373,7 @@
   #lux-header {
     --h: var(--header-height-mobile);
     --pad: max(20px, var(--container-padding-mobile));
-    --logo-height-header: 32px;
+    --logo-height-header: 42px;
   }
 
   .lh__topmenu-inner {
