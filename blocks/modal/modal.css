@@ -66,5 +66,5 @@
 }
 
 .modal__gallery video {
-  background: #000;
+  background: var(--color-black);
 }

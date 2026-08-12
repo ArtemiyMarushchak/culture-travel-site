@@ -52,7 +52,7 @@
 .ui-logo--header { --logo-height: 50px; }
 .ui-logo--footer { --logo-height: 22px; }
 
-/* Split logo: компас + живой текст Montserrat (опционально, позже) */
+/* Split logo: компас + живой текст Manrope (опционально) */
 .ui-logo--split {
   display: inline-flex;
   align-items: center;

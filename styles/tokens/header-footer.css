@@ -9,7 +9,7 @@
   --header-bg-transparent: transparent;
   --header-bg-top: rgba(0, 0, 0, 0.1);
   --header-bg-solid: var(--color-black);
-  --header-bg-scrolled: #000000;
+  --header-bg-scrolled: var(--color-black);
   --header-blur-top: blur(8px);
   --header-blur-scrolled: none;
   --header-blur: var(--header-blur-top);

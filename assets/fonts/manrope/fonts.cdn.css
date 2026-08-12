@@ -1,0 +1,5 @@
+/**
+ * Manrope — Google CDN (fallback, если нет локальных woff2)
+ * Для production предпочтительнее fonts.local.css (self-host + CSP font-src 'self')
+ */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap&subset=latin,cyrillic');

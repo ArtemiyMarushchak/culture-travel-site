@@ -7,10 +7,10 @@
 
   --ui-underline-height: 1px;
   --ui-underline-offset: 8px;
-  --ui-underline-color: rgba(248, 247, 244, 0.52);
-  --ui-underline-hover-color: rgba(248, 247, 244, 0.18);
-  --ui-underline-dark-color: rgba(0, 0, 0, 0.52);
-  --ui-underline-dark-hover-color: rgba(0, 0, 0, 0.18);
+  --ui-underline-color: rgba(245, 245, 245, 0.52);
+  --ui-underline-hover-color: rgba(245, 245, 245, 0.18);
+  --ui-underline-dark-color: rgba(13, 13, 13, 0.52);
+  --ui-underline-dark-hover-color: rgba(13, 13, 13, 0.18);
 
   --ui-icon-size-xs: 12px;
   --ui-icon-size-sm: 15px;

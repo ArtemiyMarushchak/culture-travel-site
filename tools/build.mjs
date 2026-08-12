@@ -638,8 +638,8 @@ function generateWebManifest() {
     description: site.tagline,
     start_url: `${bp}/`,
     display: 'standalone',
-    background_color: '#0a0a0a',
-    theme_color: '#0a0a0a',
+    background_color: '#0d0d0d',
+    theme_color: '#0d0d0d',
     lang: site.language,
   }, null, 2));
 }
