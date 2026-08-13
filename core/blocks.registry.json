@@ -40,10 +40,18 @@
     "services": {
       "label": "Услуги",
       "css": true,
-      "js": false,
+      "js": true,
       "scope": "home",
       "dataSource": "content/services/catalog.json",
       "dataPrepare": "servicesCatalog"
+    },
+    "tours-list": {
+      "label": "Авторские туры",
+      "css": true,
+      "js": false,
+      "scope": "page",
+      "dataSource": "content/cases",
+      "dataPrepare": "casesFeatured"
     },
     "reviews": {
       "label": "Отзывы",

@@ -22,20 +22,29 @@ function closeHeaderMenu() {
   document.body.style.overflow = '';
 }
 
+function sectionAir() {
+  return window.matchMedia('(max-width: 1180px)').matches ? 20 : 40;
+}
+
 function getAnchorTarget(selector) {
-  const target = document.querySelector(selector);
-  if (!target) return null;
   if (selector === '.uc-about') {
-    return target.querySelector('#anna-about') || target;
+    return document.querySelector('.aa__frame') || document.querySelector('.uc-about');
   }
-  return target;
+  return document.querySelector(selector);
+}
+
+function usesFrameOffset(selector) {
+  return selector === '.uc-about';
 }
 
 function scrollToBlock(selector, smooth) {
   const target = getAnchorTarget(selector);
   if (!target) return;
 
-  const top = target.getBoundingClientRect().top + window.pageYOffset - getHeaderHeight();
+  const offset = usesFrameOffset(selector)
+    ? getHeaderHeight() + sectionAir()
+    : getHeaderHeight();
+  const top = Math.max(0, target.getBoundingClientRect().top + window.pageYOffset - offset);
   window.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
 }
 

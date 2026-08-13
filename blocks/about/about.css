@@ -1,18 +1,29 @@
-/* #anna-about — Обо мне */
+/* #anna-about — Обо мне: один шейп, текст слева / фото справа */
 
 .uc-about {
   position: relative;
   z-index: var(--z-content, 5);
+  min-height: 100dvh;
+  background: color-mix(
+    in srgb,
+    var(--color-paper) calc(var(--about-reveal, 1) * 100%),
+    transparent
+  );
 }
 
 #anna-about {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  min-height: calc(100vh - var(--header-height-desktop));
-  background: var(--color-paper);
+  min-height: 100dvh;
+  background: color-mix(
+    in srgb,
+    var(--color-paper) calc(var(--about-reveal, 1) * 100%),
+    transparent
+  );
   color: var(--color-text-dark);
   overflow: hidden;
+  scroll-margin-top: 0;
 }
 
 #anna-about,
@@ -21,23 +32,43 @@
 }
 
 .aa {
-  min-height: calc(100vh - var(--header-height-desktop));
-  padding: var(--space-xl) var(--container-padding-desktop) var(--space-2xl);
+  width: 100%;
+  max-width: var(--container-wide-max);
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding:
+    calc(var(--header-height) + 40px)
+    var(--container-padding-desktop)
+    var(--space-section);
   display: flex;
-  align-items: center;
+  align-items: stretch;
 }
 
 .aa__frame {
   width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(58px, 6vw, 92px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  align-items: stretch;
+  gap: 20px;
+  padding: 20px 20px 20px 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--color-card);
+  opacity: var(--about-reveal, 1);
+  transform: translate3d(0, calc((1 - var(--about-reveal, 1)) * 36px), 0) scale(calc(0.97 + var(--about-reveal, 1) * 0.03));
+  transform-origin: center top;
+  will-change: opacity, transform;
 }
 
 .aa__content {
   min-width: 0;
-  max-width: 700px;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 20px 40px 40px;
 }
 
 .aa__title {
@@ -50,7 +81,7 @@
 }
 
 .aa__role {
-  margin: 0 0 42px;
+  margin: 0 0 36px;
   font-size: var(--font-overline);
   line-height: 1;
   font-weight: var(--font-weight-overline);
@@ -60,7 +91,7 @@
 }
 
 .aa__text {
-  max-width: 680px;
+  max-width: 640px;
 }
 
 .aa__text p {
@@ -78,66 +109,55 @@
 
 .aa__photo {
   position: relative;
-  width: 100%;
-  max-width: 570px;
-  height: clamp(540px, 42vw, 680px);
-  justify-self: end;
+  min-height: 0;
   overflow: hidden;
-  border-radius: var(--radius);
-  background: transparent;
+  border-radius: 10px;
+  background: var(--color-paper-deep);
 }
 
 .aa__photo img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
   object-position: 51% 74%;
-  transform: scale(1.18);
-  transform-origin: 51% 74%;
-}
-
-.aa__photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(7, 7, 6, 0.08));
-  pointer-events: none;
 }
 
 @media (max-width: 1180px) {
-  #anna-about {
+  #anna-about,
+  .uc-about {
     min-height: auto;
   }
 
   .aa {
     min-height: auto;
-    padding: var(--space-lg) var(--container-padding-tablet) var(--space-2xl);
+    padding:
+      calc(var(--header-height) + 20px)
+      var(--container-padding-tablet)
+      var(--space-section);
   }
 
   .aa__frame {
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-
-  .aa__content {
-    order: 2;
-    max-width: none;
+    gap: 0;
+    padding: 0 0 10px;
   }
 
   .aa__photo {
-    order: 1;
-    width: 100%;
-    max-width: none;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    justify-self: center;
+    order: -1;
+    min-height: 0;
+    margin: 10px 10px 0;
+    aspect-ratio: 16 / 10;
   }
 
   .aa__photo img {
-    object-position: 50% 82%;
-    transform: scale(1.05);
-    transform-origin: 50% 82%;
+    object-position: 50% 78%;
+  }
+
+  .aa__content {
+    padding: 15px;
   }
 
   .aa__title {
@@ -151,11 +171,10 @@
 
 @media (max-width: 640px) {
   .aa {
-    padding: var(--space-edge) var(--container-padding-mobile) var(--space-xl);
-  }
-
-  .aa__frame {
-    gap: var(--space-md);
+    padding:
+      calc(var(--header-height) + 20px)
+      var(--container-padding-mobile)
+      var(--space-section);
   }
 
   .aa__photo {
@@ -163,36 +182,27 @@
   }
 
   .aa__photo img {
-    object-position: 50% 86%;
-    transform: scale(1.01);
-    transform-origin: 50% 86%;
+    object-position: 50% 84%;
   }
 
   .aa__title {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     font-size: 38px;
     line-height: 1;
   }
 
   .aa__role {
-    margin-bottom: 26px;
-    font-size: var(--font-overline);
+    margin-bottom: 22px;
     line-height: 1.4;
   }
 
   .aa__text p {
-    margin-bottom: 22px;
+    margin-bottom: 18px;
     font-size: var(--font-body-base);
-    line-height: 1.68;
-    letter-spacing: 0.02em;
   }
 }
 
 @media (max-width: 420px) {
-  .aa {
-    padding-top: var(--space-edge);
-  }
-
   .aa__title {
     font-size: var(--text-hero-mobile);
   }
@@ -203,13 +213,22 @@
 
   .aa__photo img {
     object-position: 50% 88%;
-    transform: scale(1);
-    transform-origin: 50% 88%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .uc-about,
+  #anna-about {
+    background: var(--color-paper);
+  }
+
+  .aa__frame {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
   .aa__photo img {
-    transform: scale(1.05);
+    transform: none;
   }
 }

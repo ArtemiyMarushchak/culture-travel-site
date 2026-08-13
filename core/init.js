@@ -2,8 +2,11 @@ import { blockInits, coreFeatures } from './registry.js';
 import { initAnchors } from './anchors.js';
 import { initVideoOverlay } from './video-overlay.js';
 import { initModal } from '../blocks/modal/modal.js';
+import { initPrefs } from './prefs.js';
 
 let headerApi = null;
+
+initPrefs();
 
 document.querySelectorAll('[data-block]').forEach((el) => {
   const type = el.dataset.block;

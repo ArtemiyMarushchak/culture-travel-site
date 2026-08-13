@@ -134,11 +134,16 @@ function normalizeContentData(data) {
 }
 
 function prepareHotelsCatalog() {
-  return listContentJson('content/hotels').map((hotel) => ({
-    ...hotel,
-    themes: (hotel.themes || []).join(','),
-    mediaJson: JSON.stringify(hotel.media || []).replace(/'/g, '&#39;'),
-  }));
+  return listContentJson('content/hotels').map((hotel) => {
+    const cover = (hotel.media || []).find((item) => item.type === 'image' && item.src)?.src
+      || '/assets/images/placeholder.svg';
+    return {
+      ...hotel,
+      cover,
+      themes: (hotel.themes || []).join(','),
+      mediaJson: JSON.stringify(hotel.media || []).replace(/'/g, '&#39;'),
+    };
+  });
 }
 
 function prepareCasesFeatured() {
@@ -154,14 +159,32 @@ function prepareCasesFeatured() {
 
 function prepareServicesCatalog() {
   const catalog = readJson('content/services/catalog.json');
+  const items = (catalog.items || []).map((item, index) => ({
+    ...item,
+    indexPad: String(index + 1).padStart(2, '0'),
+    short: item.short || item.title || '',
+    shortEn: item.shortEn || item.titleEn || '',
+    image: item.image || '/assets/images/placeholder.svg',
+    activeClass: index === 0 ? ' is-active' : '',
+    coverClass: item.cover ? ' is-cover' : '',
+    expanded: index === 0 ? 'true' : 'false',
+    ariaHidden: index === 0 ? 'false' : 'true',
+  }));
+  const first = items[0] || {};
   return {
     overline: catalog.overline || '',
+    overlineEn: catalog.overlineEn || '',
     title: catalog.title || '',
+    titleEn: catalog.titleEn || '',
     lead: catalog.lead || '',
-    items: (catalog.items || []).map((item, index) => ({
-      ...item,
-      indexPad: String(index + 1).padStart(2, '0'),
-    })),
+    leadEn: catalog.leadEn || '',
+    items,
+    itemCount: items.length,
+    firstTitle: first.title || '',
+    firstTitleEn: first.titleEn || '',
+    firstText: first.text || '',
+    firstTextEn: first.textEn || '',
+    firstImage: first.image || '/assets/images/placeholder.svg',
   };
 }
 
@@ -170,16 +193,26 @@ function prepareReviewsCatalog() {
   const yandexUrl = catalog.platforms?.yandex?.reviewUrl || site.reviews?.yandexUrl || '';
   return {
     overline: catalog.overline || '',
+    overlineEn: catalog.overlineEn || '',
     title: catalog.title || '',
+    titleEn: catalog.titleEn || '',
     lead: catalog.lead || '',
+    leadEn: catalog.leadEn || '',
     tabSiteLabel: catalog.tabs?.site || 'Отзывы гостей',
+    tabSiteLabelEn: catalog.tabs?.siteEn || 'Guest reviews',
     tabYandexLabel: catalog.tabs?.yandex || 'Яндекс',
+    tabYandexLabelEn: catalog.tabs?.yandexEn || 'Yandex',
     siteNote: catalog.siteNote || '',
+    siteNoteEn: catalog.siteNoteEn || '',
     items: catalog.items || [],
     ctaTitle: catalog.cta?.title || '',
+    ctaTitleEn: catalog.cta?.titleEn || '',
     ctaText: catalog.cta?.text || '',
+    ctaTextEn: catalog.cta?.textEn || '',
     ctaButton: catalog.cta?.button || '',
+    ctaButtonEn: catalog.cta?.buttonEn || '',
     widgetNote: catalog.platforms?.yandex?.widgetNote || '',
+    widgetNoteEn: catalog.platforms?.yandex?.widgetNoteEn || '',
     yandexReviewUrl: yandexUrl || '#',
     yandexBtnClass: yandexUrl ? '' : ' rv__btn--soon',
   };
@@ -203,11 +236,18 @@ function prepareCasesSlider(basePath = '') {
         : [image];
       return {
         title: item.title || '',
+        titleEn: item.titleEn || '',
         text: item.text || '',
+        textEn: item.textEn || '',
         image,
         gallery,
         link,
         badge: item.badge || '',
+        country: item.country || item.badge || '',
+        countryEn: item.countryEn || '',
+        flag: item.flag || '',
+        days: Number(item.days) || 0,
+        rating: item.rating || '5.0',
         regionId: region,
         regionLabel: regionLabels[region] || '',
       };
@@ -234,6 +274,7 @@ function prepareNewsList() {
       slug: n.slug,
       title: n.title,
       excerpt: n.excerpt || '',
+      cover: n.cover?.image || n.cover || '/assets/images/placeholder.svg',
       dateIso: n.date,
       dateFormatted: formatDate(n.date),
     }));
@@ -303,6 +344,11 @@ function telegramHandle(url = '') {
   return match ? `@${match[1]}` : url;
 }
 
+function instagramHandle(url = '') {
+  const match = url.match(/instagram\.com\/([^/?#]+)/);
+  return match ? `@${match[1]}` : url;
+}
+
 function loadBlockHtml(blockType, blockData = {}) {
   const folder = blockFolder(blockType);
   const htmlPath = join(ROOT, folder, blockType, `${blockType}.html`);
@@ -316,6 +362,8 @@ function loadBlockHtml(blockType, blockData = {}) {
     ...blockData,
     basePath: site.basePath || '',
     telegram: site.contacts?.telegram || site.social?.telegram || '',
+    instagram: site.social?.instagram || '',
+    instagramHandle: instagramHandle(site.social?.instagram || ''),
     phone: site.contacts?.phone || '',
     phoneRaw: (site.contacts?.phone || '').replace(/\s/g, ''),
     phoneDisplay: formatPhoneDisplay(site.contacts?.phone || ''),
@@ -328,8 +376,19 @@ function loadBlockHtml(blockType, blockData = {}) {
     developerName: site.developer?.name || '',
     developerUrl: site.developer?.url || '',
     year: String(new Date().getFullYear()),
-    nav: blockType === 'header' ? readJson('core/nav.json') : blockData.nav,
+    nav: blockData.nav,
   };
+
+  if (blockType === 'header') {
+    const navAll = readJson('core/nav.json');
+    const newsN = listContentJson('content/news').length;
+    const newsCount = newsN ? `+${newsN}` : '';
+    merged.newsCount = newsCount;
+    merged.nav = navAll.filter((item) => !item.aside);
+    merged.navAside = navAll
+      .filter((item) => item.aside)
+      .map((item) => ({ ...item, newsCount }));
+  }
   const rawFields = ['body', 'content', 'casesJson', 'hotelsJson', 'mediaJson'];
   html = html.replace(/\{\{#each (\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, itemTpl) => {
     const arr = merged[key];
@@ -427,6 +486,7 @@ function buildPage(pageConfig, contentData = {}) {
 
   const html = layoutTemplate
     .replace('{{lang}}', site.language || 'ru')
+    .replace('{{basePath}}', site.basePath || '')
     .replace('{{head}}', head)
     .replace('{{content}}', `<main id="main">${content}</main>`)
     .replace('{{scripts}}', scripts);
@@ -658,6 +718,110 @@ function generateConfigJs() {
   writeOut('core/site-config.js', `export const SITE = ${JSON.stringify(site, null, 2)};\n`);
 }
 
+function stripHtml(value = '') {
+  return String(value).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function generateSearchIndex() {
+  const items = [];
+  const seen = new Set();
+  const add = (item) => {
+    const key = `${item.type}|${item.href}|${item.title}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    items.push(item);
+  };
+
+  for (const caseItem of listContentJson('content/cases')) {
+    if (!caseItem.slug) continue;
+    const meta = caseItem.meta || {};
+    const seo = caseItem.seo || {};
+    add({
+      type: 'case',
+      kind: 'Авторский тур',
+      kindEn: 'Private tour',
+      title: caseItem.title || '',
+      titleEn: caseItem.titleEn || '',
+      text: [caseItem.subtitle, meta.route, seo.description].filter(Boolean).join(' '),
+      textEn: seo.description || '',
+      href: `/cases/${caseItem.slug}/`,
+    });
+  }
+
+  const catalog = readJson('content/cases-slider/catalog.json');
+  for (const group of Object.values(catalog.cases || {})) {
+    for (const item of group || []) {
+      add({
+        type: 'case',
+        kind: 'Авторский тур',
+        kindEn: 'Private tour',
+        title: item.title || '',
+        titleEn: item.titleEn || '',
+        text: item.text || '',
+        textEn: item.textEn || '',
+        href: item.slug ? `/cases/${item.slug}/` : '/#cases',
+      });
+    }
+  }
+
+  for (const news of listContentJson('content/news')) {
+    if (!news.slug) continue;
+    add({
+      type: 'news',
+      kind: 'Новость',
+      kindEn: 'News',
+      title: news.title || '',
+      titleEn: news.titleEn || '',
+      text: [news.excerpt, stripHtml(news.body || '')].filter(Boolean).join(' '),
+      textEn: news.excerpt || '',
+      href: `/news/${news.slug}/`,
+    });
+  }
+
+  for (const hotel of listContentJson('content/hotels')) {
+    if (!hotel.slug) continue;
+    add({
+      type: 'hotel',
+      kind: 'Отель',
+      kindEn: 'Hotel',
+      title: hotel.name || hotel.title || '',
+      titleEn: hotel.nameEn || '',
+      text: [hotel.location, hotel.description].filter(Boolean).join(' '),
+      textEn: hotel.description || '',
+      href: `/hotels/${hotel.slug}/`,
+    });
+  }
+
+  const services = readJson('content/services/catalog.json');
+  for (const item of services.items || []) {
+    add({
+      type: 'service',
+      kind: 'Услуга',
+      kindEn: 'Service',
+      title: item.title || '',
+      titleEn: item.titleEn || '',
+      text: item.text || '',
+      textEn: item.textEn || '',
+      href: '/#services',
+    });
+  }
+
+  [
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Новости', titleEn: 'News', text: 'Новости и анонсы Culture Travel', textEn: 'News and announcements', href: '/news/' },
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Отели', titleEn: 'Hotels', text: 'Каталог люкс-отелей', textEn: 'Luxury hotels catalogue', href: '/hotels/' },
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Авторские туры', titleEn: 'Private tours', text: 'Авторские программы Culture Travel', textEn: 'Private Culture Travel programmes', href: '/tours/' },
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Услуги', titleEn: 'Services', text: 'Премиальный сервис Culture Travel', textEn: 'Culture Travel concierge service', href: '/#services' },
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Круизы', titleEn: 'Cruises', text: 'Морские и речные программы', textEn: 'Sea and river programmes', href: '/cruises/' },
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Бизнес авиация', titleEn: 'Business aviation', text: 'Чартерные перелёты и VIP-авиация', textEn: 'Private charter flights', href: '/business-aviation/' },
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Обо мне', titleEn: 'About', text: 'Анна Баглай — люкс-путешествия', textEn: 'Anna Baglay — luxury travel', href: '/#about' },
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Кейсы', titleEn: 'Cases', text: 'Авторские маршруты и реализованные программы', textEn: 'Private itineraries and completed programmes', href: '/#cases' },
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Отзывы', titleEn: 'Reviews', text: 'Отзывы гостей', textEn: 'Guest reviews', href: '/#reviews' },
+  ].forEach(add);
+
+  writeOut('search.json', `${JSON.stringify({ items }, null, 0)}\n`);
+  console.log('  ✓ search.json');
+}
+
 function generate404() {
   const page = existsSync(join(ROOT, 'pages/404.page.json'))
     ? readJson('pages/404.page.json')
@@ -720,6 +884,7 @@ function build() {
   console.log('\n📦 Ассеты:');
   copyStaticAssets();
   generateConfigJs();
+  generateSearchIndex();
 
   console.log('\n🔍 SEO:');
   generateRobots();

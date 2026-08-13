@@ -22,6 +22,7 @@
 
 /* Aspect ratios */
 .ui-image--16x9 { aspect-ratio: 16 / 9; }
+.ui-image--3x2  { aspect-ratio: var(--ratio-card); }
 .ui-image--4x5  { aspect-ratio: 4 / 5; }
 .ui-image--3x4  { aspect-ratio: 3 / 4; }
 .ui-image--1x1  { aspect-ratio: 1 / 1; }

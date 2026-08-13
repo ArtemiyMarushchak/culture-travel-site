@@ -31,21 +31,45 @@ export function initVideoOverlay() {
     stage.style.height = `${firstH + secondH}px`;
   }
 
+  function presentationReveal(t) {
+    const snapped = Math.min(1, Math.max(0, (t - 0.06) / 0.52));
+    return 1 - ((1 - snapped) ** 2.6);
+  }
+
   function updateScrollDim(mode) {
     const avb = first.querySelector('#avb');
-    if (!avb) return;
-
-    let dim = 0;
+    const aboutTop = second.getBoundingClientRect().top;
+    const viewportH = window.innerHeight || 1;
+    let cover = 0;
 
     if (mode === 'fixed') {
-      const aboutTop = second.getBoundingClientRect().top;
-      const viewportH = window.innerHeight || 1;
-      dim = Math.min(1, Math.max(0, 1 - aboutTop / viewportH));
+      cover = Math.min(1, Math.max(0, 1 - aboutTop / viewportH));
     } else if (mode === 'absolute') {
-      dim = 1;
+      cover = 1;
     }
 
-    avb.style.setProperty('--avb-scroll-dim', dim.toFixed(3));
+    const reveal = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? (aboutTop < viewportH ? 1 : 0)
+      : presentationReveal(cover);
+
+    if (avb) avb.style.setProperty('--avb-scroll-dim', cover.toFixed(3));
+    second.style.setProperty('--about-reveal', reveal.toFixed(3));
+  }
+
+  function syncVideoPlayback(mode) {
+    const media = first.querySelector('#avbFrame');
+    if (!media || media.tagName !== 'VIDEO') return;
+
+    const covered = mode === 'absolute' || second.getBoundingClientRect().top <= 1;
+    if (covered) {
+      if (!media.paused) media.pause();
+      return;
+    }
+
+    if (media.paused) {
+      const playPromise = media.play();
+      if (playPromise?.catch) playPromise.catch(() => {});
+    }
   }
 
   function update() {
@@ -65,6 +89,7 @@ export function initVideoOverlay() {
     if (mode === 'absolute') first.classList.add('is-video-absolute');
 
     updateScrollDim(mode);
+    syncVideoPlayback(mode);
 
     if (mode !== lastMode) {
       lastMode = mode;
@@ -83,6 +108,19 @@ export function initVideoOverlay() {
   update();
   window.addEventListener('scroll', scheduleUpdate, { passive: true });
   window.addEventListener('resize', scheduleUpdate, { passive: true });
+  document.addEventListener('ct:prefs', () => {
+    window.requestAnimationFrame(() => {
+      update();
+      window.requestAnimationFrame(update);
+    });
+  });
+
+  if (typeof ResizeObserver === 'function') {
+    const observer = new ResizeObserver(() => scheduleUpdate());
+    observer.observe(second);
+    observer.observe(first);
+  }
+
   window.setTimeout(update, 300);
   window.setTimeout(update, 900);
 }

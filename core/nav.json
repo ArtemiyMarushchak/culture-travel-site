@@ -1,10 +1,10 @@
 [
-  { "label": "Обо мне", "href": "/#about", "anchor": ".uc-about" },
-  { "label": "Кейсы", "href": "/#cases", "anchor": ".uc-cases" },
-  { "label": "Услуги", "href": "/#services", "anchor": ".uc-services" },
-  { "label": "Отзывы", "href": "/#reviews", "anchor": ".uc-reviews" },
-  { "label": "Новости", "href": "/news/", "anchor": "" },
-  { "label": "Отели", "href": "/hotels/", "anchor": "" },
-  { "label": "Круизы", "href": "/cruises/", "anchor": "" },
-  { "label": "Бизнес авиация", "href": "/business-aviation/", "anchor": "" }
+  { "label": "Обо мне", "i18n": "nav.about", "href": "/#about", "anchor": ".uc-about" },
+  { "label": "Кейсы", "i18n": "nav.cases", "href": "/#cases", "anchor": ".uc-cases" },
+  { "label": "Услуги", "i18n": "nav.services", "href": "/#services", "anchor": ".uc-services" },
+  { "label": "Отзывы", "i18n": "nav.reviews", "href": "/#reviews", "anchor": ".uc-reviews" },
+  { "label": "Круизы", "i18n": "nav.cruises", "href": "/cruises/", "anchor": "" },
+  { "label": "Отели", "i18n": "nav.hotels", "href": "/hotels/", "anchor": "" },
+  { "label": "Авторские туры", "i18n": "nav.tours", "href": "/tours/", "anchor": "" },
+  { "label": "Новости", "i18n": "nav.news", "href": "/news/", "anchor": "", "aside": true }
 ]

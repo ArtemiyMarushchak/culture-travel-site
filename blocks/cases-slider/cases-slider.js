@@ -1,6 +1,8 @@
 /**
- * Cases slider — card carousel + location dropdown (notebook sketch)
+ * Cases slider — card carousel with region/duration filters
  */
+
+import { applyI18n, getLang, t } from '../../core/i18n.js';
 
 const SWIPE_THRESHOLD = 44;
 
@@ -31,30 +33,38 @@ export function initCasesSlider(root) {
   const localeLabel = root.querySelector('[data-case-locale-label]');
   const localeMenu = root.querySelector('[data-case-locale-menu]');
   const options = root.querySelectorAll('[data-case-filter]');
+  const durationRoot = root.querySelector('[data-case-duration]');
+  const durationBtn = root.querySelector('[data-case-duration-btn]');
+  const durationLabel = root.querySelector('[data-case-duration-label]');
+  const durationMenu = root.querySelector('[data-case-duration-menu]');
+  const dayOptions = root.querySelectorAll('[data-case-days]');
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let activeKey = 'all';
+  let activeDays = 0;
   let activeSlides = [];
   let index = 0;
   let perView = 3;
   let touchStartX = 0;
 
-  function getSlides(key) {
-    if (key === 'all') {
-      return Object.keys(cases).reduce((acc, group) => acc.concat(cases[group] || []), []);
-    }
-    return cases[key] || [];
+  function getSlides() {
+    const list = activeKey === 'all'
+      ? Object.keys(cases).reduce((acc, group) => acc.concat(cases[group] || []), [])
+      : (cases[activeKey] || []);
+
+    if (!activeDays) return list;
+    return list.filter((item) => Number(item.days) === activeDays);
   }
 
   function regionLabel(id) {
     const found = regions.find((item) => item.id === id);
-    return found?.label || 'Все';
+    return found?.label || 'Все направления';
   }
 
   function measurePerView() {
     const width = window.innerWidth;
-    if (width <= 760) return 1;
+    if (width <= 980) return 1;
     if (width <= 1180) return 2;
     return 3;
   }
@@ -85,43 +95,32 @@ export function initCasesSlider(root) {
     updateArrows();
   }
 
-  function buildDashes(container, gallery, active = 0) {
-    container.replaceChildren();
-    const count = Math.max(1, Math.min(gallery.length, 4));
-    if (gallery.length <= 1) {
-      container.hidden = true;
-      return;
-    }
-    container.hidden = false;
-    for (let i = 0; i < count; i += 1) {
-      const dash = document.createElement('span');
-      dash.className = `mcs__dash${i === active ? ' is-active' : ''}`;
-      container.appendChild(dash);
-    }
-  }
-
   function createCard(item) {
     const node = template.content.firstElementChild.cloneNode(true);
     const media = node.querySelector('[data-card-media]');
     const image = node.querySelector('[data-card-image]');
     const badge = node.querySelector('[data-card-badge]');
-    const dashes = node.querySelector('[data-card-dashes]');
+    const flag = node.querySelector('[data-card-flag]');
+    const country = node.querySelector('[data-card-country]');
+    const rating = node.querySelector('[data-card-rating]');
+    const score = node.querySelector('[data-card-score]');
     const title = node.querySelector('[data-card-title]');
     const text = node.querySelector('[data-card-text]');
     const link = node.querySelector('[data-card-link]');
 
-    const gallery = Array.isArray(item.gallery) && item.gallery.length
-      ? item.gallery
-      : [item.image].filter(Boolean);
-
-    image.src = gallery[0] || '';
+    image.src = item.image || '';
     image.alt = '';
     image.setAttribute('aria-hidden', 'true');
-    badge.textContent = item.badge || item.regionLabel || '';
-    badge.hidden = !badge.textContent;
-    title.textContent = item.title || '';
-    text.textContent = item.text || '';
-    buildDashes(dashes, gallery, 0);
+    const en = getLang() === 'en';
+    const countryName = (en && item.countryEn) || item.country || item.badge || item.regionLabel || '';
+    if (flag) flag.textContent = item.flag || '';
+    if (country) country.textContent = countryName;
+    badge.hidden = !countryName;
+    const ratingValue = item.rating || '5.0';
+    if (score) score.textContent = ratingValue;
+    if (rating) rating.hidden = !ratingValue;
+    title.textContent = (en && item.titleEn) || item.title || '';
+    text.textContent = (en && item.textEn) || item.text || '';
 
     const href = item.link || '';
     if (href) {
@@ -136,43 +135,44 @@ export function initCasesSlider(root) {
       link.addEventListener('click', (e) => e.preventDefault());
     }
 
-    if (gallery.length > 1) {
-      let photoIndex = 0;
-      const cycle = (dir) => {
-        photoIndex = (photoIndex + dir + gallery.length) % gallery.length;
-        image.src = gallery[photoIndex];
-        buildDashes(dashes, gallery, photoIndex % Math.min(gallery.length, 4));
-      };
-      media.addEventListener('click', (e) => {
-        if (!href) e.preventDefault();
-      });
-      dashes.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        cycle(1);
-      });
-    }
-
     return node;
   }
 
   function renderCards() {
-    activeSlides = getSlides(activeKey);
+    activeSlides = getSlides();
     track.replaceChildren();
     activeSlides.forEach((item) => {
       track.appendChild(createCard(item));
     });
     index = Math.min(index, maxIndex());
     requestAnimationFrame(updateTrack);
+    applyI18n(track);
   }
 
-  function setFilter(key, label) {
+  function daysLabel(days) {
+    const value = Number(days) || 0;
+    if (!value) return t('cases.allDays');
+    return `${value} ${t('cases.days')}`;
+  }
+
+  function refreshCopy() {
+    applyI18n(root);
+    dayOptions.forEach((option) => {
+      const value = option.getAttribute('data-case-days') || '';
+      if (value) option.textContent = daysLabel(value);
+    });
+    if (activeKey === 'all') localeLabel.textContent = t('cases.region');
+    else localeLabel.textContent = t(`region.${activeKey}`) || regionLabel(activeKey);
+    durationLabel.textContent = activeDays ? daysLabel(activeDays) : t('cases.duration');
+    renderCards();
+  }
+
+  function setRegion(key, label) {
     activeKey = key || 'all';
     index = 0;
-    localeLabel.textContent = label || regionLabel(activeKey) || 'Выбор локации';
-    if (activeKey === 'all') {
-      localeLabel.textContent = 'Выбор локации';
-    }
+    localeLabel.textContent = activeKey === 'all'
+      ? t('cases.region')
+      : (t(`region.${activeKey}`) || label || regionLabel(activeKey));
     options.forEach((option) => {
       const selected = option.getAttribute('data-case-filter') === activeKey;
       option.classList.toggle('is-active', selected);
@@ -181,16 +181,53 @@ export function initCasesSlider(root) {
     renderCards();
   }
 
-  function closeLocale() {
-    if (!localeMenu || !localeBtn) return;
-    localeMenu.hidden = true;
-    localeBtn.setAttribute('aria-expanded', 'false');
+  function setDuration(days, label) {
+    activeDays = Number(days) || 0;
+    index = 0;
+    durationLabel.textContent = activeDays ? daysLabel(activeDays) : t('cases.duration');
+    dayOptions.forEach((option) => {
+      const value = option.getAttribute('data-case-days') || '';
+      const selected = (Number(value) || 0) === activeDays;
+      option.classList.toggle('is-active', selected);
+      option.setAttribute('aria-selected', selected ? 'true' : 'false');
+    });
+    renderCards();
   }
 
-  function toggleLocale() {
-    const open = localeMenu.hidden;
-    localeMenu.hidden = !open;
-    localeBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  function isMobileFilters() {
+    return window.matchMedia('(max-width: 980px)').matches;
+  }
+
+  function alignMenu(menu, btn) {
+    if (!menu || !btn) return;
+
+    if (!isMobileFilters() || menu.hidden) {
+      menu.style.removeProperty('--mcs-caret-x');
+      return;
+    }
+
+    const toolbar = root.querySelector('.mcs__toolbar');
+    const toolbarRect = toolbar.getBoundingClientRect();
+    const btnRect = btn.getBoundingClientRect();
+    const caretX = btnRect.left + btnRect.width / 2 - toolbarRect.left;
+
+    menu.style.setProperty('--mcs-caret-x', `${Math.max(18, caretX)}px`);
+  }
+
+  function closeMenu(menu, btn) {
+    if (!menu || !btn) return;
+    menu.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+    menu.style.removeProperty('--mcs-caret-x');
+  }
+
+  function toggleMenu(menu, btn) {
+    const open = menu.hidden;
+    closeMenu(localeMenu, localeBtn);
+    closeMenu(durationMenu, durationBtn);
+    menu.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) alignMenu(menu, btn);
   }
 
   function goNext() {
@@ -205,23 +242,39 @@ export function initCasesSlider(root) {
 
   localeBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
-    toggleLocale();
+    toggleMenu(localeMenu, localeBtn);
+  });
+
+  durationBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu(durationMenu, durationBtn);
   });
 
   options.forEach((option) => {
     option.addEventListener('click', () => {
       const key = option.getAttribute('data-case-filter') || 'all';
-      setFilter(key, option.textContent.trim());
-      closeLocale();
+      setRegion(key, option.textContent.trim());
+      closeMenu(localeMenu, localeBtn);
+    });
+  });
+
+  dayOptions.forEach((option) => {
+    option.addEventListener('click', () => {
+      setDuration(option.getAttribute('data-case-days'), option.textContent.trim());
+      closeMenu(durationMenu, durationBtn);
     });
   });
 
   document.addEventListener('click', (e) => {
-    if (!localeRoot?.contains(e.target)) closeLocale();
+    if (!localeRoot?.contains(e.target)) closeMenu(localeMenu, localeBtn);
+    if (!durationRoot?.contains(e.target)) closeMenu(durationMenu, durationBtn);
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLocale();
+    if (e.key === 'Escape') {
+      closeMenu(localeMenu, localeBtn);
+      closeMenu(durationMenu, durationBtn);
+    }
   });
 
   prevBtn?.addEventListener('click', goPrev);
@@ -251,9 +304,12 @@ export function initCasesSlider(root) {
       index = Math.min(index, maxIndex());
     }
     updateTrack();
+    alignMenu(localeMenu, localeBtn);
+    alignMenu(durationMenu, durationBtn);
   });
 
-  // Prefer regions from DOM options if JSON omitted them
+  document.addEventListener('ct:prefs', refreshCopy);
+
   if (!regions.length) {
     regions = Array.from(options).map((option) => ({
       id: option.getAttribute('data-case-filter'),
@@ -262,7 +318,8 @@ export function initCasesSlider(root) {
   }
 
   perView = measurePerView();
-  setFilter('all');
+  setRegion('all');
+  refreshCopy();
 
   if (reducedMotion) {
     track.style.transition = 'none';

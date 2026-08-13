@@ -7,6 +7,7 @@
   overflow: hidden;
   background: var(--color-paper);
   color: var(--color-text-dark);
+  scroll-margin-top: var(--header-height);
 }
 
 #anna-reviews,
@@ -16,12 +17,12 @@
 
 .rv {
   width: 100%;
-  padding: var(--section-space-desktop) var(--container-padding-desktop);
+  padding: var(--space-edge-lg) var(--container-padding-desktop);
 }
 
 .rv__head {
   max-width: 820px;
-  margin: 0 0 clamp(40px, 4vw, 56px);
+  margin: 0 0 var(--space-edge-lg);
 }
 
 .rv__overline {
@@ -250,7 +251,11 @@
 
 @media (max-width: 1180px) {
   .rv {
-    padding: var(--section-space-tablet) var(--container-padding-tablet);
+    padding: var(--space-edge) var(--container-padding-tablet);
+  }
+
+  .rv__head {
+    margin-bottom: var(--space-edge);
   }
 
   .rv__title {
@@ -260,11 +265,11 @@
 
 @media (max-width: 640px) {
   .rv {
-    padding: var(--section-space-mobile) var(--container-padding-mobile);
+    padding: var(--space-edge) var(--container-padding-mobile);
   }
 
   .rv__head {
-    margin-bottom: 32px;
+    margin-bottom: var(--space-edge);
   }
 
   .rv__title {

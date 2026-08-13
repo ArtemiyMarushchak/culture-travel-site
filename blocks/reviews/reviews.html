@@ -1,9 +1,9 @@
 <section id="anna-reviews" class="uc-reviews" data-block="reviews" aria-labelledby="anna-reviews-title">
   <div class="rv">
     <div class="rv__head">
-      <p class="rv__overline">{{overline}}</p>
-      <h2 class="rv__title" id="anna-reviews-title">{{title}}</h2>
-      <p class="rv__lead">{{lead}}</p>
+      <p class="rv__overline" data-i18n-src data-ru="{{overline}}" data-en="{{overlineEn}}">{{overline}}</p>
+      <h2 class="rv__title" id="anna-reviews-title" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</h2>
+      <p class="rv__lead" data-i18n-src data-ru="{{lead}}" data-en="{{leadEn}}">{{lead}}</p>
     </div>
 
     <div class="rv__tabs" role="tablist" aria-label="Источник отзывов">
@@ -15,6 +15,9 @@
         aria-selected="true"
         aria-controls="rv-panel-site"
         data-review-tab="site"
+        data-i18n-src
+        data-ru="{{tabSiteLabel}}"
+        data-en="{{tabSiteLabelEn}}"
       >{{tabSiteLabel}}</button>
       <button
         class="rv__tab"
@@ -24,6 +27,9 @@
         aria-selected="false"
         aria-controls="rv-panel-yandex"
         data-review-tab="yandex"
+        data-i18n-src
+        data-ru="{{tabYandexLabel}}"
+        data-en="{{tabYandexLabelEn}}"
       >{{tabYandexLabel}}</button>
     </div>
 
@@ -39,15 +45,15 @@
           {{#each items}}
           <blockquote class="rv__quote">
             <span class="rv__quote-mark" aria-hidden="true">«</span>
-            <p class="rv__quote-text">{{text}}</p>
+            <p class="rv__quote-text" data-i18n-src data-ru="{{text}}" data-en="{{textEn}}">{{text}}</p>
             <footer class="rv__quote-foot">
-              <cite class="rv__quote-author">{{author}}</cite>
-              <span class="rv__quote-meta">{{meta}}</span>
+              <cite class="rv__quote-author" data-i18n-src data-ru="{{author}}" data-en="{{authorEn}}">{{author}}</cite>
+              <span class="rv__quote-meta" data-i18n-src data-ru="{{meta}}" data-en="{{metaEn}}">{{meta}}</span>
             </footer>
           </blockquote>
           {{/each}}
         </div>
-        <p class="rv__site-note">{{siteNote}}</p>
+        <p class="rv__site-note" data-i18n-src data-ru="{{siteNote}}" data-en="{{siteNoteEn}}">{{siteNote}}</p>
       </div>
 
       <div
@@ -60,19 +66,20 @@
       >
         <div class="rv__yandex">
           <div class="rv__yandex-copy">
-            <h3 class="rv__yandex-title">{{ctaTitle}}</h3>
-            <p class="rv__yandex-text">{{ctaText}}</p>
+            <h3 class="rv__yandex-title" data-i18n-src data-ru="{{ctaTitle}}" data-en="{{ctaTitleEn}}">{{ctaTitle}}</h3>
+            <p class="rv__yandex-text" data-i18n-src data-ru="{{ctaText}}" data-en="{{ctaTextEn}}">{{ctaText}}</p>
             <a
               class="rv__btn rv__btn--yandex{{yandexBtnClass}}"
               href="{{yandexReviewUrl}}"
               target="_blank"
               rel="noopener noreferrer"
-            >
-              {{ctaButton}}
-            </a>
+              data-i18n-src
+              data-ru="{{ctaButton}}"
+              data-en="{{ctaButtonEn}}"
+            >{{ctaButton}}</a>
           </div>
           <div class="rv__widget-slot" id="yandex-reviews-widget" data-widget-placeholder>
-            <p class="rv__widget-note">{{widgetNote}}</p>
+            <p class="rv__widget-note" data-i18n-src data-ru="{{widgetNote}}" data-en="{{widgetNoteEn}}">{{widgetNote}}</p>
           </div>
         </div>
       </div>

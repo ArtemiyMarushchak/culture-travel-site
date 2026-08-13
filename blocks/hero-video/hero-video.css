@@ -121,12 +121,11 @@
   z-index: 4;
   pointer-events: none;
   background: rgba(
-    0,
-    0,
-    0,
-    calc(0.16 + var(--avb-scroll-dim, 0) * 0.42)
+    13,
+    13,
+    13,
+    calc(0.12 + var(--avb-scroll-dim, 0) * 0.72)
   );
-  transition: background 0.12s linear;
 }
 
 @media (prefers-reduced-motion: reduce) {

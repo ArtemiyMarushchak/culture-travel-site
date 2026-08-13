@@ -15,6 +15,7 @@
 @import url('./foundation/reset.css');
 @import url('./foundation/base.css');
 @import url('./ui/index.css');
+@import url('./themes/theme-color.css');
 @import url('./themes/theme-dark.css');
 @import url('./utilities/helpers.css');
 @import url('./utilities/interaction-rules.css');

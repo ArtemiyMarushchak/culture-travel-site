@@ -15,21 +15,26 @@
     <div class="hotel-catalog__grid">
       {{#each items}}
       <article class="hotel-card" data-themes="{{themes}}">
-        <div class="hotel-card__header">
-          <h2 class="hotel-card__name">{{name}}</h2>
-          <p class="hotel-card__stars" aria-label="{{stars}} звёзд">{{stars}} ★</p>
-        </div>
-        <p class="hotel-card__location">{{location}}</p>
-        <p class="hotel-card__desc">{{description}}</p>
-        <div class="hotel-card__actions">
-          <a class="btn btn--ghost hotel-card__link" href="{{basePath}}/hotels/{{slug}}/">Подробнее</a>
-          <button
-            class="btn hotel-card__btn"
-            type="button"
-            data-hotel-gallery
-            data-name="{{name}}"
-            data-media='{{mediaJson}}'
-          >Фото и видео</button>
+        <a class="hotel-card__media" href="{{basePath}}/hotels/{{slug}}/">
+          <img src="{{basePath}}{{cover}}" alt="" loading="lazy" decoding="async" width="720" height="480">
+        </a>
+        <div class="hotel-card__body">
+          <div class="hotel-card__header">
+            <h2 class="hotel-card__name">{{name}}</h2>
+            <p class="hotel-card__stars" aria-label="{{stars}} звёзд">{{stars}} ★</p>
+          </div>
+          <p class="hotel-card__location">{{location}}</p>
+          <p class="hotel-card__desc">{{description}}</p>
+          <div class="hotel-card__actions">
+            <a class="btn btn--ghost hotel-card__link" href="{{basePath}}/hotels/{{slug}}/">Подробнее</a>
+            <button
+              class="btn hotel-card__btn"
+              type="button"
+              data-hotel-gallery
+              data-name="{{name}}"
+              data-media='{{mediaJson}}'
+            >Фото и видео</button>
+          </div>
         </div>
       </article>
       {{/each}}

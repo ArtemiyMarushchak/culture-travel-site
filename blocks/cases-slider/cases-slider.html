@@ -1,50 +1,82 @@
 <section class="uc-cases" id="my-cases-slider" data-block="cases-slider" aria-labelledby="mcs-title">
   <div class="mcs">
     <div class="mcs__toolbar">
-      <h2 class="mcs__title" id="mcs-title">Мои кейсы</h2>
+      <h2 class="mcs__title" id="mcs-title" data-i18n="cases.title">Мои кейсы</h2>
 
-      <div class="mcs__locale" data-case-locale>
-        <button
-          class="mcs__locale-btn"
-          type="button"
-          data-case-locale-btn
-          aria-haspopup="listbox"
-          aria-expanded="false"
-          aria-controls="mcs-locale-list"
-        >
-          <svg class="mcs__locale-pin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-            <path d="M12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="currentColor" stroke-width="1.7"/>
-          </svg>
-          <span data-case-locale-label>Выбор локации</span>
-          <svg class="mcs__locale-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="mcs__locale-menu" id="mcs-locale-list" role="listbox" hidden data-case-locale-menu>
-          {{#each regions}}
-          <button
-            class="mcs__locale-option{{tabClass}}"
-            type="button"
-            role="option"
-            data-case-filter="{{id}}"
-            aria-selected="{{ariaSelected}}"
-          >{{label}}</button>
-          {{/each}}
+      <div class="mcs__tools">
+        <div class="mcs__filters">
+          <div class="mcs__locale" data-case-locale>
+            <button
+              class="mcs__locale-btn"
+              type="button"
+              data-case-locale-btn
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-controls="mcs-locale-list"
+            >
+              <svg class="mcs__locale-pin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="M12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+              <span data-case-locale-label>Направление</span>
+              <svg class="mcs__locale-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mcs__locale-menu" id="mcs-locale-list" role="listbox" hidden data-case-locale-menu>
+              {{#each regions}}
+              <button
+                class="mcs__locale-option{{tabClass}}"
+                type="button"
+                role="option"
+                data-case-filter="{{id}}"
+                data-i18n="region.{{id}}"
+                aria-selected="{{ariaSelected}}"
+              >{{label}}</button>
+              {{/each}}
+            </div>
+          </div>
+
+          <div class="mcs__locale" data-case-duration>
+            <button
+              class="mcs__locale-btn"
+              type="button"
+              data-case-duration-btn
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-controls="mcs-duration-list"
+            >
+              <svg class="mcs__locale-pin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+              <span data-case-duration-label>Длительность</span>
+              <svg class="mcs__locale-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mcs__locale-menu" id="mcs-duration-list" role="listbox" hidden data-case-duration-menu>
+              <button class="mcs__locale-option is-active" type="button" role="option" data-case-days="" aria-selected="true" data-i18n="cases.allDays">Все сроки</button>
+              <button class="mcs__locale-option" type="button" role="option" data-case-days="7" aria-selected="false">7 дней</button>
+              <button class="mcs__locale-option" type="button" role="option" data-case-days="12" aria-selected="false">12 дней</button>
+              <button class="mcs__locale-option" type="button" role="option" data-case-days="14" aria-selected="false">14 дней</button>
+              <button class="mcs__locale-option" type="button" role="option" data-case-days="20" aria-selected="false">20 дней</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="mcs__controls">
-        <button class="mcs__arrow" type="button" data-case-prev aria-label="Предыдущие кейсы">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button class="mcs__arrow" type="button" data-case-next aria-label="Следующие кейсы">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+        <div class="mcs__controls">
+          <button class="mcs__arrow" type="button" data-case-prev aria-label="Предыдущие кейсы" data-i18n-aria="cases.prev">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="mcs__arrow" type="button" data-case-next aria-label="Следующие кейсы" data-i18n-aria="cases.next">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -57,15 +89,23 @@
     <article class="mcs__card">
       <a class="mcs__media" data-card-media href="#" tabindex="-1" aria-hidden="true">
         <img data-card-image src="" alt="" loading="lazy" decoding="async">
-        <span class="mcs__badge" data-card-badge></span>
-        <div class="mcs__dashes" data-card-dashes aria-hidden="true"></div>
+        <span class="mcs__badge" data-card-badge>
+          <span class="mcs__flag" data-card-flag aria-hidden="true"></span>
+          <span data-card-country></span>
+        </span>
+        <span class="mcs__rating" data-card-rating>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 2.6 14.7 8l6 .9-4.4 4.3 1 5.9L12 16.2 6.7 19.1l1-5.9L3.3 8.9 9.3 8 12 2.6Z"/>
+          </svg>
+          <span data-card-score>5.0</span>
+        </span>
       </a>
       <div class="mcs__body">
         <h3 class="mcs__card-title" data-card-title></h3>
         <p class="mcs__card-text" data-card-text></p>
         <div class="mcs__card-foot">
           <a class="mcs__more" data-card-link href="#">
-            <span>Подробнее</span>
+            <span data-i18n="cases.more">Подробнее</span>
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>

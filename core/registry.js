@@ -12,6 +12,7 @@ import { initModal } from '../blocks/modal/modal.js';
 import { initContactCard } from '../blocks-secondary/contact-card/contact-card.js';
 import { initCaseTour } from '../blocks-secondary/case-tour/case-tour.js';
 import { initReviews } from '../blocks/reviews/reviews.js';
+import { initServices } from '../blocks/services/services.js';
 
 /** @type {Record<string, (root: Element) => unknown>} */
 export const blockInits = {
@@ -23,6 +24,7 @@ export const blockInits = {
   'contact-card': initContactCard,
   'case-tour': initCaseTour,
   reviews: initReviews,
+  services: initServices,
 };
 
 export const coreFeatures = {

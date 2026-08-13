@@ -17,7 +17,9 @@ html {
 }
 
 body.is-nav-open,
-html.is-nav-open {
+html.is-nav-open,
+body.is-search-open,
+html.is-search-open {
   overflow: hidden;
 }
 

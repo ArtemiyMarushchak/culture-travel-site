@@ -27,8 +27,9 @@
 
 .news-layout__cover img {
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: var(--ratio-card);
   object-fit: cover;
+  border-radius: var(--radius);
 }
 
 .news-layout__body {

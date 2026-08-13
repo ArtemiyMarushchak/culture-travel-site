@@ -72,6 +72,10 @@ export function initHeroVideo(root) {
   refresh(true);
 
   if (media.tagName === 'VIDEO') {
+    media.disablePictureInPicture = true;
+    media.disableRemotePlayback = true;
+    media.setAttribute('pip', 'false');
+    media.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback');
     media.addEventListener('loadeddata', markReady, { once: true });
     media.addEventListener('canplay', markReady, { once: true });
     const playPromise = media.play?.();

@@ -2,7 +2,7 @@
   <div class="lf">
     <div class="lf__grid">
       <div class="lf__col">
-        <div class="lf__title">Сайт обновлён — {{year}}</div>
+        <div class="lf__title"><span data-i18n="footer.updated">Сайт обновлён —</span> {{year}}</div>
         <div class="lf__company">
           <span>{{legalCompanyName}}</span>
           <span>ИНН: {{inn}}</span>
@@ -29,40 +29,40 @@
       </div>
 
       <div class="lf__col">
-        <div class="lf__title">Главная</div>
+        <div class="lf__title" data-i18n="footer.home">Главная</div>
         <nav class="lf__nav">
-          <a href="{{basePath}}/#about">Обо мне</a>
-          <a href="{{basePath}}/#cases">Кейсы</a>
-          <a href="{{basePath}}/#services">Услуги</a>
-          <a href="{{basePath}}/#reviews">Отзывы</a>
+          <a href="{{basePath}}/#about" data-i18n="nav.about">Обо мне</a>
+          <a href="{{basePath}}/#cases" data-i18n="nav.cases">Кейсы</a>
+          <a href="{{basePath}}/#services" data-i18n="nav.services">Услуги</a>
+          <a href="{{basePath}}/#reviews" data-i18n="nav.reviews">Отзывы</a>
         </nav>
       </div>
 
       <div class="lf__col">
-        <div class="lf__title">Навигация</div>
+        <div class="lf__title" data-i18n="footer.nav">Навигация</div>
         <nav class="lf__nav">
-          <a href="{{basePath}}/news/">Новости</a>
-          <a href="{{basePath}}/hotels/">Отели</a>
-          <a href="{{basePath}}/cruises/">Круизы</a>
-          <a href="{{basePath}}/business-aviation/">Бизнес авиация</a>
+          <a href="{{basePath}}/cruises/" data-i18n="nav.cruises">Круизы</a>
+          <a href="{{basePath}}/hotels/" data-i18n="nav.hotels">Отели</a>
+          <a href="{{basePath}}/tours/" data-i18n="nav.tours">Авторские туры</a>
+          <a href="{{basePath}}/news/" data-i18n="nav.news">Новости</a>
         </nav>
       </div>
 
       <div class="lf__col">
-        <div class="lf__title">Документы для контроля</div>
+        <div class="lf__title" data-i18n="footer.docs">Документы для контроля</div>
         <nav class="lf__nav">
-          <a href="{{basePath}}/privacy/">Политика конфиденциальности</a>
-          <a href="{{registryUrl}}" target="_blank" rel="noopener noreferrer">В реестре тур-агентств</a>
-          <a href="{{basePath}}/company/">Данные компании</a>
-          <a href="{{basePath}}/copyright/">Авторское право</a>
+          <a href="{{basePath}}/privacy/" data-i18n="footer.privacy">Политика конфиденциальности</a>
+          <a href="{{registryUrl}}" target="_blank" rel="noopener noreferrer" data-i18n="footer.registry">В реестре тур-агентств</a>
+          <a href="{{basePath}}/company/" data-i18n="footer.company">Данные компании</a>
+          <a href="{{basePath}}/copyright/" data-i18n="footer.copyright">Авторское право</a>
         </nav>
       </div>
     </div>
 
     <div class="lf__bottom">
-      <span class="lf__bottom-left">Копирование материалов запрещено</span>
+      <span class="lf__bottom-left" data-i18n="footer.copyban">Копирование материалов запрещено</span>
       <span class="lf__bottom-right">
-        Разработал —
+        <span data-i18n="footer.dev">Разработал —</span>
         <a href="{{developerUrl}}" target="_blank" rel="noopener noreferrer">{{developerName}}</a>
       </span>
     </div>

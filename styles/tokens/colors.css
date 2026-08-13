@@ -8,13 +8,17 @@
   --color-white-soft: #eeeeee;
   --color-white-hover: #e6e6e6;
 
-  --color-paper: #f5f5f5;
+  --color-paper: #F6F6F6;
   --color-paper-soft: #eeeeee;
   --color-paper-deep: #e6e6e6;
+  --color-pure: #ffffff;
+  --color-card: var(--color-pure);
   --color-bg: var(--color-paper);
+  --color-on-media: #f6f6f6;
 
   --color-gold: #A8865E;
-  --color-gold-hover: #947456;
+  --color-gold-bright: #C9A36A;
+  --color-gold-hover: var(--color-gold-bright);
   --color-gold-deep: #806348;
   --color-gold-soft: rgba(168, 134, 94, 0.72);
   --color-gold-muted: rgba(168, 134, 94, 0.38);
@@ -54,6 +58,7 @@
   --line-light-soft: rgba(245, 245, 245, 0.14);
   --line-light-faint: rgba(245, 245, 245, 0.08);
   --line-gold: var(--color-gold-muted);
+  --line-ticket: 1px dashed var(--color-gold-muted);
   --color-line: var(--line-light);
   --color-line-soft: var(--line-light-soft);
   --color-line-faint: var(--line-light-faint);

@@ -1,31 +1,75 @@
 {
-  "overline": "Услуги",
-  "title": "Сервис Culture Travel",
+  "overline": "Мои услуги",
+  "overlineEn": "My services",
+  "title": "Мои услуги",
+  "titleEn": "My services",
   "lead": "Всё, что нужно для спокойного путешествия в премиальном ритме — от бронирования отеля до частного трансфера и персональных деталей на маршруте.",
+  "leadEn": "Everything needed for a calm journey in a premium rhythm — from hotel booking to private transfers and personal details along the route.",
   "items": [
     {
-      "title": "Бронирование премиальных отелей и вилл",
-      "text": "Подбор и бронирование премиальных отелей и вилл по всему миру с учётом предпочтений гостей, формата поездки и уровня сервиса."
-    },
-    {
-      "title": "Персональный консьерж-сервис",
-      "text": "Организация индивидуальных запросов во время поездки: цветы, подарки, шампанское в номер, подготовка сюрпризов, частные ужины и другие персональные детали путешествия."
-    },
-    {
-      "title": "Досуг и мероприятия",
-      "text": "Билеты на концерты, в театры, на спортивные мероприятия, модные показы и культурные события, а также доступ на закрытые вечеринки и частные мероприятия."
-    },
-    {
-      "title": "Частные экскурсии и уникальные впечатления",
-      "text": "Индивидуальные программы с лучшими местными гидами, гастрономические маршруты, дегустации вин, вертолётные экскурсии и редкие впечатления в разных странах."
-    },
-    {
-      "title": "Яхты и морские прогулки",
-      "text": "Аренда частных яхт для дневных круизов, увлекательной рыбалки, расслабляющих морских прогулок и организации частных мероприятий на воде — незабываемые впечатления на ваш вкус."
+      "title": "Бизнес авиация",
+      "titleEn": "Business aviation",
+      "short": "Бизнес авиация",
+      "shortEn": "Business aviation",
+      "text": "Частные перелёты для тех, кому важны время, комфорт и конфиденциальность. Подбираем борт под маршрут и число гостей, совмещаем авиацию с наземным сервисом, отелями и индивидуальной программой.",
+      "textEn": "Private flights for those who value time, comfort and discretion. We match the aircraft to the route and the party, and combine aviation with ground service, hotels and a private programme.",
+      "image": "/assets/images/services/business-aviation.jpg",
+      "cover": true
     },
     {
       "title": "Персональные трансферы и VIP-сервис в аэропортах",
-      "text": "Индивидуальные трансферы и VIP-сопровождение в аэропортах: ускоренное прохождение контроля, VIP-залы, персональная встреча и помощь на всех этапах."
+      "titleEn": "Private transfers and airport VIP",
+      "short": "VIP-трансфер",
+      "shortEn": "Airport VIP",
+      "text": "Индивидуальные трансферы и VIP-сопровождение в аэропортах: ускоренное прохождение контроля, VIP-залы, персональная встреча и помощь на всех этапах.",
+      "textEn": "Private transfers and VIP airport assistance: fast-track, lounges, a personal meet-and-greet and support at every stage.",
+      "image": "/assets/images/services/vip-transfer.jpg",
+      "cover": true
+    },
+    {
+      "title": "Бронирование премиальных отелей и вилл",
+      "titleEn": "Premium hotels and villas",
+      "short": "Отели · виллы",
+      "shortEn": "Hotels · villas",
+      "text": "Подбор и бронирование премиальных отелей и вилл по всему миру с учетом предпочтений гостей, формата поездки и уровня сервиса.",
+      "textEn": "Selecting and booking premium hotels and villas worldwide, according to the guests’ preferences, the format of the trip and the level of service.",
+      "image": "/assets/images/cases/south-africa/Spier-Hotel-Rooftop-.jpg"
+    },
+    {
+      "title": "Персональный консьерж-сервис",
+      "titleEn": "Personal concierge",
+      "short": "Консьерж",
+      "shortEn": "Concierge",
+      "text": "Организация индивидуальных запросов во время поездки: цветы, подарки, шампанское в номер, подготовка сюрпризов, частные ужины и другие персональные детали путешествия.",
+      "textEn": "Arranging private requests during the trip: flowers, gifts, champagne in the room, surprises, private dinners and other personal details of the journey.",
+      "image": "/assets/images/about/anna-baglay.jpg"
+    },
+    {
+      "title": "Частные экскурсии и уникальные впечатления",
+      "titleEn": "Private tours and rare experiences",
+      "short": "Экскурсии",
+      "shortEn": "Private tours",
+      "text": "Индивидуальные программы с лучшими местными гидами, гастрономические маршруты, дегустации вин, вертолетные экскурсии и редкие впечатления в разных странах.",
+      "textEn": "Private programmes with the best local guides, gastronomic routes, wine tastings, helicopter tours and rare experiences in different countries.",
+      "image": "/assets/images/cases/south-africa/Cheetah-v2-1900x1520.jpg"
+    },
+    {
+      "title": "Яхты и морские прогулки",
+      "titleEn": "Yachts and sea days",
+      "short": "Яхты",
+      "shortEn": "Yachts",
+      "text": "Аренда частных яхт для дневных круизов, увлекательной рыбалки, расслабляющих морских прогулок и организации частных мероприятий на воде подарит вам незабываемые впечатления.",
+      "textEn": "Private yacht charter for day cruises, fishing, quiet sea days and events on the water will give you unforgettable impressions.",
+      "image": "/assets/images/cases/south-africa/pa6sni97r7v43bu8cj0h.jpg"
+    },
+    {
+      "title": "Досуг и мероприятия",
+      "titleEn": "Leisure and events",
+      "short": "События",
+      "shortEn": "Occasions",
+      "text": "Билеты на концерты, в театры, на спортивные мероприятия, модные показы и культурные события, а также доступ на закрытые вечеринки и частные мероприятия.",
+      "textEn": "Tickets to concerts, theatres, sporting events, fashion shows and cultural programmes, as well as access to private parties and closed events.",
+      "image": "/assets/images/cases/south-africa/652516587.webp"
     }
   ]
 }

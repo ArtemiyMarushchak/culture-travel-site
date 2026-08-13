@@ -6,10 +6,15 @@
     <div class="news-list__grid">
       {{#each items}}
       <article class="news-list__item">
-        <a href="{{basePath}}/news/{{slug}}/">
-          <time datetime="{{dateIso}}">{{dateFormatted}}</time>
-          <h2>{{title}}</h2>
-          <p>{{excerpt}}</p>
+        <a class="news-list__card" href="{{basePath}}/news/{{slug}}/">
+          <span class="news-list__media">
+            <img src="{{basePath}}{{cover}}" alt="" loading="lazy" decoding="async" width="720" height="480">
+          </span>
+          <span class="news-list__body">
+            <time datetime="{{dateIso}}">{{dateFormatted}}</time>
+            <h2>{{title}}</h2>
+            <p>{{excerpt}}</p>
+          </span>
         </a>
       </article>
       {{/each}}

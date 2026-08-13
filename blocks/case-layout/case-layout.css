@@ -47,7 +47,7 @@
 }
 
 .case-layout__gallery img {
-  aspect-ratio: 4/3;
+  aspect-ratio: var(--ratio-card);
   object-fit: cover;
   background: var(--color-surface);
 }

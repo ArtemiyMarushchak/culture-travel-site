@@ -1,44 +1,66 @@
 {
   "overline": "Отзывы",
+  "overlineEn": "Reviews",
   "title": "Слово клиентов",
+  "titleEn": "In the guests’ words",
   "lead": "Мы работаем с постоянными гостями — для нас важны доверие, внимание к деталям и долгие отношения.",
+  "leadEn": "We work with returning guests — trust, attention to detail and long relationships matter most.",
   "tabs": {
     "site": "Отзывы гостей",
-    "yandex": "Яндекс"
+    "siteEn": "Guest reviews",
+    "yandex": "Яндекс",
+    "yandexEn": "Yandex"
   },
   "siteNote": "Отзывы на сайте публикуем только с согласия гостей. Ниже — примеры оформления; тексты заменим на реальные.",
+  "siteNoteEn": "Reviews appear here only with the guests’ consent. The texts below are layout examples and will be replaced with real ones.",
   "items": [
     {
       "text": "Каждая деталь была продумана — от трансфера до ужина в месте, о котором не напишут в путеводителях. Спокойный ритм, без суеты, и ощущение, что путешествие собрано именно для нас.",
+      "textEn": "Every detail was considered — from the transfer to dinner in a place no guidebook mentions. A calm rhythm, no fuss, and the sense that the journey was composed for us.",
       "author": "Елена и Михаил",
-      "meta": "Южная Африка · семейная поездка"
+      "authorEn": "Elena and Mikhail",
+      "meta": "Южная Африка · семейная поездка",
+      "metaEn": "South Africa · family trip"
     },
     {
       "text": "Работаем с Анной годами. Она помнит наши привычки, предпочтения по отелям и даже любимые рестораны. Каждый новый маршрут — неожиданный, но всегда точно в наш вкус.",
+      "textEn": "We have travelled with Anna for years. She remembers our habits, hotel preferences and even favourite restaurants. Every new itinerary is unexpected, and always exactly our taste.",
       "author": "Постоянный клиент",
-      "meta": "Частные маршруты · Европа и Азия"
+      "authorEn": "Returning client",
+      "meta": "Частные маршруты · Европа и Азия",
+      "metaEn": "Private itineraries · Europe and Asia"
     },
     {
       "text": "Особенно ценю, что можно делегировать всё: перелёты, отели, экскурсии, столики в ресторанах. На месте остаётся только наслаждаться поездкой — сервис без лишних вопросов и уточнений.",
+      "textEn": "What I value most is being able to hand over everything: flights, hotels, tours, restaurant tables. On the ground there is only the trip itself — service without extra questions.",
       "author": "Александр",
-      "meta": "Кейптаун и винные долины"
+      "authorEn": "Alexander",
+      "meta": "Кейптаун и винные долины",
+      "metaEn": "Cape Town and the wine valleys"
     },
     {
       "text": "Сафари, переезды, отели — всё сшито в одну логичную программу. Не пришлось ни разу думать о мелочах: встречи, тайминг, связь с гидами. Именно таким и должно быть люкс-путешествие.",
+      "textEn": "Safari, transfers, hotels — all stitched into one clear programme. We never had to think about the small things: meetings, timing, guides. This is how luxury travel should feel.",
       "author": "Семья К.",
-      "meta": "Южная Африка · 12 дней"
+      "authorEn": "The K. family",
+      "meta": "Южная Африка · 12 дней",
+      "metaEn": "South Africa · 12 days"
     }
   ],
   "cta": {
     "title": "Оставить отзыв на Яндексе",
+    "titleEn": "Leave a review on Yandex",
     "text": "Если вы уже путешествовали с нами — можно также оставить отзыв на Яндекс.Картах. Это помогает другим гостям узнать о Culture Travel.",
-    "button": "Перейти на Яндекс"
+    "textEn": "If you have already travelled with us, you can also leave a review on Yandex Maps. It helps other guests discover Culture Travel.",
+    "button": "Перейти на Яндекс",
+    "buttonEn": "Go to Yandex"
   },
   "platforms": {
     "yandex": {
       "enabled": true,
       "reviewUrl": "",
-      "widgetNote": "Сюда можно вставить виджет Яндекс.Карт, когда будет готов ID организации."
+      "widgetNote": "Сюда можно вставить виджет Яндекс.Карт, когда будет готов ID организации.",
+      "widgetNoteEn": "A Yandex Maps widget can be placed here once the organisation ID is ready."
     },
     "twogis": {
       "enabled": false,

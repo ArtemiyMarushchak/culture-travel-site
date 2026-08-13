@@ -155,15 +155,28 @@ def telegram_handle(url: str = "") -> str:
     return f"@{match.group(1)}" if match else url
 
 
+def instagram_handle(url: str = "") -> str:
+    match = re.search(r"instagram\.com/([^/?#]+)", url)
+    return f"@{match.group(1)}" if match else url
+
+
 def prepare_hotels_catalog() -> list[dict]:
-    return [
-        {
-            **hotel,
-            "themes": ",".join(hotel.get("themes") or []),
-            "mediaJson": json.dumps(hotel.get("media") or []).replace("'", "&#39;"),
-        }
-        for hotel in list_content_json("content/hotels")
-    ]
+    items = []
+    for hotel in list_content_json("content/hotels"):
+        cover = ""
+        for media in hotel.get("media") or []:
+            if media.get("type") == "image" and media.get("src"):
+                cover = media.get("src")
+                break
+        items.append(
+            {
+                **hotel,
+                "cover": cover or "/assets/images/placeholder.svg",
+                "themes": ",".join(hotel.get("themes") or []),
+                "mediaJson": json.dumps(hotel.get("media") or []).replace("'", "&#39;"),
+            }
+        )
+    return items
 
 
 def prepare_cases_featured() -> list[dict]:
@@ -214,11 +227,18 @@ def prepare_cases_slider(base_path: str = "") -> dict:
             processed.append(
                 {
                     "title": item.get("title") or "",
+                    "titleEn": item.get("titleEn") or "",
                     "text": item.get("text") or "",
+                    "textEn": item.get("textEn") or "",
                     "image": image,
                     "gallery": gallery,
                     "link": link,
                     "badge": item.get("badge") or "",
+                    "country": item.get("country") or item.get("badge") or "",
+                    "countryEn": item.get("countryEn") or "",
+                    "flag": item.get("flag") or "",
+                    "days": int(item.get("days") or 0),
+                    "rating": item.get("rating") or "5.0",
                     "regionId": region,
                     "regionLabel": region_labels.get(region) or "",
                 }
@@ -247,12 +267,34 @@ def prepare_services_catalog() -> dict:
     catalog = read_json("content/services/catalog.json")
     items = []
     for index, item in enumerate(catalog.get("items") or []):
-        items.append({**item, "indexPad": str(index + 1).zfill(2)})
+        items.append(
+            {
+                **item,
+                "indexPad": str(index + 1).zfill(2),
+                "short": item.get("short") or item.get("title") or "",
+                "shortEn": item.get("shortEn") or item.get("titleEn") or "",
+                "image": item.get("image") or "/assets/images/placeholder.svg",
+                "activeClass": " is-active" if index == 0 else "",
+                "coverClass": " is-cover" if item.get("cover") else "",
+                "expanded": "true" if index == 0 else "false",
+                "ariaHidden": "false" if index == 0 else "true",
+            }
+        )
+    first = items[0] if items else {}
     return {
         "overline": catalog.get("overline") or "",
+        "overlineEn": catalog.get("overlineEn") or "",
         "title": catalog.get("title") or "",
+        "titleEn": catalog.get("titleEn") or "",
         "lead": catalog.get("lead") or "",
+        "leadEn": catalog.get("leadEn") or "",
         "items": items,
+        "itemCount": str(len(items)),
+        "firstTitle": first.get("title") or "",
+        "firstTitleEn": first.get("titleEn") or "",
+        "firstText": first.get("text") or "",
+        "firstTextEn": first.get("textEn") or "",
+        "firstImage": first.get("image") or "/assets/images/placeholder.svg",
     }
 
 
@@ -262,36 +304,48 @@ def prepare_reviews_catalog() -> dict:
     tabs = catalog.get("tabs") or {}
     return {
         "overline": catalog.get("overline") or "",
+        "overlineEn": catalog.get("overlineEn") or "",
         "title": catalog.get("title") or "",
+        "titleEn": catalog.get("titleEn") or "",
         "lead": catalog.get("lead") or "",
+        "leadEn": catalog.get("leadEn") or "",
         "tabSiteLabel": tabs.get("site") or "Отзывы гостей",
+        "tabSiteLabelEn": tabs.get("siteEn") or "Guest reviews",
         "tabYandexLabel": tabs.get("yandex") or "Яндекс",
+        "tabYandexLabelEn": tabs.get("yandexEn") or "Yandex",
         "siteNote": catalog.get("siteNote") or "",
+        "siteNoteEn": catalog.get("siteNoteEn") or "",
         "items": catalog.get("items") or [],
         "ctaTitle": (catalog.get("cta") or {}).get("title") or "",
+        "ctaTitleEn": (catalog.get("cta") or {}).get("titleEn") or "",
         "ctaText": (catalog.get("cta") or {}).get("text") or "",
+        "ctaTextEn": (catalog.get("cta") or {}).get("textEn") or "",
         "ctaButton": (catalog.get("cta") or {}).get("button") or "",
+        "ctaButtonEn": (catalog.get("cta") or {}).get("buttonEn") or "",
         "widgetNote": (catalog.get("platforms") or {}).get("yandex", {}).get("widgetNote") or "",
+        "widgetNoteEn": (catalog.get("platforms") or {}).get("yandex", {}).get("widgetNoteEn") or "",
         "yandexReviewUrl": yandex_url or "#",
         "yandexBtnClass": "" if yandex_url else " rv__btn--soon",
     }
 
 
 def prepare_news_list() -> list[dict]:
-    return sorted(
-        [
+    items = []
+    for item in list_content_json("content/news"):
+        cover = item.get("cover")
+        if isinstance(cover, dict):
+            cover = cover.get("image", "")
+        items.append(
             {
                 "slug": item.get("slug"),
                 "title": item.get("title"),
                 "excerpt": item.get("excerpt") or "",
+                "cover": cover or "/assets/images/placeholder.svg",
                 "dateIso": item.get("date"),
                 "dateFormatted": format_date(item.get("date") or ""),
             }
-            for item in list_content_json("content/news")
-        ],
-        key=lambda x: x.get("dateIso") or "",
-        reverse=True,
-    )
+        )
+    return sorted(items, key=lambda x: x.get("dateIso") or "", reverse=True)
 
 
 def resolve_block_data(block: dict, page_data: dict) -> dict:
@@ -343,11 +397,14 @@ def load_block_html(block_type: str, block_data: dict | None = None) -> str:
     legal = site.get("legal") or {}
     developer = site.get("developer") or {}
     telegram = contacts.get("telegram") or social.get("telegram") or ""
+    instagram = social.get("instagram") or ""
 
     merged = {
         **block_data,
         "basePath": site.get("basePath") or "",
         "telegram": telegram,
+        "instagram": instagram,
+        "instagramHandle": instagram_handle(instagram),
         "phone": contacts.get("phone") or "",
         "phoneRaw": re.sub(r"\s", "", contacts.get("phone") or ""),
         "phoneDisplay": format_phone_display(contacts.get("phone") or ""),
@@ -362,7 +419,14 @@ def load_block_html(block_type: str, block_data: dict | None = None) -> str:
         "year": str(datetime.now().year),
     }
     if block_type == "header":
-        merged["nav"] = read_json("core/nav.json")
+        nav_all = read_json("core/nav.json")
+        news_n = len(list_content_json("content/news"))
+        news_count = f"+{news_n}" if news_n else ""
+        merged["newsCount"] = news_count
+        merged["nav"] = [item for item in nav_all if not item.get("aside")]
+        merged["navAside"] = [
+            {**item, "newsCount": news_count} for item in nav_all if item.get("aside")
+        ]
 
     raw_fields = {"body", "content", "casesJson", "hotelsJson", "mediaJson"}
 
@@ -536,6 +600,7 @@ def build_page(page_config: dict, content_data: dict | None = None) -> Path:
     scripts = f'<script type="module" src="{bp}/core/init.js?v={BUILD_ID}"></script>'
     html = (
         layout_template.replace("{{lang}}", site.get("language") or "ru")
+        .replace("{{basePath}}", site.get("basePath") or "")
         .replace("{{head}}", head)
         .replace("{{content}}", f'<main id="main">{content}</main>')
         .replace("{{scripts}}", scripts)
@@ -707,6 +772,204 @@ def generate_config_js() -> None:
     write_out("core/site-config.js", f"export const SITE = {json.dumps(site, ensure_ascii=False, indent=2)};\n")
 
 
+def strip_html(value: str) -> str:
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", value or "")).strip()
+
+
+def generate_search_index() -> None:
+    items = []
+    seen = set()
+
+    def add(item: dict) -> None:
+        key = f"{item.get('type')}|{item.get('href')}|{item.get('title')}"
+        if key in seen:
+            return
+        seen.add(key)
+        items.append(item)
+
+    for case in list_content_json("content/cases"):
+        slug = case.get("slug")
+        if not slug:
+            continue
+        meta = case.get("meta") or {}
+        seo = case.get("seo") or {}
+        add(
+            {
+                "type": "case",
+                "kind": "Авторский тур",
+                "kindEn": "Private tour",
+                "title": case.get("title") or "",
+                "titleEn": case.get("titleEn") or "",
+                "text": " ".join(part for part in [case.get("subtitle"), meta.get("route"), seo.get("description")] if part),
+                "textEn": seo.get("description") or "",
+                "href": f"/cases/{slug}/",
+            }
+        )
+
+    catalog = read_json("content/cases-slider/catalog.json")
+    for group in (catalog.get("cases") or {}).values():
+        for item in group or []:
+            slug = item.get("slug")
+            add(
+                {
+                    "type": "case",
+                    "kind": "Авторский тур",
+                    "kindEn": "Private tour",
+                    "title": item.get("title") or "",
+                    "titleEn": item.get("titleEn") or "",
+                    "text": item.get("text") or "",
+                    "textEn": item.get("textEn") or "",
+                    "href": f"/cases/{slug}/" if slug else "/#cases",
+                }
+            )
+
+    for news in list_content_json("content/news"):
+        slug = news.get("slug")
+        if not slug:
+            continue
+        add(
+            {
+                "type": "news",
+                "kind": "Новость",
+                "kindEn": "News",
+                "title": news.get("title") or "",
+                "titleEn": news.get("titleEn") or "",
+                "text": " ".join(part for part in [news.get("excerpt"), strip_html(news.get("body") or "")] if part),
+                "textEn": news.get("excerpt") or "",
+                "href": f"/news/{slug}/",
+            }
+        )
+
+    for hotel in list_content_json("content/hotels"):
+        slug = hotel.get("slug")
+        if not slug:
+            continue
+        add(
+            {
+                "type": "hotel",
+                "kind": "Отель",
+                "kindEn": "Hotel",
+                "title": hotel.get("name") or hotel.get("title") or "",
+                "titleEn": hotel.get("nameEn") or "",
+                "text": " ".join(part for part in [hotel.get("location"), hotel.get("description")] if part),
+                "textEn": hotel.get("description") or "",
+                "href": f"/hotels/{slug}/",
+            }
+        )
+
+    services = read_json("content/services/catalog.json")
+    for item in services.get("items") or []:
+        add(
+            {
+                "type": "service",
+                "kind": "Услуга",
+                "kindEn": "Service",
+                "title": item.get("title") or "",
+                "titleEn": item.get("titleEn") or "",
+                "text": item.get("text") or "",
+                "textEn": item.get("textEn") or "",
+                "href": "/#services",
+            }
+        )
+
+    for page in (
+        {
+            "type": "page",
+            "kind": "Раздел",
+            "kindEn": "Page",
+            "title": "Новости",
+            "titleEn": "News",
+            "text": "Новости и анонсы Culture Travel",
+            "textEn": "News and announcements",
+            "href": "/news/",
+        },
+        {
+            "type": "page",
+            "kind": "Раздел",
+            "kindEn": "Page",
+            "title": "Отели",
+            "titleEn": "Hotels",
+            "text": "Каталог люкс-отелей",
+            "textEn": "Luxury hotels catalogue",
+            "href": "/hotels/",
+        },
+        {
+            "type": "page",
+            "kind": "Раздел",
+            "kindEn": "Page",
+            "title": "Авторские туры",
+            "titleEn": "Private tours",
+            "text": "Авторские программы Culture Travel",
+            "textEn": "Private Culture Travel programmes",
+            "href": "/tours/",
+        },
+        {
+            "type": "page",
+            "kind": "Раздел",
+            "kindEn": "Page",
+            "title": "Услуги",
+            "titleEn": "Services",
+            "text": "Премиальный сервис Culture Travel",
+            "textEn": "Culture Travel concierge service",
+            "href": "/#services",
+        },
+        {
+            "type": "page",
+            "kind": "Раздел",
+            "kindEn": "Page",
+            "title": "Круизы",
+            "titleEn": "Cruises",
+            "text": "Морские и речные программы",
+            "textEn": "Sea and river programmes",
+            "href": "/cruises/",
+        },
+        {
+            "type": "page",
+            "kind": "Раздел",
+            "kindEn": "Page",
+            "title": "Бизнес авиация",
+            "titleEn": "Business aviation",
+            "text": "Чартерные перелёты и VIP-авиация",
+            "textEn": "Private charter flights",
+            "href": "/business-aviation/",
+        },
+        {
+            "type": "page",
+            "kind": "Раздел",
+            "kindEn": "Page",
+            "title": "Кейсы",
+            "titleEn": "Cases",
+            "text": "Авторские маршруты и реализованные программы",
+            "textEn": "Private itineraries and completed programmes",
+            "href": "/#cases",
+        },
+        {
+            "type": "page",
+            "kind": "Раздел",
+            "kindEn": "Page",
+            "title": "Обо мне",
+            "titleEn": "About",
+            "text": "Анна Баглай — люкс-путешествия",
+            "textEn": "Anna Baglay — luxury travel",
+            "href": "/#about",
+        },
+        {
+            "type": "page",
+            "kind": "Раздел",
+            "kindEn": "Page",
+            "title": "Отзывы",
+            "titleEn": "Reviews",
+            "text": "Отзывы гостей",
+            "textEn": "Guest reviews",
+            "href": "/#reviews",
+        },
+    ):
+        add(page)
+
+    write_out("search.json", json.dumps({"items": items}, ensure_ascii=False) + "\n")
+    print("  ✓ search.json")
+
+
 def build() -> None:
     global sitemap_entries
     sitemap_entries = []
@@ -728,6 +991,7 @@ def build() -> None:
     print("\n📦 Ассеты:")
     copy_static_assets()
     generate_config_js()
+    generate_search_index()
     print("\n🔍 SEO:")
     generate_robots()
     generate_sitemap()

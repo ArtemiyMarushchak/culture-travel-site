@@ -1,22 +1,48 @@
-<section id="anna-services" class="uc-services" data-block="services" aria-labelledby="anna-services-title">
+<section id="anna-services" class="uc-services" data-block="services" data-sv-layout="cover" aria-labelledby="anna-services-title">
   <div class="sv">
-    <div class="sv__head">
-      <p class="sv__overline">{{overline}}</p>
-      <h2 class="sv__title" id="anna-services-title">{{title}}</h2>
-      <p class="sv__lead">{{lead}}</p>
-    </div>
+    <div class="sv__frame">
+      <div class="sv__bar">
+        <h2 class="sv__title" id="anna-services-title" data-i18n="services.title">Мои услуги</h2>
+      </div>
 
-    <div class="sv__grid">
-      {{#each items}}
-      <article class="sv__card">
-        <div class="sv__card-top">
-          <span class="sv__index">{{indexPad}}</span>
-          <span class="sv__line" aria-hidden="true"></span>
-        </div>
-        <h3 class="sv__card-title">{{title}}</h3>
-        <p class="sv__card-text">{{text}}</p>
-      </article>
-      {{/each}}
+      <div class="sv__deck" data-services-deck style="--sv-count: {{itemCount}}">
+        {{#each items}}
+        <article
+          class="sv__pack{{activeClass}}{{coverClass}}"
+          data-service
+          style="--sv-i: {{index}}"
+          aria-hidden="{{ariaHidden}}"
+        >
+          <svg class="sv__outline" aria-hidden="true" focusable="false">
+            <path data-service-outline fill="none"></path>
+          </svg>
+          <div class="sv__sheet" data-service-sheet>
+            <button
+              class="sv__tab{{activeClass}}"
+              type="button"
+              data-service-fin
+              aria-pressed="{{expanded}}"
+            >
+              <span class="sv__tab-name" data-i18n-src data-ru="{{short}}" data-en="{{shortEn}}">{{short}}</span>
+            </button>
+            <div class="sv__body">
+              <div class="sv__photo">
+                <img
+                  src="{{basePath}}{{image}}"
+                  alt="{{title}}"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </div>
+              <div class="sv__copy">
+                <h3 class="sv__name" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</h3>
+                <p class="sv__text" data-i18n-src data-ru="{{text}}" data-en="{{textEn}}">{{text}}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+        {{/each}}
+      </div>
     </div>
   </div>
 </section>

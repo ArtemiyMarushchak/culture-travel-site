@@ -8,8 +8,9 @@
       "template": "case",
       "listBlocks": {
         "home": "cases-slider",
-        "page": null
+        "page": "tours-list"
       },
+      "listPage": "/tours/",
       "cardOnHome": true,
       "featuredField": "featured"
     },

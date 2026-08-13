@@ -1,0 +1,8 @@
+{
+  "slug": "/tours/",
+  "title": "Авторские туры",
+  "description": "Авторские программы Culture Travel — индивидуальные маршруты по всему миру.",
+  "blocks": [
+    { "type": "tours-list", "data": { "source": "content/cases" } }
+  ]
+}

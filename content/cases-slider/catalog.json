@@ -1,6 +1,6 @@
 {
   "regions": [
-    { "id": "all", "label": "Все" },
+    { "id": "all", "label": "Все направления" },
     { "id": "africa", "label": "Африка" },
     { "id": "asia", "label": "Азия" },
     { "id": "europe", "label": "Европа" },
@@ -13,8 +13,13 @@
     "africa": [
       {
         "title": "Южная Африка",
+        "titleEn": "South Africa",
+        "country": "ЮАР",
+        "countryEn": "South Africa",
+        "flag": "🇿🇦",
         "badge": "ЮАР",
         "text": "Сафари Большого Крюгера, океанские панорамы Кейптауна и винные долины Западного Кейпа.",
+        "textEn": "Greater Kruger safari, Cape Town ocean views and the wine valleys of the Western Cape.",
         "image": "/assets/images/cases/south-africa/fquqbf9uhv7js450n4hd.jpg",
         "gallery": [
           "/assets/images/cases/south-africa/fquqbf9uhv7js450n4hd.jpg",
@@ -22,105 +27,209 @@
           "/assets/images/cases/south-africa/652516587.webp",
           "/assets/images/cases/south-africa/pa6sni97r7v43bu8cj0h.jpg"
         ],
-        "slug": "south-africa"
+        "slug": "south-africa",
+        "days": 12,
+        "rating": "5.0"
       },
       {
         "title": "Намибия",
-        "badge": "NAM",
+        "titleEn": "Namibia",
+        "country": "Намибия",
+        "countryEn": "Namibia",
+        "flag": "🇳🇦",
+        "badge": "Намибия",
         "text": "Пустыни, бескрайние дороги, лоджи среди дюн и спокойная экспедиционная эстетика.",
+        "textEn": "Deserts, endless roads, lodges among the dunes and a quiet expedition aesthetic.",
+        "days": 14,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Кения и Танзания",
-        "badge": "KE / TZ",
+        "titleEn": "Kenya and Tanzania",
+        "country": "Кения",
+        "countryEn": "Kenya",
+        "flag": "🇰🇪",
+        "badge": "Кения",
         "text": "Саванна, Великая миграция, сафари-лоджи и одно из самых сильных природных впечатлений Африки.",
+        "textEn": "Savannah, the Great Migration, safari lodges and one of Africa’s strongest natural experiences.",
+        "days": 7,
         "image": "/assets/images/placeholder.svg"
       }
     ],
     "asia": [
       {
         "title": "Япония",
+        "titleEn": "Japan",
+        "country": "Япония",
+        "countryEn": "Japan",
+        "flag": "🇯🇵",
         "text": "Токио, Киото, сезонные маршруты, гастрономия и private-ритм путешествия.",
+        "textEn": "Tokyo, Kyoto, seasonal itineraries, gastronomy and a private travel rhythm.",
+        "days": 12,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Китай",
+        "titleEn": "China",
+        "country": "Китай",
+        "countryEn": "China",
+        "flag": "🇨🇳",
         "text": "Горы Чжанцзяцзе, древние города, панорамные ландшафты и сильная культурная программа.",
+        "textEn": "Zhangjiajie mountains, ancient cities, panoramic landscapes and a strong cultural programme.",
+        "days": 14,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Индонезия",
+        "titleEn": "Indonesia",
+        "country": "Индонезия",
+        "countryEn": "Indonesia",
+        "flag": "🇮🇩",
         "text": "Острова, виллы, океан, храмы и мягкий маршрут с акцентом на отдых и атмосферу.",
+        "textEn": "Islands, villas, ocean, temples and a gentle itinerary focused on rest and atmosphere.",
+        "days": 7,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Мальдивы",
+        "titleEn": "Maldives",
+        "country": "Мальдивы",
+        "countryEn": "Maldives",
+        "flag": "🇲🇻",
         "text": "Виллы над водой, приватность, высокий сервис и подбор курорта под конкретный стиль отдыха.",
+        "textEn": "Overwater villas, privacy, high service and a resort chosen for a specific way of rest.",
+        "days": 7,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Шри-Ланка",
+        "titleEn": "Sri Lanka",
+        "country": "Шри-Ланка",
+        "countryEn": "Sri Lanka",
+        "flag": "🇱🇰",
         "text": "Чайные плантации, океан, колониальные отели и маршрут в спокойном премиальном ритме.",
+        "textEn": "Tea plantations, ocean, colonial hotels and an itinerary in a calm premium rhythm.",
+        "days": 12,
         "image": "/assets/images/placeholder.svg"
       }
     ],
     "europe": [
       {
         "title": "Италия",
+        "titleEn": "Italy",
+        "country": "Италия",
+        "countryEn": "Italy",
+        "flag": "🇮🇹",
         "text": "Озера, виллы, гастрономия, города искусства и отели с настоящим европейским характером.",
+        "textEn": "Lakes, villas, gastronomy, cities of art and hotels with a true European character.",
+        "days": 14,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Франция",
+        "titleEn": "France",
+        "country": "Франция",
+        "countryEn": "France",
+        "flag": "🇫🇷",
         "text": "Париж, Прованс, Лазурный берег и маршруты с акцентом на гастрономию и стиль.",
+        "textEn": "Paris, Provence, the Côte d’Azur and itineraries focused on gastronomy and style.",
+        "days": 7,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Балканы",
+        "titleEn": "The Balkans",
+        "country": "Балканы",
+        "countryEn": "The Balkans",
+        "flag": "🇲🇪",
         "text": "Сараево, Мостар, Котор, Албания и красивая программа с частными гидами и логистикой.",
+        "textEn": "Sarajevo, Mostar, Kotor, Albania and a considered programme with private guides and logistics.",
+        "days": 12,
         "image": "/assets/images/placeholder.svg"
       }
     ],
     "southAmerica": [
       {
         "title": "Перу",
+        "titleEn": "Peru",
+        "country": "Перу",
+        "countryEn": "Peru",
+        "flag": "🇵🇪",
         "text": "Анды, Мачу-Пикчу, колониальные города и сильная культурная программа.",
+        "textEn": "The Andes, Machu Picchu, colonial cities and a strong cultural programme.",
+        "days": 14,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Патагония",
+        "titleEn": "Patagonia",
+        "country": "Аргентина",
+        "countryEn": "Argentina",
+        "flag": "🇦🇷",
         "text": "Ледники, горы, редкая география и путешествие для тех, кто любит масштаб природы.",
+        "textEn": "Glaciers, mountains, rare geography and a journey for those who love the scale of nature.",
+        "days": 20,
         "image": "/assets/images/placeholder.svg"
       }
     ],
     "northAmerica": [
       {
         "title": "США",
+        "titleEn": "USA",
+        "country": "США",
+        "countryEn": "USA",
+        "flag": "🇺🇸",
         "text": "Калифорния, Лас-Вегас, каньоны, Нью-Йорк и маршрут с красивой динамикой переездов.",
+        "textEn": "California, Las Vegas, the canyons, New York and an itinerary with a strong travel rhythm.",
+        "days": 14,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Бермуды",
+        "titleEn": "Bermuda",
+        "country": "Бермуды",
+        "countryEn": "Bermuda",
+        "flag": "🇧🇲",
         "text": "Атлантика, розовые пляжи, спокойные отели и камерный островной отдых.",
+        "textEn": "The Atlantic, pink beaches, quiet hotels and intimate island rest.",
+        "days": 7,
         "image": "/assets/images/placeholder.svg"
       }
     ],
     "australia": [
       {
         "title": "Австралия",
+        "titleEn": "Australia",
+        "country": "Австралия",
+        "countryEn": "Australia",
+        "flag": "🇦🇺",
         "text": "Сидней, океанские дороги, природа и маршрут с большим количеством воздуха.",
+        "textEn": "Sydney, ocean roads, nature and an itinerary with a lot of space to breathe.",
+        "days": 20,
         "image": "/assets/images/placeholder.svg"
       },
       {
         "title": "Новая Зеландия",
+        "titleEn": "New Zealand",
+        "country": "Новая Зеландия",
+        "countryEn": "New Zealand",
+        "flag": "🇳🇿",
         "text": "Озера, фьорды, вертолетные впечатления и редкая природная драматургия.",
+        "textEn": "Lakes, fjords, helicopter moments and rare natural drama.",
+        "days": 14,
         "image": "/assets/images/placeholder.svg"
       }
     ],
     "antarctica": [
       {
         "title": "Антарктида",
+        "titleEn": "Antarctica",
+        "country": "Антарктида",
+        "countryEn": "Antarctica",
+        "flag": "🇦🇶",
         "text": "Экспедиционный круиз, ледяные ландшафты, пингвины и путешествие на край света.",
+        "textEn": "An expedition cruise, ice landscapes, penguins and a journey to the edge of the world.",
+        "days": 20,
         "image": "/assets/images/placeholder.svg"
       }
     ]

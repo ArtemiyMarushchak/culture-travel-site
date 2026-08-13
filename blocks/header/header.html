@@ -2,8 +2,16 @@
   <div class="lh__inner">
     <a class="lh__logo" href="{{basePath}}/" aria-label="Культура путешествий — на главную">
       <img
-        class="lh__logo-img"
+        class="lh__logo-img lh__logo-img--on-dark"
         src="{{basePath}}/assets/icons/logo-white.svg"
+        alt=""
+        width="144"
+        height="50"
+        decoding="async"
+      >
+      <img
+        class="lh__logo-img lh__logo-img--on-light"
+        src="{{basePath}}/assets/icons/logo-black.svg"
         alt=""
         width="144"
         height="50"
@@ -17,43 +25,218 @@
         class="lh__nav-link"
         href="{{basePath}}{{href}}"
         data-anchor="{{anchor}}"
+        data-i18n="{{i18n}}"
       >{{label}}</a>
       {{/each}}
     </nav>
 
-    <div class="lh__actions">
-      <a class="lh__cta" href="{{telegram}}" target="_blank" rel="noopener noreferrer">
-        <svg class="lh__cta-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M13 6h6v2h-6V6Zm3 3c-6.3 0-11.43 4.84-11.94 11H2v5h28v-5h-2.06C27.43 13.84 22.3 9 16 9Zm0 2c5.23 0 9.45 3.91 9.94 9H6.06C6.55 14.91 10.77 11 16 11ZM4 22h24v1H4v-1Z"/>
+    <form class="lh__bar-search" data-search-form="overlay" autocomplete="off" aria-hidden="true">
+      <svg class="lh__find-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20 20 16.65 16.65" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <input
+        class="lh__bar-search-input"
+        type="search"
+        name="q"
+        data-search-input="overlay"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Поиск по сайту"
+      >
+      <button class="lh__find-clear" type="button" data-search-close aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
         </svg>
-        <span>Связаться</span>
-      </a>
-    </div>
+      </button>
+      <div class="lh__bar-results" data-search-results="overlay" hidden></div>
+    </form>
 
-    <button class="lh__burger" type="button" aria-expanded="false" aria-controls="lh-topmenu" aria-label="Открыть меню">
-      <span class="lh__burger-box" aria-hidden="true">
-        <i></i><i></i><i></i>
-      </span>
-    </button>
+    <div class="lh__cluster">
+      {{#each navAside}}
+      <span class="lh__rule lh__rule--news" aria-hidden="true"></span>
+      <div class="lh__news-search">
+        <a
+          class="lh__nav-link lh__nav-link--aside"
+          href="{{basePath}}{{href}}"
+          data-anchor="{{anchor}}"
+        >
+          <span data-i18n="{{i18n}}">{{label}}</span>
+          <span class="lh__badge">{{newsCount}}</span>
+        </a>
+        <button
+          class="lh__search"
+          type="button"
+          data-search-open
+          aria-label="Поиск"
+          data-i18n-aria="header.search"
+        >
+          <svg class="lh__search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 20 16.65 16.65" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      {{/each}}
+      <span class="lh__rule" aria-hidden="true"></span>
+      <a class="lh__cta" href="{{telegram}}" target="_blank" rel="noopener noreferrer">
+        <span data-i18n="cta.contact">Связаться со мной</span>
+      </a>
+      <span class="lh__rule" aria-hidden="true"></span>
+      <button
+        class="lh__theme"
+        type="button"
+        data-theme-toggle
+        aria-pressed="true"
+        aria-label="Светлая тема"
+        data-i18n-aria="header.themeToLight"
+      >
+        <svg class="lh__theme-icon lh__theme-icon--sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12 2.75v2.1M12 19.15v2.1M21.25 12h-2.1M4.85 12H2.75M18.54 5.46l-1.49 1.49M6.95 17.05l-1.49 1.49M18.54 18.54l-1.49-1.49M6.95 6.95 5.46 5.46" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <svg class="lh__theme-icon lh__theme-icon--moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19.2 14.75A7.75 7.75 0 1 1 9.25 4.8C9.54 4.69 9.82 5 9.71 5.28A6.45 6.45 0 0 0 18.72 14.29C19 14.18 19.31 14.46 19.2 14.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="lh__rule" aria-hidden="true"></span>
+      <button
+        class="lh__lang"
+        type="button"
+        data-lang-toggle
+        aria-label="English"
+      ><span data-lang-code>EN</span></button>
+      <span class="lh__rule lh__rule--menu" aria-hidden="true"></span>
+      <button class="lh__burger" type="button" aria-expanded="false" aria-controls="lh-topmenu" aria-label="Открыть меню" data-i18n-aria="header.menuOpen">
+        <span class="lh__burger-box" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+      </button>
+    </div>
   </div>
 
   <div class="lh__topmenu" id="lh-topmenu" aria-hidden="true">
     <div class="lh__topmenu-inner">
-      <nav class="lh__menu-links" aria-label="Мобильное меню">
-        {{#each nav}}
-        <a
-          class="lh__menu-link"
-          href="{{basePath}}{{href}}"
-          data-anchor="{{anchor}}"
-        >{{label}}</a>
-        {{/each}}
-      </nav>
+      <div class="lh__menu-brand">
+        <a class="lh__menu-brand-logo" href="{{basePath}}/" aria-label="Культура путешествий — на главную">
+          <img
+            class="lh__logo-img lh__logo-img--on-dark"
+            src="{{basePath}}/assets/icons/logo-white.svg"
+            alt=""
+            width="144"
+            height="50"
+            decoding="async"
+          >
+          <img
+            class="lh__logo-img lh__logo-img--on-light"
+            src="{{basePath}}/assets/icons/logo-black.svg"
+            alt=""
+            width="144"
+            height="50"
+            decoding="async"
+          >
+        </a>
+        <button
+          class="lh__menu-close"
+          type="button"
+          data-menu-close
+          aria-label="Закрыть меню"
+          data-i18n-aria="header.menuClose"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="lh__menu-search-results" data-search-results="menu" hidden></div>
+      <div class="lh__menu-group">
+        <nav class="lh__menu-links" aria-label="Мобильное меню">
+          {{#each nav}}
+          <a
+            class="lh__menu-link"
+            href="{{basePath}}{{href}}"
+            data-anchor="{{anchor}}"
+            data-i18n="{{i18n}}"
+          >{{label}}</a>
+          {{/each}}
+          {{#each navAside}}
+          <a
+            class="lh__menu-link"
+            href="{{basePath}}{{href}}"
+            data-anchor="{{anchor}}"
+          >
+            <span data-i18n="{{i18n}}">{{label}}</span>
+            <span class="lh__badge">{{newsCount}}</span>
+          </a>
+          {{/each}}
+        </nav>
+      </div>
+      <div class="lh__menu-group lh__menu-group--prefs">
+        <div class="lh__menu-prefs">
+          <button
+            class="lh__menu-pref lh__menu-pref--switch"
+            type="button"
+            data-theme-toggle
+            role="switch"
+            aria-pressed="true"
+            aria-label="Тёмная тема"
+            data-i18n-aria="header.themeToDark"
+          >
+            <span data-i18n="header.themeToDark">Тёмная тема</span>
+            <span class="lh__switch" aria-hidden="true">
+              <span class="lh__switch-knob"></span>
+            </span>
+          </button>
+          <button
+            class="lh__menu-pref lh__menu-pref--lang"
+            type="button"
+            data-lang-toggle
+            aria-label="English"
+          >
+            <span data-i18n="header.lang">Язык</span>
+            <span class="lh__menu-pref-value" data-lang-current>RU</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="lh__menu-dock">
       <a class="lh__menu-cta" href="{{telegram}}" target="_blank" rel="noopener noreferrer">
-        <span>Связаться</span>
-        <svg class="lh__cta-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M13 6h6v2h-6V6Zm3 3c-6.3 0-11.43 4.84-11.94 11H2v5h28v-5h-2.06C27.43 13.84 22.3 9 16 9Zm0 2c5.23 0 9.45 3.91 9.94 9H6.06C6.55 14.91 10.77 11 16 11ZM4 22h24v1H4v-1Z"/>
-        </svg>
+        <span data-i18n="cta.contact">Связаться со мной</span>
       </a>
+      <button
+        class="lh__menu-search-fab"
+        type="button"
+        data-menu-search-open
+        aria-expanded="false"
+        aria-label="Поиск"
+        data-i18n-aria="header.search"
+      >
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 20 16.65 16.65" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <form class="lh__menu-search" data-search-form="menu" autocomplete="off">
+        <svg class="lh__find-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 20 16.65 16.65" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <input
+          class="lh__menu-search-input"
+          type="search"
+          name="q"
+          data-search-input="menu"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Поиск по сайту"
+          enterkeyhint="search"
+        >
+        <button class="lh__find-clear" type="button" data-search-clear="menu" aria-label="Закрыть поиск">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
     </div>
   </div>
 </header>

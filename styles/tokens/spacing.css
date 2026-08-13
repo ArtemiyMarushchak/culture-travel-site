@@ -31,9 +31,9 @@
   --gap-nav: var(--header-nav-gap);
 
   /* Section vertical rhythm */
-  --section-space-mobile: 72px;
-  --section-space-tablet: 96px;
-  --section-space-desktop: 120px;
+  --section-space-mobile: 88px;
+  --section-space-tablet: 112px;
+  --section-space-desktop: 144px;
   --space-section: clamp(var(--section-space-mobile), 8vw, var(--section-space-desktop));
 
   --section-gap-mobile: 32px;
