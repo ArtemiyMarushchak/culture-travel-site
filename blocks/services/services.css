@@ -8,7 +8,6 @@
   --sv-body-r: var(--radius);
   --sv-idle: var(--color-shape);
   --sv-folder: var(--color-shape);
-  --sv-edge: color-mix(in srgb, var(--color-ink-on-shape) 16%, transparent);
   position: relative;
   z-index: var(--z-content, 5);
   width: 100vw;
@@ -104,37 +103,7 @@ html[data-theme="dark"] .sv__pack.is-active {
 }
 
 .sv__outline {
-  position: absolute;
-  inset: -3px;
-  z-index: 20;
-  width: calc(100% + 6px);
-  height: calc(100% + 6px);
-  overflow: visible;
-  pointer-events: none;
-}
-
-html[data-theme="dark"] #anna-services {
-  --sv-edge: color-mix(in srgb, var(--color-white) 32%, transparent);
-}
-
-.sv__outline path {
-  fill: none;
-  stroke: var(--sv-edge);
-  stroke-width: 0.5;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-}
-
-.sv__pack.is-active .sv__outline path {
-  stroke: color-mix(in srgb, var(--color-ink-on-shape) 36%, transparent);
-}
-
-html[data-theme="dark"] .sv__outline path {
-  stroke-width: 0.5;
-}
-
-html[data-theme="dark"] .sv__pack.is-active .sv__outline path {
-  stroke: color-mix(in srgb, var(--color-white) 55%, transparent);
+  display: none;
 }
 
 .sv__tab {
@@ -404,16 +373,7 @@ html[data-theme="dark"] .sv__pack.is-active .sv__outline path {
     pointer-events: auto;
   }
 
-  html[data-theme="dark"] .sv__sheet {
-    filter: none;
-  }
-
-  .sv__outline {
-    display: block;
-  }
-
   .sv__tab {
-    display: flex;
     padding: 0 12px;
     pointer-events: auto;
     cursor: default;
