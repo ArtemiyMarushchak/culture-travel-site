@@ -10,8 +10,9 @@ function folderPath(w, h, tabX, tabW, tabH, r, s) {
   const tr = Math.min(w, tabX + tabW);
   const leftFlush = tl <= 0.75;
   const rightFlush = tr >= w - 0.75;
+  const tabR = Math.min(18, Math.max(12, (tr - tl) * 0.12));
+  const sx = Math.max(s, 72) / 88;
   const sy = tabH / 52;
-  const u = Math.max(s, 8) / 63.36;
 
   const parts = [];
   const M = (x, y) => parts.push(`M${x} ${y}`);
@@ -20,23 +21,23 @@ function folderPath(w, h, tabX, tabW, tabH, r, s) {
   const C = (x1, y1, x2, y2, x, y) => parts.push(`C${x1} ${y1} ${x2} ${y2} ${x} ${y}`);
 
   if (leftFlush) {
-    M(0, r);
-    C(0, r * k, r * k, 0, r, 0);
+    M(0, tabR);
+    C(0, tabR * k, tabR * k, 0, tabR, 0);
   } else {
     M(0, tabH + r);
     C(0, tabH + r * k, r * k, tabH, r, tabH);
-    H(Math.max(r, tl - s));
-    C(tl - 47.52 * u, tabH, tl - 34.56 * u, 40 * sy, tl - 27.36 * u, 22 * sy);
-    C(tl - 21.6 * u, 8 * sy, tl - 11.52 * u, 0, tl, 0);
+    H(Math.max(r, tl - 88 * sx));
+    C(tl - 66 * sx, tabH, tl - 48 * sx, 40 * sy, tl - 38 * sx, 22 * sy);
+    C(tl - 30 * sx, 8 * sy, tl - 16 * sx, 0, tl, 0);
   }
 
   if (rightFlush) {
-    H(w - r);
-    C(w - r * k, 0, w, r * k, w, r);
+    H(w - tabR);
+    C(w - tabR * k, 0, w, tabR * k, w, tabR);
   } else {
     H(tr);
-    C(tr + 11.52 * u, 0, tr + 21.6 * u, 8 * sy, tr + 27.36 * u, 22 * sy);
-    C(tr + 34.56 * u, 40 * sy, tr + 47.52 * u, tabH, Math.min(w - r, tr + s), tabH);
+    C(tr + 16 * sx, 0, tr + 30 * sx, 8 * sy, tr + 38 * sx, 22 * sy);
+    C(tr + 48 * sx, 40 * sy, tr + 66 * sx, tabH, Math.min(w - r, tr + 88 * sx), tabH);
     H(w - r);
     C(w - r * k, tabH, w, tabH + r * k, w, tabH + r);
   }
@@ -45,7 +46,7 @@ function folderPath(w, h, tabX, tabW, tabH, r, s) {
   C(w, h - r * k, w - r * k, h, w - r, h);
   H(r);
   C(r * k, h, 0, h - r * k, 0, h - r);
-  V(leftFlush ? r : tabH + r);
+  V(leftFlush ? tabR : tabH + r);
   parts.push("Z");
   return parts.join("");
 }
@@ -83,17 +84,17 @@ export function initServices(root) {
 
   function paintShapes() {
     const styles = getComputedStyle(root);
-    const tabH = parseFloat(styles.getPropertyValue("--sv-tab-h")) || 42;
+    const tabH = parseFloat(styles.getPropertyValue("--sv-tab-h")) || 36;
     const bodyR = parseFloat(styles.getPropertyValue("--sv-body-r")) || 10;
-    const gap = parseFloat(styles.getPropertyValue("--sv-tab-gap")) || 22;
+    const gap = parseFloat(styles.getPropertyValue("--sv-tab-gap")) || 46;
     if (bar) root.style.setProperty("--sv-bar-h", `${bar.offsetHeight}px`);
 
     if (desktop.matches) {
       const w = deck.offsetWidth;
       const h = packs[0]?.offsetHeight || 0;
       if (!w || !h) return;
-      const tabW = (w - gap * (count - 1)) / count;
-      const shoulder = Math.min(18, Math.max(12, gap * 0.82));
+      const tabW = Math.min(122, (w - gap * (count - 1)) / count);
+      const shoulder = 76;
       packs.forEach((pack, i) => {
         applyShape(pack, w, h, i * (tabW + gap), tabW, tabH, bodyR, shoulder);
       });
@@ -106,7 +107,7 @@ export function initServices(root) {
       if (!w || !h) return;
       const tabW = Math.min(w * 0.78, Math.max(168, w * 0.64));
       const tabX = i % 2 === 1 ? w - tabW : 0;
-      applyShape(pack, w, h, tabX, tabW, tabH, bodyR, 22);
+      applyShape(pack, w, h, tabX, tabW, tabH, bodyR, 32);
     });
   }
 

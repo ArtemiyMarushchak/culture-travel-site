@@ -1,8 +1,8 @@
 /* #anna-services — папки одна на другой, хлястики по верхнему краю слева направо */
 
 #anna-services {
-  --sv-tab-h: 42px;
-  --sv-tab-gap: 22px;
+  --sv-tab-h: 36px;
+  --sv-tab-gap: 46px;
   --sv-body-r: var(--radius);
   --sv-idle: #F2F1EF;
   --sv-folder: #ffffff;
@@ -138,7 +138,7 @@ html[data-theme="dark"] .sv__pack.is-active {
   justify-content: center;
   width: var(--sv-tab-w, calc((100% - (var(--sv-count, 7) - 1) * var(--sv-tab-gap)) / var(--sv-count, 7)));
   height: var(--sv-tab-h);
-  padding: 0 8px;
+  padding: 0 6px;
   border: 0;
   background: transparent;
   color: inherit;
@@ -158,10 +158,10 @@ html[data-theme="dark"] .sv__pack.is-active {
   display: block;
   width: 100%;
   overflow: hidden;
-  font-size: var(--text-overline-desktop);
+  font-size: 11px;
   line-height: 1;
   font-weight: var(--font-weight-title);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--color-text-dark);
   text-align: center;
@@ -337,7 +337,7 @@ html[data-theme="dark"] .sv__pack.is-active {
 
 @media (max-width: 1180px) {
   #anna-services {
-    --sv-tab-h: 42px;
+    --sv-tab-h: 38px;
     min-height: 0;
     overflow: visible;
   }
