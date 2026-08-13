@@ -23,8 +23,8 @@
   width: min(100%, 32rem);
   max-height: 85dvh;
   overflow-y: auto;
-  background: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
+  background: var(--color-shape);
+  border: 1px solid var(--color-line);
   padding: var(--space-xl);
   box-shadow: var(--shadow-soft);
 }
@@ -39,7 +39,7 @@
   right: var(--space-sm);
   font-size: 1.5rem;
   line-height: 1;
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
 }
 
 .modal__title {
@@ -49,7 +49,7 @@
 }
 
 .modal__body {
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
 }
 
 .modal__body p + p { margin-top: var(--space-sm); }
@@ -66,5 +66,5 @@
 }
 
 .modal__gallery video {
-  background: var(--color-black);
+  background: var(--color-header);
 }

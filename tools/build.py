@@ -497,6 +497,7 @@ def build_head(meta: dict) -> str:
             "ogImage": full_url(meta.get("ogImage") or seo_defaults.get("defaultOgImage")),
             "locale": site.get("locale") or "ru_RU",
             "basePath": site.get("basePath") or "",
+            "buildId": BUILD_ID,
             "jsonLd": json_ld,
         },
         raw_fields={"jsonLd"},
@@ -669,6 +670,7 @@ def copy_static_assets() -> None:
             ignore=shutil.ignore_patterns("*.html"),
         )
     bust_module_imports()
+    bust_css_imports()
 
 
 def bust_module_imports() -> None:
@@ -677,6 +679,16 @@ def bust_module_imports() -> None:
     for path in DIST.rglob("*.js"):
         text = path.read_text(encoding="utf-8")
         updated = pattern.sub(rf"\1?v={BUILD_ID}\2", text)
+        if updated != text:
+            path.write_text(updated, encoding="utf-8")
+
+
+def bust_css_imports() -> None:
+    """Append ?v=BUILD_ID to relative CSS @imports so theme tokens are not served stale."""
+    pattern = re.compile(r"(url\((['\"]?)(?![a-z]+:)([^'\")]+?\.css))(\2\))", re.I)
+    for path in DIST.rglob("*.css"):
+        text = path.read_text(encoding="utf-8")
+        updated = pattern.sub(rf"url(\2\3?v={BUILD_ID}\4", text)
         if updated != text:
             path.write_text(updated, encoding="utf-8")
 

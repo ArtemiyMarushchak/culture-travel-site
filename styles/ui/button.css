@@ -42,14 +42,14 @@
 }
 
 .btn--solid {
-  background: var(--color-black);
-  border-color: var(--color-black);
+  background: var(--color-header);
+  border-color: var(--color-header);
   color: var(--color-white);
 }
 
 .btn--ghost {
-  border-color: var(--line-dark);
-  color: var(--color-text-dark);
+  border-color: var(--color-line);
+  color: var(--color-ink);
 }
 
 .ui-btn:hover {
@@ -67,7 +67,7 @@
 }
 
 .ui-btn--outline-light {
-  border-color: var(--line-light);
+  border-color: var(--color-white);
   color: var(--color-white);
   opacity: var(--ui-link-opacity);
 }
@@ -102,12 +102,12 @@
 }
 
 .theme-light .ui-link {
-  color: var(--text-primary);
+  color: var(--color-ink);
 }
 
 .theme-light .ui-link:hover {
   opacity: var(--ui-link-hover-opacity);
-  color: var(--text-primary);
+  color: var(--color-ink);
 }
 
 .theme-light .ui-link.is-active {

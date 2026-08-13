@@ -27,7 +27,7 @@
 .tours-list__lead {
   max-width: 42rem;
   margin: 0 0 var(--space-2xl);
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
 }
 
 .tours-list__grid {
@@ -42,7 +42,7 @@
   height: 100%;
   overflow: hidden;
   border-radius: var(--radius);
-  background: var(--color-card);
+  background: var(--color-shape);
   text-decoration: none !important;
   color: inherit;
 }
@@ -51,7 +51,7 @@
   display: block;
   aspect-ratio: var(--ratio-card);
   overflow: hidden;
-  background: var(--color-paper-deep);
+  background: var(--color-shape);
 }
 
 .tours-list__media img {
@@ -82,7 +82,7 @@
 
 .tours-list__body p {
   margin: 0;
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
   font-size: 14px;
   line-height: 1.5;
 }

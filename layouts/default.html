@@ -4,6 +4,25 @@
   {{head}}
 </head>
 <body>
+  <div class="ct-preloader" id="ct-preloader" aria-hidden="true">
+    <canvas
+      class="ct-preloader__canvas"
+      width="771"
+      height="450"
+      data-sign="{{basePath}}/assets/images/signature-preloader.png"
+    ></canvas>
+    <svg class="ct-preloader__paths" viewBox="0 0 257 150" aria-hidden="true">
+      <path data-width="24" d="M13 141 C9 120 8 94 16 76 C22 64 30 60 36 65 C39 76 37 100 34 118 C32 126 30 130 27 129"/>
+      <path data-width="8" d="M41 122 L43.5 120.5"/>
+      <path data-width="20" d="M111 17 C108 40 106 70 104 95"/>
+      <path data-width="22" d="M99 46 C88 56 78 66 73 82 69 98 C63 114 54 122 49 124"/>
+      <path data-width="20" d="M79 68 C88 76 84 98 73 114 C67 124 58 126 53 122"/>
+      <path data-width="20" d="M90 116 C96 104 101 102 108 110 C116 116 124 116 132 112 C140 106 148 112 157 110 C166 107 176 108 186 104 C196 101 204 98 210 90"/>
+      <path data-width="16" d="M118 92 C122 84 128 88 132 96 C128 104 122 108 118 100"/>
+      <path data-width="18" d="M120 68 C142 54 164 42 186 38"/>
+      <path data-width="26" d="M207 82 C213 68 222 52 231 36 C238 24 245 12 248 8"/>
+    </svg>
+  </div>
   <a class="skip-link" href="#main" data-i18n="skip">Перейти к содержимому</a>
   {{content}}
   {{scripts}}

@@ -30,7 +30,7 @@
 /* Цвет через currentColor — задай color на родителе */
 .ui-icon--gold   { color: var(--color-gold); }
 .ui-icon--white  { color: var(--color-white); }
-.ui-icon--black  { color: var(--color-black); }
+.ui-icon--black  { color: var(--color-ink); }
 
 /* Логотип */
 .ui-logo {
@@ -52,7 +52,7 @@
 .ui-logo--header { --logo-height: 50px; }
 .ui-logo--footer { --logo-height: 22px; }
 
-/* Split logo: компас + живой текст Manrope (опционально) */
+/* Split logo: компас + живой текст Montserrat (опционально) */
 .ui-logo--split {
   display: inline-flex;
   align-items: center;
@@ -70,4 +70,4 @@
 }
 
 .theme-dark .ui-logo__text { color: var(--color-white); }
-.theme-light .ui-logo__text { color: var(--color-black); }
+.theme-light .ui-logo__text { color: var(--color-ink); }

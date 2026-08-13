@@ -16,7 +16,7 @@
   top: 0;
   z-index: calc(var(--z-header, 10000) + 1);
   padding: 10px 14px;
-  background: var(--color-black);
+  background: var(--color-header);
   color: var(--color-white);
   text-decoration: none;
   transform: translateY(-120%);
@@ -39,21 +39,21 @@ script[type='application/ld+json'],
 .text-center { text-align: center; }
 
 .text-muted {
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
 }
 
 .text-subtle {
-  color: var(--color-text-subtle);
+  color: var(--color-ink-soft);
 }
 
 .text-secondary {
-  color: var(--text-secondary);
+  color: var(--color-ink-muted);
 }
 
 .theme-dark .text-secondary,
 .ui-section--dark .text-secondary,
 .footer .text-secondary {
-  color: var(--text-light-secondary);
+  color: var(--color-white);
 }
 
 /* Margin / padding — только var(--space-*) */

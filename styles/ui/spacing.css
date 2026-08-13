@@ -77,12 +77,12 @@
 /* Карточка */
 .ui-card {
   padding: var(--space-card-padding);
-  background: var(--color-paper-soft);
+  background: var(--color-bg);
 }
 
 .ui-card--outline {
   background: transparent;
-  border: 1px solid var(--line-dark-soft);
+  border: 1px solid var(--color-line);
 }
 
 /* Секция — контент внутри container */

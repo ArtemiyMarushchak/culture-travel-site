@@ -5,8 +5,8 @@
       <stop offset="1" stop-color="#0B0A08"/>
     </linearGradient>
     <radialGradient id="glow" cx="78%" cy="18%" r="68%">
-      <stop offset="0" stop-color="#A8865E" stop-opacity=".26"/>
-      <stop offset="1" stop-color="#A8865E" stop-opacity="0"/>
+      <stop offset="0" stop-color="#A6865D" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#A6865D" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1600" height="1000" fill="url(#bg)"/>

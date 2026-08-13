@@ -32,6 +32,8 @@ class SiteHeader {
   #scrollTick = false;
   #reducedMotion = false;
   #spyHold = '';
+  #lastTap = 0;
+  #lastTouchEnd = 0;
 
   constructor(root) {
     this.#root = root;
@@ -68,9 +70,12 @@ class SiteHeader {
   }
 
   #bindEvents() {
+    this.#root.addEventListener('touchend', (event) => this.#guardDoubleTap(event), { passive: false });
+
     this.#burger?.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
+      if (this.#isBlindTap()) return;
       this.toggleMenu();
     });
 
@@ -78,6 +83,7 @@ class SiteHeader {
       el.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
+        if (this.#isBlindTap()) return;
         this.openSearch();
       });
     });
@@ -108,6 +114,7 @@ class SiteHeader {
     this.#root.querySelector('[data-menu-close]')?.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
+      if (this.#isBlindTap()) return;
       this.closeMenu();
     });
 
@@ -118,6 +125,7 @@ class SiteHeader {
     this.#root.querySelector('[data-menu-search-open]')?.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
+      if (this.#isBlindTap()) return;
       this.openDockSearch();
     });
 
@@ -172,6 +180,22 @@ class SiteHeader {
       this.#syncFromHash();
       this.update();
     });
+  }
+
+  #guardDoubleTap(event) {
+    if (event.target.closest('input, textarea')) return;
+    const now = Date.now();
+    if (now - this.#lastTouchEnd < 380) {
+      event.preventDefault();
+    }
+    this.#lastTouchEnd = now;
+  }
+
+  #isBlindTap() {
+    const now = Date.now();
+    if (now - this.#lastTap < 420) return true;
+    this.#lastTap = now;
+    return false;
   }
 
   #onScroll() {

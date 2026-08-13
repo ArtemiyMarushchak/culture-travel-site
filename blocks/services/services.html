@@ -13,9 +13,6 @@
           style="--sv-i: {{index}}"
           aria-hidden="{{ariaHidden}}"
         >
-          <svg class="sv__outline" aria-hidden="true" focusable="false">
-            <path data-service-outline fill="none"></path>
-          </svg>
           <div class="sv__sheet" data-service-sheet>
             <button
               class="sv__tab{{activeClass}}"
@@ -40,6 +37,9 @@
               </div>
             </div>
           </div>
+          <svg class="sv__outline" aria-hidden="true" focusable="false">
+            <path data-service-outline fill="none"></path>
+          </svg>
         </article>
         {{/each}}
       </div>

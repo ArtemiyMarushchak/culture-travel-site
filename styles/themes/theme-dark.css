@@ -1,6 +1,4 @@
-/* ── Тёмный фон: только белое, hover = opacity 70%, без золота ✅ УТВЕРЖДЕНО ──
-   Применяй .theme-dark на секцию ИЛИ используй .header / .ui-section--dark
-*/
+/* Footer / hero chrome on #0d0d0d — always white type. */
 
 .theme-dark .ui-overline,
 .theme-dark .section__label,
@@ -40,23 +38,12 @@
 
 .theme-dark .ui-btn:not(.ui-btn--solid),
 .header .ui-btn:not(.ui-btn--solid) {
-  border-color: var(--line-light);
+  border-color: color-mix(in srgb, var(--color-white) 24%, transparent);
   color: var(--color-white);
 }
 
 .theme-dark .ui-icon--gold {
   color: var(--color-white);
-}
-
-/* Серый текст на тёмном фоне */
-.theme-dark,
-.ui-section--dark,
-.header,
-.footer {
-  --color-text: var(--text-light);
-  --color-text-muted: var(--text-light-muted);
-  --color-text-subtle: var(--text-light-soft);
-  --color-text-dark-muted: var(--text-light-secondary);
 }
 
 .theme-dark a:not(.ui-btn--solid):focus-visible,

@@ -10,7 +10,7 @@
   height: 100%;
   overflow: hidden;
   border-radius: var(--radius);
-  background: var(--color-card);
+  background: var(--color-shape);
   text-decoration: none !important;
   color: inherit;
   transition: transform var(--transition-fast);
@@ -20,7 +20,7 @@
   display: block;
   aspect-ratio: var(--ratio-card);
   overflow: hidden;
-  background: var(--color-paper-deep);
+  background: var(--color-shape);
 }
 
 .news-list__media img {
@@ -54,12 +54,12 @@
   font-size: clamp(16px, 1.1vw, 20px);
   line-height: 1.3;
   font-weight: var(--font-weight-title);
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .news-list__item p {
   margin: 0;
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
   font-size: 14px;
   line-height: 1.5;
   display: -webkit-box;

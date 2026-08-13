@@ -1,83 +1,35 @@
 :root {
-  /* ── Palette ✅ утверждено ── */
-  --color-black: #0d0d0d;
-  --color-black-soft: #1a1a1a;
-  --color-black-hover: #000000;
+  /* Surfaces */
+  --color-bg: #F6F6F6;
+  --color-shape: #FFFFFF;
 
-  --color-white: #f5f5f5;
-  --color-white-soft: #eeeeee;
-  --color-white-hover: #e6e6e6;
+  /* Type */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-ink: #000000;
+  --color-ink-on-shape: #000000;
 
-  --color-paper: #F6F6F6;
-  --color-paper-soft: #eeeeee;
-  --color-paper-deep: #e6e6e6;
-  --color-pure: #ffffff;
-  --color-card: var(--color-pure);
-  --color-bg: var(--color-paper);
-  --color-on-media: #f6f6f6;
+  /* Chrome */
+  --color-header: #0d0d0d;
+  --color-gold: #A6865D;
 
-  --color-gold: #A8865E;
-  --color-gold-bright: #C9A36A;
-  --color-gold-hover: var(--color-gold-bright);
-  --color-gold-deep: #806348;
-  --color-gold-soft: rgba(168, 134, 94, 0.72);
-  --color-gold-muted: rgba(168, 134, 94, 0.38);
-  --color-gold-faint: rgba(168, 134, 94, 0.14);
+  --color-ink-muted: color-mix(in srgb, var(--color-ink) 70%, var(--color-bg));
+  --color-ink-soft: color-mix(in srgb, var(--color-ink) 46%, var(--color-bg));
+  --color-ink-on-shape-muted: color-mix(in srgb, var(--color-ink-on-shape) 70%, var(--color-shape));
+  --color-ink-on-shape-soft: color-mix(in srgb, var(--color-ink-on-shape) 46%, var(--color-shape));
+  --color-gold-muted: color-mix(in srgb, var(--color-gold) 40%, transparent);
+  --color-overlay: color-mix(in srgb, var(--color-header) 56%, transparent);
+  --color-line: color-mix(in srgb, var(--color-ink) 12%, transparent);
+  --color-line-on-shape: color-mix(in srgb, var(--color-ink-on-shape) 14%, transparent);
 
-  --color-gray: #6b6b6b;
-  --color-gray-soft: #8a8a8a;
-  --color-gray-deep: #4a4a4a;
-  --color-accent: var(--color-gold);
-  --color-accent-hover: var(--color-gold-hover);
-
-  /* Text — paper */
-  --text-primary: #0d0d0d;
-  --text-secondary: #4a4a4a;
-  --text-muted: #6b6b6b;
-  --text-soft: #8a8a8a;
-
-  /* Text — dark surfaces */
-  --text-light: var(--color-white);
-  --text-light-secondary: #c4c4c4;
-  --text-light-muted: #8f8f8f;
-  --text-light-soft: #6e6e6e;
-
-  /* Semantic aliases */
-  --color-text: var(--text-primary);
-  --color-text-muted: var(--text-muted);
-  --color-text-subtle: var(--text-soft);
-  --color-text-dark: var(--text-primary);
-  --color-text-dark-muted: var(--text-secondary);
-  --color-text-dark-soft: var(--text-muted);
-
-  /* Lines */
-  --line-dark: rgba(13, 13, 13, 0.14);
-  --line-dark-soft: rgba(13, 13, 13, 0.08);
-  --line-dark-faint: rgba(13, 13, 13, 0.06);
-  --line-light: rgba(245, 245, 245, 0.24);
-  --line-light-soft: rgba(245, 245, 245, 0.14);
-  --line-light-faint: rgba(245, 245, 245, 0.08);
-  --line-gold: var(--color-gold-muted);
-  --line-ticket: 1px dashed var(--color-gold-muted);
-  --color-line: var(--line-light);
-  --color-line-soft: var(--line-light-soft);
-  --color-line-faint: var(--line-light-faint);
-  --color-line-dark: var(--line-dark);
-  --color-line-dark-soft: var(--line-dark-soft);
-
-  /* Footer */
-  --footer-bg: var(--color-black);
-  --footer-text: var(--text-light-muted);
+  --footer-bg: var(--color-header);
+  --footer-text: color-mix(in srgb, var(--color-white) 62%, transparent);
   --footer-link-hover: var(--color-white);
-
-  /* Media overlays */
-  --media-overlay-soft: rgba(13, 13, 13, 0.22);
-  --media-overlay-dark: rgba(13, 13, 13, 0.34);
-  --video-overlay-bg: var(--media-overlay-soft);
-
-  --shadow-title: 0 2px 24px rgba(13, 13, 13, 0.35);
+  --focus-ring: var(--color-gold);
+  --shadow-title: 0 2px 24px color-mix(in srgb, var(--color-header) 35%, transparent);
   --shadow-soft: none;
   --shadow-card: none;
-
-  --focus-ring: var(--color-gold);
+  --media-overlay-soft: color-mix(in srgb, var(--color-header) 22%, transparent);
+  --media-overlay-dark: color-mix(in srgb, var(--color-header) 34%, transparent);
+  --video-overlay-bg: var(--media-overlay-soft);
 }

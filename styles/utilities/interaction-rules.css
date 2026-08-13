@@ -21,7 +21,7 @@
 
 /* Белый мягкий hover для текста на фото/видео */
 .hover-white:hover {
-  color: var(--color-white-hover);
+  color: var(--color-white);
 }
 
 /* Кнопки */
@@ -35,7 +35,7 @@
 }
 
 .btn--ghost-light {
-  border-color: var(--line-light);
+  border-color: var(--color-white);
   color: var(--color-white);
 }
 

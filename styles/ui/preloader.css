@@ -1,0 +1,43 @@
+.ct-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0d;
+  pointer-events: none;
+}
+
+.ct-preloader__canvas {
+  display: block;
+  width: min(78vw, 520px);
+  height: auto;
+}
+
+.ct-preloader__paths {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.ct-preloader.is-done {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+html:not(.is-preloading) .ct-preloader:not(.is-done) {
+  display: none;
+}
+
+html.is-preloading,
+html.is-preloading body {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-preloader.is-done {
+    transition-duration: 0.2s;
+  }
+}

@@ -4,7 +4,7 @@
   margin-left: calc(50% - 50vw);
   min-height: 1px;
   overflow: hidden;
-  background: var(--color-black);
+  background: var(--color-header);
   color: var(--color-white);
   font-family: var(--font-main);
 }

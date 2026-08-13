@@ -1,5 +1,6 @@
 :root {
-  --font-main: 'Manrope', Arial, sans-serif;
+  --font-main: 'Montserrat', Arial, sans-serif;
+  --font-family-base: var(--font-main);
 
   --font-weight-title: 600;
   --font-weight-text: 400;

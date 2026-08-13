@@ -4,7 +4,7 @@
   min-height: 100vh;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
-  background: var(--color-black);
+  background: var(--color-header);
   color: var(--color-white);
   font-family: var(--font-main);
 }
@@ -54,7 +54,7 @@
   line-height: var(--line-height-text);
   font-weight: var(--font-weight-text);
   letter-spacing: var(--letter-spacing-body);
-  color: var(--text-light-muted);
+  color: var(--color-white);
 }
 
 .uc-404__actions {
@@ -108,7 +108,7 @@
   padding: 0 36px;
   border: 1px solid rgba(248, 247, 244, 0.36);
   background: var(--color-white);
-  color: var(--color-black) !important;
+  color: var(--color-header) !important;
 }
 
 .uc-404__link--primary::after {

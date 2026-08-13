@@ -10,7 +10,7 @@
 
 .brochure__lead {
   font-size: var(--text-lg);
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
 }
 
 .brochure__sections {
@@ -20,8 +20,8 @@
 
 .brochure__section {
   padding: var(--space-xl);
-  border: 1px solid var(--color-border);
-  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-line);
+  background: var(--color-shape);
 }
 
 .brochure__section h2 {
@@ -30,5 +30,5 @@
 }
 
 .brochure__section p {
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
 }

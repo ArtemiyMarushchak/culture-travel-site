@@ -1,11 +1,11 @@
-/* Typography — Manrope */
+/* Typography — Montserrat */
 
 .ui-display {
   font-size: var(--font-hero);
   font-weight: var(--font-weight-title);
   line-height: var(--leading-display);
   letter-spacing: var(--tracking-display);
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .ui-h1 {
@@ -13,7 +13,7 @@
   font-weight: var(--font-weight-title);
   line-height: var(--leading-heading);
   letter-spacing: var(--tracking-heading);
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .ui-h2 {
@@ -21,35 +21,35 @@
   font-weight: var(--font-weight-title);
   line-height: var(--leading-heading);
   letter-spacing: var(--tracking-heading);
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .ui-h3 {
   font-size: var(--font-h3);
   font-weight: var(--font-weight-title);
   line-height: var(--leading-heading);
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .ui-h4 {
   font-size: var(--font-h4);
   font-weight: var(--font-weight-title);
   line-height: var(--leading-snug);
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .ui-lead {
   font-size: var(--font-lead);
   font-weight: var(--font-weight-text);
   line-height: var(--leading-relaxed);
-  color: var(--text-secondary);
+  color: var(--color-ink-muted);
 }
 
 .ui-body {
   font-size: var(--font-body-size);
   font-weight: var(--font-weight-text);
   line-height: var(--leading-body);
-  color: var(--text-secondary);
+  color: var(--color-ink-muted);
 }
 
 /* Длинный текст — журнал, «Обо мне», кейсы */
@@ -59,7 +59,7 @@
   font-size: var(--font-body-size);
   font-weight: var(--font-weight-text);
   line-height: var(--leading-body);
-  color: var(--text-secondary);
+  color: var(--color-ink-muted);
 }
 
 .ui-prose > * + *,
@@ -72,7 +72,7 @@
   font-size: var(--font-h3);
   font-weight: var(--font-weight-title);
   line-height: var(--leading-heading);
-  color: var(--text-primary);
+  color: var(--color-ink);
   margin-top: var(--space-stack-xl);
 }
 
@@ -81,7 +81,7 @@
   font-size: var(--font-h4);
   font-weight: var(--font-weight-title);
   line-height: var(--leading-snug);
-  color: var(--text-primary);
+  color: var(--color-ink);
   margin-top: var(--space-stack-lg);
 }
 
@@ -95,12 +95,12 @@
 .theme-dark .ui-h2,
 .theme-dark .ui-h3,
 .theme-dark .ui-h4 {
-  color: var(--text-light);
+  color: var(--color-white);
 }
 
 .theme-dark .ui-lead,
 .theme-dark .ui-body,
 .theme-dark .ui-prose,
 .theme-dark .prose {
-  color: var(--text-light-secondary);
+  color: var(--color-white);
 }

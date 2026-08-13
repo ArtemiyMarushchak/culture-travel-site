@@ -102,8 +102,7 @@ export function initCasesSlider(root) {
     const badge = node.querySelector('[data-card-badge]');
     const flag = node.querySelector('[data-card-flag]');
     const country = node.querySelector('[data-card-country]');
-    const rating = node.querySelector('[data-card-rating]');
-    const score = node.querySelector('[data-card-score]');
+    const days = node.querySelector('[data-card-days]');
     const title = node.querySelector('[data-card-title]');
     const text = node.querySelector('[data-card-text]');
     const link = node.querySelector('[data-card-link]');
@@ -116,9 +115,11 @@ export function initCasesSlider(root) {
     if (flag) flag.textContent = item.flag || '';
     if (country) country.textContent = countryName;
     badge.hidden = !countryName;
-    const ratingValue = item.rating || '5.0';
-    if (score) score.textContent = ratingValue;
-    if (rating) rating.hidden = !ratingValue;
+    const dayCount = Number(item.days) || 0;
+    if (days) {
+      days.textContent = dayCount ? `${dayCount} ${t('cases.daysShort')}` : '';
+      days.hidden = !dayCount;
+    }
     title.textContent = (en && item.titleEn) || item.title || '';
     text.textContent = (en && item.textEn) || item.text || '';
 

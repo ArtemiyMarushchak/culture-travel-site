@@ -1,6 +1,7 @@
+html,
 body {
   background: var(--color-bg);
-  color: var(--text-primary);
+  color: var(--color-ink);
   font-family: var(--font-main);
   font-size: var(--text-body-desktop);
   line-height: var(--line-height-text);
@@ -14,6 +15,7 @@ body {
 
 html {
   scroll-padding-top: var(--header-height);
+  touch-action: manipulation;
 }
 
 body.is-nav-open,

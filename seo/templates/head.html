@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="{{basePath}}/core/boot.js"></script>
+<script src="{{basePath}}/core/boot.js?v={{buildId}}"></script>
 <title>{{title}}</title>
 <meta name="description" content="{{description}}">
 <link rel="canonical" href="{{canonical}}">
@@ -35,6 +35,21 @@
 <meta name="theme-color" content="#0d0d0d">
 
 <!-- Styles -->
-<link rel="stylesheet" href="{{basePath}}/styles/main.css">
+<link rel="preload" as="image" href="{{basePath}}/assets/images/signature-preloader.png">
+<link rel="stylesheet" href="{{basePath}}/styles/main.css?v={{buildId}}">
+<style>
+  html.is-preloading { background: #0d0d0d !important; }
+  html.is-preloading body { overflow: hidden; }
+  .ct-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d0d0d;
+  }
+  html:not(.is-preloading) .ct-preloader:not(.is-done) { display: none; }
+</style>
 
 {{jsonLd}}

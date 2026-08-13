@@ -5,8 +5,8 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
-  background: var(--color-paper);
-  color: var(--color-text-dark);
+  background: var(--color-bg);
+  color: var(--color-ink);
   scroll-margin-top: var(--header-height);
 }
 
@@ -41,7 +41,7 @@
   line-height: var(--line-height-h2);
   font-weight: var(--font-weight-title);
   letter-spacing: var(--letter-spacing-tight);
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .rv__lead {
@@ -50,7 +50,7 @@
   line-height: 1.72;
   font-weight: var(--font-weight-text);
   letter-spacing: var(--letter-spacing-body);
-  color: var(--color-text-dark-muted);
+  color: var(--color-ink-muted);
 }
 
 .rv__tabs {
@@ -73,7 +73,7 @@
   padding: 0 0 14px;
   border: 0;
   background: transparent;
-  color: var(--color-text-dark-soft);
+  color: var(--color-ink-soft);
   cursor: pointer;
   font-size: var(--text-overline-desktop);
   line-height: 1;
@@ -86,7 +86,7 @@
 
 .rv__tab:hover,
 .rv__tab.is-active {
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .rv__tab.is-active::after {
@@ -139,7 +139,7 @@
   line-height: 1.68;
   font-weight: var(--font-weight-text);
   letter-spacing: var(--letter-spacing-body);
-  color: var(--color-text-dark-muted);
+  color: var(--color-ink-muted);
 }
 
 .rv__quote-foot {
@@ -155,14 +155,14 @@
   font-weight: var(--font-weight-overline);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  color: var(--color-text-dark);
+  color: var(--color-ink);
   font-style: normal;
 }
 
 .rv__quote-meta {
   font-size: var(--text-body-small-desktop);
   line-height: 1.5;
-  color: var(--color-text-dark-soft);
+  color: var(--color-ink-soft);
 }
 
 .rv__site-note {
@@ -173,7 +173,7 @@
   font-size: 15px;
   line-height: 1.68;
   letter-spacing: var(--letter-spacing-body);
-  color: var(--color-text-dark-soft);
+  color: var(--color-ink-soft);
 }
 
 .rv__yandex {
@@ -189,7 +189,7 @@
   line-height: 1.2;
   font-weight: var(--font-weight-title);
   letter-spacing: var(--letter-spacing-tight);
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .rv__yandex-text {
@@ -197,7 +197,7 @@
   font-size: var(--text-body-desktop);
   line-height: 1.68;
   letter-spacing: var(--letter-spacing-body);
-  color: var(--color-text-dark-muted);
+  color: var(--color-ink-muted);
 }
 
 .rv__btn {
@@ -206,9 +206,9 @@
   justify-content: center;
   min-height: 52px;
   padding: 0 24px;
-  border: 1px solid var(--color-line-dark);
+  border: 1px solid var(--color-line);
   background: transparent;
-  color: var(--color-text-dark);
+  color: var(--color-ink);
   text-decoration: none;
   font-size: var(--text-overline-desktop);
   line-height: 1;
@@ -224,7 +224,7 @@
 .rv__btn:hover {
   background: var(--color-gold);
   border-color: var(--color-gold);
-  color: var(--color-black);
+  color: var(--color-white);
 }
 
 .rv__btn--yandex.rv__btn--soon {
@@ -246,7 +246,7 @@
   font-size: 13px;
   line-height: 1.55;
   letter-spacing: 0.02em;
-  color: var(--color-text-dark-soft);
+  color: var(--color-ink-soft);
 }
 
 @media (max-width: 1180px) {

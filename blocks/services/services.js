@@ -4,15 +4,14 @@
  * Mobile: one folder per service, tabs alternate left / right.
  */
 
-function folderPath(w, h, tabX, tabW, tabH, r, s) {
-  const k = 0.4472;
+function folderPath(w, h, tabX, tabW, tabH, r, tabR, fillet) {
+  const k = 0.45;
   const tl = Math.max(0, tabX);
   const tr = Math.min(w, tabX + tabW);
-  const leftFlush = tl <= 0.75;
-  const rightFlush = tr >= w - 0.75;
-  const tabR = Math.min(18, Math.max(12, (tr - tl) * 0.12));
-  const sx = Math.max(s, 72) / 88;
-  const sy = tabH / 52;
+  const leftFlush = tl <= 0.5;
+  const rightFlush = tr >= w - 0.5;
+  const topR = Math.min(tabR, (tr - tl) * 0.22, tabH * 0.45);
+  const join = Math.min(fillet, tabH * 0.42, Math.max(4, (tr - tl) * 0.08));
 
   const parts = [];
   const M = (x, y) => parts.push(`M${x} ${y}`);
@@ -21,23 +20,23 @@ function folderPath(w, h, tabX, tabW, tabH, r, s) {
   const C = (x1, y1, x2, y2, x, y) => parts.push(`C${x1} ${y1} ${x2} ${y2} ${x} ${y}`);
 
   if (leftFlush) {
-    M(0, tabR);
-    C(0, tabR * k, tabR * k, 0, tabR, 0);
+    M(0, topR);
+    C(0, topR * k, topR * k, 0, topR, 0);
   } else {
     M(0, tabH + r);
     C(0, tabH + r * k, r * k, tabH, r, tabH);
-    H(Math.max(r, tl - 88 * sx));
-    C(tl - 66 * sx, tabH, tl - 48 * sx, 40 * sy, tl - 38 * sx, 22 * sy);
-    C(tl - 30 * sx, 8 * sy, tl - 16 * sx, 0, tl, 0);
+    H(Math.max(r, tl - join));
+    C(tl - join * 0.25, tabH, tl, tabH - join * 0.2, tl, topR);
+    C(tl, topR * k, tl + topR * k, 0, tl + topR, 0);
   }
 
   if (rightFlush) {
-    H(w - tabR);
-    C(w - tabR * k, 0, w, tabR * k, w, tabR);
+    H(w - topR);
+    C(w - topR * k, 0, w, topR * k, w, topR);
   } else {
-    H(tr);
-    C(tr + 16 * sx, 0, tr + 30 * sx, 8 * sy, tr + 38 * sx, 22 * sy);
-    C(tr + 48 * sx, 40 * sy, tr + 66 * sx, tabH, Math.min(w - r, tr + 88 * sx), tabH);
+    H(tr - topR);
+    C(tr - topR * k, 0, tr, topR * k, tr, topR);
+    C(tr, tabH - join * 0.2, tr + join * 0.25, tabH, Math.min(w - r, tr + join), tabH);
     H(w - r);
     C(w - r * k, tabH, w, tabH + r * k, w, tabH + r);
   }
@@ -46,17 +45,17 @@ function folderPath(w, h, tabX, tabW, tabH, r, s) {
   C(w, h - r * k, w - r * k, h, w - r, h);
   H(r);
   C(r * k, h, 0, h - r * k, 0, h - r);
-  V(leftFlush ? tabR : tabH + r);
+  V(leftFlush ? topR : tabH + r);
   parts.push("Z");
   return parts.join("");
 }
 
-function applyShape(pack, w, h, tabX, tabW, tabH, bodyR, shoulder) {
+function applyShape(pack, w, h, tabX, tabW, tabH, bodyR, tabR, fillet) {
   const sheet = pack.querySelector("[data-service-sheet]");
   const outline = pack.querySelector("[data-service-outline]");
   pack.style.setProperty("--sv-tab-x", `${tabX}px`);
   pack.style.setProperty("--sv-tab-w", `${tabW}px`);
-  const d = folderPath(w, h, tabX, tabW, tabH, bodyR, shoulder);
+  const d = folderPath(w, h, tabX, tabW, tabH, bodyR, tabR, fillet);
   if (sheet) {
     sheet.style.clipPath = `path('${d}')`;
     sheet.style.webkitClipPath = `path('${d}')`;
@@ -86,17 +85,18 @@ export function initServices(root) {
     const styles = getComputedStyle(root);
     const tabH = parseFloat(styles.getPropertyValue("--sv-tab-h")) || 36;
     const bodyR = parseFloat(styles.getPropertyValue("--sv-body-r")) || 10;
-    const gap = parseFloat(styles.getPropertyValue("--sv-tab-gap")) || 46;
+    const gap = parseFloat(styles.getPropertyValue("--sv-tab-gap")) || 13;
+    const tabR = parseFloat(styles.getPropertyValue("--sv-tab-r")) || 8;
+    const fillet = parseFloat(styles.getPropertyValue("--sv-tab-fillet")) || 9;
     if (bar) root.style.setProperty("--sv-bar-h", `${bar.offsetHeight}px`);
 
     if (desktop.matches) {
       const w = deck.offsetWidth;
       const h = packs[0]?.offsetHeight || 0;
       if (!w || !h) return;
-      const tabW = Math.min(122, (w - gap * (count - 1)) / count);
-      const shoulder = 76;
+      const tabW = (w - gap * (count - 1)) / count;
       packs.forEach((pack, i) => {
-        applyShape(pack, w, h, i * (tabW + gap), tabW, tabH, bodyR, shoulder);
+        applyShape(pack, w, h, i * (tabW + gap), tabW, tabH, bodyR, tabR, fillet);
       });
       return;
     }
@@ -105,9 +105,9 @@ export function initServices(root) {
       const w = pack.offsetWidth;
       const h = pack.offsetHeight;
       if (!w || !h) return;
-      const tabW = Math.min(w * 0.78, Math.max(168, w * 0.64));
+      const tabW = Math.min(152, Math.max(120, w * 0.4));
       const tabX = i % 2 === 1 ? w - tabW : 0;
-      applyShape(pack, w, h, tabX, tabW, tabH, bodyR, 32);
+      applyShape(pack, w, h, tabX, tabW, tabH, bodyR, tabR, fillet);
     });
   }
 
@@ -150,7 +150,7 @@ export function initServices(root) {
     tabs.forEach((tab) => {
       tab.classList.remove("is-active");
       tab.setAttribute("aria-pressed", "false");
-      tab.tabIndex = -1;
+      tab.tabIndex = 0;
     });
     paintShapes();
   }
@@ -161,14 +161,44 @@ export function initServices(root) {
   }
 
   function bringToFront(index) {
-    if (!desktop.matches) return;
     const next = (index + count) % count;
     if (next === current) return;
     layoutDesktop(next, true);
   }
 
+  function documentY(el) {
+    let y = 0;
+    for (let sib = el.previousElementSibling; sib; sib = sib.previousElementSibling) {
+      const styles = getComputedStyle(sib);
+      y += sib.offsetHeight
+        + (parseFloat(styles.marginTop) || 0)
+        + (parseFloat(styles.marginBottom) || 0);
+    }
+    let node = el.offsetParent;
+    while (node) {
+      y += node.offsetTop;
+      node = node.offsetParent;
+    }
+    return y;
+  }
+
+  function scrollToPack(index) {
+    const pack = packs[index];
+    if (!pack) return;
+    const header = document.getElementById("lux-header");
+    const headerH = header ? header.offsetHeight : 64;
+    const barH = bar ? bar.offsetHeight : 0;
+    window.scrollTo({
+      top: Math.max(0, documentY(pack) - headerH - barH),
+      behavior: reducedMotion.matches ? "auto" : "smooth",
+    });
+  }
+
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => bringToFront(index));
+    tab.addEventListener("click", () => {
+      if (desktop.matches) bringToFront(index);
+      else scrollToPack(index);
+    });
   });
 
   const ro = new ResizeObserver(() => paintShapes());

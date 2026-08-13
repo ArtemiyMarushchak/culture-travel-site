@@ -9,7 +9,7 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
-  background: var(--color-paper-deep);
+  background: var(--color-shape);
 }
 
 .ui-image img,
@@ -41,10 +41,10 @@
 .ui-image__caption {
   margin-top: var(--space-sm);
   font-size: var(--font-caption);
-  color: var(--text-muted);
+  color: var(--color-ink-muted);
   letter-spacing: 0.04em;
 }
 
 .theme-dark .ui-image__caption {
-  color: var(--text-light-muted);
+  color: var(--color-white);
 }

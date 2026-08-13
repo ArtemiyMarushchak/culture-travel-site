@@ -3,14 +3,14 @@
   --ui-link-opacity: 1;
   --ui-link-hover-opacity: 0.7;
   --ui-link-muted-hover-opacity: 0.7;
-  --ui-button-hover-opacity: 0.7;
+  --ui-button-hover-opacity: 0.88;
 
   --ui-underline-height: 1px;
   --ui-underline-offset: 8px;
-  --ui-underline-color: rgba(245, 245, 245, 0.52);
-  --ui-underline-hover-color: rgba(245, 245, 245, 0.18);
-  --ui-underline-dark-color: rgba(13, 13, 13, 0.52);
-  --ui-underline-dark-hover-color: rgba(13, 13, 13, 0.18);
+  --ui-underline-color: color-mix(in srgb, var(--color-white) 52%, transparent);
+  --ui-underline-hover-color: color-mix(in srgb, var(--color-white) 18%, transparent);
+  --ui-underline-dark-color: color-mix(in srgb, var(--color-ink) 52%, transparent);
+  --ui-underline-dark-hover-color: color-mix(in srgb, var(--color-ink) 18%, transparent);
 
   --ui-icon-size-xs: 12px;
   --ui-icon-size-sm: 15px;

@@ -6,7 +6,7 @@
 .news-layout__date {
   display: block;
   font-size: var(--text-sm);
-  color: var(--color-accent);
+  color: var(--color-gold);
   margin-bottom: var(--space-sm);
 }
 
@@ -16,7 +16,7 @@
 }
 
 .news-layout__excerpt {
-  color: var(--color-text-muted);
+  color: var(--color-ink-muted);
   font-size: var(--text-lg);
   margin-bottom: var(--space-xl);
 }

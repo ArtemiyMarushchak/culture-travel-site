@@ -14,6 +14,7 @@ export function setTheme(theme) {
   const next = theme === 'dark' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', next);
   document.documentElement.style.colorScheme = next;
+  document.documentElement.style.backgroundColor = next === 'dark' ? '#0d0d0d' : '#F6F6F6';
   try {
     localStorage.setItem(THEME_KEY, next);
   } catch (err) {

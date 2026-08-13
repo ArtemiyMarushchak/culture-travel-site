@@ -2,26 +2,22 @@
 
 #anna-services {
   --sv-tab-h: 36px;
-  --sv-tab-gap: 46px;
+  --sv-tab-gap: 13px;
+  --sv-tab-r: 8px;
+  --sv-tab-fillet: 9px;
   --sv-body-r: var(--radius);
-  --sv-idle: #F2F1EF;
-  --sv-folder: #ffffff;
-  --sv-edge: #E2E1DE;
+  --sv-idle: var(--color-shape);
+  --sv-folder: var(--color-shape);
+  --sv-edge: color-mix(in srgb, var(--color-ink-on-shape) 16%, transparent);
   position: relative;
   z-index: var(--z-content, 5);
   width: 100vw;
   margin-left: calc(50% - 50vw);
   min-height: calc(100dvh - var(--header-height));
   overflow: hidden;
-  background: var(--color-paper);
-  color: var(--color-text-dark);
+  background: var(--color-bg);
+  color: var(--color-ink);
   scroll-margin-top: var(--header-height);
-}
-
-html[data-theme="dark"] #anna-services {
-  --sv-idle: #1c1c1c;
-  --sv-folder: #161616;
-  --sv-edge: #3a3a3a;
 }
 
 #anna-services,
@@ -65,7 +61,7 @@ html[data-theme="dark"] #anna-services {
   line-height: var(--leading-heading);
   font-weight: var(--font-weight-title);
   letter-spacing: var(--tracking-heading);
-  color: var(--color-text-dark);
+  color: var(--color-ink);
 }
 
 .sv__deck {
@@ -100,6 +96,7 @@ html[data-theme="dark"] .sv__pack.is-active {
   position: absolute;
   inset: 0;
   background: var(--sv-idle);
+  color: var(--color-ink-on-shape);
 }
 
 .sv__pack.is-active .sv__sheet {
@@ -109,23 +106,35 @@ html[data-theme="dark"] .sv__pack.is-active {
 .sv__outline {
   position: absolute;
   inset: -3px;
-  z-index: 6;
+  z-index: 20;
   width: calc(100% + 6px);
   height: calc(100% + 6px);
   overflow: visible;
   pointer-events: none;
 }
 
+html[data-theme="dark"] #anna-services {
+  --sv-edge: color-mix(in srgb, var(--color-white) 32%, transparent);
+}
+
 .sv__outline path {
   fill: none;
   stroke: var(--sv-edge);
-  stroke-width: 1;
+  stroke-width: 0.5;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
 
 .sv__pack.is-active .sv__outline path {
-  stroke: transparent;
+  stroke: color-mix(in srgb, var(--color-ink-on-shape) 36%, transparent);
+}
+
+html[data-theme="dark"] .sv__outline path {
+  stroke-width: 0.5;
+}
+
+html[data-theme="dark"] .sv__pack.is-active .sv__outline path {
+  stroke: color-mix(in srgb, var(--color-white) 55%, transparent);
 }
 
 .sv__tab {
@@ -163,7 +172,7 @@ html[data-theme="dark"] .sv__pack.is-active {
   font-weight: var(--font-weight-title);
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--color-text-dark);
+  color: var(--color-ink-on-shape);
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -172,12 +181,12 @@ html[data-theme="dark"] .sv__pack.is-active {
 
 .sv__tab:hover:not(.is-active) .sv__tab-name,
 .sv__tab:focus-visible:not(.is-active) .sv__tab-name {
-  color: var(--color-text-dark);
+  color: var(--color-ink-on-shape);
   opacity: 0.42;
 }
 
 .sv__tab.is-active .sv__tab-name {
-  color: var(--color-gold-deep);
+  color: var(--color-white);
   opacity: 1;
 }
 
@@ -213,7 +222,7 @@ html[data-theme="dark"] .sv__pack.is-active {
   min-height: 0;
   overflow: hidden;
   border-radius: var(--radius);
-  background: var(--color-paper-deep);
+  background: var(--color-shape);
   aspect-ratio: 4 / 3;
   height: 100%;
 }
@@ -242,7 +251,7 @@ html[data-theme="dark"] .sv__pack.is-active {
   line-height: var(--leading-heading);
   font-weight: var(--font-weight-title);
   letter-spacing: var(--letter-spacing-tight);
-  color: var(--color-text-dark);
+  color: var(--color-ink-on-shape);
 }
 
 .sv__text {
@@ -252,7 +261,7 @@ html[data-theme="dark"] .sv__pack.is-active {
   line-height: var(--leading-body);
   font-weight: var(--font-weight-text);
   letter-spacing: var(--letter-spacing-body);
-  color: var(--color-text-dark-muted);
+  color: var(--color-ink-on-shape-muted);
 }
 
 @media (min-width: 1181px) {
@@ -286,9 +295,9 @@ html[data-theme="dark"] .sv__pack.is-active {
     inset: 0;
     background: linear-gradient(
       90deg,
-      var(--color-black) 0%,
-      var(--color-black) 36%,
-      color-mix(in srgb, var(--color-black) 58%, transparent) 48%,
+      var(--color-header) 0%,
+      var(--color-header) 36%,
+      color-mix(in srgb, var(--color-header) 58%, transparent) 48%,
       transparent 64%
     );
     pointer-events: none;
@@ -302,17 +311,17 @@ html[data-theme="dark"] .sv__pack.is-active {
   }
 
   #anna-services[data-sv-layout="cover"] .sv__pack.is-active .sv__name {
-    color: var(--color-on-media);
+    color: var(--color-white);
     text-shadow: var(--shadow-title);
   }
 
   #anna-services[data-sv-layout="cover"] .sv__pack.is-active .sv__text {
-    color: color-mix(in srgb, var(--color-on-media) 72%, transparent);
+    color: color-mix(in srgb, var(--color-white) 72%, transparent);
     text-shadow: var(--shadow-title);
   }
 
   #anna-services[data-sv-layout="cover"] .sv__pack.is-active .sv__tab-name {
-    color: var(--color-on-media);
+    color: var(--color-white);
   }
 }
 
@@ -338,6 +347,8 @@ html[data-theme="dark"] .sv__pack.is-active {
 @media (max-width: 1180px) {
   #anna-services {
     --sv-tab-h: 38px;
+    width: 100%;
+    margin-left: 0;
     min-height: 0;
     overflow: visible;
   }
@@ -351,16 +362,13 @@ html[data-theme="dark"] .sv__pack.is-active {
   }
 
   .sv__frame {
+    display: block;
     min-height: 0;
   }
 
   .sv__bar {
-    position: sticky;
-    top: var(--header-height);
-    z-index: 20;
-    margin-bottom: var(--space-edge);
-    padding: 8px 0 12px;
-    background: var(--color-paper);
+    margin-bottom: 12px;
+    padding: 0;
     gap: 16px;
   }
 
@@ -371,40 +379,50 @@ html[data-theme="dark"] .sv__pack.is-active {
   .sv__deck {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
     min-height: 0;
+    isolation: auto;
   }
 
   .sv__pack,
   .sv__pack.is-active {
-    position: sticky;
+    position: relative;
     inset: auto;
-    top: calc(var(--header-height) + var(--sv-bar-h, 4.75rem));
-    z-index: calc(var(--sv-i, 0) + 1);
+    top: auto;
+    z-index: auto;
+    width: 100%;
+    margin: 0;
     pointer-events: auto;
-    filter: drop-shadow(0 10px 22px rgba(13, 13, 13, 0.08));
+    filter: none;
   }
 
   .sv__sheet {
     position: relative;
     inset: auto;
+    overflow: visible;
     background: var(--sv-folder);
+    pointer-events: auto;
   }
 
-  .sv__outline path {
-    stroke: var(--sv-edge);
+  html[data-theme="dark"] .sv__sheet {
+    filter: none;
+  }
+
+  .sv__outline {
+    display: block;
   }
 
   .sv__tab {
-    padding: 0 15px;
-    pointer-events: none;
+    display: flex;
+    padding: 0 12px;
+    pointer-events: auto;
     cursor: default;
   }
 
   .sv__tab-name {
-    font-size: var(--text-overline-mobile);
-    letter-spacing: 0.04em;
-    color: var(--color-text-dark);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--color-ink-on-shape);
     text-align: left;
   }
 
@@ -414,7 +432,7 @@ html[data-theme="dark"] .sv__pack.is-active {
 
   .sv__tab.is-active .sv__tab-name,
   .sv__tab:hover:not(.is-active) .sv__tab-name {
-    color: var(--color-text-dark);
+    color: var(--color-ink-on-shape);
     opacity: 1;
   }
 
@@ -428,9 +446,9 @@ html[data-theme="dark"] .sv__pack.is-active {
     flex-direction: column-reverse;
     align-items: stretch;
     justify-content: flex-start;
-    gap: 15px;
+    gap: 10px;
     margin-top: 0;
-    padding: calc(var(--sv-tab-h) + 8px) 15px 15px;
+    padding: calc(var(--sv-tab-h) + 10px) 10px 10px;
     overflow: visible;
     pointer-events: auto;
   }
@@ -444,7 +462,7 @@ html[data-theme="dark"] .sv__pack.is-active {
     flex: 0 0 auto;
     justify-content: flex-start;
     min-height: 0;
-    padding: 0;
+    padding: 0 5px;
   }
 
   .sv__name {
@@ -454,7 +472,7 @@ html[data-theme="dark"] .sv__pack.is-active {
   .sv__text {
     max-width: none;
     font-size: var(--font-body-size);
-    color: var(--color-text-dark-muted);
+    color: var(--color-ink-on-shape-muted);
   }
 
   .sv__photo {
@@ -488,16 +506,8 @@ html[data-theme="dark"] .sv__pack.is-active {
     font-size: var(--text-h2-mobile);
   }
 
-  .sv__deck {
-    gap: 20px;
-  }
-
-  .sv__tab {
-    padding: 0 15px;
-  }
-
   .sv__body {
-    padding: calc(var(--sv-tab-h) + 8px) 15px 15px;
+    padding: calc(var(--sv-tab-h) + 10px) 10px 10px;
   }
 
   .sv__photo {

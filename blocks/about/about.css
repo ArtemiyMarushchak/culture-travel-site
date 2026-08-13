@@ -6,7 +6,7 @@
   min-height: 100dvh;
   background: color-mix(
     in srgb,
-    var(--color-paper) calc(var(--about-reveal, 1) * 100%),
+    var(--color-bg) calc(var(--about-reveal, 1) * 100%),
     transparent
   );
 }
@@ -18,12 +18,10 @@
   min-height: 100dvh;
   background: color-mix(
     in srgb,
-    var(--color-paper) calc(var(--about-reveal, 1) * 100%),
+    var(--color-bg) calc(var(--about-reveal, 1) * 100%),
     transparent
   );
-  color: var(--color-text-dark);
-  overflow: hidden;
-  scroll-margin-top: 0;
+  color: var(--color-ink);
 }
 
 #anna-about,
@@ -55,7 +53,8 @@
   padding: 20px 20px 20px 0;
   overflow: hidden;
   border-radius: 10px;
-  background: var(--color-card);
+  background: var(--color-shape);
+  color: var(--color-ink-on-shape);
   opacity: var(--about-reveal, 1);
   transform: translate3d(0, calc((1 - var(--about-reveal, 1)) * 36px), 0) scale(calc(0.97 + var(--about-reveal, 1) * 0.03));
   transform-origin: center top;
@@ -77,7 +76,7 @@
   line-height: var(--line-height-title);
   font-weight: var(--font-weight-title);
   letter-spacing: var(--letter-spacing-tight);
-  color: var(--color-text-dark);
+  color: var(--color-ink-on-shape);
 }
 
 .aa__role {
@@ -87,7 +86,7 @@
   font-weight: var(--font-weight-overline);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--color-text-dark-soft);
+  color: var(--color-ink-on-shape-soft);
 }
 
 .aa__text {
@@ -100,7 +99,7 @@
   line-height: 1.68;
   font-weight: var(--font-weight-text);
   letter-spacing: var(--letter-spacing-body);
-  color: var(--color-text-dark-muted);
+  color: var(--color-ink-on-shape-muted);
 }
 
 .aa__text p:last-child {
@@ -112,7 +111,7 @@
   min-height: 0;
   overflow: hidden;
   border-radius: 10px;
-  background: var(--color-paper-deep);
+  background: var(--color-shape);
 }
 
 .aa__photo img {
@@ -219,7 +218,7 @@
 @media (prefers-reduced-motion: reduce) {
   .uc-about,
   #anna-about {
-    background: var(--color-paper);
+    background: var(--color-bg);
   }
 
   .aa__frame {
