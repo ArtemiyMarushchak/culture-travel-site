@@ -7,7 +7,6 @@ import { t } from '../../core/i18n.js';
 import {
   SECTION_ANCHORS,
   anchorOffset,
-  getAnchorTarget,
   hashUrl,
   keyForSelector,
   scrollToBlock,
@@ -64,9 +63,10 @@ class SiteHeader {
   #collectSpyTargets() {
     this.#spyLinks = [...this.#root.querySelectorAll('a[data-anchor]')]
       .filter((link) => Boolean(link.getAttribute('data-anchor')));
+    // Spy tracks section roots (not titles). Titles are only for scroll-to landing.
     this.#sections = Object.entries(SECTION_ANCHORS)
       .map(([key, selector]) => {
-        const node = getAnchorTarget(selector) || document.querySelector(selector);
+        const node = document.querySelector(selector);
         return node ? { key, selector, node } : null;
       })
       .filter(Boolean);
@@ -241,11 +241,20 @@ class SiteHeader {
     const probe = anchorOffset();
     let current = '';
 
-    // Последняя секция, чей визуальный якорь уже прошёл линию под шапкой
+    // Последняя секция, чей верх уже прошёл линию под шапкой
     for (const section of this.#sections) {
       if (section.node.getBoundingClientRect().top <= probe) {
         current = section.key;
       }
+    }
+
+    // Внизу страницы всегда подсвечиваем последний блок
+    const doc = document.documentElement;
+    if (
+      this.#sections.length
+      && window.innerHeight + window.scrollY >= doc.scrollHeight - 4
+    ) {
+      current = this.#sections[this.#sections.length - 1].key;
     }
 
     this.#setActiveLink(current);
