@@ -1,27 +1,33 @@
 :root {
   /* Legacy / block aliases — для совместимости с блоками и Tilda-именами */
-  --text-hero-desktop: var(--font-hero);
-  --text-hero-tablet: clamp(36px, 7vw, 48px);
-  --text-hero-mobile: 34px;
-  --text-h1-desktop: var(--font-h1);
-  --text-h2-desktop: var(--font-h2);
-  --text-h2-tablet: clamp(32px, 5vw, 42px);
-  --text-h2-mobile: 30px;
-  --text-body-desktop: var(--font-body-size);
-  --text-body-tablet: var(--font-body-size);
-  --text-body-mobile: 16px;
-  --text-overline-desktop: 12px;
-  --text-overline-mobile: 11px;
+  --text-hero: var(--type-hero-size);
+  --text-hero-desktop: var(--type-hero-size);
+  --text-hero-tablet: var(--type-hero-size);
+  --text-hero-mobile: var(--type-hero-size);
+  --text-h1-desktop: var(--type-page-size);
+  --text-h2-desktop: var(--type-section-size);
+  --text-h2-tablet: var(--type-section-size);
+  --text-h2-mobile: var(--type-section-size);
+  --text-body-desktop: var(--type-body-size);
+  --text-body-tablet: var(--type-body-size);
+  --text-body-mobile: var(--type-body-size);
+  --text-2xl: var(--type-page-size);
+  --text-xl: var(--type-block-size);
+  --text-lg: var(--type-lead-size);
+  --text-sm: var(--font-small);
+  --text-xs: var(--font-overline);
+  --text-overline-desktop: var(--font-overline);
+  --text-overline-mobile: var(--font-overline);
   --text-small-desktop: var(--font-small);
-  --text-body-small-desktop: 15px;
-  --text-body-small-mobile: 14px;
-  --text-caption-desktop: 12px;
+  --text-body-small-desktop: var(--font-small);
+  --text-body-small-mobile: var(--font-small);
+  --text-caption-desktop: var(--font-caption);
 
-  --line-height-title: var(--leading-display);
-  --line-height-title-mobile: 1.04;
-  --line-height-h2: var(--leading-heading);
-  --line-height-text: var(--leading-body);
-  --line-height-text-mobile: 1.62;
+  --line-height-title: var(--type-hero-leading);
+  --line-height-title-mobile: var(--type-hero-leading);
+  --line-height-h2: var(--type-section-leading);
+  --line-height-text: var(--type-body-leading);
+  --line-height-text-mobile: var(--type-body-leading);
   --line-height-small: 1.45;
   --line-height-ui: 1;
 

@@ -16,7 +16,7 @@
 
   /* Semantic spacing */
   --space-section-head: var(--space-edge);
-  --space-title-body: var(--space-lg);
+  --space-title-body: 32px;
   --space-stack-sm: var(--space-edge);
   --space-stack-md: var(--space-md);
   --space-stack-lg: var(--space-edge-lg);
@@ -30,11 +30,23 @@
   --gap-tight: var(--space-edge);
   --gap-nav: var(--header-nav-gap);
 
-  /* Section vertical rhythm */
-  --section-space-mobile: 88px;
-  --section-space-tablet: 112px;
-  --section-space-desktop: 144px;
-  --space-section: clamp(var(--section-space-mobile), 8vw, var(--section-space-desktop));
+  /*
+    Вертикальный ритм секций — один на весь сайт.
+    моб 56 → планшет 72 → десктоп 96
+  */
+  --section-pad-mobile: 56px;
+  --section-pad-tablet: 72px;
+  --section-pad-desktop: 96px;
+  --space-section-y: clamp(
+    var(--section-pad-mobile),
+    7vw,
+    var(--section-pad-desktop)
+  );
+  --space-section: var(--space-section-y);
+
+  /* Воздух под шапкой для якорей (карточка/заголовок секции) */
+  --space-anchor-air: 24px;
+  --space-anchor-offset: calc(var(--header-height) + var(--space-anchor-air));
 
   --section-gap-mobile: 32px;
   --section-gap-tablet: 48px;

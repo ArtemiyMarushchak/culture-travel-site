@@ -7,39 +7,105 @@
   --font-weight-overline: 500;
   --font-weight-ui: 600;
 
-  /* Scale — clamp с потолком на 4K */
-  --font-hero: clamp(40px, 3.2vw + 1rem, 66px);
-  --font-h1: clamp(36px, 2.8vw + 1rem, 64px);
-  --font-h2: clamp(28px, 2.2vw + 0.75rem, 54px);
-  --font-h3: clamp(22px, 1.6vw + 0.5rem, 36px);
-  --font-h4: clamp(18px, 1.2vw + 0.5rem, 28px);
-  --font-lead: clamp(17px, 0.35vw + 15px, 20px);
-  --font-body-size: clamp(15px, 0.2vw + 14px, 17px);
-  --font-small: 14px;
+  /*
+    Типографика — locked. Меняй только min/max.
+    Предлоги не висят: core/typograf.js + build.py (новые новости/кейсы тоже).
+
+    роль        моб → деск   lh     tracking   вес    где
+    hero        36 → 56      1.06   -0.03em    600    Анна
+    section     28 → 40      1.12   -0.02em    600    Мои кейсы, Мои услуги
+    block       24 → 32      1.18   -0.02em    600    заголовок в панели
+    card        16 → 20      1.25   -0.02em    600    заголовок карточки
+    body        16 → 19      1.65    0         400    описание, Обо мне
+    card-text   14 → 15      1.50    0         400    текст в карточке
+    overline    12           1.00    0.14em    500    метка
+
+    стек: заголовок → описание 32px, в карточке 8px
+  */
+
+  --type-hero-min: 36px;
+  --type-hero-max: 56px;
+  --type-hero-size: clamp(var(--type-hero-min), 5vw, var(--type-hero-max));
+  --type-hero-leading: 1.06;
+  --type-hero-tracking: -0.03em;
+
+  --type-section-min: 28px;
+  --type-section-max: 40px;
+  --type-section-size: clamp(var(--type-section-min), 3.4vw, var(--type-section-max));
+  --type-section-leading: 1.12;
+  --type-section-tracking: -0.02em;
+
+  --type-block-min: 24px;
+  --type-block-max: 32px;
+  --type-block-size: clamp(var(--type-block-min), 2.5vw, var(--type-block-max));
+  --type-block-leading: 1.18;
+  --type-block-tracking: -0.02em;
+
+  --type-card-min: 16px;
+  --type-card-max: 20px;
+  --type-card-size: clamp(var(--type-card-min), 1.5vw, var(--type-card-max));
+  --type-card-leading: 1.25;
+  --type-card-tracking: -0.02em;
+
+  --type-body-min: 16px;
+  --type-body-max: 19px;
+  --type-body-size: clamp(var(--type-body-min), 1.35vw, var(--type-body-max));
+  --type-body-leading: 1.65;
+  --type-body-tracking: 0;
+
+  --type-card-text-min: 14px;
+  --type-card-text-max: 15px;
+  --type-card-text-size: clamp(var(--type-card-text-min), 1.1vw, var(--type-card-text-max));
+  --type-card-text-leading: 1.5;
+  --type-card-text-tracking: 0;
+
+  --type-overline-size: 12px;
+  --type-overline-leading: 1;
+  --type-overline-tracking: 0.14em;
+
+  --type-lead-size: var(--type-body-size);
+  --type-lead-leading: var(--type-body-leading);
+  --type-lead-tracking: var(--type-body-tracking);
+
+  --type-page-size: var(--type-section-size);
+  --type-page-leading: var(--type-section-leading);
+  --type-page-tracking: var(--type-section-tracking);
+
+  --type-stack-block: 32px;
+  --type-stack-card: 8px;
+  --type-inset: 40px;
+
+  --font-hero: var(--type-hero-size);
+  --font-h1: var(--type-section-size);
+  --font-h2: var(--type-section-size);
+  --font-h3: var(--type-block-size);
+  --font-h4: var(--type-card-size);
+  --font-lead: var(--type-body-size);
+  --font-body-size: var(--type-body-size);
+  --font-small: var(--type-card-text-max);
   --font-caption: 12px;
-  --font-overline: 11px;
+  --font-overline: var(--type-overline-size);
   --font-nav: 11px;
   --font-menu: 15px;
+  --font-body-base: var(--type-body-min);
 
-  /* Базовый размер body — совпадает с нижней границей scale */
-  --font-body-base: 15px;
+  --leading-display: var(--type-hero-leading);
+  --leading-heading: var(--type-section-leading);
+  --leading-snug: 1.3;
+  --leading-body: var(--type-body-leading);
+  --leading-relaxed: var(--type-body-leading);
+  --leading-normal: var(--type-body-leading);
+  --leading-tight: var(--type-section-leading);
+  --leading-card: var(--type-card-leading);
 
-  --leading-display: 1.08;
-  --leading-heading: 1.2;
-  --leading-snug: 1.35;
-  --leading-body: 1.65;
-  --leading-relaxed: 1.75;
-  --leading-normal: 1.65;
-  --leading-tight: 1.15;
-
-  --tracking-display: -0.02em;
-  --tracking-heading: -0.015em;
-  --tracking-wide: 0.12em;
+  --tracking-display: var(--type-hero-tracking);
+  --tracking-heading: var(--type-section-tracking);
+  --tracking-wide: var(--type-overline-tracking);
   --tracking-nav: 0.14em;
-  --letter-spacing-wide: 0.18em;
+  --letter-spacing-wide: var(--type-overline-tracking);
   --letter-spacing-menu: 0.14em;
   --letter-spacing-nav: 0.12em;
   --letter-spacing-medium: 0.08em;
-  --letter-spacing-body: 0.035em;
-  --letter-spacing-tight: -0.02em;
+  --letter-spacing-body: var(--type-body-tracking);
+  --letter-spacing-tight: var(--type-section-tracking);
 }

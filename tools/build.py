@@ -51,6 +51,65 @@ def escape_html(value="") -> str:
     )
 
 
+NBSP = "\u00a0"
+_RU_PART = re.compile(
+    r"(?i)(^|[\s(«„\"'])(в|во|на|по|из|и|к|ко|о|об|обо|от|до|за|со|с|у|не|ни|но|а|да|или|либо|для|без|при|про|над|под|через|между|это)\s+"
+)
+_EN_PART = re.compile(
+    r"(?i)(^|[\s(\"'])(a|an|the|of|to|in|on|and|or|for|at|by|from|with)\s+"
+)
+_LAST_WORDS = re.compile(r"(\S{1,16})\s+(\S{1,12}[.,:;!?…»\"]?)$")
+_PROSE_KEYS = {
+    "title",
+    "titleEn",
+    "text",
+    "textEn",
+    "lead",
+    "leadEn",
+    "excerpt",
+    "subtitle",
+    "description",
+    "overline",
+    "overlineEn",
+    "author",
+    "authorEn",
+    "meta",
+    "metaEn",
+    "ctaTitle",
+    "ctaTitleEn",
+    "ctaText",
+    "ctaTextEn",
+    "siteNote",
+    "siteNoteEn",
+    "firstTitle",
+    "firstTitleEn",
+    "firstText",
+    "firstTextEn",
+}
+
+
+def typograf(text: str, lang: str = "ru") -> str:
+    if not text or not isinstance(text, str):
+        return text
+    out = text.replace(NBSP, " ")
+    part = _EN_PART if lang == "en" else _RU_PART
+    out = part.sub(lambda m: m.group(1) + m.group(2) + NBSP, out)
+    out = re.sub(r"(\d+)\s+(?=\S)", rf"\1{NBSP}", out)
+    out = _LAST_WORDS.sub(rf"\1{NBSP}\2", out)
+    return out
+
+
+def typograf_record(data: dict) -> dict:
+    out = dict(data)
+    for key, val in list(out.items()):
+        if not isinstance(val, str):
+            continue
+        lang = "en" if key.endswith("En") else "ru"
+        if key in _PROSE_KEYS or key.endswith("Title") or key.endswith("Text"):
+            out[key] = typograf(val, lang)
+    return out
+
+
 def interpolate(template: str, data: dict, raw_fields: set | None = None) -> str:
     raw = raw_fields or set()
 
@@ -225,23 +284,25 @@ def prepare_cases_slider(base_path: str = "") -> dict:
             else:
                 gallery = [image]
             processed.append(
-                {
-                    "title": item.get("title") or "",
-                    "titleEn": item.get("titleEn") or "",
-                    "text": item.get("text") or "",
-                    "textEn": item.get("textEn") or "",
-                    "image": image,
-                    "gallery": gallery,
-                    "link": link,
-                    "badge": item.get("badge") or "",
-                    "country": item.get("country") or item.get("badge") or "",
-                    "countryEn": item.get("countryEn") or "",
-                    "flag": item.get("flag") or "",
-                    "days": int(item.get("days") or 0),
-                    "rating": item.get("rating") or "5.0",
-                    "regionId": region,
-                    "regionLabel": region_labels.get(region) or "",
-                }
+                typograf_record(
+                    {
+                        "title": item.get("title") or "",
+                        "titleEn": item.get("titleEn") or "",
+                        "text": item.get("text") or "",
+                        "textEn": item.get("textEn") or "",
+                        "image": image,
+                        "gallery": gallery,
+                        "link": link,
+                        "badge": item.get("badge") or "",
+                        "country": item.get("country") or item.get("badge") or "",
+                        "countryEn": item.get("countryEn") or "",
+                        "flag": item.get("flag") or "",
+                        "days": int(item.get("days") or 0),
+                        "rating": item.get("rating") or "5.0",
+                        "regionId": region,
+                        "regionLabel": region_labels.get(region) or "",
+                    }
+                )
             )
         cases[region] = processed
 
@@ -268,20 +329,22 @@ def prepare_services_catalog() -> dict:
     items = []
     for index, item in enumerate(catalog.get("items") or []):
         items.append(
-            {
-                **item,
-                "indexPad": str(index + 1).zfill(2),
-                "short": item.get("short") or item.get("title") or "",
-                "shortEn": item.get("shortEn") or item.get("titleEn") or "",
-                "image": item.get("image") or "/assets/images/placeholder.svg",
-                "activeClass": " is-active" if index == 0 else "",
-                "coverClass": " is-cover" if item.get("cover") else "",
-                "expanded": "true" if index == 0 else "false",
-                "ariaHidden": "false" if index == 0 else "true",
-            }
+            typograf_record(
+                {
+                    **item,
+                    "indexPad": str(index + 1).zfill(2),
+                    "short": item.get("short") or item.get("title") or "",
+                    "shortEn": item.get("shortEn") or item.get("titleEn") or "",
+                    "image": item.get("image") or "/assets/images/placeholder.svg",
+                    "activeClass": " is-active" if index == 0 else "",
+                    "coverClass": " is-cover" if item.get("cover") else "",
+                    "expanded": "true" if index == 0 else "false",
+                    "ariaHidden": "false" if index == 0 else "true",
+                }
+            )
         )
     first = items[0] if items else {}
-    return {
+    return typograf_record({
         "overline": catalog.get("overline") or "",
         "overlineEn": catalog.get("overlineEn") or "",
         "title": catalog.get("title") or "",
@@ -295,14 +358,15 @@ def prepare_services_catalog() -> dict:
         "firstText": first.get("text") or "",
         "firstTextEn": first.get("textEn") or "",
         "firstImage": first.get("image") or "/assets/images/placeholder.svg",
-    }
+    })
 
 
 def prepare_reviews_catalog() -> dict:
     catalog = read_json("content/reviews/catalog.json")
     yandex_url = (catalog.get("platforms") or {}).get("yandex", {}).get("reviewUrl") or (site.get("reviews") or {}).get("yandexUrl") or ""
     tabs = catalog.get("tabs") or {}
-    return {
+    items = [typograf_record(item) for item in (catalog.get("items") or [])]
+    return typograf_record({
         "overline": catalog.get("overline") or "",
         "overlineEn": catalog.get("overlineEn") or "",
         "title": catalog.get("title") or "",
@@ -315,7 +379,7 @@ def prepare_reviews_catalog() -> dict:
         "tabYandexLabelEn": tabs.get("yandexEn") or "Yandex",
         "siteNote": catalog.get("siteNote") or "",
         "siteNoteEn": catalog.get("siteNoteEn") or "",
-        "items": catalog.get("items") or [],
+        "items": items,
         "ctaTitle": (catalog.get("cta") or {}).get("title") or "",
         "ctaTitleEn": (catalog.get("cta") or {}).get("titleEn") or "",
         "ctaText": (catalog.get("cta") or {}).get("text") or "",
@@ -326,7 +390,7 @@ def prepare_reviews_catalog() -> dict:
         "widgetNoteEn": (catalog.get("platforms") or {}).get("yandex", {}).get("widgetNoteEn") or "",
         "yandexReviewUrl": yandex_url or "#",
         "yandexBtnClass": "" if yandex_url else " rv__btn--soon",
-    }
+    })
 
 
 def prepare_news_list() -> list[dict]:
@@ -336,14 +400,16 @@ def prepare_news_list() -> list[dict]:
         if isinstance(cover, dict):
             cover = cover.get("image", "")
         items.append(
-            {
-                "slug": item.get("slug"),
-                "title": item.get("title"),
-                "excerpt": item.get("excerpt") or "",
-                "cover": cover or "/assets/images/placeholder.svg",
-                "dateIso": item.get("date"),
-                "dateFormatted": format_date(item.get("date") or ""),
-            }
+            typograf_record(
+                {
+                    "slug": item.get("slug"),
+                    "title": item.get("title"),
+                    "excerpt": item.get("excerpt") or "",
+                    "cover": cover or "/assets/images/placeholder.svg",
+                    "dateIso": item.get("date"),
+                    "dateFormatted": format_date(item.get("date") or ""),
+                }
+            )
         )
     return sorted(items, key=lambda x: x.get("dateIso") or "", reverse=True)
 

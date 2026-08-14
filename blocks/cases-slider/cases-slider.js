@@ -3,6 +3,7 @@
  */
 
 import { applyI18n, getLang, t } from '../../core/i18n.js';
+import { typograf } from '../../core/typograf.js';
 
 const SWIPE_THRESHOLD = 44;
 
@@ -120,8 +121,8 @@ export function initCasesSlider(root) {
       days.textContent = dayCount ? `${dayCount} ${t('cases.daysShort')}` : '';
       days.hidden = !dayCount;
     }
-    title.textContent = (en && item.titleEn) || item.title || '';
-    text.textContent = (en && item.textEn) || item.text || '';
+    title.textContent = typograf((en && item.titleEn) || item.title || '', en ? 'en' : 'ru');
+    text.textContent = typograf((en && item.textEn) || item.text || '', en ? 'en' : 'ru');
 
     const href = item.link || '';
     if (href) {

@@ -29,5 +29,5 @@ export const blockInits = {
 
 export const coreFeatures = {
   anchors: true,
-  videoOverlay: true,
+  videoOverlay: false,
 };

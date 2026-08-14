@@ -35,21 +35,6 @@
 <meta name="theme-color" content="#0d0d0d">
 
 <!-- Styles -->
-<link rel="preload" as="image" href="{{basePath}}/assets/images/signature-preloader.png">
 <link rel="stylesheet" href="{{basePath}}/styles/main.css?v={{buildId}}">
-<style>
-  html.is-preloading { background: #0d0d0d !important; }
-  html.is-preloading body { overflow: hidden; }
-  .ct-preloader {
-    position: fixed;
-    inset: 0;
-    z-index: 2147483000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #0d0d0d;
-  }
-  html:not(.is-preloading) .ct-preloader:not(.is-done) { display: none; }
-</style>
 
 {{jsonLd}}

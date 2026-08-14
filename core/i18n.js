@@ -2,6 +2,8 @@
  * UI chrome translations. Page content stays in source language until copy exists.
  */
 
+import { typograf } from './typograf.js';
+
 export const STRINGS = {
   ru: {
     'skip': 'Перейти к содержимому',
@@ -151,7 +153,7 @@ export function applyI18n(root = document) {
   root.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
     if (!key) return;
-    const value = t(key);
+    const value = typograf(t(key), getLang());
     if (value) el.textContent = value;
   });
 
@@ -167,7 +169,7 @@ export function applyI18n(root = document) {
 
   const lang = getLang();
   root.querySelectorAll('[data-i18n-src]').forEach((el) => {
-    const value = el.getAttribute(lang === 'en' ? 'data-en' : 'data-ru');
+    const value = typograf(el.getAttribute(lang === 'en' ? 'data-en' : 'data-ru') || '', lang);
     if (value) el.textContent = value;
   });
 }

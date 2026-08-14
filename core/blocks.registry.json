@@ -144,6 +144,6 @@
   },
   "core": {
     "anchors": true,
-    "videoOverlay": true
+    "videoOverlay": false
   }
 }

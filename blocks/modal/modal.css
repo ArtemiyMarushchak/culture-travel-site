@@ -43,8 +43,9 @@
 }
 
 .modal__title {
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-md);
+  font-size: var(--type-block-size);
+  line-height: var(--type-block-leading);
+  margin-bottom: var(--type-stack-block);
   padding-right: 2rem;
 }
 

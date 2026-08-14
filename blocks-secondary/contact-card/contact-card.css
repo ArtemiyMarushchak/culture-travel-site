@@ -69,25 +69,25 @@
 #ab-contact-card .ab-label {
   margin: 0 0 14px;
   color: var(--color-gold);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: var(--type-overline-size);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: var(--type-overline-tracking);
   text-transform: uppercase;
 }
 
 #ab-contact-card .ab-name {
   margin: 0;
-  font-size: clamp(38px, 5vw, 58px);
-  line-height: 1;
-  font-weight: 600;
-  letter-spacing: -0.035em;
+  font-size: var(--type-hero-size);
+  line-height: var(--type-hero-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-hero-tracking);
 }
 
 #ab-contact-card .ab-description {
-  margin: 18px 0 32px;
+  margin: var(--type-stack-block) 0 32px;
   color: rgb(0 0 0 / 58%);
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
 }
 
 #ab-contact-card .ab-contacts {
@@ -224,9 +224,5 @@
     flex-basis: 160px;
     width: 160px;
     height: 160px;
-  }
-
-  #ab-contact-card .ab-name {
-    font-size: 33px;
   }
 }

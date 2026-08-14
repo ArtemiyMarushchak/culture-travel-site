@@ -124,7 +124,6 @@
     import { initHeader } from '../blocks/header/header.js';
     import { initHeroVideo } from '../blocks/hero-video/hero-video.js';
     import { initAnchors } from '../core/anchors.js';
-    import { initVideoOverlay } from '../core/video-overlay.js';
 
     const headerApi = initHeader(document.getElementById('lux-header'));
     initHeroVideo(document.querySelector('.uc-video'));
@@ -132,7 +131,6 @@
 
     window.addEventListener('load', () => {
       setTimeout(() => {
-        initVideoOverlay();
         headerApi?.updateHeader?.();
       }, 120);
     });

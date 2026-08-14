@@ -8,13 +8,17 @@
 }
 
 .case-layout__title {
-  font-size: var(--text-2xl);
-  margin-bottom: var(--space-sm);
+  font-size: var(--type-page-size);
+  line-height: var(--type-page-leading);
+  letter-spacing: var(--type-page-tracking);
+  font-weight: var(--font-weight-title);
+  margin: 0 0 var(--type-stack-block);
 }
 
 .case-layout__subtitle {
   color: var(--color-ink-muted);
-  font-size: var(--text-lg);
+  font-size: var(--type-lead-size);
+  line-height: var(--type-lead-leading);
   margin-bottom: var(--space-xl);
 }
 
@@ -31,7 +35,8 @@
 }
 
 .case-layout__body {
-  font-size: var(--text-lg);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
   margin-bottom: var(--space-xl);
 }
 

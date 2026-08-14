@@ -2,7 +2,7 @@
   <div class="sv">
     <div class="sv__frame">
       <div class="sv__bar">
-        <h2 class="sv__title" id="anna-services-title" data-i18n="services.title">Мои услуги</h2>
+        <h2 class="sv__title type-section" id="anna-services-title" data-i18n="services.title">Мои услуги</h2>
       </div>
 
       <div class="sv__deck" data-services-deck style="--sv-count: {{itemCount}}">
@@ -13,15 +13,19 @@
           style="--sv-i: {{index}}"
           aria-hidden="{{ariaHidden}}"
         >
+          <button
+            class="sv__tab{{activeClass}}"
+            type="button"
+            data-service-fin
+            aria-pressed="{{expanded}}"
+            aria-expanded="{{expanded}}"
+          >
+            <span class="sv__tab-name" data-i18n-src data-ru="{{short}}" data-en="{{shortEn}}">{{short}}</span>
+            <svg class="sv__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
           <div class="sv__sheet" data-service-sheet>
-            <button
-              class="sv__tab{{activeClass}}"
-              type="button"
-              data-service-fin
-              aria-pressed="{{expanded}}"
-            >
-              <span class="sv__tab-name" data-i18n-src data-ru="{{short}}" data-en="{{shortEn}}">{{short}}</span>
-            </button>
             <div class="sv__body">
               <div class="sv__photo">
                 <img
@@ -31,9 +35,9 @@
                   decoding="async"
                 >
               </div>
-              <div class="sv__copy">
-                <h3 class="sv__name" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</h3>
-                <p class="sv__text" data-i18n-src data-ru="{{text}}" data-en="{{textEn}}">{{text}}</p>
+              <div class="sv__copy type-pair">
+                <h3 class="sv__name type-block" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</h3>
+                <p class="sv__text type-body" data-i18n-src data-ru="{{text}}" data-en="{{textEn}}">{{text}}</p>
               </div>
             </div>
           </div>

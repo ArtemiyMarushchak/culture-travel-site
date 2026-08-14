@@ -1,88 +1,162 @@
-/* Typography — Montserrat */
+/* Typography — только роли из tokens/typography.css */
 
+.type-hero,
 .ui-display {
-  font-size: var(--font-hero);
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-hero-size);
   font-weight: var(--font-weight-title);
-  line-height: var(--leading-display);
-  letter-spacing: var(--tracking-display);
+  line-height: var(--type-hero-leading);
+  letter-spacing: var(--type-hero-tracking);
   color: var(--color-ink);
+  text-wrap: balance;
 }
 
-.ui-h1 {
-  font-size: var(--font-h1);
-  font-weight: var(--font-weight-title);
-  line-height: var(--leading-heading);
-  letter-spacing: var(--tracking-heading);
-  color: var(--color-ink);
-}
-
+.type-page,
+.type-section,
+.section__title,
+.ui-h1,
 .ui-h2 {
-  font-size: var(--font-h2);
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-section-size);
   font-weight: var(--font-weight-title);
-  line-height: var(--leading-heading);
-  letter-spacing: var(--tracking-heading);
+  line-height: var(--type-section-leading);
+  letter-spacing: var(--type-section-tracking);
   color: var(--color-ink);
+  text-wrap: balance;
 }
 
+.type-block,
 .ui-h3 {
-  font-size: var(--font-h3);
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-block-size);
   font-weight: var(--font-weight-title);
-  line-height: var(--leading-heading);
+  line-height: var(--type-block-leading);
+  letter-spacing: var(--type-block-tracking);
   color: var(--color-ink);
+  text-wrap: balance;
 }
 
+.type-card,
 .ui-h4 {
-  font-size: var(--font-h4);
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-card-size);
   font-weight: var(--font-weight-title);
-  line-height: var(--leading-snug);
+  line-height: var(--type-card-leading);
+  letter-spacing: var(--type-card-tracking);
   color: var(--color-ink);
+  text-wrap: balance;
 }
 
-.ui-lead {
-  font-size: var(--font-lead);
-  font-weight: var(--font-weight-text);
-  line-height: var(--leading-relaxed);
-  color: var(--color-ink-muted);
-}
-
+.type-lead,
+.type-body,
+.section__lead,
+.ui-lead,
 .ui-body {
-  font-size: var(--font-body-size);
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-body-size);
   font-weight: var(--font-weight-text);
-  line-height: var(--leading-body);
+  line-height: var(--type-body-leading);
+  letter-spacing: var(--type-body-tracking);
   color: var(--color-ink-muted);
+  text-wrap: pretty;
 }
 
-/* Длинный текст — журнал, «Обо мне», кейсы */
+.type-card-text {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-card-text-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--type-card-text-leading);
+  letter-spacing: var(--type-card-text-tracking);
+  color: var(--color-ink-muted);
+  text-wrap: pretty;
+}
+
+.type-overline,
+.section__label {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-overline-size);
+  font-weight: var(--font-weight-overline);
+  line-height: var(--type-overline-leading);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.type-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.type-pair > * {
+  margin: 0;
+}
+
+.type-pair > :first-child {
+  padding-bottom: var(--type-stack-block);
+  text-box: trim-end cap alphabetic;
+}
+
+.type-pair > :last-child {
+  text-box: trim-start cap alphabetic;
+}
+
+.type-pair--card > :first-child {
+  padding-bottom: var(--type-stack-card);
+}
+
+.section__label + .section__title,
+.section__label + .type-section {
+  margin-top: var(--space-sm);
+}
+
+.section__title + .section__lead,
+.section__title + .type-lead,
+.section__title + .type-body,
+.section__title + .prose {
+  margin-top: var(--type-stack-block);
+}
+
 .ui-prose,
 .prose {
   max-width: var(--container-text-max);
-  font-size: var(--font-body-size);
+  font-size: var(--type-body-size);
   font-weight: var(--font-weight-text);
-  line-height: var(--leading-body);
+  line-height: var(--type-body-leading);
+  letter-spacing: var(--type-body-tracking);
   color: var(--color-ink-muted);
 }
 
 .ui-prose > * + *,
 .prose > * + * {
-  margin-top: var(--space-stack-md);
+  margin-top: var(--space-md);
 }
 
 .ui-prose h2,
 .prose h2 {
-  font-size: var(--font-h3);
+  font-size: var(--type-block-size);
   font-weight: var(--font-weight-title);
-  line-height: var(--leading-heading);
+  line-height: var(--type-block-leading);
+  letter-spacing: var(--type-block-tracking);
   color: var(--color-ink);
-  margin-top: var(--space-stack-xl);
+  margin-top: var(--space-xl);
 }
 
 .ui-prose h3,
 .prose h3 {
-  font-size: var(--font-h4);
+  font-size: var(--type-card-size);
   font-weight: var(--font-weight-title);
-  line-height: var(--leading-snug);
+  line-height: var(--type-card-leading);
+  letter-spacing: var(--type-card-tracking);
   color: var(--color-ink);
-  margin-top: var(--space-stack-lg);
+  margin-top: var(--space-lg);
 }
 
 .ui-prose p,
@@ -90,6 +164,11 @@
   max-width: 62ch;
 }
 
+.theme-dark .type-hero,
+.theme-dark .type-page,
+.theme-dark .type-section,
+.theme-dark .type-block,
+.theme-dark .type-card,
 .theme-dark .ui-display,
 .theme-dark .ui-h1,
 .theme-dark .ui-h2,
@@ -98,6 +177,9 @@
   color: var(--color-white);
 }
 
+.theme-dark .type-lead,
+.theme-dark .type-body,
+.theme-dark .type-card-text,
 .theme-dark .ui-lead,
 .theme-dark .ui-body,
 .theme-dark .ui-prose,

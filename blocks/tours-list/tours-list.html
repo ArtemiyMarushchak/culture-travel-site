@@ -2,7 +2,7 @@
   <div class="container">
     <p class="section__label" data-i18n="nav.tours">Авторские туры</p>
     <h1 class="section__title">Программы Culture Travel</h1>
-    <p class="tours-list__lead">Индивидуальные маршруты — каждый собирается под гостей, без готовых пакетов.</p>
+    <p class="tours-list__lead type-lead">Индивидуальные маршруты — каждый собирается под гостей, без готовых пакетов.</p>
 
     <div class="tours-list__grid">
       {{#each items}}
@@ -12,8 +12,8 @@
             <img src="{{basePath}}{{cover}}" alt="" loading="lazy" decoding="async" width="720" height="480">
           </span>
           <span class="tours-list__body">
-            <h2>{{title}}</h2>
-            <p>{{subtitle}}</p>
+            <h2 class="type-card">{{title}}</h2>
+            <p class="type-card-text">{{subtitle}}</p>
           </span>
         </a>
       </article>

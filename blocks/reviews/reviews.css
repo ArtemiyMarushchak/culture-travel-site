@@ -7,7 +7,6 @@
   overflow: hidden;
   background: var(--color-bg);
   color: var(--color-ink);
-  scroll-margin-top: var(--header-height);
 }
 
 #anna-reviews,
@@ -17,7 +16,7 @@
 
 .rv {
   width: 100%;
-  padding: var(--space-edge-lg) var(--container-padding-desktop);
+  padding: var(--space-section-y) var(--container-padding-desktop);
 }
 
 .rv__head {
@@ -27,29 +26,29 @@
 
 .rv__overline {
   margin: 0 0 var(--space-lg);
-  font-size: var(--text-overline-desktop);
-  line-height: 1;
+  font-size: var(--type-overline-size);
+  line-height: var(--type-overline-leading);
   font-weight: var(--font-weight-overline);
-  letter-spacing: var(--letter-spacing-wide);
+  letter-spacing: var(--type-overline-tracking);
   text-transform: uppercase;
   color: var(--color-gold);
 }
 
 .rv__title {
-  margin: 0 0 var(--space-lg);
-  font-size: var(--text-h2-desktop);
-  line-height: var(--line-height-h2);
+  margin: 0 0 var(--type-stack-block);
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
   font-weight: var(--font-weight-title);
-  letter-spacing: var(--letter-spacing-tight);
+  letter-spacing: var(--type-section-tracking);
   color: var(--color-ink);
 }
 
 .rv__lead {
   margin: 0;
-  font-size: clamp(17px, 1.1vw, 20px);
-  line-height: 1.72;
+  font-size: var(--type-lead-size);
+  line-height: var(--type-lead-leading);
   font-weight: var(--font-weight-text);
-  letter-spacing: var(--letter-spacing-body);
+  letter-spacing: var(--type-body-tracking);
   color: var(--color-ink-muted);
 }
 
@@ -135,10 +134,10 @@
 
 .rv__quote-text {
   margin: 0 0 22px;
-  font-size: clamp(17px, 1.15vw, 19px);
-  line-height: 1.68;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
   font-weight: var(--font-weight-text);
-  letter-spacing: var(--letter-spacing-body);
+  letter-spacing: var(--type-body-tracking);
   color: var(--color-ink-muted);
 }
 
@@ -184,19 +183,20 @@
 }
 
 .rv__yandex-title {
-  margin: 0 0 14px;
-  font-size: clamp(22px, 1.6vw, 28px);
-  line-height: 1.2;
+  margin: 0;
+  padding: 0 0 var(--type-stack-block);
+  font-size: var(--type-block-size);
+  line-height: var(--type-block-leading);
   font-weight: var(--font-weight-title);
-  letter-spacing: var(--letter-spacing-tight);
+  letter-spacing: var(--type-block-tracking);
   color: var(--color-ink);
 }
 
 .rv__yandex-text {
   margin: 0 0 28px;
-  font-size: var(--text-body-desktop);
-  line-height: 1.68;
-  letter-spacing: var(--letter-spacing-body);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  letter-spacing: var(--type-body-tracking);
   color: var(--color-ink-muted);
 }
 
@@ -251,7 +251,7 @@
 
 @media (max-width: 1180px) {
   .rv {
-    padding: var(--space-edge) var(--container-padding-tablet);
+    padding: var(--space-section-y) var(--container-padding-tablet);
   }
 
   .rv__head {
@@ -259,13 +259,13 @@
   }
 
   .rv__title {
-    font-size: var(--text-h2-tablet);
+    font-size: var(--type-section-size);
   }
 }
 
 @media (max-width: 640px) {
   .rv {
-    padding: var(--space-edge) var(--container-padding-mobile);
+    padding: var(--space-section-y) var(--container-padding-mobile);
   }
 
   .rv__head {
@@ -273,7 +273,7 @@
   }
 
   .rv__title {
-    font-size: var(--text-h2-mobile);
+    font-size: var(--type-section-size);
   }
 
   .rv__grid {

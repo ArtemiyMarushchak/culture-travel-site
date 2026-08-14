@@ -4,14 +4,17 @@
  */
 
 import { t } from '../../core/i18n.js';
+import {
+  SECTION_ANCHORS,
+  anchorOffset,
+  getAnchorTarget,
+  hashUrl,
+  keyForSelector,
+  scrollToBlock,
+  selectorForHash,
+} from '../../core/anchors.js';
 
 const SCROLL_THRESHOLD = 40;
-const HASH_MAP = {
-  about: '.uc-about',
-  cases: '.uc-cases',
-  services: '.uc-services',
-  reviews: '.uc-reviews',
-};
 
 function escapeHtml(value = '') {
   return String(value)
@@ -61,9 +64,9 @@ class SiteHeader {
   #collectSpyTargets() {
     this.#spyLinks = [...this.#root.querySelectorAll('a[data-anchor]')]
       .filter((link) => Boolean(link.getAttribute('data-anchor')));
-    this.#sections = Object.entries(HASH_MAP)
+    this.#sections = Object.entries(SECTION_ANCHORS)
       .map(([key, selector]) => {
-        const node = document.querySelector(selector);
+        const node = getAnchorTarget(selector) || document.querySelector(selector);
         return node ? { key, selector, node } : null;
       })
       .filter(Boolean);
@@ -235,12 +238,14 @@ class SiteHeader {
       return;
     }
 
-    const probe = this.#headerHeight() + 24;
+    const probe = anchorOffset();
     let current = '';
 
+    // Последняя секция, чей визуальный якорь уже прошёл линию под шапкой
     for (const section of this.#sections) {
-      const rect = section.node.getBoundingClientRect();
-      if (rect.top <= probe && rect.bottom > probe) current = section.key;
+      if (section.node.getBoundingClientRect().top <= probe) {
+        current = section.key;
+      }
     }
 
     this.#setActiveLink(current);
@@ -249,7 +254,7 @@ class SiteHeader {
   #setActiveLink(key) {
     this.#spyLinks.forEach((link) => {
       const anchor = link.getAttribute('data-anchor') || '';
-      const linkKey = this.#keyFromSelector(anchor);
+      const linkKey = keyForSelector(anchor);
       link.classList.toggle('is-active', Boolean(key && linkKey === key));
     });
   }
@@ -258,7 +263,7 @@ class SiteHeader {
     if (!this.#isHome() || !window.location.hash) return;
 
     const key = window.location.hash.replace('#', '');
-    const selector = HASH_MAP[key];
+    const selector = selectorForHash(key);
     if (!selector) return;
 
     window.setTimeout(() => {
@@ -285,20 +290,20 @@ class SiteHeader {
         return;
       }
 
-      const key = this.#keyFromSelector(selector);
+      const key = keyForSelector(selector);
       if (key) {
-        history.pushState(null, '', `/#${key}`);
+        history.pushState(null, '', hashUrl(key));
         this.#spyHold = key;
         this.#setActiveLink(key);
         window.setTimeout(() => {
           this.#spyHold = '';
           this.update();
-        }, this.#reducedMotion ? 80 : 900);
+        }, this.#reducedMotion ? 80 : 700);
       }
 
       window.setTimeout(
         () => this.#scrollToTarget(selector, !this.#reducedMotion),
-        this.#reducedMotion ? 0 : 120,
+        this.#reducedMotion ? 0 : 80,
       );
       return;
     }
@@ -489,41 +494,13 @@ class SiteHeader {
     return false;
   }
 
-  #headerHeight() {
-    return this.#root.offsetHeight || 0;
-  }
-
-  #keyFromSelector(selector) {
-    return Object.keys(HASH_MAP).find((key) => HASH_MAP[key] === selector) || '';
-  }
-
-  #aboutAir() {
-    return window.matchMedia('(max-width: 1180px)').matches ? 20 : 40;
-  }
-
-  #getTarget(selector) {
-    if (selector === '.uc-about') {
-      return document.querySelector('.aa__frame') || document.querySelector('.uc-about');
-    }
-    return document.querySelector(selector);
-  }
-
   #scrollToTarget(selector, smooth) {
-    const target = this.#getTarget(selector);
-    if (!target) return;
-
-    const framed = selector === '.uc-about';
-    const offset = framed
-      ? this.#headerHeight() + this.#aboutAir()
-      : this.#headerHeight();
-    const top = Math.max(0, target.getBoundingClientRect().top + window.pageYOffset - offset);
-    window.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
+    scrollToBlock(selector, smooth);
   }
 
   #goToHomeAnchor(selector) {
-    const key = this.#keyFromSelector(selector);
-    const base = document.documentElement.dataset.basePath || '';
-    window.location.href = key ? `${base}/#${key}` : `${base}/`;
+    const key = keyForSelector(selector);
+    window.location.href = hashUrl(key);
   }
 }
 
