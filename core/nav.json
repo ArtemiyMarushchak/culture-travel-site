@@ -1,5 +1,5 @@
 [
-  { "label": "Обо мне", "i18n": "nav.about", "href": "/#about", "anchor": ".uc-about" },
+  { "label": "Обо мне", "i18n": "nav.about", "href": "/#about", "anchor": "about-drawer" },
   { "label": "Кейсы", "i18n": "nav.cases", "href": "/#cases", "anchor": ".uc-cases" },
   { "label": "Услуги", "i18n": "nav.services", "href": "/#services", "anchor": ".uc-services" },
   { "label": "Отзывы", "i18n": "nav.reviews", "href": "/#reviews", "anchor": ".uc-reviews" },

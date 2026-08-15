@@ -1,10 +1,10 @@
 /**
  * Home-section anchors: hash ↔ selector ↔ visual scroll target.
  * Header scroll-spy and footer/hash links all use this module.
+ * «Обо мне» (#about) opens the profile drawer — not a page section.
  */
 
 export const SECTION_ANCHORS = {
-  about: '.uc-about',
   cases: '.uc-cases',
   services: '.uc-services',
   reviews: '.uc-reviews',
@@ -12,7 +12,6 @@ export const SECTION_ANCHORS = {
 
 /** Prefer the title/card so scroll lands under the header with air. */
 const VISUAL_TARGET = {
-  '.uc-about': '.aa__frame',
   '.uc-cases': '.mcs__title',
   '.uc-services': '.sv__title',
   '.uc-reviews': '.rv__title',
@@ -61,9 +60,6 @@ export function getAnchorTarget(selector) {
     const node = document.querySelector(visual);
     if (node) return node;
   }
-  if (selector === '.uc-about') {
-    return document.querySelector('#anna-about') || document.querySelector('.uc-about');
-  }
   return document.querySelector(selector);
 }
 
@@ -82,19 +78,35 @@ export function scrollToBlock(selector, smooth = true) {
   });
 }
 
+function openAboutFromHash(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  closeHeaderMenu();
+  history.pushState(null, '', hashUrl('about'));
+  window.openAboutDrawer?.();
+}
+
 export function initAnchors() {
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a[href^="/#"], a[href^="#"]');
     if (!link) return;
 
-    // Header owns data-anchor links (spy + scroll).
-    if (link.hasAttribute('data-anchor')) return;
+    // Header owns data-anchor scroll links (spy + scroll).
+    if (link.hasAttribute('data-anchor') && link.getAttribute('data-anchor')) return;
 
     const href = link.getAttribute('href') || '';
     if (!href.includes('#')) return;
 
     const key = href.split('#')[1] || '';
-    if (!key || !(key in SECTION_ANCHORS)) return;
+    if (!key) return;
+
+    // Profile drawer — not a scroll section
+    if (key === 'about') {
+      openAboutFromHash(e);
+      return;
+    }
+
+    if (!(key in SECTION_ANCHORS)) return;
 
     const selector = SECTION_ANCHORS[key];
     if (!selector || !getAnchorTarget(selector)) return;
@@ -111,6 +123,8 @@ export function initAnchors() {
     if (!window.location.hash) return;
 
     const key = window.location.hash.replace('#', '');
+    if (key === 'about') return; // drawer opens from modal/header hash handlers
+
     const selector = SECTION_ANCHORS[key];
     if (!selector) return;
 

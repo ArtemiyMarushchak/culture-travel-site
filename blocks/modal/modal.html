@@ -17,6 +17,65 @@
       <div class="modal__gallery"></div>
     </div>
   </div>
+
+  <!-- About profile drawer (left, ~½ screen) -->
+  <div
+    class="modal modal--drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="about-drawer-name"
+    hidden
+    data-modal-type="about-drawer"
+  >
+    <div class="modal__backdrop" data-modal-close></div>
+    <aside class="about-drawer" data-about-drawer>
+      <button class="about-drawer__close" type="button" data-modal-close aria-label="Закрыть">
+        <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false">
+          <path d="M2 2l8 8M10 2 2 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="about-drawer__main">
+        <div class="about-drawer__photo">
+          <img
+            src="{{basePath}}/assets/images/about/anna-portrait.png"
+            alt="Анна Баглай"
+            width="380"
+            height="380"
+            decoding="async"
+          >
+        </div>
+
+        <div class="about-drawer__id">
+          <h2 class="about-drawer__name" id="about-drawer-name" data-i18n="about.name">Анна Баглай</h2>
+          <p class="about-drawer__role" data-i18n="about.role">Делаю путешествия в сегменте люкс</p>
+        </div>
+
+        <div class="about-drawer__text">
+          <p data-i18n="about.p1">19&nbsp;лет работаю в&nbsp;туристической индустрии, специализируюсь на&nbsp;организации персональных путешествий по&nbsp;всему миру.</p>
+          <p data-i18n="about.p2">Основное направление моей работы — создание уникальных маршрутов: от&nbsp;премиальных пляжных курортов и&nbsp;лучших отелей мира до&nbsp;сложных индивидуальных программ, семейных путешествий и&nbsp;экспедиционных маршрутов в&nbsp;самые интересные и&nbsp;удалённые уголки мира.</p>
+          <p data-i18n="about.p3">Работаю преимущественно с&nbsp;постоянными клиентами, для&nbsp;которых важны высокий уровень сервиса, внимание к&nbsp;деталям и&nbsp;долгосрочные отношения.</p>
+          <p data-i18n="about.p4">Каждая поездка создаётся индивидуально — с&nbsp;учётом интересов, привычек и&nbsp;ожиданий гостей.</p>
+        </div>
+      </div>
+
+      <div class="about-drawer__footer">
+        <button
+          class="about-drawer__save"
+          type="button"
+          data-save-contact
+          data-name="Анна Баглай"
+          data-org="Культура Путешествий"
+          data-title="Режиссёр индивидуальных туров"
+          data-phone="{{phone}}"
+          data-email="{{email}}"
+          data-url="{{telegram}}"
+        >
+          Сохранить контакт
+        </button>
+      </div>
+    </aside>
+  </div>
 </div>
 
 <!-- Static modal content templates -->

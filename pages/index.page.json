@@ -4,7 +4,6 @@
   "description": "Индивидуальные VIP-путешествия по всему миру. Culture Travel — персональные маршруты для discerning travelers.",
   "blocks": [
     { "type": "hero-video" },
-    { "type": "about" },
     {
       "type": "cases-slider",
       "data": { "source": "content/cases-slider/catalog.json" }

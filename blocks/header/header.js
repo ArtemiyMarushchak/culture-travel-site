@@ -264,7 +264,8 @@ class SiteHeader {
     this.#spyLinks.forEach((link) => {
       const anchor = link.getAttribute('data-anchor') || '';
       const linkKey = keyForSelector(anchor);
-      link.classList.toggle('is-active', Boolean(key && linkKey === key));
+      const isAbout = key === 'about' && anchor === 'about-drawer';
+      link.classList.toggle('is-active', Boolean(key && (linkKey === key || isAbout)));
     });
   }
 
@@ -272,6 +273,15 @@ class SiteHeader {
     if (!this.#isHome() || !window.location.hash) return;
 
     const key = window.location.hash.replace('#', '');
+    if (key === 'about') {
+      window.setTimeout(() => {
+        this.closeMenu();
+        this.#setActiveLink('about');
+        window.openAboutDrawer?.();
+      }, this.#reducedMotion ? 0 : 180);
+      return;
+    }
+
     const selector = selectorForHash(key);
     if (!selector) return;
 
@@ -293,6 +303,14 @@ class SiteHeader {
       event.stopPropagation();
       this.closeMenu();
       this.closeSearch();
+
+      // «Обо мне» — боковая карточка профиля (секции на странице больше нет)
+      if (selector === 'about-drawer' || selector === '.uc-about') {
+        history.pushState(null, '', hashUrl('about'));
+        this.#setActiveLink('about');
+        window.openAboutDrawer?.();
+        return;
+      }
 
       if (!this.#isHome()) {
         this.#goToHomeAnchor(selector);

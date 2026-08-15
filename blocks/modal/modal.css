@@ -69,3 +69,198 @@
 .modal__gallery video {
   background: var(--color-header);
 }
+
+/* ── About drawer (left sheet) ── */
+
+.modal--drawer {
+  place-items: stretch start;
+  padding: 0;
+  justify-items: start;
+}
+
+.modal--drawer .modal__backdrop {
+  animation: about-drawer-fade 0.28s ease;
+}
+
+.about-drawer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(100vw, 450px);
+  height: 100dvh;
+  margin: 0;
+  padding: 10px;
+  padding-top: max(10px, env(safe-area-inset-top, 0px));
+  padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  background: var(--color-shape);
+  color: var(--color-ink-on-shape);
+  border-right: 1px solid var(--color-line-on-shape, var(--color-line));
+  border-radius: 0;
+  box-shadow: 12px 0 40px rgba(0, 0, 0, 0.18);
+  transform: translateX(0);
+  animation: about-drawer-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+.about-drawer__close {
+  position: absolute;
+  top: max(16px, calc(env(safe-area-inset-top, 0px) + 16px));
+  right: 16px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(13, 13, 13, 0.42);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.about-drawer__close svg {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+.about-drawer__close:hover {
+  background: rgba(13, 13, 13, 0.62);
+  opacity: 1;
+}
+
+.about-drawer__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 20px;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.about-drawer__photo {
+  width: 100%;
+  height: clamp(300px, 40vh, 380px);
+  flex: 0 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.about-drawer__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+.about-drawer__id {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-inline: 5px; /* 10 + 5 = 15px from edge */
+}
+
+.about-drawer__name {
+  margin: 0;
+  font-size: var(--type-block-size);
+  line-height: var(--type-block-leading);
+  letter-spacing: var(--type-block-tracking);
+  font-weight: var(--font-weight-title);
+  color: var(--color-ink-on-shape);
+}
+
+.about-drawer__role {
+  margin: 0;
+  font-size: var(--type-overline-size);
+  line-height: var(--type-overline-leading);
+  letter-spacing: var(--type-overline-tracking);
+  font-weight: var(--font-weight-overline);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.about-drawer__text {
+  padding-inline: 5px;
+  color: var(--color-ink-on-shape-muted, var(--color-ink-muted));
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  letter-spacing: var(--type-body-tracking);
+  font-weight: var(--font-weight-text);
+  text-align: left;
+}
+
+.about-drawer__text p {
+  margin: 0;
+  max-width: 36em;
+}
+
+.about-drawer__text p + p {
+  margin-top: 1.15em;
+}
+
+.about-drawer__footer {
+  flex: 0 0 auto;
+  margin-top: 20px;
+  padding-inline: 5px;
+}
+
+.about-drawer__save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--color-gold);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--color-gold);
+  font-family: inherit;
+  font-size: var(--font-nav);
+  font-weight: var(--font-weight-ui);
+  letter-spacing: var(--tracking-nav);
+  text-transform: uppercase;
+  opacity: var(--ui-link-opacity, 0.92);
+  cursor: pointer;
+  transition: opacity var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.about-drawer__save:hover {
+  opacity: 1;
+  background: var(--color-gold);
+  color: var(--color-white);
+}
+
+@keyframes about-drawer-in {
+  from { transform: translateX(-104%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes about-drawer-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-drawer,
+  .modal--drawer .modal__backdrop {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-drawer {
+    width: 100vw;
+    border-right: 0;
+  }
+}
