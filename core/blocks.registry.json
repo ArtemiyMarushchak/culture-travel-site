@@ -109,6 +109,14 @@
       "js": false,
       "scope": "page"
     },
+    "cruises-page": {
+      "label": "Круизы",
+      "css": true,
+      "js": false,
+      "scope": "page",
+      "dataSource": "content/cruises/catalog.json",
+      "dataPrepare": "cruisesCatalog"
+    },
     "error-404": {
       "label": "404",
       "css": true,

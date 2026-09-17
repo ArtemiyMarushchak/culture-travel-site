@@ -1,0 +1,251 @@
+/* Страница круизов — серый фон, белые shape, список маршрутов + CTA */
+
+.cruises-page {
+  padding:
+    calc(var(--header-height) + var(--crumbs-offset))
+    var(--layout-rail-pad)
+    var(--space-section-y);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-main);
+}
+
+.cruises-page,
+.cruises-page * {
+  box-sizing: border-box;
+}
+
+.cruises-page__shell {
+  max-width: var(--layout-rail-max);
+  margin: 0;
+}
+
+.cruises-page__intro,
+.cruises-page__region,
+.cruises-page__ships,
+.cruises-page__cta {
+  margin-top: var(--space-lg);
+}
+
+.cruises-page__partner {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-gold);
+  font-size: var(--type-overline-size, 12px);
+  line-height: var(--type-overline-leading, 1);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cruises-page__title {
+  margin: 0 0 var(--space-md);
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-section-tracking);
+}
+
+.cruises-page__lead {
+  margin: 0 0 var(--space-md);
+  max-width: 42rem;
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--font-weight-text);
+}
+
+.cruises-page__about {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.cruises-page__toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: var(--space-lg);
+  padding: 0 2px;
+}
+
+.cruises-page__toc-link {
+  color: var(--color-ink);
+  font-size: var(--font-nav);
+  font-weight: var(--font-weight-ui);
+  letter-spacing: var(--tracking-nav);
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: var(--ui-link-opacity, 1);
+  transition: opacity var(--transition-fast);
+}
+
+.cruises-page__toc-link:hover,
+.cruises-page__toc-link:focus-visible {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+  outline: none;
+}
+
+.cruises-page__region-head {
+  margin: 0 0 var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-line-on-shape);
+}
+
+.cruises-page__region-title {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-block-size, var(--type-card-size));
+  line-height: var(--type-block-leading, var(--type-card-leading));
+  font-weight: var(--font-weight-title);
+}
+
+.cruises-page__region-intro {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.cruises-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cruises-page__item {
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-line-on-shape);
+}
+
+.cruises-page__item:first-child {
+  padding-top: 0;
+}
+
+.cruises-page__item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.cruises-page__item-title {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-card-size);
+  line-height: var(--type-card-leading);
+  font-weight: var(--font-weight-title);
+}
+
+.cruises-page__item-route {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.cruises-page__item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0;
+  color: var(--color-ink-on-shape);
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+.cruises-page__item-note {
+  margin: var(--space-sm) 0 0;
+  color: var(--color-ink-on-shape-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cruises-page__ships-title,
+.cruises-page__cta-title {
+  margin: 0 0 var(--space-md);
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-block-size, var(--type-card-size));
+  line-height: var(--type-block-leading, var(--type-card-leading));
+  font-weight: var(--font-weight-title);
+}
+
+.cruises-page__ships-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cruises-page__ship {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cruises-page__ship-name {
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-card-size);
+  font-weight: var(--font-weight-title);
+}
+
+.cruises-page__ship-meta {
+  color: var(--color-ink-on-shape-muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.cruises-page__cta-text {
+  margin: 0 0 var(--space-lg);
+  max-width: 36rem;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.cruises-page__cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cruises-page__cta-actions .btn {
+  min-height: 44px;
+  padding: 0 20px;
+}
+
+@media (max-width: 1180px) {
+  .cruises-page {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 720px) {
+  .cruises-page__ships-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .cruises-page {
+    padding:
+      calc(var(--header-height) + var(--crumbs-offset))
+      var(--container-padding-mobile)
+      var(--space-2xl);
+  }
+
+  .cruises-page__cta-actions {
+    flex-direction: column;
+  }
+
+  .cruises-page__cta-actions .btn {
+    width: 100%;
+  }
+}

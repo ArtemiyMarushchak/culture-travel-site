@@ -1,15 +1,10 @@
-/* 404 — чёрная сцена между шапкой и футером */
-
-html:has(.uc-404),
-html:has(.uc-404) body,
-html:has(.uc-404) #main {
-  background: var(--color-header);
-}
+/* 404 — фон сайта, белая shape, одна кнопка «На главную» */
 
 html:has(.uc-404) #main {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
+  background: var(--color-bg);
 }
 
 .uc-404 {
@@ -20,9 +15,8 @@ html:has(.uc-404) #main {
   flex-direction: column;
   width: 100%;
   min-height: 0;
-  overflow: hidden;
-  background: var(--color-header);
-  color: var(--color-white);
+  background: var(--color-bg);
+  color: var(--color-ink);
   font-family: var(--font-main);
 }
 
@@ -36,7 +30,6 @@ html:has(.uc-404) #main {
   flex: 1 1 auto;
   flex-direction: column;
   width: 100%;
-  min-height: 0;
   max-width: var(--layout-rail-max);
   margin-inline: auto;
   padding:
@@ -45,44 +38,39 @@ html:has(.uc-404) #main {
     var(--space-section-y);
 }
 
-.uc-404 .crumbs__item,
-.uc-404 .crumbs__item:not(:last-child)::after,
-.uc-404 .crumbs__link,
-.uc-404 .crumbs__current {
-  color: var(--chrome-muted) !important;
-}
-
-.uc-404__inner {
+.uc-404__panel {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-height: 0;
-  padding: var(--space-2xl) 0;
+  margin-top: var(--space-lg);
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
   text-align: center;
 }
 
 .uc-404__code {
   margin: 0;
-  color: var(--color-white);
-  font-size: clamp(96px, 14vw, 176px);
-  line-height: 0.86;
+  color: var(--color-ink-on-shape);
+  font-size: clamp(64px, 10vw, 120px);
+  line-height: 0.9;
   font-weight: 500;
   letter-spacing: -0.05em;
 }
 
 .uc-404__rule {
-  width: clamp(48px, 3vw, 72px);
+  width: clamp(40px, 3vw, 56px);
   height: 1px;
-  margin: var(--space-lg) auto var(--space-xl);
+  margin: var(--space-md) auto var(--space-lg);
   background: var(--color-gold);
   border: 0;
 }
 
 .uc-404__title {
-  margin: 0 0 var(--space-md);
-  color: var(--color-white);
+  margin: 0 0 var(--space-sm);
+  color: var(--color-ink-on-shape);
   font-size: var(--type-section-size);
   line-height: var(--type-section-leading);
   font-weight: var(--font-weight-title);
@@ -91,9 +79,9 @@ html:has(.uc-404) #main {
 
 .uc-404__text {
   width: 100%;
-  max-width: 34rem;
-  margin: 0 auto var(--space-2xl);
-  color: var(--chrome-muted);
+  max-width: 28rem;
+  margin: 0 auto var(--space-xl);
+  color: var(--color-ink-on-shape-muted);
   font-size: var(--type-body-size);
   line-height: var(--type-body-leading);
   font-weight: var(--font-weight-text);
@@ -102,50 +90,14 @@ html:has(.uc-404) #main {
 
 .uc-404__actions {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 36px;
 }
 
 .uc-404__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: var(--ui-button-height-desktop);
-  padding: 0 clamp(28px, 2vw, 40px);
-  border: 1px solid var(--color-gold);
-  border-radius: var(--radius);
-  background: var(--color-gold);
-  color: var(--color-white) !important;
-  font-family: var(--font-main);
-  font-size: var(--ui-nav-font-size-desktop, 14px);
-  line-height: 1;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  text-decoration: none !important;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: opacity var(--transition-fast);
-}
-
-.uc-404__text-link {
-  color: var(--color-white) !important;
-  font-size: var(--ui-nav-font-size-desktop, 14px);
-  line-height: 1;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  text-decoration: none !important;
-  text-transform: uppercase;
-  transition: opacity var(--transition-fast);
-}
-
-.uc-404__btn:hover,
-.uc-404__btn:focus-visible,
-.uc-404__text-link:hover,
-.uc-404__text-link:focus-visible {
-  opacity: var(--ui-link-hover-opacity, 0.7);
-  outline: none;
+  min-height: 44px;
+  padding: 0 22px;
+  font-size: var(--font-nav);
 }
 
 @media (max-width: 1180px) {
@@ -163,31 +115,10 @@ html:has(.uc-404) #main {
   }
 
   .uc-404__code {
-    font-size: 88px;
-  }
-
-  .uc-404__rule {
-    margin-bottom: var(--space-lg);
+    font-size: 72px;
   }
 
   .uc-404__text {
-    margin-bottom: var(--space-xl);
-  }
-
-  .uc-404__actions {
-    width: 100%;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .uc-404__btn {
-    width: 100%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .uc-404__btn,
-  .uc-404__text-link {
-    transition: none;
+    margin-bottom: var(--space-lg);
   }
 }

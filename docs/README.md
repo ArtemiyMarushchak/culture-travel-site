@@ -53,5 +53,6 @@ git push в main   →   GitHub Actions публикует сайт
 
 - Нужен **Node.js 18+**. Python в проекте **нет**.
 - Тильда и внешние CDN-остатки удалены — только локальные файлы.
-- Заглушки `/cruises/`, `/tours/`, `/hotels/` — «в разработке», `noindex`.
+- Заглушки `/tours/`, `/hotels/` — «в разработке», `noindex`.
+- `/cruises/` — каталог партнёра Swan Hellenic (см. [ADMIN.md](ADMIN.md)).
 - Код и бренд — собственность правообладателя ([LICENSE](../LICENSE)).

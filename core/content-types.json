@@ -1,5 +1,5 @@
 {
-  "_comment": "Типы контента → список + SEO-страница. Сейчас /tours/ и /hotels/ — заглушки (page-stub, noindex). Когда будете наполнять: в pages/*.page.json смените блок на tours-list / hotel-catalog и уберите robots:noindex.",
+  "_comment": "Типы контента → список + SEO-страница. /hotels/ и /tours/ — заглушки (page-stub, noindex). /cruises/ — каталог Swan Hellenic (cruises-page).",
   "types": {
     "cases": {
       "label": "Кейсы",

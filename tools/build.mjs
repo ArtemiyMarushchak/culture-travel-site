@@ -232,6 +232,55 @@ function prepareCasesFeatured() {
     }));
 }
 
+function prepareCruisesCatalog() {
+  const catalog = readJson('content/cruises/catalog.json');
+  const regions = (catalog.regions || []).map((region) => {
+    const cruises = region.cruises || [];
+    const cruisesHtml = `<ul class="cruises-page__list">${cruises.map((cruise) => {
+      const note = cruise.note
+        ? `<p class="cruises-page__item-note" data-i18n-src data-ru="${escapeHtml(cruise.note)}" data-en="${escapeHtml(cruise.noteEn || cruise.note)}">${escapeHtml(cruise.note)}</p>`
+        : '';
+      return `<li class="cruises-page__item">
+  <h3 class="cruises-page__item-title" data-i18n-src data-ru="${escapeHtml(cruise.title)}" data-en="${escapeHtml(cruise.titleEn || cruise.title)}">${escapeHtml(cruise.title)}</h3>
+  <p class="cruises-page__item-route" data-i18n-src data-ru="${escapeHtml(cruise.route || '')}" data-en="${escapeHtml(cruise.routeEn || cruise.route || '')}">${escapeHtml(cruise.route || '')}</p>
+  <p class="cruises-page__item-meta">
+    <span>${escapeHtml(cruise.ship || '')}</span>
+    <span data-i18n-src data-ru="${escapeHtml(cruise.duration || '')}" data-en="${escapeHtml(cruise.durationEn || cruise.duration || '')}">${escapeHtml(cruise.duration || '')}</span>
+    <span data-i18n-src data-ru="${escapeHtml(cruise.season || '')}" data-en="${escapeHtml(cruise.seasonEn || cruise.season || '')}">${escapeHtml(cruise.season || '')}</span>
+  </p>
+  ${note}
+</li>`;
+    }).join('')}</ul>`;
+
+    return {
+      id: region.id,
+      title: region.title,
+      titleEn: region.titleEn || region.title,
+      intro: region.intro || '',
+      introEn: region.introEn || region.intro || '',
+      cruisesHtml,
+    };
+  });
+
+  return {
+    partner: catalog.partner || 'Swan Hellenic',
+    title: catalog.title || 'Круизы',
+    titleEn: catalog.titleEn || 'Cruises',
+    lead: catalog.lead || '',
+    leadEn: catalog.leadEn || '',
+    about: catalog.about || '',
+    aboutEn: catalog.aboutEn || '',
+    shipsTitle: catalog.shipsTitle || 'Флот',
+    shipsTitleEn: catalog.shipsTitleEn || 'Fleet',
+    ships: catalog.ships || [],
+    ctaTitle: catalog.ctaTitle || '',
+    ctaTitleEn: catalog.ctaTitleEn || '',
+    ctaText: catalog.ctaText || '',
+    ctaTextEn: catalog.ctaTextEn || '',
+    regions,
+  };
+}
+
 function prepareServicesCatalog() {
   const catalog = readJson('content/services/catalog.json');
   const bp = (site.basePath || '').replace(/\/$/, '');
@@ -388,6 +437,9 @@ function resolveBlockData(block, pageData) {
   if (prepare === 'servicesCatalog' || block.type === 'services') {
     Object.assign(data, prepareServicesCatalog());
   }
+  if (prepare === 'cruisesCatalog' || block.type === 'cruises-page') {
+    Object.assign(data, prepareCruisesCatalog());
+  }
   if (prepare === 'reviewsCatalog' || block.type === 'reviews') {
     Object.assign(data, prepareReviewsCatalog());
   }
@@ -525,7 +577,7 @@ function loadBlockHtml(blockType, blockData = {}) {
       ? `<span class="lf__registry-num">№ ${escapeHtml(String(site.legal.registryNumber))}</span>`
       : '';
   }
-  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'hotelsJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml'];
+  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'hotelsJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml', 'cruisesHtml'];
   html = html.replace(/\{\{#each (\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, itemTpl) => {
     const arr = merged[key];
     if (!Array.isArray(arr)) return '';
@@ -1016,7 +1068,7 @@ function generateSearchIndex() {
 
   [
     { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Новости', titleEn: 'News', text: 'Новости и анонсы Culture Travel', textEn: 'News and announcements', href: '/#news' },
-    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Круизы', titleEn: 'Cruises', text: 'Индивидуальные круизные программы', textEn: 'Private cruise programmes', href: '/cruises/' },
+    { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Круизы', titleEn: 'Cruises', text: 'Экспедиционные круизы Swan Hellenic', textEn: 'Swan Hellenic expedition cruises', href: '/cruises/' },
     { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Отели', titleEn: 'Hotels', text: 'Каталог люкс-отелей', textEn: 'Luxury hotels catalogue', href: '/hotels/' },
     { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Авторские туры', titleEn: 'Private tours', text: 'Авторские программы Culture Travel', textEn: 'Private Culture Travel programmes', href: '/tours/' },
     { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Услуги', titleEn: 'Services', text: 'Премиальный сервис Culture Travel', textEn: 'Culture Travel concierge service', href: '/#services' },

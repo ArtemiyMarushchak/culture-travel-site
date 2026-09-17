@@ -9,7 +9,7 @@
   --color-ink: #000000;
   --color-ink-on-shape: #000000;
 
-  /* Chrome — один чёрный для шапки, футера, меню, hero, 404 */
+  /* Chrome — один чёрный для шапки, футера, меню, hero */
   --color-header: #0d0d0d;
   --color-gold: #A6865D;
 
@@ -22,7 +22,7 @@
   --color-line: color-mix(in srgb, var(--color-ink) 12%, transparent);
   --color-line-on-shape: color-mix(in srgb, var(--color-ink-on-shape) 14%, transparent);
 
-  /* Приглушённый серый для подписей/лейблов на тёмном chrome (футер, меню, 404…) */
+  /* Приглушённый серый для подписей/лейблов на тёмном chrome (футер, меню…) */
   --chrome-muted: color-mix(in srgb, var(--color-white) 55%, transparent);
 
   --footer-bg: var(--color-header);
