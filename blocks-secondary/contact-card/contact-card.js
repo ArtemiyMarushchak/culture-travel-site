@@ -20,7 +20,6 @@ export function initContactCard(root) {
       'N:Баглай;Анна;;;',
       'FN:Анна Баглай',
       'ORG:Культура Путешествий',
-      'TITLE:Режиссёр индивидуальных туров',
       tel ? `TEL;TYPE=CELL:${tel}` : '',
       email ? `EMAIL;TYPE=INTERNET:${email}` : '',
       `URL:${siteUrl}`,

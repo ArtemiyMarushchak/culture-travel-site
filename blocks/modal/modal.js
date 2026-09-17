@@ -11,7 +11,7 @@ function normalizePhone(phone = '') {
   return digits;
 }
 
-function buildVCard({ name, org, title, phone, email, url, telegram }) {
+function buildVCard({ name, org, phone, email, url, telegram }) {
   const tel = normalizePhone(phone);
   const siteUrl = String(url || 'https://culture-travel.ru').trim().replace(/\/$/, '');
   const tg = String(telegram || '').trim();
@@ -20,8 +20,7 @@ function buildVCard({ name, org, title, phone, email, url, telegram }) {
     'VERSION:3.0',
     'N:Баглай;Анна;;;',
     `FN:${name || 'Анна Баглай'}`,
-    org ? `ORG:${org}` : '',
-    title ? `TITLE:${title}` : '',
+    org ? `ORG:${org}` : 'ORG:Культура Путешествий',
     tel ? `TEL;TYPE=CELL:${tel}` : '',
     email ? `EMAIL;TYPE=INTERNET:${email}` : '',
     // Один URL сайта без TYPE=WORK — иначе iOS дублирует в «рабочий»
@@ -39,7 +38,6 @@ function downloadVCard(btn) {
   const card = buildVCard({
     name: btn.dataset.name,
     org: btn.dataset.org,
-    title: btn.dataset.title,
     phone: btn.dataset.phone,
     email: btn.dataset.email,
     url: btn.dataset.url,
