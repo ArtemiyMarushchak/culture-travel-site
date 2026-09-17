@@ -1,1 +1,1 @@
-# Шрифты только Montserrat. См. docs/FONTS.md
+# Шрифты: только Montserrat (см. корневой README)
