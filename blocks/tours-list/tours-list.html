@@ -1,0 +1,23 @@
+<section class="tours-list section" data-block="tours-list">
+  <div class="container">
+    <p class="section__label" data-i18n="nav.tours">Авторские туры</p>
+    <h1 class="section__title" data-i18n="tours.title">Программы Culture Travel</h1>
+    <p class="tours-list__lead type-lead" data-i18n="tours.lead">Индивидуальные маршруты — каждый собирается под гостей, без готовых пакетов.</p>
+
+    <div class="tours-list__grid">
+      {{#each items}}
+      <article class="tours-list__item">
+        <a class="tours-list__card" href="{{basePath}}/cases/{{slug}}/">
+          <span class="tours-list__media">
+            <img src="{{basePath}}{{cover}}" alt="" loading="lazy" decoding="async" width="720" height="480">
+          </span>
+          <span class="tours-list__body">
+            <h2 class="type-card" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</h2>
+            <p class="type-card-text" data-i18n-src data-ru="{{subtitle}}" data-en="{{subtitleEn}}">{{subtitle}}</p>
+          </span>
+        </a>
+      </article>
+      {{/each}}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,193 @@
+/* 404 — чёрная сцена между шапкой и футером */
+
+html:has(.uc-404),
+html:has(.uc-404) body,
+html:has(.uc-404) #main {
+  background: var(--color-header);
+}
+
+html:has(.uc-404) #main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.uc-404 {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--color-header);
+  color: var(--color-white);
+  font-family: var(--font-main);
+}
+
+.uc-404,
+.uc-404 * {
+  box-sizing: border-box;
+}
+
+.uc-404__shell {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  max-width: var(--layout-rail-max);
+  margin-inline: auto;
+  padding:
+    calc(var(--header-height) + var(--crumbs-offset))
+    var(--layout-rail-pad)
+    var(--space-section-y);
+}
+
+.uc-404 .crumbs__item,
+.uc-404 .crumbs__item:not(:last-child)::after,
+.uc-404 .crumbs__link,
+.uc-404 .crumbs__current {
+  color: var(--chrome-muted) !important;
+}
+
+.uc-404__inner {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: var(--space-2xl) 0;
+  text-align: center;
+}
+
+.uc-404__code {
+  margin: 0;
+  color: var(--color-white);
+  font-size: clamp(96px, 14vw, 176px);
+  line-height: 0.86;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+
+.uc-404__rule {
+  width: clamp(48px, 3vw, 72px);
+  height: 1px;
+  margin: var(--space-lg) auto var(--space-xl);
+  background: var(--color-gold);
+  border: 0;
+}
+
+.uc-404__title {
+  margin: 0 0 var(--space-md);
+  color: var(--color-white);
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-section-tracking);
+}
+
+.uc-404__text {
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto var(--space-2xl);
+  color: var(--chrome-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+}
+
+.uc-404__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+
+.uc-404__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--ui-button-height-desktop);
+  padding: 0 clamp(28px, 2vw, 40px);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius);
+  background: var(--color-gold);
+  color: var(--color-white) !important;
+  font-family: var(--font-main);
+  font-size: var(--ui-nav-font-size-desktop, 14px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast);
+}
+
+.uc-404__text-link {
+  color: var(--color-white) !important;
+  font-size: var(--ui-nav-font-size-desktop, 14px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  transition: opacity var(--transition-fast);
+}
+
+.uc-404__btn:hover,
+.uc-404__btn:focus-visible,
+.uc-404__text-link:hover,
+.uc-404__text-link:focus-visible {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+  outline: none;
+}
+
+@media (max-width: 1180px) {
+  .uc-404__shell {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .uc-404__shell {
+    padding:
+      calc(var(--header-height) + var(--crumbs-offset))
+      var(--container-padding-mobile)
+      var(--space-2xl);
+  }
+
+  .uc-404__code {
+    font-size: 88px;
+  }
+
+  .uc-404__rule {
+    margin-bottom: var(--space-lg);
+  }
+
+  .uc-404__text {
+    margin-bottom: var(--space-xl);
+  }
+
+  .uc-404__actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .uc-404__btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uc-404__btn,
+  .uc-404__text-link {
+    transition: none;
+  }
+}

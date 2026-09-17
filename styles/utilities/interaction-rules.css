@@ -1,0 +1,73 @@
+/* Наведение, фокус, active — единые правила для всего сайта */
+
+/* Ссылки на тёмном — nav/ui-link сами управляют opacity в компонентах */
+.theme-dark a:not(.btn):not(.ui-btn):not(.ui-link-editorial):not(.ui-link-nav-underline):not(.ui-link):hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+.theme-dark a:not(.btn):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Ссылки на светлом — opacity при hover 70% */
+.theme-light a:not(.btn):not(.ui-btn):not(.prose a):not(.ui-link-editorial):hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+.theme-light .hover-gold:hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+/* Белый мягкий hover для текста на фото/видео */
+.hover-white:hover {
+  color: var(--color-white);
+}
+
+/* Кнопки */
+.btn:hover {
+  opacity: var(--ui-button-hover-opacity);
+}
+
+.btn--solid:hover {
+  opacity: var(--ui-button-hover-opacity);
+  color: var(--color-white);
+}
+
+.btn--ghost-light {
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.btn--ghost-light:hover {
+  opacity: var(--ui-link-hover-opacity);
+  background: transparent;
+}
+
+/* Пункты навигации */
+.nav-link {
+  color: var(--color-white);
+  opacity: var(--ui-link-opacity);
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-link:hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+.nav-link.is-active {
+  color: var(--color-white);
+  opacity: var(--ui-link-opacity);
+}
+
+.theme-light .nav-link.is-active {
+  color: var(--color-gold);
+}
+
+/* ── Header nav (используй класс .header-nav-link в html) ── */
+.header-nav-link {
+  transition: color var(--transition-fast);
+}
+
+/* Hover на прозрачной шапке — через токены в header.css */
+/* Hover на чёрной шапке — .header.is-scrolled в header.css */

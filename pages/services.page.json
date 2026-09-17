@@ -1,0 +1,8 @@
+{
+  "slug": "/services/",
+  "title": "Мои услуги",
+  "description": "Премиальный сервис Culture Travel: отели и виллы, консьерж, трансферы, яхты и персональные впечатления.",
+  "blocks": [
+    { "type": "services", "data": { "source": "content/services/catalog.json" } }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "overline": "Мои услуги",
+  "overlineEn": "My services",
+  "title": "Мои услуги",
+  "titleEn": "My services",
+  "items": [
+    {
+      "title": "Бронирование премиальных отелей и вилл",
+      "titleEn": "Premium hotels and villas",
+      "short": "Отели · виллы",
+      "shortEn": "Hotels · villas",
+      "text": "Подбор и бронирование премиальных отелей и вилл по всему миру с учетом предпочтений гостей, формата поездки и уровня сервиса.",
+      "textEn": "Selecting and booking premium hotels and villas worldwide, according to the guests’ preferences, the format of the trip and the level of service.",
+      "image": "/assets/images/services/hotels-villas.jpg",
+      "imageMobile": "/assets/images/services/hotels-villas-sq.jpg",
+      "cover": true
+    },
+    {
+      "title": "Частные экскурсии и уникальные впечатления",
+      "titleEn": "Private tours and rare experiences",
+      "short": "Экскурсии",
+      "shortEn": "Private tours",
+      "text": "Индивидуальные программы с лучшими местными гидами, гастрономические маршруты, дегустации вин, вертолетные экскурсии и редкие впечатления в разных странах.",
+      "textEn": "Private programmes with the best local guides, gastronomic routes, wine tastings, helicopter tours and rare experiences in different countries.",
+      "image": "/assets/images/services/private-tours.jpg",
+      "imageMobile": "/assets/images/services/private-tours-sq.jpg"
+    },
+    {
+      "title": "Досуг и мероприятия",
+      "titleEn": "Leisure and events",
+      "short": "События",
+      "shortEn": "Occasions",
+      "text": "Билеты на концерты, в театры, на спортивные мероприятия, модные показы и культурные события, а также доступ на закрытые вечеринки и частные мероприятия.",
+      "textEn": "Tickets to concerts, theatres, sporting events, fashion shows and cultural programmes, as well as access to private parties and closed events.",
+      "image": "/assets/images/services/events.jpg",
+      "imageMobile": "/assets/images/services/events-sq.jpg"
+    },
+    {
+      "title": "Персональный консьерж-сервис",
+      "titleEn": "Personal concierge",
+      "short": "Консьерж",
+      "shortEn": "Concierge",
+      "text": "Организация индивидуальных запросов во время поездки: цветы, подарки, шампанское в номер, подготовка сюрпризов, частные ужины и другие персональные детали путешествия.",
+      "textEn": "Arranging private requests during the trip: flowers, gifts, champagne in the room, surprises, private dinners and other personal details of the journey.",
+      "image": "/assets/images/services/concierge.jpg",
+      "imageMobile": "/assets/images/services/concierge-sq.jpg"
+    },
+    {
+      "title": "Персональные трансферы и VIP-сервис в аэропортах",
+      "titleEn": "Private transfers and airport VIP",
+      "short": "VIP-трансфер",
+      "shortEn": "Airport VIP",
+      "text": "Индивидуальные трансферы и VIP-сопровождение в аэропортах: ускоренное прохождение контроля, VIP-залы, персональная встреча и помощь на всех этапах.",
+      "textEn": "Private transfers and VIP airport assistance: fast-track, lounges, a personal meet-and-greet and support at every stage.",
+      "image": "/assets/images/services/vip-transfer.jpg",
+      "imageMobile": "/assets/images/services/vip-transfer-sq.jpg",
+      "cover": true
+    },
+    {
+      "title": "Яхты и морские прогулки",
+      "titleEn": "Yachts and sea days",
+      "short": "Яхты",
+      "shortEn": "Yachts",
+      "text": "Аренда частных яхт для дневных круизов, увлекательной рыбалки, расслабляющих морских прогулок и организации частных мероприятий на воде подарит вам незабываемые впечатления.",
+      "textEn": "Private yacht charter for day cruises, fishing, quiet sea days and events on the water will give you unforgettable impressions.",
+      "image": "/assets/images/services/yachts.jpg",
+      "imageMobile": "/assets/images/services/yachts-sq.jpg"
+    },
+    {
+      "title": "Бизнес авиация",
+      "titleEn": "Business aviation",
+      "short": "Бизнес авиация",
+      "shortEn": "Business aviation",
+      "text": "Частные перелёты для тех, кому важны время, комфорт и конфиденциальность. Подбираем борт под маршрут и число гостей.",
+      "textEn": "Private flights for those who value time, comfort and discretion. We match the aircraft to the route and the number of guests.",
+      "image": "/assets/images/services/business-aviation.jpg",
+      "imageMobile": "/assets/images/services/business-aviation-sq.jpg",
+      "cover": true
+    },
+    {
+      "title": "Бронирование круизов",
+      "titleEn": "Cruise booking",
+      "short": "Круизы",
+      "shortEn": "Cruises",
+      "text": "Подбираем экспедиционные и люкс-круизы по всему миру — спокойный отдых на воде в нужном вам формате.",
+      "textEn": "We select expedition and luxury cruises worldwide — a quiet stay at sea in the format that suits you.",
+      "image": "/assets/images/services/cruises.jpg",
+      "imageMobile": "/assets/images/services/cruises-sq.jpg"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<section
+  class="news-list{{homeClass}}"
+  id="{{sectionId}}"
+  data-block="news-list"
+  data-news-page-size="{{pageSize}}"
+  aria-labelledby="{{titleId}}"
+>
+  <div class="nl">
+    {{crumbsHtml}}
+    {{headingHtml}}
+
+    <div class="ui-shape nl__shape">
+      <div class="news-list__feed">
+        {{#each items}}
+        <a
+          class="news-list__item{{hiddenClass}}"
+          href="{{basePath}}/news/{{slug}}/"
+          data-news-item
+          data-i18n-aria="news.read"
+        >
+          <div class="news-list__media">
+            <img src="{{basePath}}{{cover}}" alt="" loading="lazy" decoding="async" width="360" height="240">
+          </div>
+          <div class="news-list__copy">
+            <time
+              class="news-list__date"
+              datetime="{{dateIso}}"
+              data-i18n-src
+              data-ru="{{dateBadge}}"
+              data-en="{{dateBadgeEn}}"
+            >{{dateBadge}}</time>
+            <h3
+              class="news-list__title"
+              data-i18n-src
+              data-ru="{{title}}"
+              data-en="{{titleEn}}"
+            >{{title}}</h3>
+            <p
+              class="news-list__excerpt"
+              data-i18n-src
+              data-ru="{{excerpt}}"
+              data-en="{{excerptEn}}"
+            >{{excerpt}}</p>
+          </div>
+          <div class="news-list__go" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="news-list__more" data-news-more-wrap{{moreHiddenAttr}}>
+      <button
+        class="news-list__more-btn"
+        type="button"
+        data-news-more
+        data-i18n="news.loadMore"
+      >Показать ещё</button>
+    </div>
+  </div>
+</section>

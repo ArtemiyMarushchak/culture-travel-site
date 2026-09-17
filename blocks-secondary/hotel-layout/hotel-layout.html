@@ -1,0 +1,46 @@
+<article class="hotel-layout section" data-block="hotel-layout">
+  <div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
+      <ol class="crumbs__list">
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
+        </li>
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/hotels/" data-i18n="nav.hotels">Отели</a>
+        </li>
+        <li class="crumbs__item">
+          <span
+            class="crumbs__current"
+            data-i18n-src
+            data-ru="{{name}}"
+            data-en="{{nameEn}}"
+          >{{name}}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <header class="hotel-layout__header">
+      <p class="section__label" data-i18n="hotels.item">Отель</p>
+      <h1 class="hotel-layout__title" data-i18n-src data-ru="{{name}}" data-en="{{nameEn}}">{{name}}</h1>
+      <p class="hotel-layout__meta"><span data-i18n-src data-ru="{{location}}" data-en="{{locationEn}}">{{location}}</span> · {{stars}} ★</p>
+    </header>
+
+    <div class="hotel-layout__body container container--narrow prose">
+      <p data-i18n-src data-ru="{{description}}" data-en="{{descriptionEn}}">{{description}}</p>
+      {{body}}
+    </div>
+
+    <div class="hotel-layout__gallery grid-3">
+      {{#each images}}
+      <figure class="hotel-layout__media">
+        <img src="{{basePath}}{{src}}" alt="{{alt}}" loading="lazy" width="400" height="300">
+      </figure>
+      {{/each}}
+      {{#each videos}}
+      <figure class="hotel-layout__media">
+        <video src="{{basePath}}{{src}}" controls preload="metadata"></video>
+      </figure>
+      {{/each}}
+    </div>
+  </div>
+</article>

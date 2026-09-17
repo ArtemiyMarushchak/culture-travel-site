@@ -1,0 +1,16 @@
+/* Белая карточка на серой странице — новости, legal, статьи */
+
+.ui-shape {
+  padding: var(--space-edge-lg);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-ink-on-shape) 8%, transparent);
+  border-radius: var(--radius);
+  background: var(--color-shape);
+  color: var(--color-ink-on-shape);
+}
+
+@media (max-width: 640px) {
+  .ui-shape {
+    padding: var(--space-edge);
+  }
+}

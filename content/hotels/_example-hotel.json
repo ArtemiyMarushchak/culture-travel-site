@@ -1,0 +1,14 @@
+{
+  "slug": "example-hotel",
+  "name": "Four Seasons Example",
+  "nameEn": "Four Seasons Example",
+  "location": "Мальдивы",
+  "locationEn": "Maldives",
+  "stars": 5,
+  "themes": ["beach"],
+  "description": "Пример карточки отеля. Overwater villas, private butler, эксклюзивный остров.",
+  "descriptionEn": "A sample hotel card. Overwater villas, a private butler, an exclusive island.",
+  "media": [
+    { "type": "image", "src": "/assets/images/placeholder.svg", "alt": "Four Seasons" }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "welcome",
+  "title": "Culture Travel — новый сайт",
+  "titleEn": "Culture Travel — a new website",
+  "date": "2026-08-01",
+  "cover": "/assets/images/news/welcome.jpg",
+  "excerpt": "Editorial-подача, VIP-путешествия и индивидуальный подход. Здесь появляются новости о маршрутах, отелях и проектах.",
+  "excerptEn": "An editorial presentation, VIP travel and a private approach. News about itineraries, hotels and projects appears here.",
+  "body": "<p>Добро пожаловать в Culture Travel. Сайт собран как витрина: кейсы, услуги и спокойный ритм частного путешествия.</p><p>Новые маршруты, отели и программы будут появляться в этом разделе. Для запроса — Telegram.</p>",
+  "bodyEn": "<p>Welcome to Culture Travel. The site is a showcase: cases, services and the quiet rhythm of private travel.</p><p>New itineraries, hotels and programmes will appear in this section. For an enquiry — Telegram.</p>",
+  "seo": {
+    "title": "Culture Travel — новый сайт",
+    "description": "Новости Culture Travel — VIP-путешествия."
+  }
+}

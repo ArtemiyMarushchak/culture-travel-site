@@ -1,0 +1,188 @@
+/* Typography — только роли из tokens/typography.css */
+
+.type-hero,
+.ui-display {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-hero-size);
+  font-weight: var(--font-weight-title);
+  line-height: var(--type-hero-leading);
+  letter-spacing: var(--type-hero-tracking);
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.type-page,
+.type-section,
+.section__title,
+.ui-h1,
+.ui-h2 {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-section-size);
+  font-weight: var(--font-weight-title);
+  line-height: var(--type-section-leading);
+  letter-spacing: var(--type-section-tracking);
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.type-block,
+.ui-h3 {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-block-size);
+  font-weight: var(--font-weight-title);
+  line-height: var(--type-block-leading);
+  letter-spacing: var(--type-block-tracking);
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.type-card,
+.ui-h4 {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-card-size);
+  font-weight: var(--font-weight-title);
+  line-height: var(--type-card-leading);
+  letter-spacing: var(--type-card-tracking);
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.type-lead,
+.type-body,
+.section__lead,
+.ui-lead,
+.ui-body {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--type-body-leading);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-muted);
+  text-wrap: pretty;
+}
+
+.type-card-text {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-card-text-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--type-card-text-leading);
+  letter-spacing: var(--type-card-text-tracking);
+  color: var(--color-ink-muted);
+  text-wrap: pretty;
+}
+
+.type-overline,
+.section__label {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: var(--type-overline-size);
+  font-weight: var(--font-weight-overline);
+  line-height: var(--type-overline-leading);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.type-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.type-pair > * {
+  margin: 0;
+}
+
+.type-pair > :first-child {
+  padding-bottom: var(--type-stack-block);
+  text-box: trim-end cap alphabetic;
+}
+
+.type-pair > :last-child {
+  text-box: trim-start cap alphabetic;
+}
+
+.type-pair--card > :first-child {
+  padding-bottom: var(--type-stack-card);
+}
+
+.section__label + .section__title,
+.section__label + .type-section {
+  margin-top: var(--space-sm);
+}
+
+.section__title + .section__lead,
+.section__title + .type-lead,
+.section__title + .type-body,
+.section__title + .prose {
+  margin-top: var(--type-stack-block);
+}
+
+.ui-prose,
+.prose {
+  max-width: var(--container-text-max);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--type-body-leading);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-muted);
+}
+
+.ui-prose > * + *,
+.prose > * + * {
+  margin-top: var(--space-md);
+}
+
+.ui-prose h2,
+.prose h2 {
+  font-size: var(--type-block-size);
+  font-weight: var(--font-weight-title);
+  line-height: var(--type-block-leading);
+  letter-spacing: var(--type-block-tracking);
+  color: var(--color-ink);
+  margin-top: var(--space-xl);
+}
+
+.ui-prose h3,
+.prose h3 {
+  font-size: var(--type-card-size);
+  font-weight: var(--font-weight-title);
+  line-height: var(--type-card-leading);
+  letter-spacing: var(--type-card-tracking);
+  color: var(--color-ink);
+  margin-top: var(--space-lg);
+}
+
+.ui-prose p,
+.prose p {
+  max-width: 62ch;
+}
+
+.theme-dark .type-hero,
+.theme-dark .type-page,
+.theme-dark .type-section,
+.theme-dark .type-block,
+.theme-dark .type-card,
+.theme-dark .ui-display,
+.theme-dark .ui-h1,
+.theme-dark .ui-h2,
+.theme-dark .ui-h3,
+.theme-dark .ui-h4 {
+  color: var(--color-white);
+}
+
+.theme-dark .type-lead,
+.theme-dark .type-body,
+.theme-dark .type-card-text,
+.theme-dark .ui-lead,
+.theme-dark .ui-body,
+.theme-dark .ui-prose,
+.theme-dark .prose {
+  color: var(--color-white);
+}

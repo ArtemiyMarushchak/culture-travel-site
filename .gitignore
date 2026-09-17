@@ -1,0 +1,41 @@
+# Build output (deployed via GitHub Actions artifact, not committed)
+dist/
+
+# Local tooling (portable Node — optional local install)
+.tools/
+
+# Hero master (keep local only — prod uses compressed hero.mp4)
+assets/videos/hero.source.mp4
+
+# Editor / agent (local only)
+.cursor/
+
+# Local HTML archives (not part of the live site)
+archives/
+
+# OS & editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets — NEVER commit
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp
+tmp/
+.temp/
+.tmp-crops/
+
+# Legacy design previews (not part of site)
+preview/

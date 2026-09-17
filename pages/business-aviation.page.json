@@ -1,0 +1,16 @@
+{
+  "slug": "/business-aviation/",
+  "title": "Бизнес-авиация",
+  "titleEn": "Business aviation",
+  "description": "Чартерные перелёты и VIP-авиация — Culture Travel.",
+  "robots": "noindex",
+  "blocks": [
+    {
+      "type": "page-stub",
+      "data": {
+        "title": "Бизнес-авиация",
+        "titleEn": "Business aviation"
+      }
+    }
+  ]
+}

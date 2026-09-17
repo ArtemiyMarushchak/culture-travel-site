@@ -1,0 +1,25 @@
+{
+  "title": "Отзывы",
+  "titleEn": "Reviews",
+  "pageSize": 4,
+  "items": [
+    {
+      "text": "Каждая деталь была продумана — от трансфера до ужина в месте, о котором не напишут в путеводителях. Спокойный ритм, без суеты, и ощущение, что путешествие собрано именно для нас.",
+      "textEn": "Every detail was considered — from the transfer to dinner in a place no guidebook mentions. A calm rhythm, no fuss, and the sense that the journey was composed for us.",
+      "author": "Елена и Михаил",
+      "authorEn": "Elena and Mikhail",
+      "meta": "Южная Африка · семейная поездка",
+      "metaEn": "South Africa · family trip",
+      "country": "za"
+    },
+    {
+      "text": "Анна собрала маршрут так, будто давно знает нашу семью: темп для детей, тихие ужины для нас и ни одного лишнего переезда. Всё выглядело просто — за этой простотой огромная работа.",
+      "textEn": "Anna composed the itinerary as if she had known our family for years: a pace for the children, quiet dinners for us, and not a single unnecessary transfer. It looked effortless — and that ease is hard work.",
+      "author": "Мария",
+      "authorEn": "Maria",
+      "meta": "Италия · семья с детьми",
+      "metaEn": "Italy · family with children",
+      "country": "it"
+    }
+  ]
+}

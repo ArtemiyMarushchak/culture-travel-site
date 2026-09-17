@@ -1,0 +1,27 @@
+<div class="uc-case-tour" data-block="case-tour">
+  <nav
+    class="tour-crumbs"
+    aria-label="Хлебные крошки"
+    data-i18n-attr="aria-label"
+    data-ru="Хлебные крошки"
+    data-en="Breadcrumbs"
+  >
+    <ol class="tour-crumbs__list">
+      <li class="tour-crumbs__item">
+        <a class="tour-crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
+      </li>
+      {{crumbsMiddleHtml}}
+      <li class="tour-crumbs__item">
+        <span
+          class="tour-crumbs__current"
+          aria-current="page"
+          data-i18n-src
+          data-ru="{{crumbTitle}}"
+          data-en="{{crumbTitleEn}}"
+        >{{crumbTitle}}</span>
+      </li>
+    </ol>
+  </nav>
+
+  {{body}}
+</div>

@@ -1,0 +1,26 @@
+/**
+ * Culture Travel — точка входа CSS (один stylesheet в HTML).
+ *
+ * Порядок подключения важен:
+ * 1. tokens     — дизайн-переменные (цвета, тип, отступы, rail)
+ * 2. foundation — шрифты (локальный Montserrat), reset, base
+ * 3. ui         — общие компоненты (кнопки, тип, крошки)
+ * 4. themes     — тёмные / chrome-секции
+ * 5. utilities  — хелперы
+ * 6. blocks     — CSS блоков из core/blocks.registry.json
+ *
+ * Задача: один граф импортов вместо десятков <link>.
+ */
+
+@import url('./tokens/index.css');
+@import url('./foundation/fonts.css');
+@import url('./foundation/reset.css');
+@import url('./foundation/base.css');
+@import url('./ui/index.css');
+@import url('./themes/theme-color.css');
+@import url('./themes/theme-dark.css');
+@import url('./utilities/helpers.css');
+@import url('./utilities/interaction-rules.css');
+
+/* Список стилей блоков собирается автоматически — blocks.css не править вручную */
+@import url('./blocks.css');

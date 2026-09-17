@@ -1,0 +1,49 @@
+<section
+  id="reviews"
+  class="uc-reviews"
+  data-block="reviews"
+  data-reviews-page-size="{{pageSize}}"
+  aria-labelledby="anna-reviews-title"
+>
+  <div class="rv">
+    <div class="rv__head">
+      <h2 class="rv__title type-section" id="anna-reviews-title" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</h2>
+    </div>
+
+    <div class="rv__grid">
+      {{#each items}}
+      <blockquote class="rv__quote{{hiddenClass}}" data-review-item>
+        <header class="rv__row">
+          <span class="rv__avatar" aria-hidden="true">
+            <span class="rv__avatar-ring">
+              <span class="rv__avatar-inner">{{avatarHtml}}</span>
+            </span>
+          </span>
+          <span class="rv__who">
+            <cite class="rv__quote-author" data-i18n-src data-ru="{{author}}" data-en="{{authorEn}}">{{author}}</cite>
+            <span class="rv__quote-meta" data-i18n-src data-ru="{{meta}}" data-en="{{metaEn}}">{{meta}}</span>
+          </span>
+          <div class="rv__stars" role="img" aria-label="5 звёзд">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.62 5.72 6.28.78-4.64 4.36 1.24 6.22L12 16.7 6.5 19.68l1.24-6.22L3.1 9.1l6.28-.78L12 2.6z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.62 5.72 6.28.78-4.64 4.36 1.24 6.22L12 16.7 6.5 19.68l1.24-6.22L3.1 9.1l6.28-.78L12 2.6z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.62 5.72 6.28.78-4.64 4.36 1.24 6.22L12 16.7 6.5 19.68l1.24-6.22L3.1 9.1l6.28-.78L12 2.6z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.62 5.72 6.28.78-4.64 4.36 1.24 6.22L12 16.7 6.5 19.68l1.24-6.22L3.1 9.1l6.28-.78L12 2.6z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.62 5.72 6.28.78-4.64 4.36 1.24 6.22L12 16.7 6.5 19.68l1.24-6.22L3.1 9.1l6.28-.78L12 2.6z"/></svg>
+          </div>
+        </header>
+
+        <p class="rv__quote-text" data-i18n-src data-ru="{{text}}" data-en="{{textEn}}">{{text}}</p>
+      </blockquote>
+      {{/each}}
+    </div>
+
+    <div class="rv__more" data-reviews-more-wrap{{moreHiddenAttr}}>
+      <button
+        class="rv__more-btn"
+        type="button"
+        data-reviews-more
+        data-i18n="reviews.loadMore"
+      >Показать ещё</button>
+    </div>
+  </div>
+</section>

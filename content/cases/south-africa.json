@@ -1,0 +1,26 @@
+{
+  "slug": "south-africa",
+  "title": "Южная Африка: панорамные дороги, сафари и винные долины",
+  "titleEn": "South Africa: panoramic roads, safari and wine valleys",
+  "crumbTitle": "ЮАР",
+  "crumbTitleEn": "South Africa",
+  "subtitle": "Йоханнесбург · Мпумаланга · Крюгер · Кейптаун · винные долины",
+  "subtitleEn": "Johannesburg · Mpumalanga · Kruger · Cape Town · wine valleys",
+  "cover": "/assets/images/cases/south-africa/cover.jpg",
+  "bodyFile": "content/cases/south-africa/tour.html",
+  "bodyFileEn": "content/cases/south-africa/tour.en.html",
+  "published": "2026-01-20",
+  "featured": true,
+  "blocks": [
+    { "type": "case-tour" }
+  ],
+  "meta": {
+    "country": "ЮАР",
+    "duration": "12 дней / 11 ночей",
+    "route": "Йоханнесбург — Мпумаланга — Парк Крюгер — Кейптаун — винные долины"
+  },
+  "seo": {
+    "title": "ЮАР — кейс | Culture Travel",
+    "description": "Кейс путешествия по Южной Африке: панорамные дороги Мпумаланги, сафари в Крюгере, Кейптаун и винные долины."
+  }
+}

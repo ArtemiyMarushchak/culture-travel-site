@@ -1,0 +1,52 @@
+<article class="news-layout" data-block="news-layout">
+  <div class="news-layout__shell">
+    <nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
+      <ol class="crumbs__list">
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
+        </li>
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/#news" data-i18n="nav.news">Новости</a>
+        </li>
+        <li class="crumbs__item">
+          <span
+            class="crumbs__current"
+            data-i18n-src
+            data-ru="{{contentTitle}}"
+            data-en="{{contentTitleEn}}"
+          >{{contentTitle}}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="ui-shape news-layout__shape">
+      <header class="news-layout__head">
+        <time
+          class="news-layout__date"
+          datetime="{{dateIso}}"
+          data-i18n-src
+          data-ru="{{dateFormatted}}"
+          data-en="{{dateFormattedEn}}"
+        >{{dateFormatted}}</time>
+        <h1
+          class="news-layout__title"
+          data-i18n-src
+          data-ru="{{contentTitle}}"
+          data-en="{{contentTitleEn}}"
+        >{{contentTitle}}</h1>
+        <p
+          class="news-layout__excerpt"
+          data-i18n-src
+          data-ru="{{excerpt}}"
+          data-en="{{excerptEn}}"
+        >{{excerpt}}</p>
+      </header>
+
+      {{coverHtml}}
+
+      <div class="news-layout__body prose">
+        {{body}}
+      </div>
+    </div>
+  </div>
+</article>

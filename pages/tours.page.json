@@ -1,0 +1,16 @@
+{
+  "slug": "/tours/",
+  "title": "Авторские туры",
+  "titleEn": "Private tours",
+  "description": "Авторские программы Culture Travel — индивидуальные маршруты.",
+  "robots": "noindex",
+  "blocks": [
+    {
+      "type": "page-stub",
+      "data": {
+        "title": "Авторские туры",
+        "titleEn": "Private tours"
+      }
+    }
+  ]
+}

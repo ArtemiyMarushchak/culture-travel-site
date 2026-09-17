@@ -1,0 +1,29 @@
+.contact {
+  border-top: 1px solid var(--color-line);
+  padding: var(--space-section-y) var(--container-padding-desktop);
+}
+
+.contact .container {
+  width: 100%;
+  max-width: var(--container-narrow-max);
+  margin-inline: auto;
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+@media (max-width: 1180px) {
+  .contact {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .contact {
+    padding-inline: var(--container-padding-mobile);
+  }
+}

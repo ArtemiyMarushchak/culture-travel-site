@@ -1,0 +1,56 @@
+:root {
+  /* Text edge 15 (карточки), page edge — см. layout.css (fluid) */
+  --space-edge: 15px;
+  --space-edge-lg: clamp(40px, 2.5vw, 88px);
+
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: var(--space-edge);
+  --space-md: clamp(24px, 1.5vw, 36px);
+  --space-lg: clamp(32px, 1.8vw, 48px);
+  --space-xl: var(--space-edge-lg);
+  --space-2xl: clamp(64px, 4vw, 112px);
+  --space-3xl: clamp(88px, 5.5vw, 148px);
+  --space-4xl: clamp(120px, 7.5vw, 200px);
+
+  --space-section-head: var(--space-edge);
+  --space-title-body: clamp(32px, 1.8vw, 52px);
+  --space-stack-sm: var(--space-edge);
+  --space-stack-md: var(--space-md);
+  --space-stack-lg: var(--space-edge-lg);
+  --space-stack-xl: var(--space-edge-lg);
+  --space-card-padding: var(--card-text-pad, 15px);
+  --space-footer-y: var(--space-2xl);
+  --space-block-end: var(--space-edge-lg);
+
+  --gap-block: var(--space-edge-lg);
+  --gap-inline: var(--space-md);
+  --gap-tight: var(--space-edge);
+  --gap-nav: var(--header-nav-gap);
+
+  --section-pad-mobile: 56px;
+  --section-pad-tablet: 72px;
+  --section-pad-desktop: clamp(96px, 5.5vw, 200px);
+  --space-section-y: clamp(
+    var(--section-pad-mobile),
+    7vw,
+    var(--section-pad-desktop)
+  );
+  --space-section: var(--space-section-y);
+
+  /* Якорь: только высота шапки — воздух до заголовка даёт padding секции */
+  --space-anchor-air: 0px;
+  --space-anchor-offset: var(--header-height);
+
+  /* Хлебные крошки — эталон как у кейсов (.tour-crumbs): header + 30 / gap 20 */
+  --crumbs-offset: clamp(30px, 2vw, 56px);
+  --crumbs-gap-below: clamp(20px, 1.3vw, 36px);
+
+  --section-gap-mobile: 32px;
+  --section-gap-tablet: 48px;
+  --section-gap-desktop: clamp(64px, 4vw, 112px);
+
+  /* Мобильный dock — выше над системной зоной браузера */
+  --dock-safe-bottom: 40px;
+}

@@ -1,0 +1,42 @@
+<article class="case-layout section" data-block="case-layout">
+  <div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
+      <ol class="crumbs__list">
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
+        </li>
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/#cases" data-i18n="nav.cases">Кейсы</a>
+        </li>
+        <li class="crumbs__item">
+          <span
+            class="crumbs__current"
+            data-i18n-src
+            data-ru="{{contentTitle}}"
+            data-en="{{contentTitleEn}}"
+          >{{contentTitle}}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <header class="case-layout__header">
+      <p class="section__label" data-i18n="cases.label">Кейс</p>
+      <h1 class="case-layout__title type-page" data-i18n-src data-ru="{{contentTitle}}" data-en="{{contentTitleEn}}">{{contentTitle}}</h1>
+      <p class="case-layout__subtitle type-lead" data-i18n-src data-ru="{{subtitle}}" data-en="{{subtitleEn}}">{{subtitle}}</p>
+    </header>
+
+    <div class="case-layout__cover">
+      <img src="{{basePath}}{{coverImage}}" alt="{{title}}" width="1200" height="675" loading="eager">
+    </div>
+
+    <div class="container container--narrow case-layout__body prose">
+      {{body}}
+    </div>
+
+    <div class="case-layout__gallery grid-3">
+      {{#each gallery}}
+      <img src="{{basePath}}{{item}}" alt="{{title}}" loading="lazy" width="400" height="300">
+      {{/each}}
+    </div>
+  </div>
+</article>

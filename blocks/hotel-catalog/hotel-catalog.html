@@ -1,0 +1,46 @@
+<section class="hotel-catalog section" data-block="hotel-catalog">
+  <div class="container">
+    <p class="section__label" data-i18n="hotels.label">Отели</p>
+    <h1 class="section__title" data-i18n="hotels.title">Эксклюзивные отели мира</h1>
+    <p class="type-lead mb-lg" data-i18n="hotels.lead">Каталог тематических люкс-отелей — для тех, кто ценит атмосферу, сервис и уникальность.</p>
+
+    <div class="hotel-catalog__filters" role="group" aria-label="Фильтры" data-i18n-aria="hotels.filters">
+      <button class="hotel-catalog__filter is-active" type="button" data-filter="all" data-i18n="hotels.all">Все</button>
+      <button class="hotel-catalog__filter" type="button" data-filter="beach" data-i18n="hotels.beach">Пляж</button>
+      <button class="hotel-catalog__filter" type="button" data-filter="city" data-i18n="hotels.city">Город</button>
+      <button class="hotel-catalog__filter" type="button" data-filter="mountain" data-i18n="hotels.mountain">Горы</button>
+      <button class="hotel-catalog__filter" type="button" data-filter="safari" data-i18n="hotels.safari">Safari</button>
+    </div>
+
+    <div class="hotel-catalog__grid">
+      {{#each items}}
+      <article class="hotel-card" data-themes="{{themes}}">
+        <a class="hotel-card__media" href="{{basePath}}/hotels/{{slug}}/">
+          <img src="{{basePath}}{{cover}}" alt="" loading="lazy" decoding="async" width="720" height="480">
+        </a>
+        <div class="hotel-card__body">
+          <div class="hotel-card__header">
+            <h2 class="hotel-card__name type-card" data-i18n-src data-ru="{{name}}" data-en="{{nameEn}}">{{name}}</h2>
+            <p class="hotel-card__stars" aria-label="{{stars}} звёзд">{{stars}} ★</p>
+          </div>
+          <p class="hotel-card__location" data-i18n-src data-ru="{{location}}" data-en="{{locationEn}}">{{location}}</p>
+            <p class="hotel-card__desc type-card-text" data-i18n-src data-ru="{{description}}" data-en="{{descriptionEn}}">{{description}}</p>
+          <div class="hotel-card__actions">
+            <a class="btn btn--ghost hotel-card__link" href="{{basePath}}/hotels/{{slug}}/" data-i18n="hotels.more">Подробнее</a>
+            <button
+              class="btn hotel-card__btn"
+              type="button"
+              data-hotel-gallery
+              data-name="{{name}}"
+              data-media='{{mediaJson}}'
+              data-i18n="hotels.media"
+            >Фото и видео</button>
+          </div>
+        </div>
+      </article>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="hotels-data" hidden>{{hotelsJson}}</script>

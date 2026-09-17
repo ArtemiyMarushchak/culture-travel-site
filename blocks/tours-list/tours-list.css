@@ -1,0 +1,116 @@
+.tours-list {
+  padding: calc(var(--header-height) + var(--space-section)) var(--container-padding-desktop) var(--space-section);
+}
+
+.tours-list .container {
+  width: 100%;
+  max-width: var(--container-wide-max);
+  margin-inline: auto;
+}
+
+.tours-list .section__label {
+  margin: 0 0 var(--space-sm);
+  font-size: var(--font-overline);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.tours-list .section__title {
+  margin: 0;
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
+  font-weight: var(--font-weight-title);
+}
+
+.tours-list__lead {
+  max-width: 42rem;
+  margin: var(--type-stack-block) 0 var(--space-2xl);
+  color: var(--color-ink-muted);
+  font-size: var(--type-lead-size);
+  line-height: var(--type-lead-leading);
+}
+
+.tours-list__grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tours-list__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--color-shape);
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.tours-list__media {
+  display: block;
+  aspect-ratio: var(--ratio-card);
+  overflow: hidden;
+  background: var(--color-shape);
+}
+
+.tours-list__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tours-list__card:hover .tours-list__media img {
+  transform: scale(1.04);
+}
+
+.tours-list__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--type-stack-card);
+  padding: var(--space-edge);
+}
+
+.tours-list__body h2 {
+  margin: 0;
+  font-size: var(--type-card-size);
+  line-height: var(--type-card-leading);
+  font-weight: var(--font-weight-title);
+}
+
+.tours-list__body p {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: var(--type-card-text-size);
+  line-height: var(--type-card-text-leading);
+}
+
+@media (max-width: 1180px) {
+  .tours-list {
+    padding-inline: var(--container-padding-tablet);
+  }
+
+  .tours-list__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .tours-list {
+    padding-inline: var(--container-padding-mobile);
+  }
+
+  .tours-list__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tours-list__card:hover .tours-list__media img {
+    transform: none;
+  }
+}

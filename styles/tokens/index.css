@@ -1,0 +1,11 @@
+/* Design tokens — единая точка входа */
+@import url('./colors.css');
+@import url('./typography.css');
+@import url('./spacing.css');
+@import url('./layout.css');
+@import url('./interaction.css');
+@import url('./header-footer.css');
+@import url('./z-index.css');
+@import url('./breakpoints.css');
+@import url('./aliases.css');
+@import url('./responsive.css');

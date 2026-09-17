@@ -1,0 +1,244 @@
+/* #reviews — карточки цитат */
+
+#reviews {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+#reviews,
+#reviews * {
+  box-sizing: border-box;
+}
+
+.rv {
+  width: 100%;
+  max-width: var(--container-wide-max);
+  margin-inline: auto;
+  padding: var(--space-section-y) var(--container-padding-desktop);
+}
+
+.rv__head {
+  max-width: 640px;
+  margin: 0 0 var(--space-edge-lg);
+}
+
+.rv__title {
+  margin: 0;
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-section-tracking);
+  color: var(--color-ink);
+}
+
+.rv__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+  gap: var(--space-edge-lg);
+}
+
+.rv__quote {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: var(--space-edge-lg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-shape);
+  color: var(--color-ink-on-shape);
+}
+
+.rv__quote.is-hidden,
+.rv__quote[hidden] {
+  display: none;
+}
+
+.rv__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-edge);
+}
+
+.rv__who {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 2px;
+}
+
+.rv__quote-author {
+  margin: 0;
+  font-size: 14px;
+  line-height: var(--line-height-ui);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--color-ink-on-shape);
+  font-style: normal;
+}
+
+.rv__quote-meta {
+  margin: 0;
+  font-size: 14px;
+  line-height: var(--line-height-ui);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-ink-on-shape-soft);
+}
+
+.rv__avatar {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+}
+
+.rv__avatar-ring {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 50%;
+  background: var(--color-shape);
+}
+
+.rv__avatar-inner {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  color: var(--color-gold);
+}
+
+.rv__avatar-inner img,
+.rv__flag,
+.rv__avatar-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rv__stars {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-gold);
+}
+
+.rv__stars svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.rv__quote-text {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-on-shape);
+}
+
+.rv__more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-edge-lg);
+}
+
+.rv__more[hidden] {
+  display: none;
+}
+
+.rv__more-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 44px;
+  height: 44px;
+  padding: 0 22px;
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius);
+  background: var(--color-gold);
+  color: var(--color-white);
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.rv__more-btn:hover,
+.rv__more-btn:focus-visible {
+  opacity: var(--ui-button-hover-opacity);
+  outline: none;
+}
+
+@media (max-width: 1180px) {
+  .rv {
+    padding: var(--space-section-y) var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .rv {
+    padding: var(--space-section-y) var(--container-padding-mobile);
+  }
+
+  .rv__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-edge);
+  }
+
+  .rv__quote {
+    padding: var(--space-edge);
+  }
+
+  .rv__row {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: start;
+    column-gap: var(--space-edge);
+    row-gap: 14px;
+  }
+
+  .rv__avatar {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .rv__who {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .rv__stars {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rv__more-btn {
+    transition: none;
+  }
+}

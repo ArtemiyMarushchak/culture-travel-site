@@ -1,0 +1,107 @@
+/* Статья новости — серая страница, белая shape */
+
+.news-layout {
+  padding:
+    calc(var(--header-height) + var(--crumbs-offset))
+    var(--container-padding-desktop)
+    var(--space-section-y);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-main);
+}
+
+.news-layout,
+.news-layout * {
+  box-sizing: border-box;
+}
+
+.news-layout__shell {
+  max-width: var(--container-wide-max);
+  margin: 0;
+}
+
+.news-layout__head {
+  max-width: 720px;
+  margin: 0 0 var(--space-edge-lg);
+}
+
+.news-layout__date {
+  display: block;
+  margin: 0 0 var(--space-edge);
+  color: var(--color-gold);
+  font-size: var(--type-overline-size, 12px);
+  line-height: 1;
+  font-weight: var(--font-weight-overline);
+  letter-spacing: 0.08em;
+}
+
+.news-layout__title {
+  margin: 0 0 var(--space-md);
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-section-tracking);
+}
+
+.news-layout__excerpt {
+  margin: 0;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--font-weight-text);
+}
+
+.news-layout__excerpt:empty {
+  display: none;
+}
+
+.news-layout__cover {
+  overflow: hidden;
+  margin: 0 0 var(--space-edge-lg);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--color-ink-on-shape) 8%, var(--color-shape));
+}
+
+.news-layout__cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--ratio-card);
+  object-fit: cover;
+  object-position: center;
+}
+
+.news-layout__body {
+  max-width: 720px;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--font-weight-text);
+}
+
+.news-layout__body.prose,
+.news-layout__body.prose h2,
+.news-layout__body.prose h3 {
+  color: inherit;
+}
+
+.news-layout__body.prose h2,
+.news-layout__body.prose h3 {
+  color: var(--color-ink-on-shape);
+}
+
+@media (max-width: 1180px) {
+  .news-layout {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .news-layout {
+    padding:
+      calc(var(--header-height) + var(--crumbs-offset))
+      var(--container-padding-mobile)
+      var(--space-2xl);
+  }
+}

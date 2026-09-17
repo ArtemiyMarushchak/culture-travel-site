@@ -1,0 +1,36 @@
+@media (max-width: 1180px) {
+  :root {
+    --header-height: var(--header-height-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: var(--header-height-mobile);
+  }
+}
+
+/*
+  Крупные экраны / презентация / 4K TV — подтянуть UI-хром,
+  который остаётся в фиксированных px (кнопки, иконки, меню).
+  Контейнеры и type уже fluid в layout/typography/spacing.
+*/
+@media (min-width: 1920px) {
+  :root {
+    --ui-icon-size-xs: clamp(12px, 0.55vw, 18px);
+    --ui-icon-size-sm: clamp(15px, 0.7vw, 22px);
+    --ui-icon-size-md: clamp(17px, 0.8vw, 26px);
+    --ui-icon-size-lg: clamp(22px, 1vw, 32px);
+    --ui-touch-size: clamp(44px, 2.4vw, 64px);
+    --ui-button-height-desktop: clamp(56px, 3vw, 80px);
+    --ui-underline-offset: clamp(8px, 0.45vw, 14px);
+    --card-media-inset: clamp(10px, 0.55vw, 18px);
+    --card-text-pad: clamp(15px, 0.85vw, 28px);
+    --radius: clamp(10px, 0.55vw, 16px);
+    --radius-sm: var(--radius);
+    --radius-md: var(--radius);
+    --ui-menu-font-size-desktop: var(--font-menu);
+    --ui-nav-font-size-desktop: var(--font-nav);
+    --ui-footer-bottom-font-size: clamp(11px, 0.55vw, 16px);
+  }
+}

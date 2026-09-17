@@ -1,0 +1,1026 @@
+/* #lux-header — современный fixed nav (в духе Vue, vanilla) */
+
+#lux-header {
+  --h: var(--header-height-desktop);
+  --pad: var(--layout-rail-pad);
+  --search-logo-gap: 48px;
+  --search-cluster-gap: 56px;
+  font-family: var(--font-main);
+}
+
+#lux-header,
+#lux-header * {
+  box-sizing: border-box;
+}
+
+#lux-header.lh {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--h);
+  overflow: visible;
+  z-index: var(--z-header) !important;
+  color: var(--header-fg);
+  /* По умолчанию чёрная; прозрачная только на главной с видео */
+  background: var(--header-bg-solid);
+  /* Без backdrop-filter — blur поверх hero выглядит как матовое стекло при скролле/меню */
+  border-bottom: none;
+  touch-action: manipulation;
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+/* Стартовая: поверх hero-video — прозрачная, без blur */
+html[data-page="home"] #lux-header.lh:not(.is-scrolled):not(.menu-open) {
+  background: transparent;
+  box-shadow: none;
+}
+
+#lux-header.lh.is-scrolled,
+#lux-header.lh.is-inner,
+html[data-page="inner"] #lux-header.lh {
+  background: var(--header-bg-solid);
+  box-shadow: none;
+}
+
+/* Меню открыто: сплошная полоса сцены (без прозрачности / blur поверх видео) */
+#lux-header.lh.menu-open {
+  background: var(--menu-stage);
+  color: var(--color-white);
+  box-shadow: none;
+}
+
+/* Разделитель только при открытом меню — под логотипом / X */
+#lux-header.lh.menu-open::after {
+  content: '';
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: 0;
+  height: var(--chrome-line-width);
+  background: var(--chrome-line);
+  pointer-events: none;
+  z-index: 5;
+}
+
+#lux-header.lh.menu-open .lh__logo-img--on-dark {
+  display: block;
+}
+
+#lux-header.lh.menu-open .lh__logo-img--on-light {
+  display: none;
+}
+
+#lux-header.lh.menu-open .lh__burger {
+  color: var(--color-white);
+}
+
+.lh__inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--layout-rail-max);
+  height: 100%;
+  margin-inline: auto;
+  padding: 0 var(--layout-rail-pad);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0;
+  overflow: visible;
+  z-index: 3;
+}
+
+/* ── Logo: Культура путешествий ── */
+.lh__logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none !important;
+  line-height: 0;
+  min-width: 0;
+  grid-column: 1;
+  grid-row: 1;
+  transition: opacity var(--transition-fast);
+}
+
+.lh__logo:hover {
+  opacity: var(--ui-link-hover-opacity);
+}
+
+.lh__logo-img {
+  display: block;
+  height: var(--logo-height-header);
+  width: auto;
+  max-width: min(240px, 62vw);
+  object-fit: contain;
+  object-position: left center;
+}
+
+.lh__logo-img--on-light {
+  display: none;
+}
+
+/* ── Десктопная навигация ── */
+.lh__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* 30px gap + divider margin -15px → ровно 15px до/после черты */
+  gap: 30px;
+  min-width: 0;
+  margin: 0 var(--search-cluster-gap) 0 var(--search-logo-gap);
+  grid-column: 2;
+  grid-row: 1;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.lh__nav-divider {
+  flex: 0 0 auto;
+  align-self: center;
+  width: var(--chrome-line-width);
+  height: 22px;
+  margin: 0 -15px;
+  background: var(--chrome-line);
+  opacity: 1;
+}
+
+.lh__nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 0 8px;
+  color: var(--header-fg) !important;
+  text-decoration: none !important;
+  font-size: clamp(14px, 0.75vw, 18px);
+  line-height: var(--line-height-ui);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  white-space: nowrap;
+  opacity: var(--header-link-opacity);
+  transition:
+    opacity var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.lh__nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-fast);
+}
+
+.lh__nav-link:hover {
+  opacity: 1;
+}
+
+.lh__nav-link:hover::after,
+.lh__nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.lh__nav-link.is-active {
+  opacity: 1;
+  color: var(--header-fg) !important;
+}
+
+.lh__nav-link--aside {
+  gap: 8px;
+  margin: 0;
+  padding-right: 0;
+}
+
+.lh__nav-link--aside::after {
+  display: none;
+}
+
+.lh__nav-link-text {
+  position: relative;
+}
+
+.lh__nav-link--aside .lh__nav-link-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-fast);
+}
+
+.lh__nav-link--aside:hover .lh__nav-link-text::after,
+.lh__nav-link--aside.is-active .lh__nav-link-text::after {
+  transform: scaleX(1);
+}
+
+.lh__cluster {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 15px;
+  grid-column: 3;
+  grid-row: 1;
+  position: relative;
+  z-index: 4;
+}
+
+.lh__search,
+.lh__theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--header-fg);
+  cursor: pointer;
+}
+
+.lh__search {
+  margin: 0;
+}
+
+.lh__theme {
+  position: relative;
+  margin: 0;
+}
+
+.lh__search:hover,
+.lh__theme:hover,
+.lh__lang:hover {
+  opacity: 0.65;
+}
+
+.lh__search-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.lh__theme-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.lh__theme-icon--moon {
+  display: block;
+}
+
+.lh__theme-icon--sun {
+  display: none;
+}
+
+html[data-theme="light"] .lh__theme-icon--moon {
+  display: none;
+}
+
+html[data-theme="light"] .lh__theme-icon--sun {
+  display: block;
+}
+
+.lh__rule {
+  width: var(--chrome-line-width);
+  height: 22px;
+  flex: 0 0 auto;
+  margin: 0;
+  background: var(--chrome-line);
+  opacity: 1;
+}
+
+.lh__rule--menu {
+  display: none;
+}
+
+.lh__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-height: 36px;
+  padding: 0 18px;
+  margin: 0;
+  border: 1px solid rgba(246, 246, 246, 0.32);
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(246, 246, 246, 0.22) 0%,
+    rgba(246, 246, 246, 0.08) 100%
+  );
+  color: var(--color-white) !important;
+  text-decoration: none !important;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast);
+}
+
+.lh__cta:hover {
+  opacity: var(--ui-button-hover-opacity);
+}
+
+#lux-header.is-scrolled .lh__cta,
+#lux-header.is-inner .lh__cta {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-white) !important;
+}
+
+#lux-header.is-scrolled .lh__cta:hover,
+#lux-header.is-inner .lh__cta:hover {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  opacity: var(--ui-button-hover-opacity);
+}
+
+.lh__lang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Без min-width — иначе глифы сидят ~2px внутри бокса, и зазор
+     до разделителя читается как 17px вместо кластера 15px. */
+  min-width: 0;
+  width: auto;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--header-fg);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ── Десктопный inline-поиск ── */
+.lh__bar-search {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  height: 40px;
+  margin: 0 var(--search-cluster-gap) 0 var(--search-logo-gap);
+  padding: 0 4px 0 14px;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(246, 246, 246, 0.2);
+  color: var(--color-white);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: none;
+  z-index: 3;
+  overflow: visible;
+  justify-self: stretch;
+  transition:
+    opacity 0.28s ease,
+    visibility 0.28s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+#lux-header.is-scrolled .lh__bar-search,
+#lux-header.is-inner .lh__bar-search {
+  background: var(--color-white);
+  color: var(--color-header);
+  box-shadow: none;
+}
+
+#lux-header.is-scrolled .lh__bar-search-input::placeholder,
+#lux-header.is-inner .lh__bar-search-input::placeholder {
+  color: var(--color-header);
+  opacity: 0.42;
+}
+
+.lh__bar-search:focus-within,
+.lh__bar-search-input:focus,
+.lh__bar-search-input:focus-visible,
+.lh__menu-search:focus-within,
+.lh__menu-search-input:focus,
+.lh__menu-search-input:focus-visible {
+  outline: none !important;
+}
+
+.lh__bar-search-input:focus,
+.lh__bar-search-input:focus-visible,
+.lh__menu-search-input:focus,
+.lh__menu-search-input:focus-visible {
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.lh__bar-search-input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.4;
+  outline: none;
+}
+
+.lh__bar-search-input::placeholder {
+  color: var(--color-white);
+  opacity: 0.58;
+}
+
+.lh__bar-search-input::-webkit-search-cancel-button,
+.lh__bar-search-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.lh__bar-search .lh__find-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  opacity: 0.78;
+}
+
+.lh__bar-search .lh__find-clear {
+  opacity: 0.78;
+}
+
+.lh__find-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  opacity: 0.5;
+}
+
+.lh__find-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.lh__find-clear svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.lh__find-clear:hover {
+  opacity: 1;
+}
+
+#lux-header.is-search-open .lh__nav {
+  display: none;
+}
+
+/* Только кнопку убираем из потока — дивидер перед CTA остаётся */
+#lux-header.is-search-open .lh__cluster > .lh__search {
+  display: none;
+}
+
+#lux-header.is-search-open .lh__bar-search {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  /* как gap между иконкой поиска и дивидером в закрытом состоянии */
+  margin-right: 15px;
+}
+
+.lh__bar-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: min(60vh, 440px);
+  overflow: auto;
+  padding: 8px;
+  border: 1px solid rgba(246, 246, 246, 0.22);
+  border-radius: 10px;
+  background: rgba(13, 13, 13, 0.78);
+  backdrop-filter: saturate(180%) blur(28px);
+  -webkit-backdrop-filter: saturate(180%) blur(28px);
+  color: var(--color-white);
+  box-shadow: 0 16px 48px rgba(13, 13, 13, 0.32);
+}
+
+#lux-header.is-scrolled .lh__bar-results,
+#lux-header.is-inner .lh__bar-results {
+  background: var(--color-header);
+  color: var(--color-white);
+  border-color: rgba(246, 246, 246, 0.22);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 16px 48px rgba(13, 13, 13, 0.28);
+}
+
+html[data-theme="light"] #lux-header.is-scrolled .lh__bar-results,
+html[data-theme="light"] #lux-header.is-inner .lh__bar-results {
+  background: var(--color-white);
+  color: var(--color-header);
+  border-color: rgba(13, 13, 13, 0.18);
+  box-shadow: 0 16px 48px rgba(13, 13, 13, 0.12);
+}
+
+.lh__bar-results[hidden] {
+  display: none;
+}
+
+.lh__find-empty,
+.lh__find-hint {
+  margin: 0;
+  padding: 14px 12px;
+  color: inherit;
+  opacity: 0.5;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.lh__find-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 10px;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.lh__find-item:hover,
+.lh__find-item.is-active {
+  background: rgba(246, 246, 246, 0.08);
+}
+
+html[data-theme="light"] #lux-header.is-scrolled .lh__find-item:hover,
+html[data-theme="light"] #lux-header.is-scrolled .lh__find-item.is-active,
+html[data-theme="light"] #lux-header.is-inner .lh__find-item:hover,
+html[data-theme="light"] #lux-header.is-inner .lh__find-item.is-active {
+  background: rgba(13, 13, 13, 0.05);
+}
+
+.lh__find-kind {
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: inherit;
+  opacity: 0.42;
+}
+
+.lh__find-name {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.lh__find-text {
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: 0.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Бургер ── */
+.lh__burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--header-fg);
+  touch-action: manipulation;
+}
+
+.lh__burger-box {
+  position: relative;
+  width: 16px;
+  height: 12px;
+  display: block;
+}
+
+.lh__burger i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: currentColor;
+  border-radius: 0.5px;
+  transition:
+    transform var(--transition),
+    top var(--transition),
+    opacity var(--transition-fast);
+}
+
+.lh__burger i:nth-child(1) { top: 0; }
+.lh__burger i:nth-child(2) { top: 5px; }
+.lh__burger i:nth-child(3) { top: 10px; }
+
+#lux-header.menu-open .lh__burger i:nth-child(1) {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+#lux-header.menu-open .lh__burger i:nth-child(2) {
+  opacity: 0;
+}
+
+#lux-header.menu-open .lh__burger i:nth-child(3) {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+/* ── Мобильное меню — плоский чёрный (как после удаления поиска) ── */
+.lh__topmenu {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  height: 100svh;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background: var(--menu-stage);
+  color: var(--color-white);
+  -webkit-clip-path: inset(0 0 100% 0);
+  clip-path: inset(0 0 100% 0);
+  opacity: 1;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  transition:
+    -webkit-clip-path 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    clip-path 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    visibility 0s linear 0.42s;
+  touch-action: manipulation;
+}
+
+#lux-header.menu-open .lh__topmenu {
+  -webkit-clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0 0 0);
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    -webkit-clip-path 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    clip-path 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    visibility 0s linear 0s;
+}
+
+.lh__topmenu-inner {
+  flex: 1;
+  min-height: 0;
+  padding: calc(var(--h) + 20px) 15px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lh__menu-links {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.lh__menu-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 0;
+  background: transparent;
+  color: var(--color-white) !important;
+  text-decoration: none !important;
+  text-align: left;
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: var(--line-height-ui);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.lh__menu-link::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  margin-right: 1px;
+  border-right: 1.25px solid currentColor;
+  border-bottom: 1.25px solid currentColor;
+  transform: rotate(-45deg);
+  opacity: 0.32;
+}
+
+.lh__menu-link:hover,
+.lh__menu-link:focus-visible {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+  outline: none;
+}
+
+.lh__menu-link.is-active {
+  opacity: 1;
+}
+
+.lh__menu-search-results {
+  margin: 0 0 16px;
+  color: var(--color-white);
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.lh__menu-search-results[hidden] {
+  display: none !important;
+}
+
+/* Контакты — как в футере, под разделителем после nav */
+.lh__menu-contacts {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 15px calc(16px + env(safe-area-inset-bottom, 0px));
+  padding: 18px 0 0;
+  border-top: var(--chrome-line-width) solid var(--chrome-line);
+  z-index: 2;
+}
+
+.lh__menu-contacts-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 2px;
+}
+
+.lh__menu-contacts-label {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: var(--line-height-ui);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--chrome-muted);
+}
+
+.lh__menu-contact {
+  margin: 0;
+  color: var(--color-white) !important;
+  text-decoration: none !important;
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  transition: opacity var(--transition-fast);
+}
+
+.lh__menu-contact:hover,
+.lh__menu-contact:focus-visible {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+  outline: none;
+}
+
+/* Язык — текстовый переключатель рядом с «Контакты», как chrome футера */
+.lh__menu-lang {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-white);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transition: opacity var(--transition-fast);
+}
+
+.lh__menu-lang:hover {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+}
+
+/* Устаревшие dock/CTA/search — инертны, если разметка снова появится */
+.lh__menu-dock,
+.lh__menu-cta,
+.lh__menu-meta,
+.lh__menu-search-fab,
+.lh__menu-search,
+.lh__menu-meta-sep {
+  display: none !important;
+}
+
+@media (min-width: 1181px) {
+  .lh__topmenu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1400px) {
+  #lux-header {
+    --search-logo-gap: clamp(20px, 2.2vw, 32px);
+  }
+}
+
+@media (max-width: 1280px) {
+  #lux-header {
+    --search-logo-gap: clamp(16px, 1.6vw, 24px);
+  }
+
+  .lh__cluster {
+    gap: clamp(8px, 0.9vw, 12px);
+  }
+
+  .lh__cta {
+    padding: 0 clamp(12px, 1.1vw, 16px);
+  }
+}
+
+@media (max-width: 1180px) {
+  #lux-header {
+    --h: var(--header-height-tablet);
+    --pad: var(--layout-rail-pad);
+    --search-logo-gap: 24px;
+  }
+
+  .lh__inner {
+    grid-template-columns: 1fr auto;
+    gap: 0;
+  }
+
+  .lh__nav {
+    display: none;
+    margin: 0;
+  }
+
+  .lh__bar-search,
+  .lh__bar-results {
+    display: none !important;
+  }
+
+  .lh__cluster > :not(.lh__burger) {
+    display: none;
+  }
+
+  .lh__cluster {
+    grid-column: 2;
+  }
+
+  .lh__burger {
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 44px;
+    height: 44px;
+  }
+
+  .lh__burger-box {
+    width: 22px;
+    height: 14px;
+  }
+
+  .lh__burger i {
+    height: 1.25px;
+  }
+
+  .lh__burger i:nth-child(1) { top: 0; }
+  .lh__burger i:nth-child(2) { top: 6px; }
+  .lh__burger i:nth-child(3) { top: 12px; }
+
+  #lux-header.menu-open .lh__burger i:nth-child(1),
+  #lux-header.menu-open .lh__burger i:nth-child(3) {
+    top: 6px;
+  }
+
+  #lux-header.lh.menu-open .lh__topmenu {
+    inset: 0;
+    height: 100dvh;
+    height: 100svh;
+    background: var(--menu-stage);
+    color: var(--color-white);
+  }
+
+  .lh__topmenu-inner {
+    padding: calc(var(--h) + 20px) 15px 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  #lux-header {
+    --h: var(--header-height-mobile);
+    /* 15px до трёх линий бургера (и логотипа) от края экрана */
+    --pad: 15px;
+    --logo-height-header: 44px;
+  }
+
+  .lh__burger {
+    justify-content: flex-end;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .lh__burger-box {
+    width: 22px;
+    height: 14px;
+    margin: 0;
+  }
+
+  .lh__burger i {
+    height: 1.25px;
+    border-radius: 0.5px;
+  }
+
+  .lh__burger i:nth-child(1) { top: 0; }
+  .lh__burger i:nth-child(2) { top: 6px; }
+  .lh__burger i:nth-child(3) { top: 12px; }
+
+  #lux-header.menu-open .lh__burger i:nth-child(1),
+  #lux-header.menu-open .lh__burger i:nth-child(3) {
+    top: 6px;
+  }
+
+  .lh__topmenu-inner {
+    padding: calc(var(--h) + 20px) 15px 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #lux-header.lh,
+  .lh__nav-link::after,
+  .lh__nav-link-text::after,
+  .lh__burger i,
+  .lh__nav,
+  .lh__bar-search,
+  .lh__topmenu,
+  .lh__menu-contact,
+  .lh__menu-lang,
+  .lh__switch,
+  .lh__switch-knob {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,74 @@
+/* Внутренний stub — крошки + одна строка по центру, футер на экране */
+
+html:has(.page-stub) #main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--color-white);
+}
+
+.page-stub {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-main);
+}
+
+.page-stub,
+.page-stub * {
+  box-sizing: border-box;
+}
+
+.ps {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  max-width: var(--layout-rail-max);
+  margin-inline: auto;
+  padding:
+    calc(var(--header-height) + var(--crumbs-offset))
+    var(--layout-rail-pad)
+    var(--space-section-y);
+}
+
+.ps__stage {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: var(--space-edge-lg) 0;
+}
+
+.ps__title {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  text-align: center;
+}
+
+@media (max-width: 1180px) {
+  .ps {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .ps {
+    padding:
+      calc(var(--header-height) + var(--crumbs-offset))
+      var(--container-padding-mobile)
+      var(--space-2xl);
+  }
+}

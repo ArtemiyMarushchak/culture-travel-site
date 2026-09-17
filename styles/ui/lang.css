@@ -1,0 +1,18 @@
+/* Панели RU/EN — один источник для legal, новостей, кейсов */
+
+.lang-panel[data-lang-panel="en"] {
+  display: none !important;
+}
+
+html[data-lang="en"] .lang-panel[data-lang-panel="ru"] {
+  display: none !important;
+}
+
+html[data-lang="en"] .lang-panel[data-lang-panel="en"] {
+  display: block !important;
+}
+
+html[data-lang="ru"] .lang-panel[data-lang-panel="ru"],
+html:not([data-lang="en"]) .lang-panel[data-lang-panel="ru"] {
+  display: block !important;
+}

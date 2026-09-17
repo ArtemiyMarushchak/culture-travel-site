@@ -1,0 +1,24 @@
+{
+  "slug": "/south-africa/",
+  "title": "Южная Африка: панорамные дороги, сафари и винные долины",
+  "titleEn": "South Africa: panoramic roads, safari and wine valleys",
+  "description": "Закрытая программа путешествия по ЮАР: даты, отели, маршрут и стоимость для участников.",
+  "robots": "noindex",
+  "blocks": [
+    { "type": "case-tour" }
+  ],
+  "data": {
+    "privateTour": true,
+    "crumbTitle": "ЮАР",
+    "crumbTitleEn": "South Africa",
+    "title": "Южная Африка: панорамные дороги, сафари и винные долины",
+    "titleEn": "South Africa: panoramic roads, safari and wine valleys",
+    "cover": "/assets/images/cases/south-africa/cover.jpg",
+    "bodyFile": "content/cases/south-africa/program-full.html",
+    "bodyFileEn": "content/cases/south-africa/program-full.en.html",
+    "seo": {
+      "title": "ЮАР — программа | Culture Travel",
+      "description": "Закрытая программа путешествия по Южной Африке для участников тура."
+    }
+  }
+}

@@ -1,0 +1,53 @@
+:root {
+  --header-height-desktop: clamp(72px, 4.2vw, 112px);
+  --header-height-tablet: 68px;
+  --header-height-mobile: 68px;
+  --header-height: var(--header-height-desktop);
+  --header-nav-gap-desktop: clamp(14px, 1.5vw, 32px);
+  --header-nav-gap-tablet: 22px;
+  --header-nav-gap: var(--header-nav-gap-desktop);
+  --header-fg: var(--color-white);
+  --header-bg-transparent: transparent;
+  --header-bg-top: transparent;
+  --header-bg-solid: var(--color-header);
+  --header-bg-scrolled: var(--color-header);
+  --header-border: transparent;
+  --header-border-scrolled: transparent;
+  --header-shadow-scrolled: none;
+  /* Общая тонкая линия на тёмном chrome — меню шапки, футер, подчёркивания */
+  --chrome-line: color-mix(in srgb, var(--color-white) 18%, transparent);
+  --chrome-line-width: 1px;
+  /* Тот же чёрный, что у шапки / футера / chrome сайта */
+  --menu-stage: var(--color-header);
+  --header-chip-bg: transparent;
+  --header-chip-border: color-mix(in srgb, var(--color-white) 22%, transparent);
+  --header-cta-bg: transparent;
+  --header-cta-fg: var(--color-white);
+  --header-cta-border: color-mix(in srgb, var(--color-white) 42%, transparent);
+  --header-link-opacity: 1;
+  --logo-height-header: clamp(48px, 2.8vw, 84px);
+
+  --mobile-menu-padding-desktop: clamp(42px, 2.6vw, 64px) var(--container-padding);
+  --mobile-menu-padding-tablet: clamp(42px, 2.6vw, 56px) var(--container-padding);
+  --mobile-menu-padding-mobile: 38px var(--container-padding) 20px;
+  --mobile-menu-link-padding-desktop: 22px 34px 22px 0;
+  --mobile-menu-link-padding-mobile: 20px 30px 30px 0;
+
+  --footer-padding-desktop: clamp(88px, 5.5vw, 140px) var(--container-padding) clamp(48px, 3vw, 72px);
+  --footer-padding-tablet: clamp(76px, 5vw, 110px) var(--container-padding) clamp(48px, 3vw, 64px);
+  --footer-padding-mid: clamp(72px, 4.8vw, 100px) var(--container-padding) clamp(46px, 2.8vw, 60px);
+  --footer-padding-mobile: 64px var(--container-padding) 42px;
+  --footer-grid-gap-desktop: clamp(42px, 5.2vw, 120px);
+  --footer-grid-gap-tablet: 58px 48px;
+  --footer-grid-gap-mid: 54px 40px;
+  --footer-grid-gap-mobile: 46px;
+  --footer-title-margin-desktop: clamp(34px, 2vw, 48px);
+  --footer-title-margin-tablet: 26px;
+  --footer-title-margin-mobile: 22px;
+  --footer-link-gap-desktop: clamp(22px, 1.4vw, 32px);
+  --footer-link-gap-tablet: 19px;
+  --footer-link-gap-mobile: 17px;
+  --footer-bottom-margin-desktop: clamp(82px, 5vw, 120px);
+  --footer-bottom-margin-tablet: 66px;
+  --footer-bottom-margin-mobile: 54px;
+}

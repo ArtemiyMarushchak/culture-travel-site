@@ -1,0 +1,39 @@
+:root {
+  /* Поверхности — светлые по умолчанию (переопределяет theme-color) */
+  --color-bg: #F6F6F6;
+  --color-shape: #FFFFFF;
+
+  /* Текст */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-ink: #000000;
+  --color-ink-on-shape: #000000;
+
+  /* Chrome — один чёрный для шапки, футера, меню, hero, 404 */
+  --color-header: #0d0d0d;
+  --color-gold: #A6865D;
+
+  --color-ink-muted: color-mix(in srgb, var(--color-ink) 55%, var(--color-bg));
+  --color-ink-soft: var(--color-ink-muted);
+  --color-ink-on-shape-muted: color-mix(in srgb, var(--color-ink-on-shape) 55%, var(--color-shape));
+  --color-ink-on-shape-soft: var(--color-ink-on-shape-muted);
+  --color-gold-muted: color-mix(in srgb, var(--color-gold) 40%, transparent);
+  --color-overlay: color-mix(in srgb, var(--color-header) 56%, transparent);
+  --color-line: color-mix(in srgb, var(--color-ink) 12%, transparent);
+  --color-line-on-shape: color-mix(in srgb, var(--color-ink-on-shape) 14%, transparent);
+
+  /* Приглушённый серый для подписей/лейблов на тёмном chrome (футер, меню, 404…) */
+  --chrome-muted: color-mix(in srgb, var(--color-white) 55%, transparent);
+
+  --footer-bg: var(--color-header);
+  --footer-text: var(--chrome-muted);
+  --footer-link-hover: var(--color-white);
+  --focus-ring: var(--color-gold);
+  --shadow-title: 0 2px 24px color-mix(in srgb, var(--color-header) 35%, transparent);
+  --shadow-soft: none;
+  --shadow-card: none;
+  --surface-glow: color-mix(in srgb, #ffffff 14%, transparent);
+  --media-overlay-soft: color-mix(in srgb, var(--color-header) 18%, transparent);
+  --media-overlay-dark: color-mix(in srgb, var(--color-header) 28%, transparent);
+  --video-overlay-bg: var(--media-overlay-soft);
+}

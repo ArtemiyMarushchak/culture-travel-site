@@ -1,0 +1,10 @@
+{
+  "slug": "/404/",
+  "title": "Страница не найдена",
+  "titleEn": "Page not found",
+  "description": "Запрашиваемая страница не существует.",
+  "robots": "noindex",
+  "blocks": [
+    { "type": "error-404" }
+  ]
+}

@@ -1,0 +1,100 @@
+<footer id="lux-footer" class="uc-footer" data-block="footer">
+  <div class="lf__partners" role="region" aria-label="Партнёры">
+    <span class="sr-only" data-i18n="footer.partners">Партнёры</span>
+    <div class="lf__marquee" aria-hidden="true">
+      <div class="lf__marquee-track">
+        {{#each partnersLoop}}
+        <span class="lf__partner">{{name}}</span>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  <div class="lf">
+    <div class="lf__shell">
+      <div class="lf__cols">
+        <div class="lf__col lf__col--brand">
+          <a
+            class="lf__logo"
+            href="{{basePath}}/"
+            aria-label="Культура путешествий — на главную"
+            data-i18n-attr="aria-label"
+            data-ru="Культура путешествий — на главную"
+            data-en="Culture Travel — home"
+          >
+            <img
+              class="lf__logo-img"
+              src="{{basePath}}/assets/icons/logo-white.svg"
+              data-i18n-attr="src"
+              data-ru="{{basePath}}/assets/icons/logo-white.svg"
+              data-en="{{basePath}}/assets/icons/logo-en-white.svg"
+              alt=""
+              width="144"
+              height="50"
+              decoding="async"
+            >
+          </a>
+          <a class="lf__link" href="{{registryUrl}}" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="footer.rta">Реестровый номер РТА</span>&nbsp;{{registryNumber}}
+          </a>
+        </div>
+
+        <nav class="lf__col" aria-label="Главная" data-i18n-aria="footer.home">
+          <p class="lf__heading" data-i18n="footer.home">Главная</p>
+          {{#each navPrimary}}
+          <a
+            class="lf__link"
+            href="{{basePath}}{{href}}"
+            data-anchor="{{anchor}}"
+            data-i18n="{{i18n}}"
+          >{{label}}</a>
+          {{/each}}
+        </nav>
+
+        <nav class="lf__col" aria-label="Навигация" data-i18n-aria="footer.nav">
+          <p class="lf__heading" data-i18n="footer.nav">Навигация</p>
+          {{#each navSecondary}}
+          <a
+            class="lf__link"
+            href="{{basePath}}{{href}}"
+            data-anchor="{{anchor}}"
+            data-i18n="{{i18n}}"
+          >{{label}}</a>
+          {{/each}}
+          <a class="lf__link" href="{{basePath}}/notice/" data-i18n="footer.privacyShort">Приватность</a>
+        </nav>
+
+        <div class="lf__col">
+          <p class="lf__heading" data-i18n="footer.contacts">Контакты</p>
+          <a class="lf__link" href="{{telegram}}" target="_blank" rel="noopener noreferrer">{{telegramHandle}}</a>
+          <a class="lf__link" href="mailto:{{email}}">{{email}}</a>
+          <a class="lf__link" href="tel:{{phoneRaw}}">{{phoneDisplay}}</a>
+        </div>
+
+        <div class="lf__col">
+          <p class="lf__heading" data-i18n="footer.companyData">Данные компании</p>
+          <p
+            class="lf__link"
+            data-i18n-src
+            data-ru="{{legalCompanyName}}"
+            data-en="IE Baglay Anna Mikhailovna"
+          >{{legalCompanyName}}</p>
+          <p class="lf__link">
+            <span data-i18n="footer.inn">ИНН</span>&nbsp;{{inn}}
+          </p>
+          <p class="lf__link">
+            <span data-i18n="footer.ogrn">ОГРН</span>&nbsp;{{ogrn}}
+          </p>
+        </div>
+      </div>
+
+      <div class="lf__bottom">
+        <span class="lf__dev">
+          <span data-i18n="footer.dev">Разработал —</span>
+          <a class="lf__link" href="{{developerUrl}}" target="_blank" rel="noopener noreferrer">{{developerName}}</a>
+        </span>
+        <span class="lf__copyban" data-i18n="footer.copyban">Копирование с сайта любого контента запрещено</span>
+      </div>
+    </div>
+  </div>
+</footer>

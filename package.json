@@ -1,0 +1,15 @@
+{
+  "name": "culture-travel-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Culture Travel — корпоративный сайт VIP туристической компании",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "dev": "node tools/build.mjs --watch",
+    "preview": "node tools/build.mjs && node tools/preview.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

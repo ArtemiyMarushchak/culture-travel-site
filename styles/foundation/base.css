@@ -1,0 +1,107 @@
+html,
+body {
+  background: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-main);
+  font-size: var(--text-body-desktop);
+  line-height: var(--line-height-text);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--letter-spacing-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100dvh;
+}
+
+/* Заливка сцены — простой фон (без glow пока) */
+html {
+  background-color: var(--color-bg);
+  scroll-padding-top: var(--space-anchor-offset);
+  touch-action: manipulation;
+}
+
+/* Главная: тёмный фон под hero, чтобы Safari не мигал белой линией под URL-баром */
+html[data-page="home"] {
+  background-color: var(--color-header);
+}
+
+body,
+.site-root,
+#allrecords,
+#main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Сплошная заливка секций — не оставлять прозрачность поверх fixed video hero */
+.uc-cases,
+.uc-services,
+.uc-reviews,
+#cases,
+#services,
+#reviews {
+  background: var(--color-bg);
+}
+
+.uc-cases,
+.uc-services,
+.uc-reviews,
+#services,
+#main > section[id] {
+  scroll-margin-top: var(--space-anchor-offset);
+}
+
+/* About: на мобильном fullscreen-sheet скрывает шапку; на десктопе шапка остаётся (без мигания). */
+html.is-modal-open:has(.modal--about:not([hidden])) #lux-header {
+  visibility: visible;
+  pointer-events: auto;
+  z-index: calc(var(--z-modal) + 1);
+}
+
+html.is-modal-open:has(.modal--about:not([hidden])) #lux-header.lh {
+  background: var(--header-bg-solid);
+  color: var(--header-fg);
+}
+
+@media (max-width: 900px) {
+  html.is-modal-open:has(.modal--about:not([hidden])) #lux-header {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+html.is-modal-open:has(.modal--service:not([hidden])) #lux-header {
+  visibility: visible;
+  pointer-events: auto;
+  z-index: calc(var(--z-modal) + 1);
+}
+
+html.is-modal-open:has(.modal--service:not([hidden])) #lux-header.lh {
+  background: var(--header-bg-solid);
+  color: var(--header-fg);
+}
+
+html.is-modal-open,
+html.is-modal-open body {
+  overflow: hidden;
+}
+
+body.is-nav-open,
+html.is-nav-open,
+body.is-search-open,
+html.is-search-open {
+  overflow: hidden;
+}
+
+#allrecords,
+.site-root {
+  overflow: visible !important;
+  background: transparent;
+}
+
+/* Только light: скрыть переключатели темы — правило до theme, чтобы CTA | lang остались */
+html[data-light-only="true"] [data-theme-toggle],
+html[data-light-only="true"] .lh__theme,
+html[data-light-only="true"] .lh__theme + .lh__rule {
+  display: none !important;
+}

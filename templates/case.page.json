@@ -1,0 +1,8 @@
+{
+  "template": "case",
+  "type": "case",
+  "blocks": [
+    { "type": "case-layout" },
+    { "type": "contact-footer" }
+  ]
+}

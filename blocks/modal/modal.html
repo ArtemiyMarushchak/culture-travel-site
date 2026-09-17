@@ -1,0 +1,125 @@
+<div class="modal-root" data-block="modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">×</button>
+      <h2 class="modal__title" id="modal-title"></h2>
+      <div class="modal__body"></div>
+    </div>
+  </div>
+
+  <!-- Hotel gallery modal -->
+  <div class="modal modal--gallery" role="dialog" aria-modal="true" aria-labelledby="gallery-title" hidden data-modal-type="gallery">
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__panel modal__panel--wide">
+      <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">×</button>
+      <h2 class="modal__title" id="gallery-title"></h2>
+      <div class="modal__gallery"></div>
+    </div>
+  </div>
+
+  <!-- Service detail (mobile list → fullscreen sheet) -->
+  <div
+    class="modal modal--service"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="service-modal-title"
+    hidden
+    data-modal-type="service"
+  >
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="service-sheet" data-service-sheet-modal>
+      <button class="sheet-close" type="button" data-modal-close aria-label="Закрыть" data-i18n-aria="about.close">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="service-sheet__media">
+        <img data-service-modal-image alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="800" height="800" decoding="async">
+      </div>
+      <div class="service-sheet__copy">
+        <p class="service-sheet__index" data-service-modal-index></p>
+        <h2 class="service-sheet__title" id="service-modal-title" data-service-modal-title></h2>
+        <p class="service-sheet__text" data-service-modal-text></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- About — fullscreen modal + white shape (text + photo) -->
+  <div
+    class="modal modal--about"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="about-drawer-name"
+    hidden
+    data-modal-type="about-drawer"
+  >
+    <div class="modal__backdrop" data-modal-close></div>
+    <article class="about-sheet" data-about-drawer id="about">
+      <header class="about-sheet__bar">
+        <p class="about-sheet__bar-title" data-i18n="nav.about">Обо мне</p>
+        <button class="sheet-close" type="button" data-modal-close aria-label="Закрыть" data-i18n-aria="about.close">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </header>
+
+      <div class="about-sheet__grid">
+        <div class="about-sheet__media">
+          <div class="about-sheet__photo">
+            <img
+              src="{{basePath}}/assets/images/about/anna-portrait.jpg"
+              alt="Анна Баглай — делаю путешествия в сегменте люкс"
+              data-i18n-aria="about.photoAlt"
+              width="900"
+              height="900"
+              decoding="async"
+              fetchpriority="low"
+            >
+          </div>
+        </div>
+
+        <div class="about-sheet__copy">
+          <header class="about-sheet__id">
+            <h2 class="about-sheet__name" id="about-drawer-name" data-i18n="about.name">Анна Баглай</h2>
+            <p class="about-sheet__role" data-i18n="about.role">Делаю путешествия в сегменте люкс</p>
+          </header>
+
+          <div class="about-sheet__text">
+            <p data-i18n="about.p1">19&nbsp;лет работаю в&nbsp;туристической индустрии, специализируюсь на&nbsp;организации персональных путешествий по&nbsp;всему миру.</p>
+            <p data-i18n="about.p2">Основное направление моей работы — создание уникальных маршрутов: от&nbsp;премиальных пляжных курортов и&nbsp;лучших отелей мира до&nbsp;сложных индивидуальных программ, семейных путешествий и&nbsp;экспедиционных маршрутов в&nbsp;самые интересные и&nbsp;удалённые уголки мира.</p>
+            <p data-i18n="about.p3">Работаю преимущественно с&nbsp;постоянными клиентами, для&nbsp;которых важны высокий уровень сервиса, внимание к&nbsp;деталям и&nbsp;долгосрочные отношения.</p>
+            <p data-i18n="about.p4">Каждая поездка создаётся индивидуально — с&nbsp;учётом интересов, привычек и&nbsp;ожиданий гостей.</p>
+          </div>
+
+          <button
+            class="about-sheet__save"
+            type="button"
+            data-save-contact
+            data-name="Анна Баглай"
+            data-org="Культура Путешествий"
+            data-title="Режиссёр индивидуальных туров"
+            data-phone="{{phoneRaw}}"
+            data-email="{{email}}"
+            data-telegram="{{telegram}}"
+            data-url="{{telegram}}"
+          >
+            <span data-i18n="about.save">Сохранить контакт</span>
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<template id="modal-company">
+  <p><strong>Реквизиты компании</strong></p>
+  <p>Заполните данные в <code>core/site.json</code> → секция <code>legal</code>.</p>
+  <p><a href="https://tourism.gov.ru/operators/" target="_blank" rel="noopener noreferrer">Единый федеральный реестр турагентов</a></p>
+</template>
+
+<template id="modal-copyright">
+  <p>Все материалы сайта culture-travel.ru защищены авторским правом.</p>
+  <p>Копирование текстов, фотографий и видеоматериалов без письменного согласия правообладателя запрещено.</p>
+</template>

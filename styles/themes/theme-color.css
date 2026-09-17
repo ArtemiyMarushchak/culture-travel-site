@@ -1,0 +1,32 @@
+html {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  /* Чуть более холодная бумага, чтобы мягкий белый свет сцены справа читался */
+  --color-bg: #F6F6F6;
+  --color-shape: #FFFFFF;
+  --color-ink: #000000;
+  --color-ink-on-shape: #000000;
+  --color-header: #0d0d0d;
+  /* Мягкий дневной свет справа — не золото, не фиолетовый */
+  --surface-glow: color-mix(in srgb, #ffffff 88%, transparent);
+  --surface-glow-side: color-mix(in srgb, #ffffff 52%, transparent);
+  --shadow-card: none;
+  --shadow-soft: none;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0d0d0d;
+  --color-shape: #121212;
+  --color-header: #0d0d0d;
+  --color-ink: #FFFFFF;
+  --color-ink-on-shape: #FFFFFF;
+  /* Более сильный центральный свет сцены — контент остаётся читаемым */
+  --surface-glow: color-mix(in srgb, #ffffff 28%, transparent);
+  --surface-glow-side: color-mix(in srgb, #ffffff 16%, transparent);
+  --shadow-card: none;
+  --shadow-soft: none;
+}

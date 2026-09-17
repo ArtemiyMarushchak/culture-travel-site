@@ -1,0 +1,5 @@
+{
+  "_comment": "Обычная страница: header до контента, footer+modal после. В pages/*.page.json пишите только средние блоки.",
+  "before": [{ "type": "header" }],
+  "after": [{ "type": "footer" }, { "type": "modal" }]
+}

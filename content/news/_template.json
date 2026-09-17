@@ -1,0 +1,16 @@
+{
+  "_comment": "Скопируйте → my-news.json (без _). Фото: assets/images/news/. См. docs/ADMIN.md",
+  "slug": "my-news",
+  "title": "Заголовок новости",
+  "titleEn": "News title",
+  "date": "2026-09-01",
+  "cover": "/assets/images/placeholder.svg",
+  "excerpt": "Короткий анонс для списка на главной.",
+  "excerptEn": "Short summary for the list on the home page.",
+  "body": "<p>Первый абзац.</p><p>Второй абзац.</p>",
+  "bodyEn": "<p>First paragraph.</p><p>Second paragraph.</p>",
+  "seo": {
+    "title": "Заголовок | Culture Travel",
+    "description": "Meta description до 160 символов."
+  }
+}

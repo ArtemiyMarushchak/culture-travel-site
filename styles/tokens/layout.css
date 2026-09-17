@@ -1,0 +1,53 @@
+:root {
+  /*
+    Одна «линейка» на весь сайт (шапка / блоки / футер):
+    — rail: max-width + padding-inline (логотип и текст колонок)
+    — block: белые карточки программы = ширина rail без бокового pad,
+      чтобы левый край блока совпал с логотипом
+  */
+  --edge-mobile: 15px;
+  --edge-large: 80px;
+  --edge-tablet: clamp(40px, 2.5vw, var(--edge-large));
+  --edge-desktop: clamp(40px, 2.5vw, var(--edge-large));
+
+  --container-padding: clamp(
+    var(--edge-mobile),
+    2.5vw,
+    var(--edge-large)
+  );
+  --container-padding-mobile: var(--container-padding);
+  --container-padding-tablet: var(--container-padding);
+  --container-padding-desktop: var(--container-padding);
+
+  --container-width: 100%;
+  /* Общая колонка. Растёт на больших экранах, все секции делят одну ширину */
+  --container-max-width: clamp(1440px, 90vw, 3000px);
+  --container-wide-max: clamp(1600px, 90vw, 3000px);
+  --container-narrow-max: clamp(720px, 42vw, 960px);
+  --container-text-max: clamp(640px, 38vw, 840px);
+
+  --layout-rail-max: var(--container-wide-max);
+  --layout-rail-pad: var(--container-padding);
+  --layout-block-max: calc(var(--layout-rail-max) - 2 * var(--layout-rail-pad));
+
+  --content-width-wide: clamp(980px, 58vw, 1400px);
+  --content-width-text: clamp(720px, 42vw, 960px);
+  --content-width-text-small: clamp(620px, 36vw, 820px);
+  --content-width-narrow: clamp(520px, 30vw, 720px);
+
+  --radius: 10px;
+  --radius-none: 0;
+  --radius-xs: 5px;
+  --radius-sm: 10px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-pill: 999px;
+
+  /* Кейсы: inset медиа 10 / pad текста 15 */
+  --card-media-inset: 10px;
+  --card-text-pad: 15px;
+
+  --ratio-card: 3 / 2;
+  --card-media-ratio: var(--ratio-card);
+}

@@ -1,0 +1,45 @@
+:root {
+  /* Алиасы старых имён токенов — блоки ещё ссылаются на них */
+  --text-hero: var(--type-hero-size);
+  --text-hero-desktop: var(--type-hero-size);
+  --text-hero-tablet: var(--type-hero-size);
+  --text-hero-mobile: var(--type-hero-size);
+  --text-h1-desktop: var(--type-page-size);
+  --text-h2-desktop: var(--type-section-size);
+  --text-h2-tablet: var(--type-section-size);
+  --text-h2-mobile: var(--type-section-size);
+  --text-body-desktop: var(--type-body-size);
+  --text-body-tablet: var(--type-body-size);
+  --text-body-mobile: var(--type-body-size);
+  --text-2xl: var(--type-page-size);
+  --text-xl: var(--type-block-size);
+  --text-lg: var(--type-lead-size);
+  --text-sm: var(--font-small);
+  --text-xs: var(--font-overline);
+  --text-overline-desktop: var(--font-overline);
+  --text-overline-mobile: var(--font-overline);
+  --text-small-desktop: var(--font-small);
+  --text-body-small-desktop: var(--font-small);
+  --text-body-small-mobile: var(--font-small);
+  --text-caption-desktop: var(--font-caption);
+
+  --line-height-title: var(--type-hero-leading);
+  --line-height-title-mobile: var(--type-hero-leading);
+  --line-height-h2: var(--type-section-leading);
+  --line-height-text: var(--type-body-leading);
+  --line-height-text-mobile: var(--type-body-leading);
+  --line-height-small: 1.45;
+  --line-height-ui: 1;
+
+  --ui-nav-font-size-desktop: var(--font-nav);
+  --ui-nav-font-size-tablet: clamp(10px, 2.2vw, 12px);
+  --ui-menu-font-size-desktop: var(--font-menu);
+  --ui-menu-font-size-mobile: clamp(14px, 3.8vw, 16px);
+  --ui-footer-bottom-font-size: clamp(11px, 0.55vw, 16px);
+  --ui-footer-bottom-font-size-mobile: clamp(10px, 2.6vw, 12px);
+
+  /* Устаревший ритм секций — в новом CSS использовать --space-section-y */
+  --section-space-desktop: var(--space-section-y);
+  --section-space-tablet: var(--space-section-y);
+  --section-space-mobile: var(--space-section-y);
+}

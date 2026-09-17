@@ -1,0 +1,72 @@
+{
+  "_comment": "Идентичность сайта и контакты. Футер, SEO, ссылки. Править осторожно — значения на публичном сайте.",
+  "name": "Культура Путешествий",
+  "brandName": "Culture Travel",
+  "tagline": "Режиссёр индивидуальных туров",
+  "url": "https://culture-travel.ru",
+  "basePath": "",
+  "locale": "ru_RU",
+  "language": "ru",
+  "author": {
+    "name": "Анна Баглай",
+    "title": "Режиссёр индивидуальных туров"
+  },
+  "contacts": {
+    "phone": "+79034626110",
+    "email": "anna@culture-travel.ru",
+    "telegram": "https://t.me/baglay_anna",
+    "whatsapp": ""
+  },
+  "legal": {
+    "companyName": "ИП Баглай Анна Михайловна",
+    "inn": "616117921737",
+    "ogrn": "323508100276585",
+    "registryNumber": "0036274",
+    "registryUrl": "https://ev.economy.gov.ru/lk_exp/registry/ta/785761d5-0602-40dc-aa0f-f10903ba7cf0",
+    "address": ""
+  },
+  "partners": [
+    { "name": "Four Seasons" },
+    { "name": "Belmond" },
+    { "name": "Aman" },
+    { "name": "Ritz-Carlton" },
+    { "name": "One&Only" },
+    { "name": "Six Senses" },
+    { "name": "Rosewood" },
+    { "name": "Mandarin Oriental" },
+    { "name": "Peninsula" },
+    { "name": "Park Hyatt" },
+    { "name": "St. Regis" },
+    { "name": "Waldorf Astoria" },
+    { "name": "Bulgari" },
+    { "name": "Edition" },
+    { "name": "Capella" },
+    { "name": "Como Hotels" },
+    { "name": "Soneva" },
+    { "name": "Banyan Tree" },
+    { "name": "Oberoi" },
+    { "name": "Raffles" },
+    { "name": "Shangri-La" },
+    { "name": "IKOS" },
+    { "name": "Swan Hellenic" },
+    { "name": "The Explora Journal" }
+  ],
+  "social": {
+    "telegram": "https://t.me/baglay_anna",
+    "instagram": "https://www.instagram.com/ms.baglay_anna/"
+  },
+  "seo": {
+    "titleSuffix": " | Культура Путешествий",
+    "defaultDescription": "Путешествия, написанные для вас и о вас — с историей в каждой детали",
+    "defaultOgImage": "/assets/images/og/default.webp",
+    "twitterHandle": ""
+  },
+  "developer": {
+    "name": "Марущак Артемий Игоревич",
+    "initials": "А. И. Марущак",
+    "url": "https://t.me/ArtemiyMarushchak"
+  },
+  "reviews": {
+    "yandexUrl": ""
+  }
+}

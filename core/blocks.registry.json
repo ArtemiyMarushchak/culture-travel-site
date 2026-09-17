@@ -1,0 +1,144 @@
+{
+  "_comment": "Реестр блоков: какие секции UI есть, есть ли CSS/JS, откуда контент. Сборка читает это для styles/blocks.css и скриптов.",
+  "version": 1,
+  "blocks": {
+    "header": {
+      "label": "Шапка",
+      "css": true,
+      "js": true,
+      "scope": "layout",
+      "group": "main",
+      "auto": true
+    },
+    "footer": {
+      "label": "Подвал",
+      "css": true,
+      "js": true,
+      "scope": "layout",
+      "group": "main",
+      "auto": true
+    },
+    "hero-video": {
+      "label": "Hero — видео",
+      "css": true,
+      "js": true,
+      "scope": "home"
+    },
+    "cases-slider": {
+      "label": "Кейсы — слайдер",
+      "css": true,
+      "js": true,
+      "scope": "home",
+      "dataSource": "content/cases-slider/catalog.json",
+      "dataPrepare": "casesSlider"
+    },
+    "services": {
+      "label": "Услуги",
+      "css": true,
+      "js": true,
+      "scope": "home",
+      "dataSource": "content/services/catalog.json",
+      "dataPrepare": "servicesCatalog"
+    },
+    "tours-list": {
+      "label": "Авторские туры",
+      "css": true,
+      "js": false,
+      "scope": "page",
+      "dataSource": "content/cases",
+      "dataPrepare": "casesFeatured"
+    },
+    "reviews": {
+      "label": "Отзывы",
+      "css": true,
+      "js": true,
+      "scope": "home",
+      "dataSource": "content/reviews/catalog.json",
+      "dataPrepare": "reviewsCatalog"
+    },
+    "contact-footer": {
+      "label": "Связаться",
+      "css": true,
+      "js": false,
+      "scope": "home"
+    },
+    "case-layout": {
+      "label": "Страница кейса",
+      "css": true,
+      "js": false,
+      "scope": "content"
+    },
+    "case-tour": {
+      "label": "Кейс — программа тура",
+      "css": true,
+      "js": true,
+      "scope": "content",
+      "group": "secondary"
+    },
+    "news-layout": {
+      "label": "Страница новости",
+      "css": true,
+      "js": false,
+      "scope": "content"
+    },
+    "news-list": {
+      "label": "Список новостей",
+      "css": true,
+      "js": true,
+      "scope": "page",
+      "dataSource": "content/news",
+      "dataPrepare": "newsList"
+    },
+    "hotel-catalog": {
+      "label": "Каталог отелей",
+      "css": true,
+      "js": true,
+      "scope": "page",
+      "dataSource": "content/hotels",
+      "dataPrepare": "hotelsCatalog"
+    },
+    "legal-page": {
+      "label": "Юридическая страница",
+      "css": true,
+      "js": false,
+      "scope": "page"
+    },
+    "page-stub": {
+      "label": "Заглушка страницы",
+      "css": true,
+      "js": false,
+      "scope": "page"
+    },
+    "error-404": {
+      "label": "404",
+      "css": true,
+      "js": false,
+      "scope": "system"
+    },
+    "modal": {
+      "label": "Модалка",
+      "css": true,
+      "js": true,
+      "scope": "global",
+      "globalInit": true
+    },
+    "contact-card": {
+      "label": "Онлайн-визитка",
+      "css": true,
+      "js": true,
+      "scope": "page",
+      "group": "secondary"
+    },
+    "hotel-layout": {
+      "label": "Страница отеля",
+      "css": true,
+      "js": false,
+      "scope": "content",
+      "group": "secondary"
+    }
+  },
+  "core": {
+    "anchors": true,
+    "videoOverlay": false
+  }
+}

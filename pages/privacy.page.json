@@ -1,0 +1,16 @@
+{
+  "slug": "/privacy/",
+  "title": "Политика обработки персональных данных",
+  "titleEn": "Personal data policy",
+  "description": "Политика конфиденциальности Culture Travel.",
+  "blocks": [
+    {
+      "type": "legal-page",
+      "data": {
+        "title": "Политика обработки персональных данных",
+        "titleEn": "Personal data policy",
+        "content": "<div class=\"lang-panel\" data-lang-panel=\"ru\"><p class=\"legal-page__lead\">Настоящая политика определяет порядок обработки персональных данных посетителей сайта culture-travel.ru.</p><section class=\"legal-page__block\"><h2>1. Общие положения</h2><p>Оператор обрабатывает персональные данные в соответствии с Федеральным законом №&nbsp;152-ФЗ «О персональных данных».</p></section><section class=\"legal-page__block\"><h2>2. Какие данные мы собираем</h2><p>Имя, email, телефон — только при добровольной отправке формы обратной связи.</p></section><section class=\"legal-page__block\"><h2>3. Цели обработки</h2><p>Обработка заявок, связь с клиентом, исполнение договорных обязательств.</p></section><section class=\"legal-page__block\"><h2>4. Контакты</h2><p>По вопросам обработки данных: <a href=\"mailto:anna@culture-travel.ru\">anna@culture-travel.ru</a>.</p></section></div><div class=\"lang-panel\" data-lang-panel=\"en\"><p class=\"legal-page__lead\">This policy describes how personal data of visitors to culture-travel.ru is processed.</p><section class=\"legal-page__block\"><h2>1. General</h2><p>The operator processes personal data in accordance with Federal Law No.&nbsp;152-FZ “On Personal Data”.</p></section><section class=\"legal-page__block\"><h2>2. What we collect</h2><p>Name, email and phone number — only if you voluntarily send an enquiry form.</p></section><section class=\"legal-page__block\"><h2>3. Purpose</h2><p>Handling enquiries, contacting the client and fulfilling contractual obligations.</p></section><section class=\"legal-page__block\"><h2>4. Contact</h2><p>For questions about data processing: <a href=\"mailto:anna@culture-travel.ru\">anna@culture-travel.ru</a>.</p></section></div>"
+      }
+    }
+  ]
+}

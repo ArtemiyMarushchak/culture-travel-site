@@ -1,0 +1,16 @@
+{
+  "_comment": "Скопируйте → my-case.json (без _). Обложку положите в assets/images/cases/ и пропишите путь. См. docs/ADMIN.md",
+  "slug": "your-case-slug",
+  "title": "Название кейса",
+  "titleEn": "Case title",
+  "subtitle": "Краткий подзаголовок",
+  "subtitleEn": "Short subtitle",
+  "cover": "/assets/images/placeholder.svg",
+  "bodyFile": "content/cases/your-case-slug/tour.html",
+  "published": "2026-01-01",
+  "featured": true,
+  "seo": {
+    "title": "Название | Culture Travel",
+    "description": "Meta description для поисковиков (до 160 символов)."
+  }
+}

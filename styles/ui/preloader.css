@@ -1,0 +1,84 @@
+/* Лёгкая FOUC-заставка — только fade по opacity */
+
+.ct-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  /* Всегда тёмная брендовая заставка — как --color-header */
+  background: var(--color-header, #0d0d0d);
+  color: #fff;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+html.is-preloading .ct-preloader {
+  display: flex;
+  pointer-events: auto;
+}
+
+html.is-preloading.is-preloaded .ct-preloader {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ct-preloader__mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+}
+
+.ct-preloader__line {
+  display: block;
+  width: 48px;
+  height: 1.5px;
+  background: var(--color-gold, #A6865D);
+  transform-origin: center;
+  animation: ct-preloader-line 1.1s ease-in-out infinite;
+}
+
+.ct-preloader__brand {
+  font-family: var(--font-main, 'Montserrat', Arial, sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.72;
+}
+
+html.is-preloading,
+html.is-preloading body {
+  overflow: hidden;
+}
+
+html.is-preloading body > *:not(#ct-preloader) {
+  visibility: hidden;
+}
+
+html.is-preloading.is-preloaded body > *:not(#ct-preloader) {
+  visibility: visible;
+}
+
+@keyframes ct-preloader-line {
+  0%,
+  100% { transform: scaleX(0.35); opacity: 0.45; }
+  50% { transform: scaleX(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-preloader__line {
+    animation: none;
+    opacity: 0.8;
+  }
+
+  html.is-preloading.is-preloaded .ct-preloader {
+    transition-duration: 0.01ms;
+  }
+}

@@ -1,0 +1,113 @@
+/* Юридический документ — серая страница, белая shape */
+
+.legal-page {
+  padding:
+    calc(var(--header-height) + var(--crumbs-offset))
+    var(--layout-rail-pad)
+    var(--space-section-y);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-main);
+  text-align: left;
+}
+
+.legal-page,
+.legal-page * {
+  box-sizing: border-box;
+}
+
+.legal-page__shell {
+  max-width: var(--layout-rail-max);
+  margin: 0;
+}
+
+.legal-page__head {
+  margin: 0 0 var(--space-edge-lg);
+  padding-bottom: var(--space-edge-lg);
+  border-bottom: 1px solid var(--color-line-on-shape);
+}
+
+.legal-page__label {
+  margin: 0 0 var(--space-edge);
+  color: var(--color-gold);
+  font-size: var(--type-overline-size, 12px);
+  line-height: var(--type-overline-leading, 1);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.legal-page__title {
+  margin: 0;
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-section-tracking);
+}
+
+.legal-page__body {
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--font-weight-text);
+}
+
+.legal-page__lead {
+  margin: 0 0 var(--space-edge-lg);
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.legal-page__block {
+  padding-top: var(--space-lg);
+}
+
+.legal-page__block:first-of-type {
+  padding-top: 0;
+}
+
+.legal-page__body h2 {
+  margin: 0 0 var(--space-md);
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-card-size);
+  line-height: var(--type-card-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-card-tracking);
+}
+
+.legal-page__body p {
+  margin: 0;
+}
+
+.legal-page__body p + p {
+  margin-top: var(--space-md);
+}
+
+.legal-page__body a {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: opacity var(--transition-fast);
+}
+
+.legal-page__body a:hover,
+.legal-page__body a:focus-visible {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+  outline: none;
+}
+
+@media (max-width: 1180px) {
+  .legal-page {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .legal-page {
+    padding:
+      calc(var(--header-height) + var(--crumbs-offset))
+      var(--container-padding-mobile)
+      var(--space-2xl);
+  }
+}

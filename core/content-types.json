@@ -1,0 +1,38 @@
+{
+  "_comment": "Типы контента → список + SEO-страница. Сейчас /tours/ и /hotels/ — заглушки (page-stub, noindex). Когда будете наполнять: в pages/*.page.json смените блок на tours-list / hotel-catalog и уберите robots:noindex.",
+  "types": {
+    "cases": {
+      "label": "Кейсы",
+      "dataDir": "content/cases",
+      "urlPrefix": "cases",
+      "template": "case",
+      "listBlocks": {
+        "home": "cases-slider",
+        "page": "tours-list"
+      },
+      "listPage": "/tours/",
+      "cardOnHome": true,
+      "featuredField": "featured"
+    },
+    "news": {
+      "label": "Новости",
+      "dataDir": "content/news",
+      "urlPrefix": "news",
+      "template": "news",
+      "listBlocks": {
+        "home": "news-list"
+      },
+      "listPage": "/#news"
+    },
+    "hotels": {
+      "label": "Отели",
+      "dataDir": "content/hotels",
+      "urlPrefix": "hotels",
+      "template": "hotel",
+      "listBlocks": {
+        "page": "hotel-catalog"
+      },
+      "listPage": "/hotels/"
+    }
+  }
+}

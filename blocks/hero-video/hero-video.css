@@ -1,0 +1,261 @@
+/* Скролл video overlay — culture-travel.ru */
+
+.video-overlay-stage {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  /* Совпадает с hero, чтобы субпиксельный зазор не мигал следующей белой секцией */
+  background: var(--color-header);
+}
+
+.video-overlay-placeholder {
+  width: 100%;
+  pointer-events: none;
+}
+
+.uc-video {
+  position: relative !important;
+  z-index: 1 !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  background: var(--color-header) !important;
+}
+
+.uc-video.is-video-fixed #avb {
+  position: fixed !important;
+  /* На весь visual viewport (в т.ч. под Safari chrome) — убирает белую линию */
+  inset: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  z-index: var(--z-video) !important;
+}
+
+.uc-video.is-video-absolute {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  z-index: 1 !important;
+  background: var(--color-header) !important;
+}
+
+.uc-video.is-video-absolute #avb {
+  position: relative !important;
+  width: 100vw !important;
+  height: var(--avb-vh, 100vh);
+  height: var(--avb-vh, 100dvh);
+  min-height: var(--avb-vh, 100vh);
+  min-height: var(--avb-vh, 100dvh);
+  margin-left: calc(50% - 50vw) !important;
+  z-index: var(--z-video) !important;
+}
+
+/* #avb — hero */
+
+#avb {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: var(--avb-vh, 100vh);
+  height: var(--avb-vh, 100dvh);
+  min-height: var(--avb-vh, 100vh);
+  min-height: var(--avb-vh, 100dvh);
+  overflow: hidden;
+  background: var(--color-header);
+  z-index: var(--z-video, 1);
+  color: var(--color-white);
+  font-family: var(--font-main);
+  --avb-scroll-dim: 0;
+}
+
+#avb,
+#avb * {
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+#avb .avb__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity var(--transition-slow);
+}
+
+#avb.is-ready .avb__fallback {
+  opacity: 0;
+}
+
+#avb .avb__carrier {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  background: var(--color-header);
+}
+
+#avb .avb__carrier iframe,
+#avb .avb__carrier video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 0;
+  height: 0;
+  border: 0;
+  display: block;
+  max-width: none;
+  max-height: none;
+  background: var(--color-header);
+  will-change: transform;
+}
+
+.avb__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  /* Лёгкая вуаль читаемости — постоянная (скролл больше не накладывает лишний wash) */
+  background: color-mix(in srgb, var(--color-header) 18%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avb__overlay {
+    transition: none;
+  }
+}
+
+.avb__content {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 0 var(--container-padding-desktop) clamp(40px, 6vh, 96px);
+  pointer-events: none;
+}
+
+.avb__inner {
+  width: 100%;
+  max-width: min(1100px, 100%);
+}
+
+@media (min-width: 1920px) {
+  .avb__inner {
+    max-width: min(42vw, 1600px);
+  }
+}
+
+@media (min-width: 2560px) {
+  .avb__inner {
+    max-width: min(40vw, 1900px);
+  }
+}
+
+.avb__title {
+  margin: 0;
+  font-size: var(--type-hero-size);
+  line-height: var(--type-hero-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-hero-tracking);
+  color: var(--color-white);
+  text-shadow: var(--shadow-title);
+  text-wrap: balance;
+}
+
+html[data-lang="en"] .avb__title {
+  margin-inline: 0;
+}
+
+/* Широкий десктоп: EN-заголовок в одну строку, если влезает */
+@media (min-width: 1200px) {
+  html[data-lang="en"] .avb__title {
+    white-space: nowrap;
+    max-width: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  html[data-lang="en"] .avb__title {
+    max-width: 14em;
+  }
+}
+
+.avb__lead {
+  margin: 14px 0 0;
+  margin-inline: 0;
+  max-width: 100%;
+  font-size: clamp(14px, 0.7vw + 10px, 26px);
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--color-white) 86%, transparent);
+  text-shadow: var(--shadow-title);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .avb__lead {
+    font-size: clamp(12.5px, 1.7vw, 16px);
+    white-space: normal;
+    max-width: 28em;
+    text-wrap: balance;
+  }
+
+  html[data-lang="en"] .avb__title {
+    max-width: 12em;
+    font-size: clamp(30px, 4.8vw, var(--type-hero-max));
+    white-space: normal;
+  }
+}
+
+@media (max-width: 640px) {
+  html[data-lang="en"] .avb__title {
+    max-width: 11em;
+  }
+
+  .avb__lead {
+    max-width: 22em;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .avb__lead {
+    max-width: 17em;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .avb__content {
+    padding: 0 var(--container-padding-tablet) clamp(56px, 8vh, 96px);
+  }
+}
+
+@media (max-width: 640px) {
+  .avb__content {
+    /* 20px от нижнего края hero-видео */
+    padding:
+      0
+      var(--container-padding-mobile)
+      20px;
+  }
+
+  .avb__lead {
+    margin-top: 12px;
+  }
+}

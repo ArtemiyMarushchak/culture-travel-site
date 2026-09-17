@@ -1,0 +1,1057 @@
+/* Кейс-тур — summary → шейпы дней → цена */
+
+.lang-panel {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.uc-case-tour {
+  --tour-shape-bg: var(--color-white);
+  --tour-shape-pad: var(--space-xl);
+  --tour-shape-gap: var(--crumbs-gap-below, 20px);
+  --tour-gallery-gap: 20px;
+  --tour-crumbs-offset: var(--crumbs-offset, 30px);
+  --tour-fold-size: 36px;
+  --tour-gallery-row-height: 280px;
+  /* Газетный ритм: плотнее body 1.65, но с воздухом при переносах */
+  --tour-read-leading: 1.45;
+  --tour-title-leading: 1.22;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.uc-case-tour [id^='tour-'] {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  color: var(--color-ink);
+}
+
+/* ── Хлебные крошки (SEO + UX) ── */
+
+.tour-crumbs {
+  width: 100%;
+  max-width: var(--layout-rail-max);
+  margin: 0 auto;
+  padding:
+    calc(var(--header-height) + var(--tour-crumbs-offset))
+    var(--layout-rail-pad)
+    var(--tour-shape-gap);
+  box-sizing: border-box;
+  background: var(--color-bg);
+}
+
+.tour-crumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.3;
+  letter-spacing: 0;
+  font-weight: var(--font-weight-text); /* 400 — не жирные */
+  text-transform: none;
+}
+
+.tour-crumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: var(--color-ink-soft);
+  font-weight: inherit;
+}
+
+.tour-crumbs__item:not(:last-child)::after {
+  content: '/';
+  color: var(--color-ink-soft);
+  opacity: 0.55;
+  font-weight: 400;
+}
+
+.tour-crumbs__link {
+  color: var(--color-ink-muted);
+  font-weight: 400;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity var(--transition-fast, 0.2s ease);
+}
+
+.tour-crumbs__link:hover,
+.tour-crumbs__link:focus-visible {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+  outline: none;
+}
+
+.tour-crumbs__current {
+  color: var(--color-ink-muted);
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: min(42ch, 70vw);
+}
+
+/* ── Summary (первый экран) ── */
+
+.uc-tour-summary {
+  background: var(--color-bg);
+  padding: 0 0 var(--tour-shape-gap);
+}
+
+.ts {
+  width: calc(100% - 2 * var(--layout-rail-pad));
+  max-width: var(--layout-block-max);
+  margin-inline: auto;
+  padding: var(--tour-shape-pad);
+  box-sizing: border-box;
+  background: var(--tour-shape-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+}
+
+.ts__inner {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ts__overline {
+  margin: 0 0 var(--space-section-head);
+  font-size: var(--type-overline-size);
+  line-height: var(--type-overline-leading);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.ts__title {
+  margin: 0;
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-section-tracking);
+  color: var(--color-ink);
+}
+
+.ts__lead {
+  max-width: none;
+  margin: var(--type-stack-block) 0 var(--space-xl);
+  font-size: var(--type-body-size);
+  line-height: var(--tour-read-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-muted);
+}
+
+.ts__facts {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+
+/* Десктоп: 3 колонки (кейс) / 4 колонки (полная программа) */
+@media (min-width: 1181px) {
+  .ts__facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ts__facts:has(> .ts__fact:nth-child(4):last-child) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.ts__fact {
+  min-width: 0;
+  height: 100%;
+  padding: var(--space-md) var(--space-md);
+  border-right: 1px solid var(--color-line);
+  box-sizing: border-box;
+}
+
+.ts__fact:first-child {
+  padding-left: 0;
+}
+
+.ts__fact:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.ts__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0 0 var(--space-sm);
+}
+
+.ts__icon,
+.tour-day__icon,
+.tp__icon {
+  width: clamp(16px, 1vw, 24px);
+  height: clamp(16px, 1vw, 24px);
+  flex: 0 0 clamp(16px, 1vw, 24px);
+  color: var(--color-gold);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ts__label {
+  margin: 0;
+  font-size: var(--type-overline-size);
+  line-height: var(--type-overline-leading);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ts__value {
+  margin: 0;
+  font-size: var(--type-body-size);
+  line-height: 1.35;
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink);
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.ts__route {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ts__route li {
+  position: relative;
+  margin: 0;
+  padding-left: 14px;
+  line-height: 1.35;
+}
+
+.ts__route li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.ts__note {
+  max-width: none;
+  margin: var(--space-md) 0 0;
+  padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
+  border-left: 2px solid var(--color-gold);
+  font-size: var(--type-body-size);
+  line-height: var(--tour-read-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-muted);
+}
+
+/* ── Tour day — один день = один белый шейп ── */
+
+.uc-tour-day {
+  background: var(--color-bg);
+  padding: 0 0 var(--tour-shape-gap);
+}
+
+.tour-day {
+  width: calc(100% - 2 * var(--layout-rail-pad));
+  max-width: var(--layout-block-max);
+  margin-inline: auto;
+  padding: var(--tour-shape-pad);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  background: var(--tour-shape-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+}
+
+.tour-day__body {
+  width: 100%;
+  max-width: none;
+}
+
+.tour-day__day {
+  margin: 0 0 var(--space-md);
+  font-size: var(--type-overline-size);
+  line-height: var(--type-overline-leading);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.tour-day__title {
+  margin: 0 0 var(--type-stack-block);
+  max-width: none;
+  font-size: var(--type-block-size);
+  line-height: var(--tour-title-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-block-tracking);
+  color: var(--color-ink);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.tour-day__lead {
+  margin: 0 0 var(--space-xl);
+  max-width: none;
+  font-size: var(--type-body-size);
+  line-height: var(--tour-read-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-muted);
+}
+
+.tour-day__lead strong,
+.tour-day__content strong {
+  color: var(--color-ink);
+  font-weight: var(--font-weight-ui);
+}
+
+.tour-day__content {
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.tour-day__content p {
+  margin: 0;
+  font-size: var(--type-body-size);
+  line-height: var(--tour-read-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-muted);
+}
+
+.tour-day__facts {
+  margin-top: var(--space-xl);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--color-line);
+  max-width: none;
+}
+
+.tour-day__fact {
+  min-width: 0;
+  padding: var(--space-xl) var(--space-lg) 0;
+  border-right: 1px solid var(--color-line);
+}
+
+.tour-day__fact:first-child {
+  padding-left: 0;
+}
+
+.tour-day__fact + .tour-day__fact {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.tour-day__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0 0 var(--space-sm);
+}
+
+.tour-day__label {
+  margin: 0;
+  font-size: var(--type-overline-size);
+  line-height: var(--type-overline-leading);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.tour-day__value {
+  margin: 0;
+  font-size: var(--type-body-size);
+  line-height: var(--tour-read-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink);
+}
+
+.tour-day__hotel {
+  color: var(--color-ink) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid var(--ui-underline-dark-color, rgba(7, 7, 6, 0.28));
+  transition: opacity var(--transition, 0.2s ease), border-color var(--transition, 0.2s ease);
+}
+
+.tour-day__hotel:hover {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+}
+
+/* Отель / категория — в одну строку */
+.tour-day__room {
+  display: inline;
+  margin: 0;
+  color: var(--color-ink-muted);
+}
+
+.tour-day__room::before {
+  content: ' / ';
+  color: var(--color-ink-muted);
+}
+
+.tour-day__gallery {
+  position: relative;
+  width: 100%;
+  display: block;
+  min-height: 1px;
+}
+
+.tour-day__gallery-track {
+  display: contents;
+}
+
+.tour-day__shot {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-shape);
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tour-day__gallery.is-justified .tour-day__shot {
+  position: absolute;
+}
+
+.tour-day__shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tour-day__shot:hover img {
+    transform: scale(1.03);
+  }
+}
+
+/* ── Финальный день ── */
+
+.uc-tour-day-final .tour-day__body {
+  max-width: none;
+}
+
+.uc-tour-day-final .tour-day__banner {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--color-shape);
+  aspect-ratio: 21 / 9;
+  max-height: 520px;
+}
+
+.uc-tour-day-final .tour-day__banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ── Цена ── */
+
+.uc-tour-price {
+  background: var(--color-bg);
+  border-top: 0;
+  padding: 0 0 var(--space-section-y);
+}
+
+.tp {
+  width: calc(100% - 2 * var(--layout-rail-pad));
+  max-width: var(--layout-block-max);
+  margin-inline: auto;
+  padding: var(--tour-shape-pad);
+  box-sizing: border-box;
+  background: var(--tour-shape-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+}
+
+/* Золотой «перелист» — нижний правый угол финального шейпа */
+.uc-tour-price--request .tp {
+  position: relative;
+  overflow: hidden;
+}
+
+.uc-tour-price--request .tp::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--tour-fold-size);
+  height: var(--tour-fold-size);
+  background: linear-gradient(135deg, transparent 50%, var(--color-gold) 50%);
+  pointer-events: none;
+}
+
+.tp__overline {
+  margin: 0 0 var(--space-md);
+  font-size: var(--type-overline-size);
+  line-height: var(--type-overline-leading);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.tp__price {
+  margin: 0 0 var(--space-md);
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-section-tracking);
+  color: var(--color-ink);
+}
+
+.tp__price span {
+  color: var(--color-gold);
+  font-weight: var(--font-weight-title);
+}
+
+.tp__note {
+  max-width: none;
+  margin: 0 0 var(--space-2xl);
+  font-size: var(--type-body-size);
+  line-height: var(--tour-read-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-muted);
+}
+
+.tp__pricing--request .tp__note {
+  margin-bottom: var(--space-lg);
+}
+
+.tp__box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--tour-shape-gap);
+}
+
+.tp__col {
+  min-width: 0;
+  padding: var(--space-xl);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.tp__head {
+  margin: 0 0 var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.tp__label {
+  margin: 0;
+  font-size: var(--type-overline-size);
+  line-height: var(--type-overline-leading);
+  font-weight: var(--font-weight-overline);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.tp__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.tp__list li {
+  position: relative;
+  margin: 0;
+  padding-left: var(--space-md);
+  font-size: var(--type-body-size);
+  line-height: var(--tour-read-leading);
+  font-weight: var(--font-weight-text);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-muted);
+}
+
+.tp__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.tp__bottom {
+  max-width: none;
+  margin: var(--space-xl) 0 0;
+  padding: var(--space-md) 0 var(--space-md) var(--space-lg);
+  border-left: 2px solid var(--color-gold);
+  font-size: var(--type-body-size);
+  line-height: var(--tour-read-leading);
+  letter-spacing: var(--type-body-tracking);
+  color: var(--color-ink-muted);
+}
+
+/* Оффер vs заявка (кейсы без цены) */
+.tp__pricing--request {
+  display: none;
+}
+
+.uc-tour-price--request .tp__pricing--offer {
+  display: none;
+}
+
+.uc-tour-price--request .tp__pricing--request {
+  display: block;
+}
+
+.tp__contacts {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--space-xs);
+  width: 100%;
+  margin: 0;
+  min-width: 0;
+}
+
+.uc-tour-price--request .tp__contacts {
+  margin-bottom: 0;
+}
+
+.tp__contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--ui-touch-size);
+  height: var(--ui-touch-size);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-gold) 14%, var(--color-white));
+  color: var(--color-gold);
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity var(--transition-fast, 0.2s ease);
+}
+
+.tp__contact-label {
+  display: none;
+}
+
+.tp__contact-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.tp__contact:hover,
+.tp__contact:focus-visible {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+  outline: none;
+}
+
+/* ── Lightbox — квадратные кнопки с radius ── */
+
+.tour-lb {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-header, 10000) + 50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  background: rgba(7, 7, 6, 0.92);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.tour-lb.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.tour-lb__figure {
+  position: relative;
+  width: min(100%, 1100px);
+  max-height: min(82dvh, 900px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tour-lb__img {
+  display: block;
+  max-width: 100%;
+  max-height: min(82dvh, 900px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+
+.tour-lb__close,
+.tour-lb__prev,
+.tour-lb__next {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: rgba(7, 7, 6, 0.55);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: opacity var(--transition-fast, 0.2s ease), background var(--transition-fast, 0.2s ease);
+}
+
+.tour-lb__close:hover,
+.tour-lb__prev:hover,
+.tour-lb__next:hover,
+.tour-lb__close:focus-visible,
+.tour-lb__prev:focus-visible,
+.tour-lb__next:focus-visible {
+  opacity: 0.88;
+  outline: none;
+  background: var(--color-gold);
+}
+
+.tour-lb__close {
+  top: max(12px, env(safe-area-inset-top, 0px));
+  right: max(12px, env(safe-area-inset-right, 0px));
+  background: transparent;
+}
+
+.tour-lb__nav {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tour-lb__nav .tour-lb__prev,
+.tour-lb__nav .tour-lb__next,
+.tour-lb__nav .tour-lb__count {
+  pointer-events: auto;
+}
+
+.tour-lb__prev,
+.tour-lb__next {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+.tour-lb__prev {
+  left: max(12px, env(safe-area-inset-left, 0px));
+}
+
+.tour-lb__next {
+  right: max(12px, env(safe-area-inset-right, 0px));
+}
+
+.tour-lb__close svg,
+.tour-lb__prev svg,
+.tour-lb__next svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.tour-lb__count {
+  position: absolute;
+  left: 50%;
+  bottom: max(var(--space-md), env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  padding: 0 var(--space-sm);
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background: rgba(7, 7, 6, 0.5);
+  color: var(--color-white);
+  font-size: var(--type-overline-size);
+  letter-spacing: var(--type-overline-tracking);
+  font-weight: var(--font-weight-ui);
+  white-space: nowrap;
+}
+
+/* ── Адаптив ── */
+
+@media (max-width: 1180px) {
+  .tour-crumbs {
+    padding-inline: var(--layout-rail-pad);
+  }
+
+  .ts,
+  .tour-day,
+  .tp {
+    padding: var(--space-lg);
+  }
+
+  .ts__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .ts__facts:has(> .ts__fact:nth-child(4):last-child) {
+    grid-template-columns: 1fr;
+  }
+
+  .ts__label {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .ts__fact,
+  .ts__fact:nth-child(odd),
+  .ts__fact:nth-child(even),
+  .ts__fact:first-child,
+  .ts__fact:last-child {
+    padding: var(--space-sm) 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .ts__fact:last-child {
+    border-bottom: 0;
+  }
+
+  .tp__box {
+    grid-template-columns: 1fr;
+  }
+
+  .uc-tour-day-final .tour-day__banner {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 640px) {
+  .tour-crumbs {
+    padding:
+      calc(var(--header-height) + var(--tour-crumbs-offset))
+      var(--layout-rail-pad)
+      var(--tour-shape-gap);
+  }
+
+  .tour-crumbs__current {
+    max-width: min(28ch, 58vw);
+  }
+
+  .tour-day {
+    gap: var(--space-lg);
+  }
+
+  .tour-day__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .tour-day__fact,
+  .tour-day__fact + .tour-day__fact {
+    padding: var(--space-md) 0 0;
+    border-right: 0;
+  }
+
+  .tour-day__fact + .tour-day__fact {
+    border-top: 1px solid var(--color-line);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+  }
+
+  .tour-day__gallery,
+  .tour-day__gallery.is-justified {
+    position: relative;
+    height: auto !important;
+    display: block;
+  }
+
+  .tour-day__gallery-track {
+    display: flex;
+    gap: var(--tour-gallery-gap);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tour-day__gallery-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tour-day__gallery .tour-day__shot,
+  .tour-day__gallery.is-justified .tour-day__shot {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex: 0 0 82%;
+    width: 82% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 5;
+    scroll-snap-align: start;
+  }
+
+  .uc-case-tour {
+    --tour-read-leading: 1.55;
+    --tour-title-leading: 1.32;
+    --tour-shape-pad: var(--space-sm);
+    --tour-gallery-gap: var(--space-sm);
+  }
+
+  .ts,
+  .tour-day,
+  .tp {
+    padding: 0 var(--tour-shape-pad) var(--tour-shape-pad);
+  }
+
+  .tp__col {
+    padding: 0 var(--tour-shape-pad) var(--tour-shape-pad);
+  }
+
+  /* Надзаголовки всех блоков: отступ от верха шейпа = shape-pad */
+  .ts__overline,
+  .tour-day__day,
+  .tp__overline,
+  .tp__head {
+    margin-top: var(--tour-shape-pad);
+  }
+
+  .tp__list {
+    gap: var(--space-md);
+  }
+
+  .tp__list li {
+    line-height: var(--tour-read-leading);
+  }
+
+  .uc-tour-day-final .tour-day__banner {
+    aspect-ratio: 4 / 5;
+    max-height: none;
+  }
+
+  /* Lightbox mobile: стрелки внизу у счётчика, фото не перекрывают */
+  .tour-lb {
+    padding:
+      max(var(--space-md), env(safe-area-inset-top, 0px))
+      var(--space-sm)
+      calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .tour-lb__figure {
+    max-height: min(72dvh, 720px);
+  }
+
+  .tour-lb__img {
+    max-height: min(72dvh, 720px);
+  }
+
+  .tour-lb__nav {
+    inset: auto;
+    left: 50%;
+    bottom: max(var(--space-md), env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: auto;
+    height: auto;
+    pointer-events: none;
+  }
+
+  .tour-lb__prev,
+  .tour-lb__next,
+  .tour-lb__count {
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+  }
+
+  .tour-lb__count {
+    min-width: 64px;
+    min-height: 40px;
+  }
+
+  .tour-lb__close,
+  .tour-lb__prev,
+  .tour-lb__next {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-day__shot img,
+  .tour-lb {
+    transition: none;
+  }
+}

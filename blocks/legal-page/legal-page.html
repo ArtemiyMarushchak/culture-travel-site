@@ -1,0 +1,34 @@
+<article class="legal-page" data-block="legal-page">
+  <div class="legal-page__shell">
+    <nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
+      <ol class="crumbs__list">
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
+        </li>
+        <li class="crumbs__item">
+          <span
+            class="crumbs__current"
+            data-i18n-src
+            data-ru="{{title}}"
+            data-en="{{titleEn}}"
+          >{{title}}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="ui-shape legal-page__shape">
+      <header class="legal-page__head">
+        <p class="legal-page__label" data-i18n="legal.label">Документ</p>
+        <h1
+          class="legal-page__title"
+          data-i18n-src
+          data-ru="{{title}}"
+          data-en="{{titleEn}}"
+        >{{title}}</h1>
+      </header>
+      <div class="legal-page__body">
+        {{content}}
+      </div>
+    </div>
+  </div>
+</article>

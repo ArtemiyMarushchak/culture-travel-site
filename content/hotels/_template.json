@@ -1,0 +1,17 @@
+{
+  "_comment": "Скопируйте → my-hotel.json (без _). Фото: assets/images/hotels/. Черновик = имя с _. См. docs/ADMIN.md",
+  "slug": "hotel-slug",
+  "name": "Название отеля",
+  "location": "Страна, город",
+  "stars": 5,
+  "themes": ["beach", "city"],
+  "description": "Короткое описание для карточки (2-3 предложения).",
+  "body": "<p>Дополнительный текст на странице отеля.</p>",
+  "media": [
+    { "type": "image", "src": "/assets/images/placeholder.svg", "alt": "Описание фото" }
+  ],
+  "seo": {
+    "title": "Название отеля | Culture Travel",
+    "description": "Meta description до 160 символов."
+  }
+}

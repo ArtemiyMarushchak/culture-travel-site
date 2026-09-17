@@ -1,0 +1,7 @@
+{
+  "template": "news",
+  "type": "news",
+  "blocks": [
+    { "type": "news-layout" }
+  ]
+}
