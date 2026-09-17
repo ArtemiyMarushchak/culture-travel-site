@@ -1,113 +1,84 @@
-# Культура Путешествий — culture-travel.ru
+# Культура Путешествий
 
-Официальный сайт. Статика: **HTML + CSS + JS** → сборка → **GitHub Pages**.  
-Код — собственность правообладателя ([LICENSE](LICENSE)).
-
----
-
-## Как устроен проект (одним взглядом)
-
-```
-Правите контент (JSON / HTML / фото)
-        ↓
-node tools/build.mjs   →   папка dist/
-        ↓
-push в main   →   GitHub Actions публикует сайт
-```
-
-| Папка | Зачем |
-|-------|--------|
-| `content/` | Отзывы, новости, кейсы, услуги, отели |
-| `assets/` | Фото, видео, флаги, логотипы, шрифт |
-| `pages/` | Страницы сайта (`*.page.json`) |
-| `blocks/` | Вёрстка секций (обычно не трогать) |
-| `core/` | Контакты, меню, настройки (`site.json`, `nav.json`) |
-| `docs/` | Только 2 файла: как править контент и медиа |
-| `tools/` | Сборка и локальный просмотр |
-| `dist/` | Готовый сайт — **руками не править** |
+Официальный сайт [culture-travel.ru](https://culture-travel.ru)  
+Статика: HTML · CSS · JS → сборка → GitHub Pages
 
 ---
 
-## Локально: build и preview
+## Документация
 
-Нужен **Node.js 18+** (Python в проекте **нет** и не нужен).
+Всё по работе с проектом — в папке **[docs/](docs/)**:
+
+| Документ | О чём |
+|----------|--------|
+| [docs/README.md](docs/README.md) | Оглавление документации |
+| [docs/STRUCTURE.md](docs/STRUCTURE.md) | Карта репозитория |
+| [docs/BUILD.md](docs/BUILD.md) | Сборка и локальный просмотр |
+| [docs/ADMIN.md](docs/ADMIN.md) | Контент: отзывы, новости, кейсы, отели |
+| [docs/ASSETS.md](docs/ASSETS.md) | Фото, видео, флаги, иконки |
+| [docs/DEPLOY.md](docs/DEPLOY.md) | Деплой, DNS, HTTPS |
+| [docs/SEO.md](docs/SEO.md) | SEO, sitemap, Яндекс |
+
+---
+
+## Навигация по репозиторию
+
+```
+culture-travel-site/
+├── content/            ← тексты и данные (отзывы, новости, кейсы…)
+├── assets/             ← фото, видео, флаги, логотипы, шрифт
+├── pages/              ← страницы сайта (*.page.json)
+├── blocks/             ← вёрстка секций
+├── blocks-secondary/   ← вторичные блоки
+├── core/               ← контакты, меню, настройки сайта
+├── styles/             ← CSS-токены и стили
+├── layouts/            ← оболочки страниц
+├── templates/          ← HTML-шаблоны сборки
+├── seo/                ← шаблоны robots / llms / defaults
+├── tools/              ← build.mjs, preview.mjs
+├── docs/               ← инструкции
+├── scripts/            ← вспомогательные скрипты
+├── .github/            ← GitHub Actions (деплой)
+└── dist/               ← собранный сайт (не править руками)
+```
+
+| Папка | Назначение |
+|-------|------------|
+| `content/` | Контент: JSON и HTML программ туров |
+| `assets/` | Медиафайлы |
+| `pages/` | Маршруты и состав страниц |
+| `blocks/` | UI-блоки (шапка, герой, модалки…) |
+| `core/` | `site.json`, `nav.json`, реестры |
+| `styles/` | Глобальные стили и токены |
+| `tools/` | Сборка и preview |
+| `docs/` | Подробные инструкции |
+| `dist/` | Результат сборки — **только генерируется** |
+
+Быстрый старт:
 
 ```bash
-node tools/build.mjs      # собрать сайт в dist/
-node tools/preview.mjs    # открыть локальный просмотр собранного dist/
+node tools/build.mjs      # собрать → dist/
+node tools/preview.mjs    # открыть локально
 ```
 
-Или одной командой: `npm run preview`.
-
-| Команда | Что делает |
-|---------|------------|
-| `build.mjs` | Читает `pages` + `content` + блоки → пишет HTML/CSS/JS в `dist/`, плюс `robots.txt`, `sitemap.xml`, `llms.txt` |
-| `preview.mjs` | Поднимает простой локальный сервер, чтобы смотреть `dist/` в браузере |
-
-После правок JSON/фото всегда снова `build` (или push — на GitHub соберёт сам).
+Подробности: [docs/BUILD.md](docs/BUILD.md).
 
 ---
 
-## Куда что класть (админка через GitHub)
+## Лицензия
 
-| Задача | Файл / папка |
-|--------|----------------|
-| Телефон, email, Telegram, реквизиты | `core/site.json` |
-| Пункты меню | `core/nav.json` |
-| Отзывы | `content/reviews/catalog.json` |
-| Новости | `content/news/` + фото в `assets/images/news/` |
-| Услуги | `content/services/catalog.json` + `assets/images/services/` |
-| Слайдер кейсов | `content/cases-slider/catalog.json` |
-| Программа тура | `content/cases/...` + `assets/images/cases/` |
-| Отели (черновик = имя с `_`) | `content/hotels/` |
+© 2026 ИП Баглай Анна Михайловна  
+Бренд: **«Культура Путешествий»** / Culture Travel  
+Сайт: [culture-travel.ru](https://culture-travel.ru)
 
-Подробно с примерами JSON: **[docs/ADMIN.md](docs/ADMIN.md)**  
-Форматы фото / флаги / видео: **[docs/ASSETS.md](docs/ASSETS.md)**
+**Все права защищены.**
 
-Заглушки `/cruises/`, `/tours/`, `/hotels/` — «в разработке», в поиск не попадают (`noindex`), пока не наполните.
+| Разрешено | Запрещено |
+|-----------|-----------|
+| Использовать и править код **только** для официального сайта Culture Travel, с согласия правообладателя | Копировать, продавать, перепубликовывать код или бренд |
+| | Запускать сайт / форк на другом домене без письменного разрешения |
+| | Использовать дизайн, тексты, фото и медиа вне проекта |
 
----
+Публичный статус репозитория **не** означает открытую лицензию и **не** даёт права на копирование.
 
-## SEO (что уже есть)
-
-- `robots.txt` — разрешает индексацию, указывает sitemap  
-- `sitemap.xml` — список публичных страниц  
-- `llms.txt` — карта сайта для AI (Markdown + ссылки)  
-- У каждой страницы: title, description, Open Graph  
-- Канонические URL на `https://culture-travel.ru`
-
-**Почему «Google не нашёл» сразу:** домен только что переехал с Тильды. Поиск обновляется днями/неделями.  
-Сделайте в [Google Search Console](https://search.google.com/search-console): добавьте `culture-travel.ru` → отправьте `https://culture-travel.ru/sitemap.xml`.
-
-Проверка у себя:
-- https://culture-travel.ru/robots.txt  
-- https://culture-travel.ru/sitemap.xml  
-- https://culture-travel.ru/llms.txt  
-
----
-
-## Деплой
-
-1. `git push` в `main`  
-2. Actions → workflow **Deploy to GitHub Pages**  
-3. Сайт: https://culture-travel.ru  
-
-DNS (Reg.ru): `A`/`AAAA` на IP GitHub, `www` → CNAME `artemiymarushchak.github.io`.  
-В Settings → Pages: custom domain + **Enforce HTTPS**.
-
----
-
-## Контакт «Сохранить в iPhone»
-
-Кнопка сохраняет vCard: **Анна Баглай**, телефон, email, Telegram и **сайт** `https://culture-travel.ru` (не дубль Telegram в поле «сайт компании»).
-
----
-
-## Чего в репо нет (и не нужно)
-
-- Python / `build.py` — удалены  
-- Тильда / CDN — удалены  
-- Wiki GitHub — не используем (публична как и репо)  
-- Куча старых markdown-аудитов — убраны  
-
-Шрифт сайта: только локальный **Montserrat** (`assets/fonts/montserrat/`).
+Полный текст: **[LICENSE](LICENSE)**.

@@ -282,7 +282,7 @@ class SiteHeader {
   }
 
   #syncFromHash() {
-    if (!this.#isHome() || !window.location.hash) return;
+    if (!window.location.hash) return;
     if (document.documentElement.classList.contains('is-preloading')) return;
 
     const key = window.location.hash.replace('#', '');
@@ -294,6 +294,8 @@ class SiteHeader {
       }, this.#reducedMotion ? 0 : 180);
       return;
     }
+
+    if (!this.#isHome()) return;
 
     const selector = selectorForHash(key);
     if (!selector) return;
@@ -320,16 +322,16 @@ class SiteHeader {
       const key = keyForSelector(selector);
       if (!key) return;
 
-      // Не с главной: всегда грузить документ главной (не только pushState)
-      if (!this.#isHome()) {
-        navigateToHomeHash(key, { smooth: false });
+      // Drawer профиля — на любой странице, без перехода на главную
+      if (key === 'about') {
+        navigateToHomeHash('about');
+        this.#setActiveLink('about');
         return;
       }
 
-      if (key === 'about') {
-        history.pushState(null, '', hashUrl('about'));
-        this.#setActiveLink('about');
-        window.openAboutDrawer?.();
+      // Не с главной: всегда грузить документ главной (не только pushState)
+      if (!this.#isHome()) {
+        navigateToHomeHash(key, { smooth: false });
         return;
       }
 

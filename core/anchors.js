@@ -55,11 +55,20 @@ export function isHomeDocument() {
 
 /**
  * Перейти к hash главной с любой страницы.
- * Вне главной всегда полная загрузка `/` (с одноразовым `?to=`),
+ * «Обо мне» — глобальный drawer: открываем на месте, без ухода на `/`.
+ * Остальные якоря вне главной — полная загрузка `/` (с одноразовым `?to=`),
  * чтобы старый pushState на `/#…` не оставил нас на внутренней странице.
  */
 export function navigateToHomeHash(key, { smooth = true } = {}) {
   const safeKey = key || '';
+
+  if (safeKey === 'about') {
+    const { pathname, search } = window.location;
+    history.pushState(null, '', `${pathname}${search}#about`);
+    closeHeaderMenu();
+    window.openAboutDrawer?.();
+    return;
+  }
 
   if (!isHomeDocument()) {
     const base = document.documentElement.dataset.basePath || '';
@@ -71,11 +80,6 @@ export function navigateToHomeHash(key, { smooth = true } = {}) {
 
   history.pushState(null, '', hashUrl(safeKey));
   closeHeaderMenu();
-
-  if (safeKey === 'about') {
-    window.openAboutDrawer?.();
-    return;
-  }
 
   const selector = SECTION_ANCHORS[safeKey];
   if (!selector) return;
@@ -138,7 +142,7 @@ export function scrollFromLocationHash({ smooth = false } = {}) {
 
   const key = window.location.hash.replace('#', '');
   if (key === 'about') {
-    if (isHomeDocument()) window.openAboutDrawer?.();
+    window.openAboutDrawer?.();
     return;
   }
 
