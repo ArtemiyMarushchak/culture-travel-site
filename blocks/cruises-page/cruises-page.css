@@ -20,7 +20,11 @@
   margin: 0;
 }
 
-.cruises-page__intro,
+.cruises-page__intro {
+  margin-top: 0;
+}
+
+.cruises-page__toc,
 .cruises-page__region,
 .cruises-page__ships,
 .cruises-page__cta {
@@ -219,6 +223,7 @@
 .cruises-page__cta-actions .btn {
   min-height: 44px;
   padding: 0 20px;
+  border-radius: var(--radius);
 }
 
 @media (max-width: 1180px) {

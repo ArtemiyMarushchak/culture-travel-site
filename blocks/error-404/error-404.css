@@ -1,20 +1,13 @@
 /* 404 — фон сайта, белая shape, одна кнопка «На главную» */
 
 html:has(.uc-404) #main {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
   background: var(--color-bg);
 }
 
 .uc-404 {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
   width: 100%;
-  min-height: 0;
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-main);
@@ -26,9 +19,6 @@ html:has(.uc-404) #main {
 }
 
 .uc-404__shell {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
   width: 100%;
   max-width: var(--layout-rail-max);
   margin-inline: auto;
@@ -40,14 +30,10 @@ html:has(.uc-404) #main {
 
 .uc-404__panel {
   display: flex;
-  flex: 1 1 auto;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
-  min-height: 0;
-  margin-top: var(--space-lg);
-  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
+  padding: var(--space-edge-lg);
   text-align: center;
 }
 
@@ -95,9 +81,30 @@ html:has(.uc-404) #main {
 }
 
 .uc-404__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 44px;
   padding: 0 22px;
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius);
+  background: var(--ui-button-bg);
+  color: var(--ui-button-color) !important;
+  font-family: var(--font-main);
   font-size: var(--font-nav);
+  line-height: 1;
+  font-weight: var(--font-weight-ui);
+  letter-spacing: var(--tracking-nav);
+  text-decoration: none !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast);
+}
+
+.uc-404__btn:hover,
+.uc-404__btn:focus-visible {
+  opacity: var(--ui-button-hover-opacity);
+  outline: none;
 }
 
 @media (max-width: 1180px) {
@@ -114,11 +121,21 @@ html:has(.uc-404) #main {
       var(--space-2xl);
   }
 
+  .uc-404__panel {
+    padding: var(--space-edge);
+  }
+
   .uc-404__code {
     font-size: 72px;
   }
 
   .uc-404__text {
     margin-bottom: var(--space-lg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uc-404__btn {
+    transition: none;
   }
 }
