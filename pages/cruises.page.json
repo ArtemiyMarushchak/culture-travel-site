@@ -2,12 +2,14 @@
   "slug": "/cruises/",
   "title": "Круизы",
   "titleEn": "Cruises",
-  "description": "Экспедиционные круизы Swan Hellenic с Culture Travel: Антарктида, Африка, Азия, Латинская Америка, Европа и Дальний Восток.",
+  "description": "Индивидуальные круизные программы — Culture Travel.",
+  "robots": "noindex",
   "blocks": [
     {
-      "type": "cruises-page",
+      "type": "page-stub",
       "data": {
-        "source": "content/cruises/catalog.json"
+        "title": "Круизы",
+        "titleEn": "Cruises"
       }
     }
   ]

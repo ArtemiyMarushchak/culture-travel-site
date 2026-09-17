@@ -1,5 +1,5 @@
 {
-  "_comment": "Типы контента → список + SEO-страница. /hotels/ и /tours/ — заглушки (page-stub, noindex). /cruises/ — каталог Swan Hellenic (cruises-page).",
+  "_comment": "Типы контента → список + SEO-страница. /cruises/, /tours/, /hotels/ — заглушки (page-stub, noindex). Черновик круизов: content/cruises + cruises-page.",
   "types": {
     "cases": {
       "label": "Кейсы",

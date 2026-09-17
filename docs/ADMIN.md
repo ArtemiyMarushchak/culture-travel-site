@@ -168,17 +168,12 @@ imageMobile → квадрат 1:1 (модалка на телефоне)
 
 ---
 
-## 6b. Круизы (Swan Hellenic)
+## 6b. Круизы (Swan Hellenic) — пока заглушка
 
-Страница: `/cruises/`  
-Данные: `content/cruises/catalog.json`
+Страница `/cruises/` сейчас **page-stub** (`noindex`), пока не утвердим дизайн.
 
-Партнёр дал право размещать материалы. На сайте — каталог регионов и маршрутов + блок «Хотите в круиз?» (Telegram / телефон). Полный PDF на сайт не кладём (тяжёлый); правьте JSON.
-
-Добавить круиз:
-1. Найдите нужный `regions[]` (или добавьте регион).
-2. В `cruises` скопируйте соседний объект и заполните `title`, `route`, `ship`, `duration`, `season`, опционально `note`.
-3. `node tools/build.mjs` или push в `main`.
+Черновик данных уже есть: `content/cruises/catalog.json` + блок `blocks/cruises-page/`.  
+Дальше: пунктирные маршруты как в PDF, видео регионов (сжатие как у hero, без «убитого» качества), затем сменить stub на `cruises-page` и убрать `robots: noindex`.
 
 ---
 
