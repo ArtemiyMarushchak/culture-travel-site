@@ -15,7 +15,6 @@ function buildVCard({ name, org, title, phone, email, url, telegram }) {
   const tel = normalizePhone(phone);
   const siteUrl = String(url || 'https://culture-travel.ru').trim().replace(/\/$/, '');
   const tg = String(telegram || '').trim();
-  const tgHandle = tg.replace(/^https?:\/\/(t\.me|telegram\.me)\//i, '').replace(/^@/, '');
   const lines = [
     'BEGIN:VCARD',
     'VERSION:3.0',
@@ -23,16 +22,13 @@ function buildVCard({ name, org, title, phone, email, url, telegram }) {
     `FN:${name || 'Анна Баглай'}`,
     org ? `ORG:${org}` : '',
     title ? `TITLE:${title}` : '',
-    tel ? `TEL;TYPE=CELL,VOICE:${tel}` : '',
+    tel ? `TEL;TYPE=CELL:${tel}` : '',
     email ? `EMAIL;TYPE=INTERNET:${email}` : '',
-    siteUrl ? `URL;TYPE=WORK:${siteUrl}` : '',
-    siteUrl ? `item1.URL;TYPE=pref:${siteUrl}` : '',
-    siteUrl ? 'item1.X-ABLabel:Сайт' : '',
-    tg ? `item2.URL:${tg}` : '',
-    tg ? 'item2.X-ABLabel:Telegram' : '',
-    tg ? `X-SOCIALPROFILE;TYPE=telegram:${tg}` : '',
-    tgHandle ? `IMPP:x-apple:telegram:${tgHandle}` : '',
-    'NOTE:Culture Travel — режиссёр индивидуальных туров',
+    // Один URL сайта без TYPE=WORK — иначе iOS дублирует в «рабочий»
+    siteUrl ? `URL:${siteUrl}` : '',
+    // Telegram только как подписанная ссылка (без IMPP / X-SOCIALPROFILE — иначе пустые дубли)
+    tg ? `item1.URL:${tg}` : '',
+    tg ? 'item1.X-ABLabel:Telegram' : '',
     'END:VCARD',
   ].filter(Boolean);
   return `${lines.join('\r\n')}\r\n`;

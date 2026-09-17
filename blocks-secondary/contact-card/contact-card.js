@@ -13,7 +13,6 @@ export function initContactCard(root) {
     const siteUrl = 'https://culture-travel.ru';
     const digits = phone.replace(/\D/g, '');
     const tel = phone.startsWith('+') ? `+${digits}` : (digits.length === 11 && digits.startsWith('7') ? `+${digits}` : digits);
-    const tgHandle = telegram.replace(/^https?:\/\/(t\.me|telegram\.me)\//i, '').replace(/^@/, '');
 
     const vcard = [
       'BEGIN:VCARD',
@@ -22,16 +21,11 @@ export function initContactCard(root) {
       'FN:Анна Баглай',
       'ORG:Культура Путешествий',
       'TITLE:Режиссёр индивидуальных туров',
-      tel ? `TEL;TYPE=CELL,VOICE:${tel}` : '',
+      tel ? `TEL;TYPE=CELL:${tel}` : '',
       email ? `EMAIL;TYPE=INTERNET:${email}` : '',
-      `URL;TYPE=WORK:${siteUrl}`,
-      `item1.URL;TYPE=pref:${siteUrl}`,
-      'item1.X-ABLabel:Сайт',
-      telegram ? `item2.URL:${telegram}` : '',
-      telegram ? 'item2.X-ABLabel:Telegram' : '',
-      telegram ? `X-SOCIALPROFILE;TYPE=telegram:${telegram}` : '',
-      tgHandle ? `IMPP:x-apple:telegram:${tgHandle}` : '',
-      'NOTE:Culture Travel — режиссёр индивидуальных туров',
+      `URL:${siteUrl}`,
+      telegram ? `item1.URL:${telegram}` : '',
+      telegram ? 'item1.X-ABLabel:Telegram' : '',
       'END:VCARD',
     ].filter(Boolean).join('\r\n');
 
