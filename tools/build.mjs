@@ -486,6 +486,7 @@ function loadBlockHtml(blockType, blockData = {}) {
         : ''),
     telegramHandle: telegramHandle(site.contacts?.telegram || site.social?.telegram || ''),
     email: site.contacts?.email || '',
+    url: (site.url || 'https://culture-travel.ru').replace(/\/$/, ''),
     registryUrl: site.legal?.registryUrl || '',
     legalCompanyName: site.legal?.companyName || '',
     inn: site.legal?.inn || '',
@@ -883,11 +884,12 @@ function generateLlmsTxt() {
   /* Текстовая карта сайта для AI/поисковых ассистентов. Без noindex URL. */
   const sections = sitemapEntries
     .filter((e) => e.slug !== '/' && !e.noindex)
-    .map((e) => `- ${fullUrl(e.slug)} — ${e.title}`)
+    .map((e) => `- [${e.title}](${fullUrl(e.slug)})`)
     .join('\n');
 
   const email = site.contacts?.email || '';
   const phone = site.contacts?.phone || '';
+  const telegram = site.contacts?.telegram || site.social?.telegram || '';
 
   let tpl = read('seo/templates/llms.txt.template');
   tpl = tpl
@@ -900,6 +902,7 @@ function generateLlmsTxt() {
     .replace(/\{\{url\}\}/g, site.url.replace(/\/$/, ''))
     .replace(/\{\{email\}\}/g, email)
     .replace(/\{\{phone\}\}/g, phone)
+    .replace(/\{\{telegram\}\}/g, telegram)
     .replace(/\{\{registryUrl\}\}/g, site.legal?.registryUrl || '');
 
   writeOut('llms.txt', tpl);

@@ -13,7 +13,8 @@ function normalizePhone(phone = '') {
 
 function buildVCard({ name, org, title, phone, email, url, telegram }) {
   const tel = normalizePhone(phone);
-  const tg = String(telegram || url || '').trim();
+  const siteUrl = String(url || 'https://culture-travel.ru').trim().replace(/\/$/, '');
+  const tg = String(telegram || '').trim();
   const tgHandle = tg.replace(/^https?:\/\/(t\.me|telegram\.me)\//i, '').replace(/^@/, '');
   const lines = [
     'BEGIN:VCARD',
@@ -24,12 +25,14 @@ function buildVCard({ name, org, title, phone, email, url, telegram }) {
     title ? `TITLE:${title}` : '',
     tel ? `TEL;TYPE=CELL,VOICE:${tel}` : '',
     email ? `EMAIL;TYPE=INTERNET:${email}` : '',
-    tg ? `URL:${tg}` : '',
-    tg ? `item1.URL;TYPE=pref:${tg}` : '',
-    tg ? 'item1.X-ABLabel:Telegram' : '',
+    siteUrl ? `URL;TYPE=WORK:${siteUrl}` : '',
+    siteUrl ? `item1.URL;TYPE=pref:${siteUrl}` : '',
+    siteUrl ? 'item1.X-ABLabel:Сайт' : '',
+    tg ? `item2.URL:${tg}` : '',
+    tg ? 'item2.X-ABLabel:Telegram' : '',
     tg ? `X-SOCIALPROFILE;TYPE=telegram:${tg}` : '',
     tgHandle ? `IMPP:x-apple:telegram:${tgHandle}` : '',
-    'NOTE:Culture Travel — culture-travel.ru',
+    'NOTE:Culture Travel — режиссёр индивидуальных туров',
     'END:VCARD',
   ].filter(Boolean);
   return `${lines.join('\r\n')}\r\n`;
