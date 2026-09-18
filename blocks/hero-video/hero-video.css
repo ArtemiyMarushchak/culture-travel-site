@@ -144,23 +144,31 @@
   align-items: flex-end;
   justify-content: flex-start;
   text-align: left;
-  padding: 0 var(--container-padding-desktop) clamp(40px, 6vh, 96px);
+  /* Горизонталь — как у шапки (.lh__inner): rail + pad, не голый edge */
+  padding: 0 0 clamp(40px, 6vh, 96px);
   pointer-events: none;
 }
 
 .avb__inner {
   width: 100%;
+  max-width: var(--layout-rail-max);
+  margin-inline: auto;
+  padding-inline: var(--layout-rail-pad);
+  box-sizing: border-box;
+}
+
+.avb__copy {
   max-width: min(1100px, 100%);
 }
 
 @media (min-width: 1920px) {
-  .avb__inner {
+  .avb__copy {
     max-width: min(42vw, 1600px);
   }
 }
 
 @media (min-width: 2560px) {
-  .avb__inner {
+  .avb__copy {
     max-width: min(40vw, 1900px);
   }
 }
@@ -242,17 +250,14 @@ html[data-lang="en"] .avb__title {
 
 @media (max-width: 1180px) {
   .avb__content {
-    padding: 0 var(--container-padding-tablet) clamp(56px, 8vh, 96px);
+    padding: 0 0 clamp(56px, 8vh, 96px);
   }
 }
 
 @media (max-width: 640px) {
   .avb__content {
-    /* 20px от нижнего края hero-видео */
-    padding:
-      0
-      var(--container-padding-mobile)
-      20px;
+    /* 20px от нижнего края hero-видео; боковой pad — у .avb__inner */
+    padding: 0 0 20px;
   }
 
   .avb__lead {
