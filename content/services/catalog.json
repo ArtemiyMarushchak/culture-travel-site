@@ -57,12 +57,12 @@
       "cover": true
     },
     {
-      "title": "Яхты и морские прогулки",
-      "titleEn": "Yachts and sea days",
+      "title": "Аренда частных яхт",
+      "titleEn": "Private yacht charter",
       "short": "Яхты",
       "shortEn": "Yachts",
-      "text": "Аренда частных яхт для дневных круизов, увлекательной рыбалки, расслабляющих морских прогулок и организации частных мероприятий на воде подарит вам незабываемые впечатления.",
-      "textEn": "Private yacht charter for day cruises, fishing, quiet sea days and events on the water will give you unforgettable impressions.",
+      "text": "Подбор и аренда частных яхт: дневные выходы, рыбалка, морские прогулки и мероприятия на воде.",
+      "textEn": "Selecting and chartering private yachts: day trips, fishing, sea outings and events on the water.",
       "image": "/assets/images/services/yachts.jpg",
       "imageMobile": "/assets/images/services/yachts-sq.jpg"
     },
@@ -82,8 +82,8 @@
       "titleEn": "Cruise booking",
       "short": "Круизы",
       "shortEn": "Cruises",
-      "text": "Подбираем экспедиционные и люкс-круизы по всему миру — спокойный отдых на воде в нужном вам формате.",
-      "textEn": "We select expedition and luxury cruises worldwide — a quiet stay at sea in the format that suits you.",
+      "text": "Подбор и бронирование экспедиционных и люкс-круизов по всему миру с учётом дат, маршрута, категории каюты и формата путешествия.",
+      "textEn": "Selecting and booking expedition and luxury cruises worldwide, according to dates, itinerary, cabin category and the format of the trip.",
       "image": "/assets/images/services/cruises.jpg",
       "imageMobile": "/assets/images/services/cruises-sq.jpg"
     }

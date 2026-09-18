@@ -112,7 +112,7 @@
     "cruises-page": {
       "label": "Круизы",
       "css": true,
-      "js": false,
+      "js": true,
       "scope": "page",
       "dataSource": "content/cruises/catalog.json",
       "dataPrepare": "cruisesCatalog"

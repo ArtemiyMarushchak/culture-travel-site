@@ -14,6 +14,7 @@ import { initCaseTour } from '../blocks-secondary/case-tour/case-tour.js';
 import { initNewsList } from '../blocks/news-list/news-list.js';
 import { initReviews } from '../blocks/reviews/reviews.js';
 import { initServices } from '../blocks/services/services.js';
+import { initCruisesPage } from '../blocks/cruises-page/cruises-page.js';
 import { initFooter } from '../blocks/footer/footer.js';
 
 /** @type {Record<string, (root: Element) => unknown>} */
@@ -29,6 +30,7 @@ export const blockInits = {
   'news-list': initNewsList,
   reviews: initReviews,
   services: initServices,
+  'cruises-page': initCruisesPage,
 };
 
 export const coreFeatures = {

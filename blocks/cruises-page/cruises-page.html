@@ -1,4 +1,28 @@
-<section class="cruises-page" data-block="cruises-page" aria-labelledby="cruises-title">
+<section class="cruises-page" data-block="cruises-page" data-cruises-page>
+  <div class="cruises-page__hero">
+    <div class="cruises-page__hero-media" aria-hidden="true">
+      <img
+        class="cruises-page__hero-poster"
+        src="{{basePath}}{{heroPoster}}"
+        alt=""
+        width="1600"
+        height="900"
+        decoding="async"
+      >
+      {{heroVideoHtml}}
+      <div class="cruises-page__hero-overlay"></div>
+    </div>
+    <div class="cruises-page__hero-content">
+      <p class="cruises-page__partner">Партнёр · {{partner}}</p>
+      <h1 class="cruises-page__title" id="cruises-title" data-i18n-src data-ru="{{heroTitle}}" data-en="{{heroTitleEn}}">{{heroTitle}}</h1>
+      <p class="cruises-page__lead" data-i18n-src data-ru="{{heroLead}}" data-en="{{heroLeadEn}}">{{heroLead}}</p>
+      <div class="cruises-page__hero-actions">
+        <a class="cruises-page__btn cruises-page__btn--solid" href="{{telegram}}" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a class="cruises-page__btn" href="tel:{{phoneRaw}}">{{phoneDisplay}}</a>
+      </div>
+    </div>
+  </div>
+
   <div class="cruises-page__shell">
     <nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
       <ol class="crumbs__list">
@@ -11,47 +35,40 @@
       </ol>
     </nav>
 
-    <div class="ui-shape cruises-page__intro">
-      <p class="cruises-page__partner">Партнёр · {{partner}}</p>
-      <h1 class="cruises-page__title" id="cruises-title" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</h1>
-      <p class="cruises-page__lead" data-i18n-src data-ru="{{lead}}" data-en="{{leadEn}}">{{lead}}</p>
-      <p class="cruises-page__about" data-i18n-src data-ru="{{about}}" data-en="{{aboutEn}}">{{about}}</p>
-    </div>
+    <div class="cruises-page__catalog">
+      <h2 class="cruises-page__catalog-title" data-i18n-src data-ru="{{catalogTitle}}" data-en="{{catalogTitleEn}}">{{catalogTitle}}</h2>
 
-    <nav class="cruises-page__toc" aria-label="Регионы">
-      {{#each regions}}
-      <a class="cruises-page__toc-link" href="#{{id}}">{{title}}</a>
-      {{/each}}
-    </nav>
-
-    {{#each regions}}
-    <section class="ui-shape cruises-page__region" id="{{id}}">
-      <header class="cruises-page__region-head">
-        <h2 class="cruises-page__region-title" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</h2>
-        <p class="cruises-page__region-intro" data-i18n-src data-ru="{{intro}}" data-en="{{introEn}}">{{intro}}</p>
-      </header>
-      {{cruisesHtml}}
-    </section>
-    {{/each}}
-
-    <div class="ui-shape cruises-page__ships">
-      <h2 class="cruises-page__ships-title" data-i18n-src data-ru="{{shipsTitle}}" data-en="{{shipsTitleEn}}">{{shipsTitle}}</h2>
-      <ul class="cruises-page__ships-list">
-        {{#each ships}}
-        <li class="cruises-page__ship">
-          <span class="cruises-page__ship-name">{{name}}</span>
-          <span class="cruises-page__ship-meta">{{cabins}} кают · до {{guests}} гостей</span>
-        </li>
+      <div class="cruises-page__accordion" data-cruises-accordion>
+        {{#each regions}}
+        <article class="cruises-page__region{{openClass}}" data-cruise-region id="{{id}}">
+          <button
+            class="cruises-page__region-tab"
+            type="button"
+            data-cruise-toggle
+            aria-expanded="{{expanded}}"
+          >
+            <span class="cruises-page__region-name" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</span>
+            <span class="cruises-page__region-count">{{cruiseCount}}</span>
+            <svg class="cruises-page__chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+              <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="cruises-page__region-panel" data-cruise-panel{{hiddenAttr}}>
+            <p class="cruises-page__region-intro" data-i18n-src data-ru="{{intro}}" data-en="{{introEn}}">{{intro}}</p>
+            {{mapHtml}}
+            {{cruisesHtml}}
+          </div>
+        </article>
         {{/each}}
-      </ul>
+      </div>
     </div>
 
     <div class="ui-shape cruises-page__cta">
       <h2 class="cruises-page__cta-title" data-i18n-src data-ru="{{ctaTitle}}" data-en="{{ctaTitleEn}}">{{ctaTitle}}</h2>
       <p class="cruises-page__cta-text" data-i18n-src data-ru="{{ctaText}}" data-en="{{ctaTextEn}}">{{ctaText}}</p>
       <div class="cruises-page__cta-actions">
-        <a class="btn btn--solid" href="{{telegram}}" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a class="btn" href="tel:{{phoneRaw}}">{{phoneDisplay}}</a>
+        <a class="cruises-page__btn cruises-page__btn--solid" href="{{telegram}}" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a class="cruises-page__btn" href="tel:{{phoneRaw}}">{{phoneDisplay}}</a>
       </div>
     </div>
   </div>

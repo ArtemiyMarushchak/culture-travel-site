@@ -232,10 +232,61 @@ function prepareCasesFeatured() {
     }));
 }
 
+function cruiseRouteMapSvg(regionId, stops = []) {
+  const labels = (stops || []).slice(0, 5);
+  const n = Math.max(labels.length, 2);
+  const pts = [];
+  for (let i = 0; i < n; i += 1) {
+    const t = n === 1 ? 0.5 : i / (n - 1);
+    const x = 48 + t * 544;
+    const wave = Math.sin(t * Math.PI) * (regionId === 'antarctica' ? 36 : 28);
+    const y = regionId === 'far-east' ? 110 - wave : 100 + (i % 2 === 0 ? -wave : wave * 0.35);
+    pts.push({ x, y, label: labels[i] || '' });
+  }
+  const pathD = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(' ');
+  const land =
+    regionId === 'antarctica'
+      ? '<path class="cruises-page__map-land" d="M80 48 C180 28 280 36 360 58 C440 82 520 70 560 92 L540 150 C460 130 360 155 260 148 C160 140 90 120 70 95 Z"/>'
+      : regionId === 'africa'
+        ? '<path class="cruises-page__map-land" d="M220 30 C280 40 310 90 300 150 C290 200 250 230 210 220 C160 205 150 150 160 100 C170 55 190 35 220 30 Z"/>'
+        : '<path class="cruises-page__map-land" d="M60 40 C200 20 420 30 580 55 L570 160 C400 140 220 155 70 130 Z"/>';
+
+  const dots = pts.map((p) => {
+    const label = p.label
+      ? `<text class="cruises-page__map-label" x="${p.x.toFixed(1)}" y="${(p.y - 12).toFixed(1)}" text-anchor="middle">${escapeHtml(p.label)}</text>`
+      : '';
+    return `<circle class="cruises-page__map-dot" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4.5"/>${label}`;
+  }).join('');
+
+  return `<div class="cruises-page__map" aria-hidden="true">
+  <svg viewBox="0 0 640 200" role="presentation">
+    <rect class="cruises-page__map-sea" width="640" height="200" rx="8"/>
+    ${land}
+    <path class="cruises-page__map-route" d="${pathD}"/>
+    ${dots}
+  </svg>
+</div>`;
+}
+
 function prepareCruisesCatalog() {
   const catalog = readJson('content/cruises/catalog.json');
+  const bp = (site.basePath || '').replace(/\/$/, '');
+  const openFirst = catalog.openFirst || (catalog.regions?.[0]?.id) || '';
+  const poster = catalog.heroPoster || '/assets/images/services/cruises.jpg';
+  const videoPath = catalog.heroVideo || '';
+  const videoAbs = videoPath ? join(ROOT, videoPath.replace(/^\//, '')) : '';
+  const hasVideo = videoAbs && existsSync(videoAbs);
+
+  const heroVideoHtml = hasVideo
+    ? `<video class="cruises-page__hero-video" src="${escapeHtml(`${bp}${videoPath}`)}" poster="${escapeHtml(`${bp}${poster}`)}" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>`
+    : '';
+
+  const telegram = site.contacts?.telegram || site.social?.telegram || '#';
+
   const regions = (catalog.regions || []).map((region) => {
     const cruises = region.cruises || [];
+    const isOpen = region.id === openFirst;
+    const mapStops = cruises[0]?.stops || [];
     const cruisesHtml = `<ul class="cruises-page__list">${cruises.map((cruise) => {
       const note = cruise.note
         ? `<p class="cruises-page__item-note" data-i18n-src data-ru="${escapeHtml(cruise.note)}" data-en="${escapeHtml(cruise.noteEn || cruise.note)}">${escapeHtml(cruise.note)}</p>`
@@ -249,6 +300,7 @@ function prepareCruisesCatalog() {
     <span data-i18n-src data-ru="${escapeHtml(cruise.season || '')}" data-en="${escapeHtml(cruise.seasonEn || cruise.season || '')}">${escapeHtml(cruise.season || '')}</span>
   </p>
   ${note}
+  <a class="cruises-page__ask" href="${escapeHtml(telegram)}" target="_blank" rel="noopener noreferrer">Запросить даты</a>
 </li>`;
     }).join('')}</ul>`;
 
@@ -258,21 +310,25 @@ function prepareCruisesCatalog() {
       titleEn: region.titleEn || region.title,
       intro: region.intro || '',
       introEn: region.introEn || region.intro || '',
+      cruiseCount: String(cruises.length),
+      openClass: isOpen ? ' is-open' : '',
+      expanded: isOpen ? 'true' : 'false',
+      hiddenAttr: isOpen ? '' : ' hidden',
+      mapHtml: cruiseRouteMapSvg(region.id, mapStops),
       cruisesHtml,
     };
   });
 
   return {
     partner: catalog.partner || 'Swan Hellenic',
-    title: catalog.title || 'Круизы',
-    titleEn: catalog.titleEn || 'Cruises',
-    lead: catalog.lead || '',
-    leadEn: catalog.leadEn || '',
-    about: catalog.about || '',
-    aboutEn: catalog.aboutEn || '',
-    shipsTitle: catalog.shipsTitle || 'Флот',
-    shipsTitleEn: catalog.shipsTitleEn || 'Fleet',
-    ships: catalog.ships || [],
+    heroTitle: catalog.heroTitle || catalog.title || 'Круизы',
+    heroTitleEn: catalog.heroTitleEn || catalog.titleEn || 'Cruises',
+    heroLead: catalog.heroLead || catalog.lead || '',
+    heroLeadEn: catalog.heroLeadEn || catalog.leadEn || '',
+    heroPoster: poster,
+    heroVideoHtml,
+    catalogTitle: catalog.catalogTitle || 'Направления',
+    catalogTitleEn: catalog.catalogTitleEn || 'Destinations',
     ctaTitle: catalog.ctaTitle || '',
     ctaTitleEn: catalog.ctaTitleEn || '',
     ctaText: catalog.ctaText || '',
@@ -577,7 +633,7 @@ function loadBlockHtml(blockType, blockData = {}) {
       ? `<span class="lf__registry-num">№ ${escapeHtml(String(site.legal.registryNumber))}</span>`
       : '';
   }
-  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'hotelsJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml', 'cruisesHtml'];
+  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'hotelsJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml', 'cruisesHtml', 'mapHtml', 'heroVideoHtml', 'hiddenAttr', 'openClass'];
   html = html.replace(/\{\{#each (\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, itemTpl) => {
     const arr = merged[key];
     if (!Array.isArray(arr)) return '';

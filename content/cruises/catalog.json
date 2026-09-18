@@ -1,31 +1,15 @@
 {
-  "_comment": "Круизная коллекция Swan Hellenic (партнёр). Текст адаптирован для сайта. Добавляйте круизы в regions[].cruises.",
+  "_comment": "Черновик круизов Swan Hellenic. openFirst = регион, открытый по умолчанию (люкс). Видео: assets/videos/cruises/hero.mp4 — пока можно без файла, будет постер.",
   "partner": "Swan Hellenic",
-  "title": "Круизы",
-  "titleEn": "Cruises",
-  "lead": "Экспедиционные круизы Swan Hellenic — партнёр Culture Travel. Небольшие суда, удалённые маршруты и привычный уровень комфорта. Подберём каюту и даты под вас.",
-  "leadEn": "Swan Hellenic expedition cruises — a Culture Travel partner. Small ships, remote itineraries and familiar comfort. We will match cabin and dates to you.",
-  "about": "Экспедиционный круиз — это отдых, а не научная экспедиция: вы попадаете в труднодоступные места с гидами и экспертами на борту, при этом на судне — сервис бутик-отеля, гибкий маршрут и система «всё включено».",
-  "aboutEn": "An expedition cruise is leisure, not a research project: remote places with guides and experts on board, boutique-hotel service, a flexible itinerary and an all-inclusive format.",
-  "shipsTitle": "Флот",
-  "shipsTitleEn": "Fleet",
-  "ships": [
-    {
-      "name": "SH Diana",
-      "cabins": "96",
-      "guests": "192"
-    },
-    {
-      "name": "SH Vega",
-      "cabins": "76",
-      "guests": "152"
-    },
-    {
-      "name": "SH Minerva",
-      "cabins": "76",
-      "guests": "152"
-    }
-  ],
+  "openFirst": "antarctica",
+  "heroTitle": "Экспедиционные круизы",
+  "heroTitleEn": "Expedition cruises",
+  "heroLead": "Удалённые маршруты на небольших судах — с комфортом бутик-отеля. Подберём каюту и даты.",
+  "heroLeadEn": "Remote itineraries on small ships — boutique-hotel comfort. We match cabin and dates.",
+  "heroVideo": "/assets/videos/cruises/hero.mp4",
+  "heroPoster": "/assets/images/services/cruises.jpg",
+  "catalogTitle": "Направления",
+  "catalogTitleEn": "Destinations",
   "ctaTitle": "Хотите в круиз?",
   "ctaTitleEn": "Ready to sail?",
   "ctaText": "Напишите или позвоните — подберём маршрут, даты и каюту. Бронирование через Culture Travel.",
@@ -41,15 +25,16 @@
         {
           "title": "Пингвины, киты и айсберги",
           "titleEn": "Penguins, whales and icebergs",
-          "route": "Антарктический полуостров, море Уэдделла, Южный полярный круг, Фолкленды, Южная Георгия",
-          "routeEn": "Antarctic Peninsula, Weddell Sea, Antarctic Circle, Falklands, South Georgia",
+          "route": "Антарктический полуостров · море Уэдделла · Южный полярный круг · Фолкленды · Южная Георгия",
+          "routeEn": "Antarctic Peninsula · Weddell Sea · Antarctic Circle · Falklands · South Georgia",
           "ship": "SH Vega / SH Diana / SH Minerva",
           "duration": "9–20 ночей",
           "durationEn": "9–20 nights",
           "season": "Ноябрь–март",
           "seasonEn": "November–March",
-          "note": "Включено: ночь в 5* отеле в Буэнос-Айресе до круиза, внутренние авиаперелёты в Ушуайю и обратно, трансферы.",
-          "noteEn": "Included: one night in a 5* Buenos Aires hotel before the cruise, domestic flights to Ushuaia and back, transfers."
+          "note": "Включено: ночь в 5* в Буэнос-Айресе, авиаперелёты в Ушуайю и обратно, трансферы.",
+          "noteEn": "Included: one night in a 5* Buenos Aires hotel, flights to Ushuaia and back, transfers.",
+          "stops": ["Ушуайя", "Полуостров", "Уэдделл", "Юж. Георгия", "Фолкленды"]
         }
       ]
     },
@@ -63,24 +48,26 @@
         {
           "title": "ЮАР и Берег скелетов",
           "titleEn": "South Africa and the Skeleton Coast",
-          "route": "Кейптаун — Салданья-Бей — Людериц — Уолфиш-Бей — Байя-душ-Тигреш — Намибе — Луанда",
-          "routeEn": "Cape Town — Saldanha Bay — Lüderitz — Walvis Bay — Bahia dos Tigres — Namibe — Luanda",
+          "route": "Кейптаун — Людериц — Уолфиш-Бей — Байя-душ-Тигреш — Луанда",
+          "routeEn": "Cape Town — Lüderitz — Walvis Bay — Bahia dos Tigres — Luanda",
           "ship": "SH Diana",
           "duration": "12 дней / 11 ночей",
           "durationEn": "12 days / 11 nights",
           "season": "Весна–осень",
-          "seasonEn": "Spring–autumn"
+          "seasonEn": "Spring–autumn",
+          "stops": ["Кейптаун", "Людериц", "Уолфиш-Бей", "Байя-душ-Тигреш", "Луанда"]
         },
         {
           "title": "7 стран экваториальной Африки",
           "titleEn": "Seven countries of equatorial Africa",
-          "route": "Луанда — Пуэнт-Нуар — Маюмба — парк Лоанго — Бэ-де-Тортю — Сан-Томе и Принсипи — Котону — Ломе — Тема (Аккра)",
-          "routeEn": "Luanda — Pointe-Noire — Mayumba — Loango — Baie des Tortues — São Tomé and Príncipe — Cotonou — Lomé — Tema (Accra)",
+          "route": "Луанда — Пуэнт-Нуар — Лоанго — Сан-Томе — Котону — Ломе — Аккра",
+          "routeEn": "Luanda — Pointe-Noire — Loango — São Tomé — Cotonou — Lomé — Accra",
           "ship": "SH Diana",
           "duration": "14 дней / 13 ночей",
           "durationEn": "14 days / 13 nights",
           "season": "Весна и осень",
-          "seasonEn": "Spring and autumn"
+          "seasonEn": "Spring and autumn",
+          "stops": ["Луанда", "Пуэнт-Нуар", "Лоанго", "Сан-Томе", "Аккра"]
         }
       ]
     },
@@ -92,50 +79,40 @@
       "introEn": "Raja Ampat, the Philippines, Japan and New Zealand — reefs, islands and coastal cultures.",
       "cruises": [
         {
-          "title": "Тайны кораллового треугольника — Папуа и Раджа Ампат",
-          "titleEn": "Secrets of the Coral Triangle — Papua and Raja Ampat",
-          "route": "Соронг — острова Папуа и архипелаг Раджа Ампат — Соронг",
-          "routeEn": "Sorong — Papua islands and Raja Ampat — Sorong",
+          "title": "Папуа и Раджа Ампат",
+          "titleEn": "Papua and Raja Ampat",
+          "route": "Соронг — острова Папуа и Раджа Ампат — Соронг",
+          "routeEn": "Sorong — Papua and Raja Ampat — Sorong",
           "ship": "SH Minerva",
           "duration": "12 дней / 11 ночей",
           "durationEn": "12 days / 11 nights",
           "season": "Весна",
           "seasonEn": "Spring",
-          "note": "Включено: ночь в отеле 4/5* до круиза, чартер Бали → Соронг → Бали, трансферы.",
-          "noteEn": "Included: one night in a 4/5* hotel before the cruise, Bali → Sorong → Bali charter, transfers."
-        },
-        {
-          "title": "Филиппины и Раджа Ампат",
-          "titleEn": "The Philippines and Raja Ampat",
-          "route": "Соронг — Раджа Ампат — Бохол — Манила",
-          "routeEn": "Sorong — Raja Ampat — Bohol — Manila",
-          "ship": "SH Minerva",
-          "duration": "12 дней / 11 ночей",
-          "durationEn": "12 days / 11 nights",
-          "season": "Весна",
-          "seasonEn": "Spring"
+          "stops": ["Соронг", "Папуа", "Раджа Ампат", "Соронг"]
         },
         {
           "title": "Другая Япония",
           "titleEn": "Another Japan",
-          "route": "Отару — Хакодате — Саката — о. Садо — Майдзуру — Сакаиминато — Пусан — Беппу — Хиросима",
-          "routeEn": "Otaru — Hakodate — Sakata — Sado — Maizuru — Sakaiminato — Busan — Beppu — Hiroshima",
+          "route": "Отару — Хакодате — о. Садо — Майдзуру — Пусан — Хиросима",
+          "routeEn": "Otaru — Hakodate — Sado — Maizuru — Busan — Hiroshima",
           "ship": "SH Minerva",
           "duration": "11 дней / 10 ночей",
           "durationEn": "11 days / 10 nights",
           "season": "Лето и осень",
-          "seasonEn": "Summer and autumn"
+          "seasonEn": "Summer and autumn",
+          "stops": ["Отару", "Садо", "Майдзуру", "Пусан", "Хиросима"]
         },
         {
           "title": "Новая Зеландия от края до края",
           "titleEn": "New Zealand end to end",
-          "route": "Данидин — фьорды — о. Стюарт — Каикоура — Веллингтон — Бей-оф-Айлендс — Окленд",
-          "routeEn": "Dunedin — fiords — Stewart Island — Kaikoura — Wellington — Bay of Islands — Auckland",
+          "route": "Данидин — фьорды — о. Стюарт — Каикоура — Веллингтон — Окленд",
+          "routeEn": "Dunedin — fiords — Stewart Island — Kaikoura — Wellington — Auckland",
           "ship": "SH Minerva",
           "duration": "14 дней / 13 ночей",
           "durationEn": "14 days / 13 nights",
           "season": "Весна",
-          "seasonEn": "Spring"
+          "seasonEn": "Spring",
+          "stops": ["Данидин", "Фьорды", "Стюарт", "Каикоура", "Окленд"]
         }
       ]
     },
@@ -155,18 +132,20 @@
           "duration": "10–12 дней",
           "durationEn": "10–12 days",
           "season": "Весна и осень",
-          "seasonEn": "Spring and autumn"
+          "seasonEn": "Spring and autumn",
+          "stops": ["Парамарибо", "Амазонка", "Белен"]
         },
         {
-          "title": "Душа, самба и море: сердце Бразилии",
-          "titleEn": "Soul, samba and sea: the heart of Brazil",
-          "route": "Сальвадор-де-Баия — Итакаре — Транкозу — Аброльос — Бузиос — Рио-де-Жанейро",
-          "routeEn": "Salvador — Itacaré — Trancoso — Abrolhos — Búzios — Rio de Janeiro",
+          "title": "Душа, самба и море",
+          "titleEn": "Soul, samba and sea",
+          "route": "Сальвадор — Итакаре — Транкозу — Аброльос — Бузиос — Рио",
+          "routeEn": "Salvador — Itacaré — Trancoso — Abrolhos — Búzios — Rio",
           "ship": "SH Vega",
           "duration": "7 дней / 6 ночей",
           "durationEn": "7 days / 6 nights",
           "season": "Осень",
-          "seasonEn": "Autumn"
+          "seasonEn": "Autumn",
+          "stops": ["Сальвадор", "Транкозу", "Аброльос", "Рио"]
         }
       ]
     },
@@ -174,19 +153,20 @@
       "id": "europe",
       "title": "Европа",
       "titleEn": "Europe",
-      "intro": "Атлантическое побережье Европы и перекрёсток с Африкой — история, порты и море.",
-      "introEn": "Europe’s Atlantic coast and the crossroads with Africa — history, ports and the sea.",
+      "intro": "Атлантическое побережье Европы и перекрёсток с Африкой.",
+      "introEn": "Europe’s Atlantic coast and the crossroads with Africa.",
       "cruises": [
         {
-          "title": "От фаду до касбы: Лиссабон — Касабланка",
-          "titleEn": "From fado to the kasbah: Lisbon — Casablanca",
-          "route": "Лиссабон — Портиман — Севилья — Марбелья — Мотриль — Танжер — Касабланка",
-          "routeEn": "Lisbon — Portimão — Seville — Marbella — Motril — Tangier — Casablanca",
+          "title": "Лиссабон — Касабланка",
+          "titleEn": "Lisbon — Casablanca",
+          "route": "Лиссабон — Портиман — Севилья — Марбелья — Танжер — Касабланка",
+          "routeEn": "Lisbon — Portimão — Seville — Marbella — Tangier — Casablanca",
           "ship": "SH Diana",
           "duration": "8 дней / 7 ночей",
           "durationEn": "8 days / 7 nights",
           "season": "Осень",
-          "seasonEn": "Autumn"
+          "seasonEn": "Autumn",
+          "stops": ["Лиссабон", "Севилья", "Танжер", "Касабланка"]
         }
       ]
     },
@@ -194,41 +174,32 @@
       "id": "far-east",
       "title": "Дальний Восток",
       "titleEn": "Russian Far East",
-      "intro": "Курилы, Камчатка, Командоры и Чукотка — вулканы, киты, белые медведи и культура коренных народов.",
-      "introEn": "The Kurils, Kamchatka, the Commander Islands and Chukotka — volcanoes, whales, polar bears and indigenous cultures.",
+      "intro": "Курилы, Камчатка, Командоры и Чукотка — вулканы, киты, белые медведи.",
+      "introEn": "The Kurils, Kamchatka, the Commander Islands and Chukotka — volcanoes, whales, polar bears.",
       "cruises": [
         {
           "title": "Курильские острова",
           "titleEn": "Kuril Islands",
-          "route": "Корсаков — Кунашир — Итуруп — Чирпой — Янкича — Онекотан — Парамушир — Атласова — Петропавловск-Камчатский",
-          "routeEn": "Korsakov — Kunashir — Iturup — Chirpoy — Yankicha — Onekotan — Paramushir — Atlasov — Petropavlovsk-Kamchatsky",
+          "route": "Корсаков — Кунашир — Итуруп — Парамушир — Петропавловск-Камчатский",
+          "routeEn": "Korsakov — Kunashir — Iturup — Paramushir — Petropavlovsk-Kamchatsky",
           "ship": "SH Minerva",
           "duration": "9 дней / 8 ночей",
           "durationEn": "9 days / 8 nights",
           "season": "Июль и сентябрь",
-          "seasonEn": "July and September"
-        },
-        {
-          "title": "Камчатка, Командорские острова и Чукотка",
-          "titleEn": "Kamchatka, Commander Islands and Chukotka",
-          "route": "Анадырь — бухты Чукотки — Командоры — Петропавловск-Камчатский",
-          "routeEn": "Anadyr — Chukotka bays — Commander Islands — Petropavlovsk-Kamchatsky",
-          "ship": "SH Minerva",
-          "duration": "11 дней / 10 ночей",
-          "durationEn": "11 days / 10 nights",
-          "season": "Июль и сентябрь",
-          "seasonEn": "July and September"
+          "seasonEn": "July and September",
+          "stops": ["Корсаков", "Кунашир", "Итуруп", "Парамушир", "Петропавловск"]
         },
         {
           "title": "Чукотка и остров Врангеля",
           "titleEn": "Chukotka and Wrangel Island",
-          "route": "Анадырь — о. Иттыгран — мыс Дежнёва — о. Врангеля — о. Геральд — Анадырь",
-          "routeEn": "Anadyr — Yttygran — Cape Dezhnev — Wrangel Island — Herald Island — Anadyr",
+          "route": "Анадырь — мыс Дежнёва — о. Врангеля — Анадырь",
+          "routeEn": "Anadyr — Cape Dezhnev — Wrangel Island — Anadyr",
           "ship": "SH Minerva",
           "duration": "13 дней / 12 ночей",
           "durationEn": "13 days / 12 nights",
           "season": "Август и сентябрь",
-          "seasonEn": "August and September"
+          "seasonEn": "August and September",
+          "stops": ["Анадырь", "Дежнёва", "Врангеля", "Анадырь"]
         }
       ]
     }
