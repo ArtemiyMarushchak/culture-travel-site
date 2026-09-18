@@ -57,12 +57,12 @@
       "cover": true
     },
     {
-      "title": "Аренда частных яхт",
-      "titleEn": "Private yacht charter",
+      "title": "Бронирование частных яхт",
+      "titleEn": "Private yacht booking",
       "short": "Яхты",
       "shortEn": "Yachts",
-      "text": "Подбор и аренда частных яхт: дневные выходы, рыбалка, морские прогулки и мероприятия на воде.",
-      "textEn": "Selecting and chartering private yachts: day trips, fishing, sea outings and events on the water.",
+      "text": "Подбор и бронирование частных яхт: дневные выходы, рыбалка, морские прогулки и мероприятия на воде.",
+      "textEn": "Selecting and booking private yachts: day trips, fishing, sea outings and events on the water.",
       "image": "/assets/images/services/yachts.jpg",
       "imageMobile": "/assets/images/services/yachts-sq.jpg"
     },
