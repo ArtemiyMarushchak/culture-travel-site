@@ -576,27 +576,31 @@ html[data-theme="light"] #lux-header.is-inner .lh__bar-results {
 }
 
 .lh__find-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
+  position: relative;
+  display: block;
+  padding: 12px 40px 12px 12px;
   border-radius: 10px;
   color: inherit !important;
   text-decoration: none !important;
 }
 
 .lh__find-body {
-  flex: 1 1 auto;
-  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .lh__find-chevron {
-  flex: 0 0 auto;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
   opacity: 0.32;
+  pointer-events: none;
   transition: opacity 0.15s ease;
 }
 
