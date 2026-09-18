@@ -577,17 +577,37 @@ html[data-theme="light"] #lux-header.is-inner .lh__bar-results {
 
 .lh__find-item {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
   padding: 12px;
   border-radius: 10px;
   color: inherit !important;
   text-decoration: none !important;
 }
 
+.lh__find-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lh__find-chevron {
+  flex: 0 0 auto;
+  opacity: 0.32;
+  transition: opacity 0.15s ease;
+}
+
 .lh__find-item:hover,
 .lh__find-item.is-active {
   background: rgba(246, 246, 246, 0.08);
+}
+
+.lh__find-item:hover .lh__find-chevron,
+.lh__find-item.is-active .lh__find-chevron {
+  opacity: 0.72;
 }
 
 html[data-theme="light"] #lux-header.is-scrolled .lh__find-item:hover,

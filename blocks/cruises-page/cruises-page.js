@@ -1,6 +1,7 @@
 /**
  * Аккордеон направлений круизов.
  * Первое (или data-open) открыто; клик переключает, одновременно одно.
+ * Hash `#region-id` открывает нужный регион (поиск / прямые ссылки).
  */
 export function initCruisesPage(root) {
   if (!root || root.dataset.ready === 'true') return;
@@ -22,6 +23,15 @@ export function initCruisesPage(root) {
     }
   }
 
+  function openFromHash() {
+    const id = (location.hash || '').replace(/^#/, '');
+    if (!id) return false;
+    const target = regions.find((item) => item.id === id);
+    if (!target) return false;
+    regions.forEach((item) => setOpen(item, item === target));
+    return true;
+  }
+
   accordion.addEventListener('click', (event) => {
     const btn = event.target.closest('[data-cruise-toggle]');
     if (!btn || !accordion.contains(btn)) return;
@@ -31,4 +41,10 @@ export function initCruisesPage(root) {
     const willOpen = !region.classList.contains('is-open');
     regions.forEach((item) => setOpen(item, willOpen && item === region));
   });
+
+  window.addEventListener('hashchange', () => {
+    openFromHash();
+  });
+
+  openFromHash();
 }

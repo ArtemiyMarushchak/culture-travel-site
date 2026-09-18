@@ -511,7 +511,7 @@ class SiteHeader {
       const kind = escapeHtml((en && item.kindEn) || item.kind || '');
       const href = escapeHtml(`${this.#basePath()}${item.href || '/'}`);
       const snippet = text ? `<span class="lh__find-text">${text}</span>` : '';
-      return `<a class="lh__find-item" href="${href}"><span class="lh__find-kind">${kind}</span><span class="lh__find-name">${title}</span>${snippet}</a>`;
+      return `<a class="lh__find-item" href="${href}"><span class="lh__find-body"><span class="lh__find-kind">${kind}</span><span class="lh__find-name">${title}</span>${snippet}</span><svg class="lh__find-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
     }).join('');
   }
 

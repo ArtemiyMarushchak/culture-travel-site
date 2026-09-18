@@ -1122,6 +1122,33 @@ function generateSearchIndex() {
     });
   }
 
+  const cruisesCatalog = readJson('content/cruises/catalog.json');
+  for (const region of cruisesCatalog.regions || []) {
+    if (!region?.id) continue;
+    add({
+      type: 'cruise',
+      kind: 'Круиз',
+      kindEn: 'Cruise',
+      title: region.title || '',
+      titleEn: region.titleEn || '',
+      text: region.intro || '',
+      textEn: region.introEn || '',
+      href: `/cruises/#${region.id}`,
+    });
+    for (const cruise of region.cruises || []) {
+      add({
+        type: 'cruise',
+        kind: 'Круиз',
+        kindEn: 'Cruise',
+        title: cruise.title || '',
+        titleEn: cruise.titleEn || '',
+        text: [cruise.route, cruise.ship, cruise.duration, cruise.season, cruise.note].filter(Boolean).join(' · '),
+        textEn: [cruise.routeEn, cruise.ship, cruise.durationEn, cruise.seasonEn, cruise.noteEn].filter(Boolean).join(' · '),
+        href: `/cruises/#${region.id}`,
+      });
+    }
+  }
+
   [
     { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Новости', titleEn: 'News', text: 'Новости и анонсы Culture Travel', textEn: 'News and announcements', href: '/#news' },
     { type: 'page', kind: 'Раздел', kindEn: 'Page', title: 'Круизы', titleEn: 'Cruises', text: 'Экспедиционные круизы Swan Hellenic', textEn: 'Swan Hellenic expedition cruises', href: '/cruises/' },
