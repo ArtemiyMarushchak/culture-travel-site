@@ -1,0 +1,23 @@
+{
+  "slug": "/south-africa/SK/",
+  "title": "Južná Afrika: panoramatické cesty, safari a vínne údolia",
+  "titleEn": "Južná Afrika: panoramatické cesty, safari a vínne údolia",
+  "description": "Uzavretý program cesty po Južnej Afrike: termíny, hotely, trasa a cena pre účastníkov.",
+  "robots": "noindex",
+  "blocks": [
+    { "type": "case-tour" }
+  ],
+  "data": {
+    "privateTour": true,
+    "crumbTitle": "Južná Afrika",
+    "crumbTitleEn": "Južná Afrika",
+    "title": "Južná Afrika: panoramatické cesty, safari a vínne údolia",
+    "titleEn": "Južná Afrika: panoramatické cesty, safari a vínne údolia",
+    "cover": "/assets/images/cases/south-africa/cover.jpg",
+    "bodyFile": "content/cases/south-africa/program-full.sk.html",
+    "seo": {
+      "title": "Južná Afrika — program | Culture Travel",
+      "description": "Uzavretý program cesty po Južnej Afrike pre účastníkov turné."
+    }
+  }
+}
