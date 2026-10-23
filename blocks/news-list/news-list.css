@@ -101,9 +101,9 @@
   margin: 0 0 8px;
   color: var(--color-gold);
   font-size: var(--type-overline-size, 12px);
-  line-height: 1;
+  line-height: var(--line-height-ui);
   font-weight: var(--font-weight-overline);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--type-label-tracking);
 }
 
 .news-list__title {
@@ -165,10 +165,10 @@
   background: var(--color-gold);
   color: var(--color-white);
   font-family: var(--font-main);
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-size: var(--type-button-size);
+  line-height: var(--line-height-ui);
+  font-weight: var(--type-button-weight);
+  letter-spacing: var(--type-button-tracking);
   white-space: nowrap;
   cursor: pointer;
   transition: opacity var(--transition-fast);

@@ -25,7 +25,7 @@
                 <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
-            <div class="mcs__locale-menu" id="mcs-locale-list" role="listbox" hidden data-case-locale-menu>
+            <div class="mcs__locale-menu ui-scroll" id="mcs-locale-list" role="listbox" hidden data-case-locale-menu>
               {{#each regions}}
               <button
                 class="mcs__locale-option{{tabClass}}"
@@ -57,7 +57,7 @@
                 <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
-            <div class="mcs__locale-menu" id="mcs-duration-list" role="listbox" hidden data-case-duration-menu>
+            <div class="mcs__locale-menu ui-scroll" id="mcs-duration-list" role="listbox" hidden data-case-duration-menu>
               <button class="mcs__locale-option is-active" type="button" role="option" data-case-days="" aria-selected="true" data-i18n="cases.allDays">Все сроки</button>
               <button class="mcs__locale-option" type="button" role="option" data-case-days="7" aria-selected="false">7 дней</button>
               <button class="mcs__locale-option" type="button" role="option" data-case-days="12" aria-selected="false">12 дней</button>

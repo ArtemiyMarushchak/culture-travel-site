@@ -7,15 +7,7 @@ body {
 html {
   margin: 0;
   padding: 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   scroll-behavior: smooth;
-}
-
-html::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  background: transparent;
 }
 
 body {
@@ -31,12 +23,6 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-*::-webkit-scrollbar {
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
 }
 
 a,

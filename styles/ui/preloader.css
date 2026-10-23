@@ -10,7 +10,7 @@
   margin: 0;
   /* Всегда тёмная брендовая заставка — как --color-header */
   background: var(--color-header, #0d0d0d);
-  color: #fff;
+  color: var(--color-white);
   pointer-events: none;
   opacity: 1;
   transition: opacity 0.4s ease;
@@ -45,11 +45,11 @@ html.is-preloading.is-preloaded .ct-preloader {
 
 .ct-preloader__brand {
   font-family: var(--font-main, 'Montserrat', Arial, sans-serif);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: var(--type-caption-size);
+  font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-overline-tracking);
   text-transform: uppercase;
-  color: #fff;
+  color: var(--color-white);
   opacity: 0.72;
 }
 

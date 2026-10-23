@@ -1,14 +1,20 @@
 {
-  "_comment": "Скопируйте → my-hotel.json (без _). Фото: assets/images/hotels/. Черновик = имя с _. См. docs/ADMIN.md",
+  "_comment": "Шаблон отдельной страницы отеля (если понадобится). Каталог править в _catalog.json.",
   "slug": "hotel-slug",
   "name": "Название отеля",
-  "location": "Страна, город",
+  "nameEn": "Hotel name",
+  "country": "Страна",
+  "countryEn": "Country",
+  "flag": "/assets/images/flags/xx.svg",
   "stars": 5,
-  "themes": ["beach", "city"],
-  "description": "Короткое описание для карточки (2-3 предложения).",
-  "body": "<p>Дополнительный текст на странице отеля.</p>",
+  "category": "europe",
+  "cover": "/assets/images/hotels/hotel-slug/01.jpg",
+  "excerpt": "Короткое описание для карточки.",
+  "excerptEn": "Short card description.",
+  "description": "Текст для модалки / страницы.",
+  "descriptionEn": "Modal / page text.",
   "media": [
-    { "type": "image", "src": "/assets/images/placeholder.svg", "alt": "Описание фото" }
+    { "type": "image", "src": "/assets/images/hotels/hotel-slug/01.jpg", "alt": "Описание фото" }
   ],
   "seo": {
     "title": "Название отеля | Culture Travel",

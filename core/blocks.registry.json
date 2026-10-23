@@ -117,6 +117,12 @@
       "dataSource": "content/cruises/catalog.json",
       "dataPrepare": "cruisesCatalog"
     },
+    "type-specimen": {
+      "label": "Типографика (служебная)",
+      "css": true,
+      "js": true,
+      "scope": "system"
+    },
     "error-404": {
       "label": "404",
       "css": true,

@@ -62,6 +62,7 @@
           >{{label}}</a>
           {{/each}}
           <a class="lf__link" href="{{basePath}}/notice/" data-i18n="footer.privacyShort">Приватность</a>
+          <a class="lf__link" href="{{basePath}}/copyright/" data-i18n="footer.copyright">Авторское право</a>
         </nav>
 
         <div class="lf__col">
@@ -90,10 +91,13 @@
 
       <div class="lf__bottom">
         <span class="lf__dev">
-          <span data-i18n="footer.dev">Разработал —</span>
-          <a class="lf__link" href="{{developerUrl}}" target="_blank" rel="noopener noreferrer">{{developerName}}</a>
+          <span data-ct-credit-anchor data-i18n="footer.dev">Разработал</span>
+          <span aria-hidden="true">—</span>
+          <button type="button" class="lf__dev-btn" data-ct-credit aria-haspopup="dialog" aria-expanded="false">{{developerName}}</button>
         </span>
-        <span class="lf__copyban" data-i18n="footer.copyban">Копирование с сайта любого контента запрещено</span>
+        <span class="lf__copyban">
+          <a class="lf__link" href="{{basePath}}/copyright/" data-i18n="footer.copyban">Копирование с сайта любого контента запрещено</a>
+        </span>
       </div>
     </div>
   </div>

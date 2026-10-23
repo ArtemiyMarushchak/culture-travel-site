@@ -1,4 +1,4 @@
-/* Страница круизов — hero + аккордеон направлений + SVG-схемы */
+/* Круизы — journal / VIP magazine layout */
 
 .cruises-page {
   background: var(--color-bg);
@@ -11,26 +11,38 @@
   box-sizing: border-box;
 }
 
-/* —— Hero —— */
+/* Full-bleed hero — как на главной */
 .cruises-page__hero {
   position: relative;
   display: grid;
-  min-height: min(78vh, 720px);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--color-white);
   overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--color-header);
+  box-shadow: none;
 }
 
 .cruises-page__hero-media {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background: var(--color-header);
 }
 
 .cruises-page__hero-poster,
 .cruises-page__hero-video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .cruises-page__hero-video {
@@ -38,54 +50,84 @@
   inset: 0;
 }
 
-.cruises-page__hero-overlay {
+.cruises-page__hero-rail {
+  width: 100%;
+  max-width: var(--layout-rail-max);
+  margin-inline: auto;
+  padding-inline: var(--layout-rail-pad);
+  box-sizing: border-box;
+}
+
+.cruises-page__hero-top {
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--color-header) 55%, transparent) 0%, color-mix(in srgb, var(--color-header) 78%, transparent) 100%);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding-top: calc(var(--header-height) + var(--crumbs-offset));
+  pointer-events: none;
+}
+
+.cruises-page__hero-top .crumbs {
+  margin: 0;
+  pointer-events: auto;
 }
 
 .cruises-page__hero-content {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  max-width: var(--layout-rail-max);
   width: 100%;
-  margin-inline: auto;
-  padding:
-    calc(var(--header-height) + var(--space-2xl))
-    var(--layout-rail-pad)
-    var(--space-2xl);
+  min-width: 0;
+  padding: 0 0 clamp(40px, 6vh, 96px);
+  background: linear-gradient(
+    180deg,
+    transparent 42%,
+    color-mix(in srgb, var(--color-header) 58%, transparent) 100%
+  );
+  pointer-events: none;
 }
 
-.cruises-page__partner {
+.cruises-page__hero-content .cruises-page__hero-rail {
+  pointer-events: auto;
+}
+
+.cruises-page__overline {
   margin: 0 0 var(--space-sm);
   color: var(--color-gold);
   font-size: var(--type-overline-size, 12px);
-  line-height: 1;
+  line-height: var(--line-height-ui);
   font-weight: var(--font-weight-overline);
-  letter-spacing: 0.14em;
+  letter-spacing: var(--type-overline-tracking);
   text-transform: uppercase;
 }
 
 .cruises-page__title {
   margin: 0 0 var(--space-md);
-  max-width: 16ch;
+  max-width: 100%;
+  min-width: 0;
   color: var(--color-white);
-  font-size: var(--type-section-size);
-  line-height: var(--type-section-leading);
+  font-size: var(--type-hero-size, var(--type-section-size));
+  line-height: var(--type-hero-leading, var(--type-section-leading));
   font-weight: var(--font-weight-title);
-  letter-spacing: var(--type-section-tracking);
+  letter-spacing: var(--type-hero-tracking, var(--type-section-tracking));
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .cruises-page__lead {
-  margin: 0 0 var(--space-xl);
-  max-width: 34rem;
-  color: color-mix(in srgb, var(--color-white) 82%, transparent);
+  margin: 0;
+  max-width: min(52rem, 100%);
+  min-width: 0;
+  color: var(--color-white);
   font-size: var(--type-body-size);
   line-height: var(--type-body-leading);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .cruises-page__hero-actions,
@@ -106,10 +148,10 @@
   background: transparent;
   color: var(--color-white) !important;
   font-family: var(--font-main);
-  font-size: var(--font-nav);
-  font-weight: var(--font-weight-ui);
-  letter-spacing: var(--tracking-nav);
-  text-transform: uppercase;
+  font-size: var(--type-button-size);
+  font-weight: var(--type-button-weight);
+  letter-spacing: var(--type-button-tracking);
+  text-transform: none;
   text-decoration: none !important;
   transition: opacity var(--transition-fast);
 }
@@ -137,28 +179,133 @@
   color: var(--ui-button-color) !important;
 }
 
-/* —— Shell / catalog —— */
+/* —— Shell —— */
 .cruises-page__shell {
   max-width: var(--layout-rail-max);
   margin: 0 auto;
   padding:
-    var(--crumbs-offset)
+    0
     var(--layout-rail-pad)
     var(--space-section-y);
 }
 
+/* —— Intro magazine spread —— */
+.cruises-page__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: var(--space-edge-lg);
+  align-items: center;
+  margin: 0 0 var(--space-2xl);
+  padding-top: 40px;
+}
+
+.cruises-page__intro-title,
+.cruises-page__section-title,
 .cruises-page__catalog-title {
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--space-md);
   color: var(--color-ink);
-  font-size: var(--type-block-size, var(--type-card-size));
-  line-height: var(--type-block-leading, var(--type-card-leading));
+  font-size: var(--type-section-size);
+  line-height: var(--type-section-leading);
   font-weight: var(--font-weight-title);
+  letter-spacing: var(--type-section-tracking);
+}
+
+.cruises-page__intro-text,
+.cruises-page__section-lead,
+.cruises-page__catalog-lead {
+  margin: 0;
+  max-width: 36rem;
+  color: var(--color-ink-muted, color-mix(in srgb, var(--color-ink) 72%, transparent));
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.cruises-page__intro-media {
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius);
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg);
+}
+
+.cruises-page__intro-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s ease;
+}
+
+.cruises-page__intro.is-inview .cruises-page__intro-media img {
+  transform: scale(1.03);
+}
+
+/* —— Fleet —— */
+.cruises-page__fleet {
+  margin: 0 0 var(--space-2xl);
+}
+
+.cruises-page__section-lead {
+  margin-bottom: var(--space-lg);
+}
+
+.cruises-page__ships {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cruises-page__ship {
+  min-width: 0;
+}
+
+.cruises-page__ship-media {
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 16 / 9;
+  background: var(--color-shape);
+  margin-bottom: 12px;
+}
+
+.cruises-page__ship-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease, opacity 0.4s ease;
+}
+
+.cruises-page__ship:hover .cruises-page__ship-media img {
+  transform: scale(1.05);
+}
+
+.cruises-page__ship-name {
+  margin: 0 0 4px;
+  font-size: var(--type-card-size);
+  line-height: var(--type-card-leading);
+  font-weight: var(--font-weight-title);
+}
+
+.cruises-page__ship-meta {
+  margin: 0;
+  color: var(--color-ink-muted, color-mix(in srgb, var(--color-ink) 68%, transparent));
+  font-size: var(--type-small-size);
+  letter-spacing: var(--type-body-tracking);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* —— Catalog / accordion —— */
+.cruises-page__catalog-lead {
+  margin: 0 0 var(--space-lg);
 }
 
 .cruises-page__accordion {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .cruises-page__region {
@@ -192,8 +339,8 @@
 
 .cruises-page__region-count {
   color: var(--color-ink-on-shape-muted);
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  font-size: var(--type-small-size);
+  letter-spacing: var(--type-body-tracking);
 }
 
 .cruises-page__chevron {
@@ -214,8 +361,34 @@
   display: none;
 }
 
+.cruises-page__region-spread {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 22px;
+  padding-top: 18px;
+  align-items: start;
+}
+
+.cruises-page__region-media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 1 / 1;
+  background: color-mix(in srgb, var(--color-header) 88%, var(--color-black));
+  position: sticky;
+  top: calc(var(--header-height) + 16px);
+}
+
+.cruises-page__region-media img,
+.cruises-page__region-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .cruises-page__region-intro {
-  margin: 16px 0 18px;
+  margin: 0 0 18px;
   max-width: 40rem;
   color: var(--color-ink-on-shape-muted);
   font-size: var(--type-body-size);
@@ -240,8 +413,8 @@
 .cruises-page__map-label {
   fill: var(--color-ink-on-shape);
   font-family: var(--font-main);
-  font-size: 11px;
-  font-weight: 500;
+  font-size: var(--type-caption-size);
+  font-weight: var(--font-weight-medium);
 }
 
 .cruises-page__map-route {
@@ -308,15 +481,15 @@
   gap: 8px 14px;
   margin: 0;
   color: var(--color-ink-on-shape);
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-leading);
 }
 
 .cruises-page__item-note {
   margin: 8px 0 0;
   color: var(--color-ink-on-shape-muted);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-leading);
 }
 
 .cruises-page__ask {
@@ -358,19 +531,91 @@
   line-height: var(--type-body-leading);
 }
 
+/* Reveal */
+[data-cruise-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+[data-cruise-reveal].is-inview {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes cruises-kenburns {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+/* Desktop only: one-line hero title */
+@media (min-width: 961px) {
+  .cruises-page__title {
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
 @media (max-width: 1180px) {
-  .cruises-page__hero-content,
   .cruises-page__shell {
     padding-inline: var(--container-padding-tablet);
+  }
+
+  .cruises-page__hero-rail {
+    padding-inline: var(--container-padding-tablet);
+  }
+
+  .cruises-page__region-spread {
+    grid-template-columns: 1fr;
+  }
+
+  .cruises-page__region-media {
+    position: static;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 900px) {
+  .cruises-page__title {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .cruises-page__intro {
+    grid-template-columns: 1fr;
+    gap: var(--space-edge-lg);
+    padding-top: 15px;
+  }
+
+  .cruises-page__intro-media {
+    order: -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .cruises-page__ships {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
-  .cruises-page__hero {
-    min-height: min(70vh, 560px);
+  .cruises-page__hero-rail {
+    padding-inline: var(--space-edge);
   }
 
-  .cruises-page__hero-content,
+  .cruises-page__hero-content {
+    padding-bottom: clamp(28px, 5vh, 48px);
+  }
+
+  .cruises-page__title {
+    margin-bottom: 12px;
+  }
+
+  .cruises-page__lead {
+    line-height: var(--type-body-leading);
+  }
+
   .cruises-page__shell {
     padding-inline: var(--container-padding-mobile);
   }
@@ -396,7 +641,16 @@
 @media (prefers-reduced-motion: reduce) {
   .cruises-page__btn,
   .cruises-page__chevron,
-  .cruises-page__ask {
+  .cruises-page__ask,
+  .cruises-page__ship-media img,
+  .cruises-page__intro-media img,
+  [data-cruise-reveal] {
     transition: none;
+  }
+
+  .cruises-page__hero-poster,
+  .cruises-page__hero-poster.is-alive {
+    animation: none;
+    transform: none;
   }
 }

@@ -1,0 +1,47 @@
+/* Скроллбар страницы скрыт. Золотой тонкий — только у .ui-scroll (панели, меню, поиск). */
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+.ui-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold) transparent;
+}
+
+.ui-scroll::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+  background: transparent !important;
+}
+
+.ui-scroll::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.ui-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-gold) 75%, transparent) !important;
+  border-radius: 999px;
+  border: 0;
+}
+
+.ui-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold) !important;
+}
+
+.ui-scroll::-webkit-scrollbar-corner {
+  background: transparent !important;
+}

@@ -5,70 +5,32 @@
         class="cruises-page__hero-poster"
         src="{{basePath}}{{heroPoster}}"
         alt=""
-        width="1600"
-        height="900"
+        width="1920"
+        height="1080"
         decoding="async"
       >
       {{heroVideoHtml}}
-      <div class="cruises-page__hero-overlay"></div>
     </div>
+
+    <div class="cruises-page__hero-top">
+      <div class="cruises-page__hero-rail">
+        <nav class="crumbs crumbs--on-media" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
+          <ol class="crumbs__list">
+            <li class="crumbs__item">
+              <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
+            </li>
+            <li class="crumbs__item">
+              <span class="crumbs__current" data-i18n="nav.cruises">Круизы</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
     <div class="cruises-page__hero-content">
-      <p class="cruises-page__partner">Партнёр · {{partner}}</p>
-      <h1 class="cruises-page__title" id="cruises-title" data-i18n-src data-ru="{{heroTitle}}" data-en="{{heroTitleEn}}">{{heroTitle}}</h1>
-      <p class="cruises-page__lead" data-i18n-src data-ru="{{heroLead}}" data-en="{{heroLeadEn}}">{{heroLead}}</p>
-      <div class="cruises-page__hero-actions">
-        <a class="cruises-page__btn cruises-page__btn--solid" href="{{telegram}}" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a class="cruises-page__btn" href="tel:{{phoneRaw}}">{{phoneDisplay}}</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="cruises-page__shell">
-    <nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
-      <ol class="crumbs__list">
-        <li class="crumbs__item">
-          <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
-        </li>
-        <li class="crumbs__item">
-          <span class="crumbs__current" data-i18n="nav.cruises">Круизы</span>
-        </li>
-      </ol>
-    </nav>
-
-    <div class="cruises-page__catalog">
-      <h2 class="cruises-page__catalog-title" data-i18n-src data-ru="{{catalogTitle}}" data-en="{{catalogTitleEn}}">{{catalogTitle}}</h2>
-
-      <div class="cruises-page__accordion" data-cruises-accordion>
-        {{#each regions}}
-        <article class="cruises-page__region{{openClass}}" data-cruise-region id="{{id}}">
-          <button
-            class="cruises-page__region-tab"
-            type="button"
-            data-cruise-toggle
-            aria-expanded="{{expanded}}"
-          >
-            <span class="cruises-page__region-name" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</span>
-            <span class="cruises-page__region-count">{{cruiseCount}}</span>
-            <svg class="cruises-page__chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
-              <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <div class="cruises-page__region-panel" data-cruise-panel{{hiddenAttr}}>
-            <p class="cruises-page__region-intro" data-i18n-src data-ru="{{intro}}" data-en="{{introEn}}">{{intro}}</p>
-            {{mapHtml}}
-            {{cruisesHtml}}
-          </div>
-        </article>
-        {{/each}}
-      </div>
-    </div>
-
-    <div class="ui-shape cruises-page__cta">
-      <h2 class="cruises-page__cta-title" data-i18n-src data-ru="{{ctaTitle}}" data-en="{{ctaTitleEn}}">{{ctaTitle}}</h2>
-      <p class="cruises-page__cta-text" data-i18n-src data-ru="{{ctaText}}" data-en="{{ctaTextEn}}">{{ctaText}}</p>
-      <div class="cruises-page__cta-actions">
-        <a class="cruises-page__btn cruises-page__btn--solid" href="{{telegram}}" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a class="cruises-page__btn" href="tel:{{phoneRaw}}">{{phoneDisplay}}</a>
+      <div class="cruises-page__hero-rail">
+        <h1 class="cruises-page__title" id="cruises-title" data-i18n-src data-ru="{{heroTitle}}" data-en="{{heroTitleEn}}">{{heroTitle}}</h1>
+        <p class="cruises-page__lead" data-i18n-src data-ru="{{heroLead}}" data-en="{{heroLeadEn}}">{{heroLead}}</p>
       </div>
     </div>
   </div>

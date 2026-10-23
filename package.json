@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node tools/build.mjs",
     "dev": "node tools/build.mjs --watch",
-    "preview": "node tools/build.mjs && node tools/preview.mjs"
+    "preview": "node tools/build.mjs && node tools/preview-keep.mjs"
   },
   "engines": {
     "node": ">=18"

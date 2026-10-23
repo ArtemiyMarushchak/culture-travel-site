@@ -207,9 +207,9 @@ html[data-lang="en"] .avb__title {
   margin-inline: 0;
   max-width: 100%;
   font-size: clamp(14px, 0.7vw + 10px, 26px);
-  line-height: 1.35;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  line-height: var(--type-ui-leading);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--type-ui-tracking);
   color: color-mix(in srgb, var(--color-white) 86%, transparent);
   text-shadow: var(--shadow-title);
   white-space: nowrap;
@@ -237,14 +237,14 @@ html[data-lang="en"] .avb__title {
 
   .avb__lead {
     max-width: 22em;
-    font-size: 14px;
+    font-size: var(--type-small-size);
   }
 }
 
 @media (max-width: 380px) {
   .avb__lead {
     max-width: 17em;
-    font-size: 13px;
+    font-size: var(--type-small-size);
   }
 }
 

@@ -1,0 +1,15 @@
+{
+  "slug": "test-route",
+  "title": "Короткая заметка о маршруте",
+  "titleEn": "A short note about a route",
+  "date": "2026-10-01",
+  "cover": "/assets/images/placeholder-gray.svg",
+  "excerpt": "Тестовая новость. Так выглядит строка в ленте: дата, заголовок и спокойный абзац.",
+  "excerptEn": "A test story. This is how a row looks: date, title and a quiet paragraph.",
+  "body": "<p>Это тестовая новость. Здесь позже будет настоящий материал: направление, даты и короткий рассказ.</p><p>Сейчас карточка нужна только чтобы проверить ленту, обложку и страницу новости.</p>",
+  "bodyEn": "<p>This is a test story. A real note — destination, dates and a short account — will go here later.</p><p>For now the card only checks the feed, the cover and the story page.</p>",
+  "seo": {
+    "title": "Короткая заметка о маршруте | Culture Travel",
+    "description": "Тестовая новость Culture Travel."
+  }
+}

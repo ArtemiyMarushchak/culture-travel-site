@@ -184,7 +184,7 @@ html[data-theme="dark"] .sv__outline path {
   font-size: var(--type-overline-size);
   line-height: var(--type-overline-leading);
   font-weight: var(--font-weight-title);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--type-overline-tracking);
   text-transform: uppercase;
   color: var(--color-ink-on-shape);
   text-align: center;
@@ -476,10 +476,10 @@ html[data-theme="dark"] .sv__outline path {
     flex: 0 0 auto;
     min-width: 1.5em;
     margin-right: 2px;
-    font-size: 13px;
-    line-height: 1.2;
-    letter-spacing: 0.04em;
-    font-weight: 500;
+    font-size: var(--type-small-size);
+    line-height: var(--type-card-leading);
+    letter-spacing: var(--type-body-tracking);
+    font-weight: var(--font-weight-medium);
     text-transform: none;
     color: var(--color-gold);
     opacity: 0.85;
@@ -492,10 +492,10 @@ html[data-theme="dark"] .sv__outline path {
     width: auto;
     flex: 1 1 auto;
     overflow: hidden;
-    font-size: 17px;
-    line-height: 1.3;
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    font-size: var(--type-card-size);
+    line-height: var(--type-card-leading);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--type-ui-tracking);
     text-transform: none;
     color: var(--color-ink-on-shape);
     text-align: left;
@@ -528,7 +528,7 @@ html[data-theme="dark"] .sv__outline path {
   .sv__tab:hover .sv__chevron,
   .sv__tab:hover .sv__tab-name,
   .sv__tab:hover .sv__tab-index {
-    opacity: 0.72;
+    opacity: var(--ui-link-hover-opacity);
   }
 
   .sv__tab:active {
@@ -558,6 +558,6 @@ html[data-theme="dark"] .sv__outline path {
   .sv__tab.is-active .sv__tab-name,
   .sv__tab:hover:not(.is-active) .sv__tab-name,
   .sv__tab:focus-visible:not(.is-active) .sv__tab-name {
-    font-size: 17px;
+    font-size: var(--type-card-size);
   }
 }

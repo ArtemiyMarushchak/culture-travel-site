@@ -206,17 +206,10 @@ function normalizeContentData(data) {
   };
 }
 
-function prepareHotelsCatalog() {
-  return listContentJson('content/hotels').map((hotel) => {
-    const cover = (hotel.media || []).find((item) => item.type === 'image' && item.src)?.src
-      || '/assets/images/placeholder.svg';
-    return {
-      ...hotel,
-      cover,
-      themes: (hotel.themes || []).join(','),
-      mediaJson: JSON.stringify(hotel.media || []).replace(/'/g, '&#39;'),
-    };
-  });
+function prepareHotelsStories() {
+  const path = join(ROOT, 'content/hotels/_catalog.json');
+  if (!existsSync(path)) return { categories: [], hotels: [] };
+  return JSON.parse(readFileSync(path, 'utf8'));
 }
 
 function prepareCasesFeatured() {
@@ -272,7 +265,7 @@ function prepareCruisesCatalog() {
   const catalog = readJson('content/cruises/catalog.json');
   const bp = (site.basePath || '').replace(/\/$/, '');
   const openFirst = catalog.openFirst || (catalog.regions?.[0]?.id) || '';
-  const poster = catalog.heroPoster || '/assets/images/services/cruises.jpg';
+  const poster = catalog.heroPoster || '/assets/images/cruises/hero.jpg';
   const videoPath = catalog.heroVideo || '';
   const videoAbs = videoPath ? join(ROOT, videoPath.replace(/^\//, '')) : '';
   const hasVideo = videoAbs && existsSync(videoAbs);
@@ -283,10 +276,27 @@ function prepareCruisesCatalog() {
 
   const telegram = site.contacts?.telegram || site.social?.telegram || '#';
 
+  const ships = (catalog.ships || []).map((ship) => ({
+    name: ship.name || '',
+    cabins: ship.cabins || '',
+    cabinsEn: ship.cabinsEn || ship.cabins || '',
+    guests: ship.guests || '',
+    guestsEn: ship.guestsEn || ship.guests || '',
+    image: ship.image || '',
+  }));
+
   const regions = (catalog.regions || []).map((region) => {
     const cruises = region.cruises || [];
     const isOpen = region.id === openFirst;
     const mapStops = cruises[0]?.stops || [];
+    const image = region.image || poster;
+    const regionVideoPath = region.video || `/assets/videos/cruises/${region.id}.mp4`;
+    const regionVideoAbs = join(ROOT, regionVideoPath.replace(/^\//, ''));
+    const hasRegionVideo = existsSync(regionVideoAbs);
+    const regionMediaHtml = hasRegionVideo
+      ? `<video data-cruise-region-video src="${escapeHtml(`${bp}${regionVideoPath}`)}" poster="${escapeHtml(`${bp}${image}`)}" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>`
+      : `<img src="${escapeHtml(`${bp}${image}`)}" alt="" width="1600" height="1600" loading="lazy" decoding="async">`;
+
     const cruisesHtml = `<ul class="cruises-page__list">${cruises.map((cruise) => {
       const note = cruise.note
         ? `<p class="cruises-page__item-note" data-i18n-src data-ru="${escapeHtml(cruise.note)}" data-en="${escapeHtml(cruise.noteEn || cruise.note)}">${escapeHtml(cruise.note)}</p>`
@@ -314,6 +324,7 @@ function prepareCruisesCatalog() {
       openClass: isOpen ? ' is-open' : '',
       expanded: isOpen ? 'true' : 'false',
       hiddenAttr: isOpen ? '' : ' hidden',
+      regionMediaHtml,
       mapHtml: cruiseRouteMapSvg(region.id, mapStops),
       cruisesHtml,
     };
@@ -327,8 +338,22 @@ function prepareCruisesCatalog() {
     heroLeadEn: catalog.heroLeadEn || catalog.leadEn || '',
     heroPoster: poster,
     heroVideoHtml,
+    introOverline: catalog.introOverline || '',
+    introOverlineEn: catalog.introOverlineEn || catalog.introOverline || '',
+    introTitle: catalog.introTitle || '',
+    introTitleEn: catalog.introTitleEn || catalog.introTitle || '',
+    introText: catalog.introText || '',
+    introTextEn: catalog.introTextEn || catalog.introText || '',
+    introImage: catalog.introImage || '/assets/images/cruises/experience.jpg',
+    fleetTitle: catalog.fleetTitle || 'Флот',
+    fleetTitleEn: catalog.fleetTitleEn || 'Fleet',
+    fleetLead: catalog.fleetLead || '',
+    fleetLeadEn: catalog.fleetLeadEn || catalog.fleetLead || '',
+    ships,
     catalogTitle: catalog.catalogTitle || 'Направления',
     catalogTitleEn: catalog.catalogTitleEn || 'Destinations',
+    catalogLead: catalog.catalogLead || '',
+    catalogLeadEn: catalog.catalogLeadEn || catalog.catalogLead || '',
     ctaTitle: catalog.ctaTitle || '',
     ctaTitleEn: catalog.ctaTitleEn || '',
     ctaText: catalog.ctaText || '',
@@ -522,8 +547,17 @@ function resolveBlockData(block, pageData) {
       : `<nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs"><ol class="crumbs__list"><li class="crumbs__item"><a class="crumbs__link" href="${site.basePath || ''}/" data-i18n="nav.home">Главная</a></li><li class="crumbs__item"><span class="crumbs__current" data-i18n="news.title">Новости</span></li></ol></nav>`;
   }
   if (prepare === 'hotelsCatalog' || source === 'content/hotels' || block.type === 'hotel-catalog') {
-    data.items = prepareHotelsCatalog();
-    data.hotelsJson = JSON.stringify(listContentJson('content/hotels'));
+    const hotelsCatalog = prepareHotelsStories();
+    data.storiesJson = JSON.stringify(hotelsCatalog);
+    const bp = site.basePath || '';
+    const poster = hotelsCatalog.heroPoster || '/assets/images/services/hotels-villas.jpg';
+    data.heroPoster = poster;
+    const videoPath = hotelsCatalog.heroVideo || '';
+    const videoAbs = videoPath ? join(ROOT, videoPath.replace(/^\//, '')) : '';
+    const hasVideo = videoAbs && existsSync(videoAbs);
+    data.heroVideoHtml = hasVideo
+      ? `<video class="hotel-catalog__hero-video" src="${escapeHtml(`${bp}${videoPath}`)}" poster="${escapeHtml(`${bp}${poster}`)}" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>`
+      : '';
   }
 
   if (block.type === 'hotel-layout' && Array.isArray(data.media)) {
@@ -633,7 +667,7 @@ function loadBlockHtml(blockType, blockData = {}) {
       ? `<span class="lf__registry-num">№ ${escapeHtml(String(site.legal.registryNumber))}</span>`
       : '';
   }
-  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'hotelsJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml', 'cruisesHtml', 'mapHtml', 'heroVideoHtml', 'hiddenAttr', 'openClass'];
+  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'storiesJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml', 'cruisesHtml', 'mapHtml', 'heroVideoHtml', 'regionMediaHtml', 'hiddenAttr', 'openClass'];
   html = html.replace(/\{\{#each (\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, itemTpl) => {
     const arr = merged[key];
     if (!Array.isArray(arr)) return '';

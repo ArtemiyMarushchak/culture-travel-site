@@ -37,5 +37,12 @@ tmp/
 .temp/
 .tmp-crops/
 
+# Local PDF source + raw extracts (not for git)
+content/cruises/_src/
+content/cruises/_pdf_extract*.txt
+content/cruises/_extract/
+assets/images/cruises/embeds/
+assets/images/cruises/pages/
+
 # Legacy design previews (not part of site)
 preview/

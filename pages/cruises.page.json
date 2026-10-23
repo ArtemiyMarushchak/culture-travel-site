@@ -2,15 +2,12 @@
   "slug": "/cruises/",
   "title": "Круизы",
   "titleEn": "Cruises",
-  "description": "Экспедиционные круизы — Culture Travel.",
+  "description": "Культурологические экспедиционные круизы Swan Hellenic — Culture Travel.",
   "robots": "noindex",
   "blocks": [
     {
-      "type": "page-stub",
-      "data": {
-        "title": "Круизы",
-        "titleEn": "Cruises"
-      }
+      "type": "cruises-page",
+      "prepare": "cruisesCatalog"
     }
   ]
 }

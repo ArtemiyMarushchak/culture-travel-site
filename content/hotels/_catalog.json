@@ -1,0 +1,126 @@
+{
+  "_comment": "Каталог отелей. Панель разделов оставлена. Карточки тестовые — реальные отели подставятся позже.",
+  "updatedAt": "2026-10-23",
+  "title": "Эксклюзивные отели мира",
+  "titleEn": "Exclusive hotels worldwide",
+  "lead": "Каталог тематических люкс-отелей — для тех, кто ценит атмосферу, сервис и уникальность.",
+  "leadEn": "A catalogue of characterful luxury hotels — for those who value atmosphere, service and rarity.",
+  "categories": [
+    {
+      "id": "africa",
+      "title": "Африка",
+      "titleEn": "Africa"
+    },
+    {
+      "id": "wellness",
+      "title": "Wellness отели",
+      "titleEn": "Wellness hotels"
+    },
+    {
+      "id": "indian_ocean",
+      "title": "Острова Индийского океана",
+      "titleEn": "Indian Ocean islands"
+    },
+    {
+      "id": "asia",
+      "title": "Азия",
+      "titleEn": "Asia"
+    },
+    {
+      "id": "middle_east",
+      "title": "Ближний Восток",
+      "titleEn": "Middle East"
+    },
+    {
+      "id": "europe",
+      "title": "Европа",
+      "titleEn": "Europe"
+    },
+    {
+      "id": "beach",
+      "title": "Пляжный отдых",
+      "titleEn": "Beach escapes"
+    }
+  ],
+  "countries": [
+    { "country": "Бахрейн", "countryEn": "Bahrain" },
+    { "country": "Греция", "countryEn": "Greece" },
+    { "country": "Египет", "countryEn": "Egypt" },
+    { "country": "Индия", "countryEn": "India" },
+    { "country": "Индонезия", "countryEn": "Indonesia" },
+    { "country": "Испания", "countryEn": "Spain" },
+    { "country": "Италия", "countryEn": "Italy" },
+    { "country": "Катар", "countryEn": "Qatar" },
+    { "country": "Мальдивы", "countryEn": "Maldives" },
+    { "country": "Маврикий", "countryEn": "Mauritius" },
+    { "country": "Мьянма", "countryEn": "Myanmar" },
+    { "country": "ОАЭ", "countryEn": "UAE" },
+    { "country": "Оман", "countryEn": "Oman" },
+    { "country": "Руанда", "countryEn": "Rwanda" },
+    { "country": "Саудовская Аравия", "countryEn": "Saudi Arabia" },
+    { "country": "Сейшелы", "countryEn": "Seychelles" },
+    { "country": "Танзания", "countryEn": "Tanzania" },
+    { "country": "Турция", "countryEn": "Türkiye" },
+    { "country": "Франция", "countryEn": "France" }
+  ],
+  "hotels": [
+    {
+      "id": "test-hotel",
+      "category": "africa",
+      "name": "Тестовый отель",
+      "nameEn": "Test hotel",
+      "country": "Танзания",
+      "countryEn": "Tanzania",
+      "flag": "/assets/images/flags/tz.svg",
+      "stars": 5,
+      "cover": "/assets/images/placeholder-gray.svg",
+      "excerpt": "Тестовая карточка каталога: видео, два кадра и текст-заглушка.",
+      "excerptEn": "A test catalogue card: video, two frames and placeholder copy.",
+      "description": "Это тестовая карточка. Название, описание и фото временные — так проверяется панель, сетка и плеер.",
+      "descriptionEn": "This is a test card. The name, copy and photos are temporary, so the panel, grid and player can be checked.",
+      "media": [
+        {
+          "type": "video",
+          "src": "/assets/videos/hotels/hero.mp4",
+          "alt": "Тестовый отель"
+        },
+        {
+          "type": "image",
+          "src": "/assets/images/placeholder-gray.svg",
+          "alt": "Тестовый отель"
+        },
+        {
+          "type": "image",
+          "src": "/assets/images/placeholder-gray.svg",
+          "alt": "Тестовый отель, второй кадр"
+        }
+      ],
+      "flagEmoji": "🇹🇿"
+    },
+    {
+      "id": "test-villa",
+      "category": "europe",
+      "name": "Тестовая вилла",
+      "nameEn": "Test villa",
+      "country": "Греция",
+      "countryEn": "Greece",
+      "flag": "/assets/images/flags/gr.svg",
+      "stars": 5,
+      "cover": "/assets/images/placeholder-gray.svg",
+      "excerpt": "Вторая тестовая карточка — только фото, без выдуманного отеля.",
+      "excerptEn": "A second test card — a photo only, not a real hotel.",
+      "description": "Вторая тестовая карточка каталога. Реальные отели сюда ещё не заносились.",
+      "descriptionEn": "The second test card. Real hotels have not been added yet.",
+      "media": [
+        {
+          "type": "image",
+          "src": "/assets/images/placeholder-gray.svg",
+          "alt": "Тестовая вилла"
+        }
+      ],
+      "flagEmoji": "🇬🇷"
+    }
+  ],
+  "heroPoster": "/assets/images/services/hotels-villas.jpg",
+  "heroVideo": "/assets/videos/hotels/hero.mp4"
+}

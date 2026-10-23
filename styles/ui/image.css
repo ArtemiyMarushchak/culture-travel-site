@@ -42,7 +42,7 @@
   margin-top: var(--space-sm);
   font-size: var(--font-caption);
   color: var(--color-ink-muted);
-  letter-spacing: 0.04em;
+  letter-spacing: var(--type-body-tracking);
 }
 
 .theme-dark .ui-image__caption {

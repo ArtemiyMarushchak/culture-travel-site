@@ -1,46 +1,184 @@
-<section class="hotel-catalog section" data-block="hotel-catalog">
-  <div class="container">
-    <p class="section__label" data-i18n="hotels.label">Отели</p>
-    <h1 class="section__title" data-i18n="hotels.title">Эксклюзивные отели мира</h1>
-    <p class="type-lead mb-lg" data-i18n="hotels.lead">Каталог тематических люкс-отелей — для тех, кто ценит атмосферу, сервис и уникальность.</p>
-
-    <div class="hotel-catalog__filters" role="group" aria-label="Фильтры" data-i18n-aria="hotels.filters">
-      <button class="hotel-catalog__filter is-active" type="button" data-filter="all" data-i18n="hotels.all">Все</button>
-      <button class="hotel-catalog__filter" type="button" data-filter="beach" data-i18n="hotels.beach">Пляж</button>
-      <button class="hotel-catalog__filter" type="button" data-filter="city" data-i18n="hotels.city">Город</button>
-      <button class="hotel-catalog__filter" type="button" data-filter="mountain" data-i18n="hotels.mountain">Горы</button>
-      <button class="hotel-catalog__filter" type="button" data-filter="safari" data-i18n="hotels.safari">Safari</button>
+<section class="hotel-catalog" data-block="hotel-catalog" data-hotel-catalog>
+  <div class="hotel-catalog__hero">
+    <div class="hotel-catalog__hero-media" aria-hidden="true">
+      <img
+        class="hotel-catalog__hero-poster"
+        src="{{basePath}}{{heroPoster}}"
+        alt=""
+        width="1600"
+        height="1000"
+        decoding="async"
+      >
+      {{heroVideoHtml}}
     </div>
 
-    <div class="hotel-catalog__grid">
-      {{#each items}}
-      <article class="hotel-card" data-themes="{{themes}}">
-        <a class="hotel-card__media" href="{{basePath}}/hotels/{{slug}}/">
-          <img src="{{basePath}}{{cover}}" alt="" loading="lazy" decoding="async" width="720" height="480">
-        </a>
-        <div class="hotel-card__body">
-          <div class="hotel-card__header">
-            <h2 class="hotel-card__name type-card" data-i18n-src data-ru="{{name}}" data-en="{{nameEn}}">{{name}}</h2>
-            <p class="hotel-card__stars" aria-label="{{stars}} звёзд">{{stars}} ★</p>
-          </div>
-          <p class="hotel-card__location" data-i18n-src data-ru="{{location}}" data-en="{{locationEn}}">{{location}}</p>
-            <p class="hotel-card__desc type-card-text" data-i18n-src data-ru="{{description}}" data-en="{{descriptionEn}}">{{description}}</p>
-          <div class="hotel-card__actions">
-            <a class="btn btn--ghost hotel-card__link" href="{{basePath}}/hotels/{{slug}}/" data-i18n="hotels.more">Подробнее</a>
-            <button
-              class="btn hotel-card__btn"
-              type="button"
-              data-hotel-gallery
-              data-name="{{name}}"
-              data-media='{{mediaJson}}'
-              data-i18n="hotels.media"
-            >Фото и видео</button>
-          </div>
-        </div>
-      </article>
-      {{/each}}
+    <div class="hotel-catalog__hero-top">
+      <div class="hotel-catalog__hero-rail">
+        <nav class="crumbs crumbs--on-media" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
+          <ol class="crumbs__list">
+            <li class="crumbs__item">
+              <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
+            </li>
+            <li class="crumbs__item">
+              <span class="crumbs__current" data-i18n="nav.hotels">Отели</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="hotel-catalog__hero-content">
+      <div class="hotel-catalog__hero-rail">
+        <h1 class="hotel-catalog__hero-title" data-i18n="hotels.title">Отели</h1>
+        <p class="hotel-catalog__hero-lead" data-i18n="hotels.lead">Подборка люкс-отелей по направлениям.</p>
+      </div>
     </div>
   </div>
-</section>
 
-<script type="application/json" id="hotels-data" hidden>{{hotelsJson}}</script>
+  <div class="hotel-catalog__catalog-stage">
+    <div class="hotel-catalog__layout">
+      <aside class="hotel-catalog__aside" aria-label="Каталог">
+        <div class="hotel-catalog__filters" data-hotel-filters>
+          <button
+            class="hotel-catalog__filters-scrim"
+            type="button"
+            data-hotel-filters-close
+            tabindex="-1"
+            aria-hidden="true"
+          ></button>
+
+          <div class="hotel-catalog__filters-panel">
+            <header class="hotel-catalog__filters-head">
+              <p class="hotel-catalog__filters-title" id="hotel-filters-title" data-i18n="hotels.filters">Фильтры</p>
+              <button class="sheet-close" type="button" data-hotel-filters-close aria-label="Закрыть">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </header>
+
+            <div class="hotel-catalog__aside-top ui-scroll">
+              <p class="hotel-catalog__aside-label" data-i18n="hotels.sections">Разделы</p>
+              <div class="hotel-catalog__checks" data-hotel-nav></div>
+
+              <p class="hotel-catalog__aside-label hotel-catalog__aside-label--gap" data-i18n="hotels.countries">Страны</p>
+              <div class="hotel-catalog__checks" data-hotel-countries></div>
+            </div>
+
+            <div class="hotel-catalog__filters-foot">
+              <button
+                type="button"
+                class="hotel-catalog__reset is-idle"
+                data-hotel-reset
+                disabled
+                data-i18n="hotels.reset"
+              >Сбросить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotel-catalog__toolbar">
+          <div class="hotel-catalog__search-pill">
+            <svg class="hotel-catalog__search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M16.2 16.2 20 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <label class="sr-only" for="hotel-catalog-search" data-i18n="hotels.search">Поиск по каталогу</label>
+            <input
+              id="hotel-catalog-search"
+              type="search"
+              class="hotel-catalog__search-input"
+              data-hotel-search
+              data-i18n-placeholder="hotels.searchPlaceholder"
+              placeholder="Название, страна…"
+              autocomplete="off"
+            >
+          </div>
+
+          <button
+            type="button"
+            class="hotel-catalog__search-clear is-idle"
+            data-hotel-reset
+            disabled
+            data-i18n-aria="hotels.reset"
+            aria-label="Сбросить"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="hotel-catalog__filters-btn"
+            data-hotel-filters-open
+            data-i18n-aria="hotels.filters"
+            aria-label="Фильтры"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+              <path d="M4 7h16M7 12h10M10 17h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+            <span class="hotel-catalog__filters-count" data-hotel-filters-count hidden></span>
+          </button>
+        </div>
+      </aside>
+
+      <div class="hotel-catalog__main">
+        <div class="hotel-catalog__grid" data-hotel-grid aria-live="polite"></div>
+        <p class="hotel-catalog__empty" data-hotel-empty hidden data-i18n="hotels.empty">Ничего не найдено</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hotel-sheet" data-hotel-sheet aria-hidden="true">
+    <div class="hotel-sheet__backdrop" data-hotel-sheet-close tabindex="-1"></div>
+    <article class="hotel-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="hotel-sheet-title">
+      <header class="hotel-sheet__bar">
+        <p class="hotel-sheet__bar-title" data-hotel-sheet-bar>—</p>
+        <button class="sheet-close" type="button" data-hotel-sheet-close aria-label="Закрыть">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </header>
+
+      <div class="hotel-sheet__body">
+        <div class="hotel-sheet__meta">
+          <p class="hotel-sheet__place">
+            <span class="hotel-sheet__flag" data-hotel-sheet-flag aria-hidden="true"></span>
+            <span class="hotel-sheet__country" data-hotel-sheet-country>—</span>
+          </p>
+          <div class="hotel-sheet__stars" data-hotel-sheet-stars role="img" aria-label="5 ★"></div>
+        </div>
+        <h2 class="hotel-sheet__title" id="hotel-sheet-title" data-hotel-sheet-title>—</h2>
+        <div class="hotel-sheet__text" data-hotel-sheet-text></div>
+
+        <div class="hotel-sheet__media">
+          <div class="hotel-sheet__stage" data-hotel-sheet-stage></div>
+          <div class="hotel-sheet__nav" data-hotel-sheet-nav hidden>
+            <button type="button" class="hotel-sheet__nav-btn" data-hotel-sheet-prev aria-label="Предыдущее">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+                <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="hotel-sheet__count" data-hotel-sheet-count aria-live="polite">01 / 01</div>
+            <button type="button" class="hotel-sheet__nav-btn" data-hotel-sheet-next aria-label="Следующее">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+                <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="hotel-sheet__foot">
+          <p class="hotel-sheet__note" data-i18n="hotels.sheetNote">
+            Сведения об отеле носят ознакомительный характер и могут меняться. Актуальные условия, наличие и детали уточняем при личном запросе.
+          </p>
+          <p class="hotel-sheet__updated" data-hotel-sheet-updated></p>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script type="application/json" id="hotel-catalog-data" hidden>{{storiesJson}}</script>
+</section>

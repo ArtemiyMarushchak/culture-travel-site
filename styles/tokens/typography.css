@@ -4,6 +4,7 @@
 
   --font-weight-title: 600;
   --font-weight-text: 400;
+  --font-weight-medium: 500;
   --font-weight-overline: 500;
   --font-weight-ui: 600;
 
@@ -61,6 +62,40 @@
   --type-overline-leading: 1;
   --type-overline-tracking: 0.14em;
 
+  /*
+    Интерфейс (кнопки, мета, подписи, поля) — вне этой шкалы размеры не ставить.
+
+    роль        моб → 4K    lh     вес   где
+    ui          15 → 22     1.35   400   «Подробнее», чекбоксы, пункты списков, результаты поиска
+    small       14 → 20     1.45   400   мета, крошки, контакты, подсказки
+    caption     12 → 16     1.40   500   бейджи, дисклеймеры, время; капсом — с label-tracking
+    input       16          —      400   поля ввода (iOS не зумит при 16px)
+    button      14 → 20     1      500   все кнопки, обычный регистр
+  */
+  --type-ui-size: clamp(15px, 0.8vw, 22px);
+  --type-ui-leading: 1.35;
+
+  --type-small-size: clamp(14px, 0.75vw, 20px);
+  --type-small-leading: 1.45;
+
+  --type-caption-size: clamp(12px, 0.65vw, 16px);
+  --type-caption-leading: 1.4;
+
+  --type-input-size: 16px;
+  --type-input-leading: var(--type-ui-leading);
+
+  /*
+    Трекинг: обычный текст — 0; хром (шапка, футер, кнопки, вес 500) — ui;
+    капс мелкий (caption) — label; капс overline — overline.
+    Однострочный UI (кнопки, бейджи, капс-подписи) — line-height-ui (1).
+  */
+  --type-ui-tracking: -0.02em;
+  --type-label-tracking: 0.08em;
+
+  --type-button-size: var(--type-small-size);
+  --type-button-weight: var(--font-weight-medium);
+  --type-button-tracking: var(--type-ui-tracking);
+
   --type-lead-size: var(--type-body-size);
   --type-lead-leading: var(--type-body-leading);
   --type-lead-tracking: var(--type-body-tracking);
@@ -81,7 +116,7 @@
   --font-lead: var(--type-body-size);
   --font-body-size: var(--type-body-size);
   --font-small: var(--type-card-text-max);
-  --font-caption: clamp(12px, 0.65vw, 16px);
+  --font-caption: var(--type-caption-size);
   --font-overline: var(--type-overline-size);
   --font-nav: clamp(11px, 0.65vw, 18px);
   --font-menu: clamp(15px, 0.9vw, 26px);

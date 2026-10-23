@@ -1,0 +1,10 @@
+{
+  "slug": "/typography/",
+  "title": "Типографика",
+  "titleEn": "Typography",
+  "description": "Служебная страница: образец типографики сайта.",
+  "robots": "noindex",
+  "blocks": [
+    { "type": "type-specimen", "data": {} }
+  ]
+}

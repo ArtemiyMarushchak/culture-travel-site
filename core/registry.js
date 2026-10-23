@@ -16,6 +16,7 @@ import { initReviews } from '../blocks/reviews/reviews.js';
 import { initServices } from '../blocks/services/services.js';
 import { initCruisesPage } from '../blocks/cruises-page/cruises-page.js';
 import { initFooter } from '../blocks/footer/footer.js';
+import { initTypeSpecimen } from '../blocks/type-specimen/type-specimen.js';
 
 /** @type {Record<string, (root: Element) => unknown>} */
 export const blockInits = {
@@ -31,6 +32,7 @@ export const blockInits = {
   reviews: initReviews,
   services: initServices,
   'cruises-page': initCruisesPage,
+  'type-specimen': initTypeSpecimen,
 };
 
 export const coreFeatures = {

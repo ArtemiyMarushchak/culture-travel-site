@@ -1,0 +1,15 @@
+{
+  "slug": "test-service",
+  "title": "Строка сервиса в ленте",
+  "titleEn": "A service line in the feed",
+  "date": "2026-10-15",
+  "cover": "/assets/images/placeholder-gray.svg",
+  "excerpt": "Третья тестовая новость. Лента из трёх строк, без анонса сайта и без программы тура.",
+  "excerptEn": "A third test story. Three rows in the feed, with no site announcement and no tour programme.",
+  "body": "<p>Тестовая строка про сервис. Текст короткий, чтобы было видно ритм ленты на главной.</p><p>Когда появятся настоящие новости, эти три карточки уберутся.</p>",
+  "bodyEn": "<p>A test line about the service. The copy is short so the rhythm of the home feed is easy to see.</p><p>These three cards will go once real stories are ready.</p>",
+  "seo": {
+    "title": "Строка сервиса в ленте | Culture Travel",
+    "description": "Тестовая новость Culture Travel."
+  }
+}

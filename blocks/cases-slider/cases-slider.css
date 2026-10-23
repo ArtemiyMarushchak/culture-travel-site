@@ -97,7 +97,7 @@
   color: var(--color-ink);
   cursor: pointer;
   font-family: var(--font-main);
-  font-size: 15px;
+  font-size: var(--type-ui-size);
   font-weight: var(--font-weight-text);
   letter-spacing: var(--letter-spacing-body);
   opacity: 1;
@@ -152,7 +152,7 @@
   border: 1px solid var(--color-line);
   border-radius: var(--radius);
   background: var(--color-shape);
-  box-shadow: 0 16px 40px rgba(13, 13, 13, 0.08);
+  box-shadow: 0 16px 40px color-mix(in srgb, var(--color-header) 8%, transparent);
   transform: translateX(-50%);
   animation: mcs-fade-in 0.22s ease;
 }
@@ -167,9 +167,11 @@
 }
 
 .mcs__locale-option {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   width: 100%;
-  padding: 10px var(--space-edge);
+  padding: 10px 12px;
   border: 0;
   border-radius: var(--radius-xs);
   background: transparent;
@@ -177,14 +179,25 @@
   cursor: pointer;
   text-align: left;
   font-family: var(--font-main);
-  font-size: 15px;
+  font-size: var(--type-ui-size);
   font-weight: var(--font-weight-text);
-  line-height: 1.35;
+  line-height: var(--type-ui-leading);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   opacity: 1;
   transition: opacity var(--transition-fast);
+}
+
+.mcs__locale-option::before {
+  content: '';
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid color-mix(in srgb, var(--color-ink-on-shape) 28%, transparent);
+  border-radius: 3px;
+  background: var(--color-shape);
+  box-sizing: border-box;
 }
 
 .mcs__locale-option:hover,
@@ -202,9 +215,16 @@
   font-weight: var(--font-weight-text);
   opacity: 1;
   box-shadow: none;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
+  text-decoration: none;
+}
+
+.mcs__locale-option.is-active::before {
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 8.2 6.8 11 12 5' stroke='%23fff' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 12px 12px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .mcs__locale-option.is-active:hover {
@@ -242,7 +262,7 @@
 .mcs__arrow:hover {
   background: transparent;
   border-color: transparent;
-  opacity: 0.7;
+  opacity: var(--ui-link-hover-opacity);
 }
 
 .mcs__arrow:disabled {
@@ -319,11 +339,11 @@
   border-radius: var(--radius-xs);
   background: var(--color-white);
   color: var(--color-header);
-  font-size: 12px;
-  font-weight: var(--font-weight-ui);
+  font-size: var(--type-caption-size);
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
   text-transform: none;
-  line-height: 1;
+  line-height: var(--line-height-ui);
 }
 
 .mcs__flag {
@@ -337,11 +357,11 @@
   bottom: 12px;
   z-index: 2;
   color: var(--color-white);
-  font-size: 14px;
+  font-size: var(--type-small-size);
   font-weight: var(--font-weight-text);
-  line-height: 1;
+  line-height: var(--line-height-ui);
   letter-spacing: 0;
-  text-shadow: 0 1px 8px rgba(13, 13, 13, 0.45);
+  text-shadow: 0 1px 8px color-mix(in srgb, var(--color-header) 45%, transparent);
 }
 
 .mcs__body {
@@ -388,15 +408,16 @@
   gap: 12px;
   color: var(--color-ink-on-shape) !important;
   text-decoration: none !important;
-  font-size: 15px;
+  font-size: var(--type-ui-size);
   font-weight: var(--font-weight-text);
+  line-height: var(--type-ui-leading);
   letter-spacing: 0;
   text-transform: none;
   transition: opacity var(--transition-fast);
 }
 
 .mcs__more:hover {
-  opacity: 0.7;
+  opacity: var(--ui-link-hover-opacity);
 }
 
 .mcs__more svg {

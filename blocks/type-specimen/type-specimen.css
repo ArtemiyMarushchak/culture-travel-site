@@ -1,0 +1,280 @@
+/* /typography/ — служебный образец всей типографики (RU + EN) */
+
+.tsp {
+  padding:
+    calc(var(--header-height) + var(--crumbs-offset))
+    var(--layout-rail-pad)
+    var(--space-section-y);
+  background: var(--color-bg);
+  color: var(--color-ink-on-shape);
+  font-family: var(--font-main);
+}
+
+.tsp,
+.tsp * {
+  box-sizing: border-box;
+}
+
+.tsp__shell {
+  max-width: var(--layout-rail-max);
+}
+
+.tsp__head {
+  display: grid;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-edge-lg);
+  border-bottom: 1px solid var(--color-line-on-shape);
+}
+
+.tsp__screen {
+  margin: 0;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-leading);
+}
+
+.tsp__section {
+  padding-top: var(--space-edge-lg);
+}
+
+.tsp__section + .tsp__section {
+  margin-top: var(--space-edge-lg);
+  border-top: 1px solid var(--color-line-on-shape);
+}
+
+.tsp__label {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-gold);
+  font-size: var(--type-overline-size);
+  font-weight: var(--font-weight-overline);
+  line-height: var(--type-overline-leading);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+}
+
+/* Шкала: роль | RU | EN */
+
+.tsp__cols,
+.tsp__row {
+  display: grid;
+  grid-template-columns: minmax(180px, 15%) 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.tsp__cols {
+  padding-bottom: var(--space-sm);
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-caption-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-ui);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.tsp__row {
+  align-items: start;
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-line-on-shape);
+}
+
+.tsp__meta > * {
+  margin: 0;
+}
+
+.tsp__role {
+  font-size: var(--type-small-size);
+  font-weight: var(--font-weight-title);
+  line-height: var(--type-small-leading);
+}
+
+.tsp__where,
+.tsp__val {
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-caption-size);
+  line-height: var(--type-caption-leading);
+}
+
+.tsp__val {
+  margin-top: 6px !important;
+  color: var(--color-gold);
+  font-variant-numeric: tabular-nums;
+  white-space: pre-line;
+}
+
+.tsp__sample {
+  margin: 0;
+  min-width: 0;
+}
+
+/* Роли интерфейса — те же токены, что в блоках */
+
+.tsp-ui {
+  margin: 0;
+  font-size: var(--type-ui-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--type-ui-leading);
+  letter-spacing: 0;
+}
+
+.tsp-small {
+  margin: 0;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-small-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--type-small-leading);
+  letter-spacing: 0;
+}
+
+.tsp-caption {
+  margin: 0;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-caption-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--type-caption-leading);
+  letter-spacing: 0;
+}
+
+.tsp-caps {
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-ui);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.tsp-num {
+  font-variant-numeric: tabular-nums;
+}
+
+.tsp-input {
+  width: min(100%, 420px);
+  height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--color-line-on-shape);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-ink-on-shape);
+  font-family: var(--font-main);
+  font-size: var(--type-input-size);
+  line-height: var(--type-input-leading);
+  outline: none;
+}
+
+.tsp-input:focus {
+  border-color: var(--color-gold);
+}
+
+/* Связки */
+
+.tsp__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-line-on-shape);
+}
+
+.tsp__case > * {
+  margin: 0;
+}
+
+.tsp__case-name {
+  display: block;
+  margin: 0 0 var(--space-sm) !important;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-caption-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-ui);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.tsp__gap-xs { margin-top: var(--type-stack-card) !important; }
+.tsp__gap-sm { margin-top: var(--space-sm) !important; }
+.tsp__gap-md { margin-top: var(--space-md) !important; }
+.tsp__gap-lg { margin-top: var(--type-stack-block) !important; }
+
+.tsp__card,
+.tsp__sheet {
+  padding: var(--space-md);
+  border: 1px solid var(--color-line-on-shape);
+  border-radius: var(--radius-sm);
+}
+
+.tsp__card > *,
+.tsp__sheet > * {
+  margin: 0;
+}
+
+.tsp__sheet {
+  padding: 0 0 var(--space-md);
+  overflow: hidden;
+}
+
+.tsp__sheet > :not(.tsp__sheet-bar) {
+  padding-inline: var(--space-md);
+}
+
+.tsp__sheet-bar {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding-inline: var(--space-md);
+  border-bottom: 1px solid var(--color-line-on-shape);
+  color: var(--color-ink-on-shape);
+}
+
+.tsp__inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Шрифт */
+
+.tsp__weights {
+  display: grid;
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
+}
+
+.tsp__weight p {
+  margin: 0;
+  font-size: var(--type-block-size);
+  line-height: var(--type-block-leading);
+  letter-spacing: var(--type-block-tracking);
+}
+
+.tsp__glyphs {
+  font-size: var(--type-card-size);
+  font-weight: var(--font-weight-text);
+  line-height: var(--type-body-leading);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1180px) {
+  .tsp {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 900px) {
+  .tsp__cols {
+    display: none;
+  }
+
+  .tsp__row,
+  .tsp__pair {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 640px) {
+  .tsp {
+    padding:
+      calc(var(--header-height) + var(--crumbs-offset))
+      var(--container-padding-mobile)
+      var(--space-2xl);
+  }
+}

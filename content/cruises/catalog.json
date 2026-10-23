@@ -1,39 +1,79 @@
 {
-  "_comment": "Черновик круизов Swan Hellenic. openFirst = регион, открытый по умолчанию (люкс). Видео: assets/videos/cruises/hero.mp4 — пока можно без файла, будет постер.",
+  "_comment": "Swan Hellenic → Culture Travel. Локальный черновик, не пушить без запроса. Видео регионов: assets/videos/cruises/{id}.mp4 (опционально).",
   "partner": "Swan Hellenic",
   "openFirst": "antarctica",
-  "heroTitle": "Экспедиционные круизы",
-  "heroTitleEn": "Expedition cruises",
-  "heroLead": "Удалённые маршруты на небольших судах — с комфортом бутик-отеля. Подберём каюту и даты.",
-  "heroLeadEn": "Remote itineraries on small ships — boutique-hotel comfort. We match cabin and dates.",
+  "heroTitle": "Откройте недоступное другим",
+  "heroTitleEn": "Discover what others cannot",
+  "heroLead": "Культурологические экспедиции на судах бутик-класса — для тех, кто привык к другому уровню сервиса и хочет видеть мир без туристических шаблонов.",
+  "heroLeadEn": "Cultural expeditions on boutique ships — for travellers used to a higher standard of service and a world beyond tourist routes.",
   "heroVideo": "/assets/videos/cruises/hero.mp4",
-  "heroPoster": "/assets/images/services/cruises.jpg",
-  "catalogTitle": "Направления",
-  "catalogTitleEn": "Destinations",
-  "ctaTitle": "Хотите в круиз?",
-  "ctaTitleEn": "Ready to sail?",
-  "ctaText": "Напишите или позвоните — подберём маршрут, даты и каюту. Бронирование через Culture Travel.",
-  "ctaTextEn": "Message or call us — we will match route, dates and cabin. Booking via Culture Travel.",
+  "heroPoster": "/assets/images/cruises/hero.jpg",
+  "introOverline": "На борту",
+  "introOverlineEn": "On board",
+  "introTitle": "Комфорт там, куда лайнеры не заходят",
+  "introTitleEn": "Comfort where liners never go",
+  "introText": "На борту — немного гостей и много воздуха: капитан может изменить курс ради китов у борта, эксперты делятся знаниями без официоза, а каюты с балконами и каминами держат привычный уровень сервиса. Высадки на зодиаках, лекции и «всё включено» — спокойный ритм Culture Travel в самых удалённых точках карты.",
+  "introTextEn": "Few guests and room to breathe: the captain may alter course for whales at the rail, experts share knowledge without ceremony, and balcony cabins with fireplaces keep the service you expect. Zodiac landings, talks and true all-inclusive — Culture Travel’s calm pace at the farthest points on the map.",
+  "introImage": "/assets/images/services/cruises.jpg",
+  "fleetTitle": "Флот экспедиции",
+  "fleetTitleEn": "Expedition fleet",
+  "fleetLead": "Три новейших судна повышенного ледового класса — бутик-отели на воде.",
+  "fleetLeadEn": "Three newest ice-class ships — boutique hotels on water.",
+  "ships": [
+    {
+      "name": "SH Diana",
+      "cabins": "96 кают",
+      "cabinsEn": "96 cabins",
+      "guests": "до 192 гостей",
+      "guestsEn": "up to 192 guests",
+      "image": "/assets/images/cruises/ship-diana.jpg"
+    },
+    {
+      "name": "SH Vega",
+      "cabins": "76 кают",
+      "cabinsEn": "76 cabins",
+      "guests": "до 152 гостей",
+      "guestsEn": "up to 152 guests",
+      "image": "/assets/images/cruises/ship-vega.jpg"
+    },
+    {
+      "name": "SH Minerva",
+      "cabins": "76 кают",
+      "cabinsEn": "76 cabins",
+      "guests": "до 152 гостей",
+      "guestsEn": "up to 152 guests",
+      "image": "/assets/images/cruises/ship-minerva.jpg"
+    }
+  ],
+  "catalogTitle": "Коллекция маршрутов",
+  "catalogTitleEn": "Itinerary collection",
+  "catalogLead": "Антарктида, Африка, Азия, Амазонка, Европа и Дальний Восток — выберите направление.",
+  "catalogLeadEn": "Antarctica, Africa, Asia, the Amazon, Europe and the Far East — choose a direction.",
+  "ctaTitle": "Соберём ваш круиз",
+  "ctaTitleEn": "We will shape your cruise",
+  "ctaText": "Каюта, даты, перелёты и программа на берегу — через Culture Travel. Напишите или позвоните.",
+  "ctaTextEn": "Cabin, dates, flights and shore programme — via Culture Travel. Message or call us.",
   "regions": [
     {
       "id": "antarctica",
       "title": "Антарктида",
       "titleEn": "Antarctica",
-      "intro": "Айсберги, пингвины, тюлени и киты. Высадки на зодиаках, при желании — каякинг и снегоступы. Сезон: ноябрь–март.",
-      "introEn": "Icebergs, penguins, seals and whales. Zodiac landings; kayaking and snowshoeing on request. Season: November–March.",
+      "intro": "Айсберги размером с соборы, высадки на зодиаках, пингвины и киты у борта. Сезон: ноябрь–март. В программу часто входит ночь в 5★ в Буэнос-Айресе и перелёты в Ушуайю.",
+      "introEn": "Cathedral-scale icebergs, Zodiac landings, penguins and whales at the rail. Season: November–March. Often includes a 5★ night in Buenos Aires and flights to Ushuaia.",
+      "image": "/assets/images/cruises/antarctica.jpg",
       "cruises": [
         {
           "title": "Пингвины, киты и айсберги",
           "titleEn": "Penguins, whales and icebergs",
-          "route": "Антарктический полуостров · море Уэдделла · Южный полярный круг · Фолкленды · Южная Георгия",
-          "routeEn": "Antarctic Peninsula · Weddell Sea · Antarctic Circle · Falklands · South Georgia",
+          "route": "Антарктический полуостров · море Уэдделла · Южный полярный круг · Фолкленды · Южная Георгия · Тристан-да-Кунья",
+          "routeEn": "Antarctic Peninsula · Weddell Sea · Antarctic Circle · Falklands · South Georgia · Tristan da Cunha",
           "ship": "SH Vega / SH Diana / SH Minerva",
           "duration": "9–20 ночей",
           "durationEn": "9–20 nights",
           "season": "Ноябрь–март",
           "seasonEn": "November–March",
-          "note": "Включено: ночь в 5* в Буэнос-Айресе, авиаперелёты в Ушуайю и обратно, трансферы.",
-          "noteEn": "Included: one night in a 5* Buenos Aires hotel, flights to Ushuaia and back, transfers.",
+          "note": "Включено: ночь в 5★ в Буэнос-Айресе, авиаперелёты в Ушуайю и обратно, трансферы.",
+          "noteEn": "Included: one night in a 5★ Buenos Aires hotel, flights to Ushuaia and back, transfers.",
           "stops": ["Ушуайя", "Полуостров", "Уэдделл", "Юж. Георгия", "Фолкленды"]
         }
       ]
@@ -42,14 +82,15 @@
       "id": "africa",
       "title": "Африка",
       "titleEn": "Africa",
-      "intro": "Атлантическое побережье: дюны Намиба, рынки Западной Африки, острова и национальные парки.",
-      "introEn": "The Atlantic coast: Namib dunes, West African markets, islands and national parks.",
+      "intro": "Атлантическое побережье: дюны Намиба, остров Байя-душ-Тигреш, рынки Западной Африки и национальные парки — пешком и на каяках.",
+      "introEn": "The Atlantic coast: Namib dunes, Bahia dos Tigres, West African markets and national parks — on foot and by kayak.",
+      "image": "/assets/images/cruises/africa.jpg",
       "cruises": [
         {
           "title": "ЮАР и Берег скелетов",
           "titleEn": "South Africa and the Skeleton Coast",
-          "route": "Кейптаун — Людериц — Уолфиш-Бей — Байя-душ-Тигреш — Луанда",
-          "routeEn": "Cape Town — Lüderitz — Walvis Bay — Bahia dos Tigres — Luanda",
+          "route": "Кейптаун — Салданья-Бей — Людериц — Уолфиш-Бей — Байя-душ-Тигреш — Намибе — Луанда",
+          "routeEn": "Cape Town — Saldanha Bay — Lüderitz — Walvis Bay — Bahia dos Tigres — Namibe — Luanda",
           "ship": "SH Diana",
           "duration": "12 дней / 11 ночей",
           "durationEn": "12 days / 11 nights",
@@ -75,8 +116,9 @@
       "id": "asia-pacific",
       "title": "Азия и Тихий океан",
       "titleEn": "Asia and the Pacific",
-      "intro": "Раджа Ампат, Филиппины, Япония и Новая Зеландия — рифы, острова и культура берегов.",
-      "introEn": "Raja Ampat, the Philippines, Japan and New Zealand — reefs, islands and coastal cultures.",
+      "intro": "Раджа Ампат, Филиппины, Япония и Новая Зеландия — рифы Кораллового треугольника, островные культуры и фьорды.",
+      "introEn": "Raja Ampat, the Philippines, Japan and New Zealand — Coral Triangle reefs, island cultures and fiords.",
+      "image": "/assets/images/cruises/asia-pacific.jpg",
       "cruises": [
         {
           "title": "Папуа и Раджа Ампат",
@@ -88,7 +130,21 @@
           "durationEn": "12 days / 11 nights",
           "season": "Весна",
           "seasonEn": "Spring",
+          "note": "Включено: ночь в отеле 4/5★, чартер Бали → Соронг → Бали, трансферы.",
+          "noteEn": "Included: 4/5★ hotel night, Bali → Sorong → Bali charter, transfers.",
           "stops": ["Соронг", "Папуа", "Раджа Ампат", "Соронг"]
+        },
+        {
+          "title": "Филиппины и Раджа Ампат",
+          "titleEn": "Philippines and Raja Ampat",
+          "route": "Соронг — Раджа Ампат — Бохол — Мариндуке — Манила",
+          "routeEn": "Sorong — Raja Ampat — Bohol — Marinduque — Manila",
+          "ship": "SH Minerva",
+          "duration": "12 дней / 11 ночей",
+          "durationEn": "12 days / 11 nights",
+          "season": "Весна",
+          "seasonEn": "Spring",
+          "stops": ["Соронг", "Раджа Ампат", "Бохол", "Манила"]
         },
         {
           "title": "Другая Япония",
@@ -120,8 +176,9 @@
       "id": "latam",
       "title": "Латинская Америка",
       "titleEn": "Latin America",
-      "intro": "Амазонка, Бразилия и берега, куда редко заходят обычные круизы.",
-      "introEn": "The Amazon, Brazil and shores rarely visited by mainstream cruises.",
+      "intro": "Дикая Амазонка и бразильское побережье — места, куда редко заходят большие лайнеры.",
+      "introEn": "The wild Amazon and the Brazilian coast — shores rarely visited by large liners.",
+      "image": "/assets/images/cruises/latam.jpg",
       "cruises": [
         {
           "title": "Тайны дикой Амазонки",
@@ -153,8 +210,9 @@
       "id": "europe",
       "title": "Европа",
       "titleEn": "Europe",
-      "intro": "Атлантическое побережье Европы и перекрёсток с Африкой.",
-      "introEn": "Europe’s Atlantic coast and the crossroads with Africa.",
+      "intro": "Атлантическое побережье Европы и перекрёсток с Африкой — от Лиссабона до Касабланки.",
+      "introEn": "Europe’s Atlantic coast and the crossroads with Africa — from Lisbon to Casablanca.",
+      "image": "/assets/images/cruises/europe.jpg",
       "cruises": [
         {
           "title": "Лиссабон — Касабланка",
@@ -174,8 +232,9 @@
       "id": "far-east",
       "title": "Дальний Восток",
       "titleEn": "Russian Far East",
-      "intro": "Курилы, Камчатка, Командоры и Чукотка — вулканы, киты, белые медведи.",
-      "introEn": "The Kurils, Kamchatka, the Commander Islands and Chukotka — volcanoes, whales, polar bears.",
+      "intro": "Курилы, Камчатка, Командоры и Чукотка — вулканы, киты, белые медведи и остров Врангеля.",
+      "introEn": "The Kurils, Kamchatka, the Commander Islands and Chukotka — volcanoes, whales, polar bears and Wrangel Island.",
+      "image": "/assets/images/cruises/far-east.jpg",
       "cruises": [
         {
           "title": "Курильские острова",

@@ -42,7 +42,7 @@ html:has(.uc-404) #main {
   color: var(--color-ink-on-shape);
   font-size: clamp(64px, 10vw, 120px);
   line-height: 0.9;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   letter-spacing: -0.05em;
 }
 
@@ -91,12 +91,12 @@ html:has(.uc-404) #main {
   background: var(--ui-button-bg);
   color: var(--ui-button-color) !important;
   font-family: var(--font-main);
-  font-size: var(--font-nav);
-  line-height: 1;
-  font-weight: var(--font-weight-ui);
-  letter-spacing: var(--tracking-nav);
+  font-size: var(--type-button-size);
+  line-height: var(--line-height-ui);
+  font-weight: var(--type-button-weight);
+  letter-spacing: var(--type-button-tracking);
   text-decoration: none !important;
-  text-transform: uppercase;
+  text-transform: none;
   white-space: nowrap;
   transition: opacity var(--transition-fast);
 }

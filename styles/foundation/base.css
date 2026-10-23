@@ -13,6 +13,12 @@ body {
   min-height: 100dvh;
 }
 
+/* Montserrat подключён только 400/500/600 — без синтетического 700 */
+strong,
+b {
+  font-weight: var(--font-weight-title);
+}
+
 /* Заливка сцены — простой фон (без glow пока) */
 html {
   background-color: var(--color-bg);

@@ -2,15 +2,12 @@
   "slug": "/hotels/",
   "title": "Отели",
   "titleEn": "Hotels",
-  "description": "Подбор люкс-отелей — Culture Travel.",
+  "description": "Каталог люкс-отелей по направлениям — Culture Travel.",
   "robots": "noindex",
   "blocks": [
     {
-      "type": "page-stub",
-      "data": {
-        "title": "Отели",
-        "titleEn": "Hotels"
-      }
+      "type": "hotel-catalog",
+      "prepare": "hotelsCatalog"
     }
   ]
 }

@@ -30,9 +30,9 @@
   margin: 0 0 var(--space-edge);
   color: var(--color-gold);
   font-size: var(--type-overline-size, 12px);
-  line-height: 1;
+  line-height: var(--line-height-ui);
   font-weight: var(--font-weight-overline);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--type-label-tracking);
 }
 
 .news-layout__title {
