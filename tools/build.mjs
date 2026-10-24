@@ -612,6 +612,7 @@ function loadBlockHtml(blockType, blockData = {}) {
   }
   let html = readFileSync(htmlPath, 'utf8');
 
+  const titleTag = blockData.titleTag === 'h1' ? 'h1' : 'h2';
   const merged = {
     ...blockData,
     basePath: site.basePath || '',
@@ -637,6 +638,7 @@ function loadBlockHtml(blockType, blockData = {}) {
     developerInitials: site.developer?.initials || site.developer?.name || '',
     developerUrl: site.developer?.url || '',
     year: String(new Date().getFullYear()),
+    titleTag,
     nav: blockData.nav,
   };
 
@@ -992,6 +994,25 @@ function bustModuleImports() {
   walk(join(DIST, 'blocks-secondary'));
 }
 
+function bustCssImports() {
+  const pattern = /@import\s+url\((['"]?)([^'")?]+)\1\)/g;
+  function walk(dir) {
+    if (!existsSync(dir)) return;
+    for (const name of readdirSync(dir)) {
+      const full = join(dir, name);
+      if (statSync(full).isDirectory()) {
+        walk(full);
+        continue;
+      }
+      if (!name.endsWith('.css')) continue;
+      const text = readFileSync(full, 'utf8');
+      const updated = text.replace(pattern, (_, q, url) => `@import url(${q}${url}?v=${BUILD_ID}${q})`);
+      if (updated !== text) writeFileSync(full, updated, 'utf8');
+    }
+  }
+  walk(join(DIST, 'styles'));
+}
+
 function generateRobots() {
   /* Для краулеров: что можно индексировать и где лежит sitemap. */
   writeOut('robots.txt', `User-agent: *
@@ -1167,7 +1188,7 @@ function generateSearchIndex() {
       titleEn: region.titleEn || '',
       text: region.intro || '',
       textEn: region.introEn || '',
-      href: `/cruises/#${region.id}`,
+      href: '/cruises/',
     });
     for (const cruise of region.cruises || []) {
       add({
@@ -1178,7 +1199,7 @@ function generateSearchIndex() {
         titleEn: cruise.titleEn || '',
         text: [cruise.route, cruise.ship, cruise.duration, cruise.season, cruise.note].filter(Boolean).join(' · '),
         textEn: [cruise.routeEn, cruise.ship, cruise.durationEn, cruise.seasonEn, cruise.noteEn].filter(Boolean).join(' · '),
-        href: `/cruises/#${region.id}`,
+        href: '/cruises/',
       });
     }
   }
@@ -1255,6 +1276,7 @@ function build() {
 
   console.log('\n📦 Ассеты:');
   copyStaticAssets();
+  bustCssImports();
   generateConfigJs();
   generateSearchIndex();
 

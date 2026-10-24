@@ -81,7 +81,7 @@
       "media": [
         {
           "type": "video",
-          "src": "/assets/videos/hotels/hero.mp4",
+          "src": "/assets/videos/hero.mp4",
           "alt": "Тестовый отель"
         },
         {
@@ -122,5 +122,5 @@
     }
   ],
   "heroPoster": "/assets/images/services/hotels-villas.jpg",
-  "heroVideo": "/assets/videos/hotels/hero.mp4"
+  "heroVideo": "/assets/videos/hero.mp4"
 }

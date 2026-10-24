@@ -790,13 +790,16 @@
   flex-direction: column;
   gap: 12px;
   flex: 1 1 auto;
+  min-width: 0;
   min-height: 0;
+  width: 100%;
   margin: 18px 0 0;
 }
 
 .hotel-sheet__stage {
   position: relative;
   flex: 1 1 auto;
+  min-width: 0;
   min-height: 0;
   width: 100%;
   overflow: hidden;
@@ -804,10 +807,17 @@
   background: var(--color-header);
 }
 
-.hotel-sheet__asset {
-  display: block;
+.hotel-sheet__stage > .hotel-player,
+.hotel-sheet__stage > .hotel-sheet__asset {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
+}
+
+.hotel-sheet__asset {
+  display: block;
   object-fit: cover;
   object-position: center;
   background: var(--color-header);
@@ -815,7 +825,8 @@
 
 /* Фирменный видео-плеер — белые иконки, золотой акцент, radius-xs */
 .hotel-player {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   background: var(--color-header);
@@ -825,6 +836,7 @@
   display: block;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
   object-position: center;
 }
@@ -1304,6 +1316,7 @@
   }
 
   .hotel-sheet {
+    --hotel-sheet-pad: var(--edge-mobile);
     padding: 0;
   }
 
@@ -1316,25 +1329,61 @@
     max-height: none;
   }
 
-  .hotel-sheet__bar,
-  .hotel-sheet__body {
-    padding-inline: var(--hotel-sheet-pad);
+  .hotel-sheet__bar {
+    height: calc(60px + env(safe-area-inset-top, 0px));
+    min-height: calc(60px + env(safe-area-inset-top, 0px));
+    padding:
+      env(safe-area-inset-top, 0px)
+      var(--hotel-sheet-pad)
+      0;
+  }
+
+  .hotel-sheet .sheet-close {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    place-items: center end;
+    justify-items: end;
   }
 
   .hotel-sheet__body {
-    padding-block: var(--hotel-sheet-pad);
+    padding:
+      var(--hotel-sheet-pad)
+      var(--hotel-sheet-pad)
+      calc(var(--hotel-sheet-pad) + env(safe-area-inset-bottom, 0px));
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    gap: 0;
+  }
+
+  .hotel-sheet__meta {
+    margin-bottom: 12px;
   }
 
   .hotel-sheet__title {
     max-width: none;
+    margin-bottom: 10px;
+  }
+
+  .hotel-sheet__text {
+    flex: 0 0 auto;
+    overflow: visible;
+  }
+
+  .hotel-sheet__media {
+    flex: 0 0 auto;
+    margin-top: 16px;
+    gap: 8px;
   }
 
   .hotel-sheet__stage {
     flex: 0 0 auto;
     aspect-ratio: 16 / 9;
-    min-height: 180px;
+    min-height: 0;
+  }
+
+  .hotel-sheet__nav [data-hotel-sheet-next] {
+    margin-right: 0;
   }
 
   .hotel-sheet__foot {
