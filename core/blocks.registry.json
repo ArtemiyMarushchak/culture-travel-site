@@ -117,6 +117,12 @@
       "dataSource": "content/cruises/catalog.json",
       "dataPrepare": "cruisesCatalog"
     },
+    "cruise-route": {
+      "label": "Маршрут круиза",
+      "css": true,
+      "js": false,
+      "scope": "page"
+    },
     "type-specimen": {
       "label": "Типографика (служебная)",
       "css": true,

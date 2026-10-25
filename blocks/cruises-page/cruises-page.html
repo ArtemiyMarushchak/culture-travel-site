@@ -34,4 +34,195 @@
       </div>
     </div>
   </div>
+
+  <section class="cruises-page__fleet" aria-labelledby="cruise-fleet-title">
+    <div class="cruises-page__fleet-rail">
+      <h2 class="cruises-page__section-title" id="cruise-fleet-title" data-i18n-src data-ru="{{fleetTitle}}" data-en="{{fleetTitleEn}}">{{fleetTitle}}</h2>
+      <p class="cruises-page__section-lead" data-i18n-src data-ru="{{fleetLead}}" data-en="{{fleetLeadEn}}">{{fleetLead}}</p>
+      <div class="cruises-page__ships">
+        {{#each ships}}
+        <article class="cruises-page__ship">
+          <div class="cruises-page__ship-media">
+            <img src="{{basePath}}/assets/images/placeholder-gray.svg" alt="" width="960" height="540" loading="lazy" decoding="async">
+          </div>
+          <h3 class="cruises-page__ship-name">{{name}}</h3>
+          <p class="cruises-page__ship-meta">
+            <span data-i18n-src data-ru="{{cabins}}" data-en="{{cabinsEn}}">{{cabins}}</span>
+            <span data-i18n-src data-ru="{{guests}}" data-en="{{guestsEn}}">{{guests}}</span>
+          </p>
+        </article>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  <div class="hotel-catalog" data-cruise-catalog>
+    <div class="hotel-catalog__catalog-stage">
+      <div class="hotel-catalog__layout">
+        <aside class="hotel-catalog__aside" aria-label="Каталог">
+          <div class="hotel-catalog__filters" data-cruise-filters>
+            <button
+              class="hotel-catalog__filters-scrim"
+              type="button"
+              data-cruise-filters-close
+              tabindex="-1"
+              aria-hidden="true"
+            ></button>
+
+            <div class="hotel-catalog__filters-panel">
+              <header class="hotel-catalog__filters-head">
+                <p class="hotel-catalog__filters-title" id="cruise-filters-title" data-i18n="hotels.filters">Фильтры</p>
+                <button class="sheet-close" type="button" data-cruise-filters-close aria-label="Закрыть">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </header>
+
+              <div class="hotel-catalog__aside-top ui-scroll">
+                <p class="hotel-catalog__aside-label" data-i18n="cruises.sections">Направления</p>
+                <div class="hotel-catalog__checks" data-cruise-nav></div>
+              </div>
+
+              <div class="hotel-catalog__filters-foot">
+                <button
+                  type="button"
+                  class="hotel-catalog__reset is-idle"
+                  data-cruise-reset
+                  disabled
+                  data-i18n="hotels.reset"
+                >Сбросить</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hotel-catalog__toolbar">
+            <div class="hotel-catalog__search-pill">
+              <svg class="hotel-catalog__search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M16.2 16.2 20 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <label class="sr-only" for="cruise-catalog-search" data-i18n="hotels.search">Поиск по каталогу</label>
+              <input
+                id="cruise-catalog-search"
+                type="search"
+                class="hotel-catalog__search-input"
+                data-cruise-search
+                data-i18n-placeholder="cruises.searchPlaceholder"
+                placeholder="Название, маршрут…"
+                autocomplete="off"
+              >
+            </div>
+
+            <button
+              type="button"
+              class="hotel-catalog__search-clear is-idle"
+              data-cruise-reset
+              disabled
+              data-i18n-aria="hotels.reset"
+              aria-label="Сбросить"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              class="hotel-catalog__filters-btn"
+              data-cruise-filters-open
+              data-i18n-aria="hotels.filters"
+              aria-label="Фильтры"
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+                <path d="M4 7h16M7 12h10M10 17h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              <span class="hotel-catalog__filters-count" data-cruise-filters-count hidden></span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="hotel-catalog__main">
+          <div class="ui-shape">
+            <div class="news-list__feed" data-cruise-feed>
+              {{#each routes}}
+              <article class="cruise-row" id="{{id}}" data-cruise-item data-region="{{regionId}}">
+                <button type="button" class="news-list__item cruise-row__toggle" aria-expanded="false">
+                  <span class="news-list__media">
+                    <img src="{{basePath}}/assets/images/placeholder-gray.svg" alt="" width="360" height="240" decoding="async">
+                  </span>
+                  <span class="news-list__copy">
+                    <span class="news-list__date" data-i18n-src data-ru="{{region}}" data-en="{{regionEn}}">{{region}}</span>
+                    <span class="news-list__title" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</span>
+                    <span class="news-list__excerpt" data-i18n-src data-ru="{{route}}" data-en="{{routeEn}}">{{route}}</span>
+                  </span>
+                  <span class="news-list__go" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div class="cruise-row__panel" hidden>
+                  <p class="cruise-row__pitch" data-i18n-src data-ru="{{pitch}}" data-en="{{pitchEn}}">{{pitch}}</p>
+                  <p class="cruise-row__route" data-i18n-src data-ru="{{route}}" data-en="{{routeEn}}">{{route}}</p>
+                  <dl class="cruise-row__facts">
+                    <div>
+                      <dt data-i18n="cruises.ship">Судно</dt>
+                      <dd>{{shipLine}}</dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="cruises.length">Срок</dt>
+                      <dd data-i18n-src data-ru="{{duration}}" data-en="{{durationEn}}">{{duration}}</dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="cruises.season">Сезон</dt>
+                      <dd data-i18n-src data-ru="{{season}}" data-en="{{seasonEn}}">{{season}}</dd>
+                    </div>
+                  </dl>
+                  <p class="cruise-row__note" data-i18n-src data-ru="{{note}}" data-en="{{noteEn}}">{{note}}</p>
+                  <a class="cruise-row__ask" href="{{telegram}}" target="_blank" rel="noopener noreferrer" data-i18n="cruises.ask">Запросить даты</a>
+                </div>
+              </article>
+              {{/each}}
+            </div>
+          </div>
+          <p class="hotel-catalog__empty" data-cruise-empty hidden data-i18n="cruises.empty">Ничего не найдено</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="cruise-price" class="uc-tour-price uc-tour-price--request cruises-page__price" aria-labelledby="cruise-price-title">
+    <div class="tp">
+      <div class="tp__overline" data-i18n-src data-ru="По запросу" data-en="On request">По запросу</div>
+      <div class="tp__pricing tp__pricing--request">
+        <p class="tp__price" id="cruise-price-title">
+          <span class="tp__price-base" data-i18n-src data-ru="Стоимость" data-en="Price">Стоимость</span>
+          <span data-i18n-src data-ru="по запросу" data-en="on request">по запросу</span>
+        </p>
+        <p class="tp__note" data-i18n-src data-ru="Каюту, даты, перелёты и программу на берегу собираем отдельно — под ваш маршрут и сезон." data-en="Cabin, dates, flights and the shore programme are arranged separately — around your route and season.">Каюту, даты, перелёты и программу на берегу собираем отдельно — под ваш маршрут и сезон.</p>
+        <div class="tp__contacts">
+          <a class="tp__contact" href="{{telegram}}" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <svg class="tp__contact-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.7 4.2 18.5 19c-.2 1-.8 1.2-1.6.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 12.8 1.8 11.3c-1-.3-1-1 .2-1.5L20.2 2.8c.9-.3 1.7.2 1.5 1.4Z"/>
+            </svg>
+            <span class="tp__contact-label">Telegram</span>
+          </a>
+          <a class="tp__contact" href="mailto:{{email}}" aria-label="Email">
+            <svg class="tp__contact-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="tp__contact-label">{{email}}</span>
+          </a>
+          <a class="tp__contact" href="tel:{{phoneRaw}}" aria-label="Телефон">
+            <svg class="tp__contact-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7.2 4.5 9.1 8c.3.6.2 1.2-.3 1.7l-1 1c1.2 2.4 3.1 4.3 5.5 5.5l1-1c.5-.5 1.1-.6 1.7-.3l3.5 1.9c.6.3.9 1 .7 1.7-.4 1.5-1.8 2.5-3.4 2.5C9.5 21 3 14.5 3 6.2c0-1.6 1-3 2.5-3.4.7-.2 1.4.1 1.7.7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="tp__contact-label">{{phoneDisplay}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>

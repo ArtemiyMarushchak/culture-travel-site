@@ -264,7 +264,6 @@ function cruiseRouteMapSvg(regionId, stops = []) {
 function prepareCruisesCatalog() {
   const catalog = readJson('content/cruises/catalog.json');
   const bp = (site.basePath || '').replace(/\/$/, '');
-  const openFirst = catalog.openFirst || (catalog.regions?.[0]?.id) || '';
   const poster = catalog.heroPoster || '/assets/images/cruises/hero.jpg';
   const videoPath = catalog.heroVideo || '';
   const videoAbs = videoPath ? join(ROOT, videoPath.replace(/^\//, '')) : '';
@@ -274,61 +273,55 @@ function prepareCruisesCatalog() {
     ? `<video class="cruises-page__hero-video" src="${escapeHtml(`${bp}${videoPath}`)}" poster="${escapeHtml(`${bp}${poster}`)}" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>`
     : '';
 
-  const telegram = site.contacts?.telegram || site.social?.telegram || '#';
-
+  const assetV = `?v=${BUILD_ID}`;
   const ships = (catalog.ships || []).map((ship) => ({
     name: ship.name || '',
     cabins: ship.cabins || '',
     cabinsEn: ship.cabinsEn || ship.cabins || '',
     guests: ship.guests || '',
     guestsEn: ship.guestsEn || ship.guests || '',
-    image: ship.image || '',
+    image: ship.image ? `${ship.image}${assetV}` : '',
   }));
 
+  const routes = [];
   const regions = (catalog.regions || []).map((region) => {
-    const cruises = region.cruises || [];
-    const isOpen = region.id === openFirst;
-    const mapStops = cruises[0]?.stops || [];
     const image = region.image || poster;
-    const regionVideoPath = region.video || `/assets/videos/cruises/${region.id}.mp4`;
-    const regionVideoAbs = join(ROOT, regionVideoPath.replace(/^\//, ''));
-    const hasRegionVideo = existsSync(regionVideoAbs);
-    const regionMediaHtml = hasRegionVideo
-      ? `<video data-cruise-region-video src="${escapeHtml(`${bp}${regionVideoPath}`)}" poster="${escapeHtml(`${bp}${image}`)}" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>`
-      : `<img src="${escapeHtml(`${bp}${image}`)}" alt="" width="1600" height="1600" loading="lazy" decoding="async">`;
-
-    const cruisesHtml = `<ul class="cruises-page__list">${cruises.map((cruise) => {
-      const note = cruise.note
-        ? `<p class="cruises-page__item-note" data-i18n-src data-ru="${escapeHtml(cruise.note)}" data-en="${escapeHtml(cruise.noteEn || cruise.note)}">${escapeHtml(cruise.note)}</p>`
-        : '';
-      return `<li class="cruises-page__item">
-  <h3 class="cruises-page__item-title" data-i18n-src data-ru="${escapeHtml(cruise.title)}" data-en="${escapeHtml(cruise.titleEn || cruise.title)}">${escapeHtml(cruise.title)}</h3>
-  <p class="cruises-page__item-route" data-i18n-src data-ru="${escapeHtml(cruise.route || '')}" data-en="${escapeHtml(cruise.routeEn || cruise.route || '')}">${escapeHtml(cruise.route || '')}</p>
-  <p class="cruises-page__item-meta">
-    <span>${escapeHtml(cruise.ship || '')}</span>
-    <span data-i18n-src data-ru="${escapeHtml(cruise.duration || '')}" data-en="${escapeHtml(cruise.durationEn || cruise.duration || '')}">${escapeHtml(cruise.duration || '')}</span>
-    <span data-i18n-src data-ru="${escapeHtml(cruise.season || '')}" data-en="${escapeHtml(cruise.seasonEn || cruise.season || '')}">${escapeHtml(cruise.season || '')}</span>
-  </p>
-  ${note}
-  <a class="cruises-page__ask" href="${escapeHtml(telegram)}" target="_blank" rel="noopener noreferrer">Запросить даты</a>
-</li>`;
-    }).join('')}</ul>`;
-
+    (region.cruises || []).forEach((cruise, index) => {
+      routes.push({
+        id: `${region.id}-${index}`,
+        regionId: region.id,
+        region: region.title || '',
+        regionEn: region.titleEn || region.title || '',
+        title: cruise.title || '',
+        titleEn: cruise.titleEn || cruise.title || '',
+        pitch: cruise.pitch || '',
+        pitchEn: cruise.pitchEn || cruise.pitch || '',
+        route: cruise.route || '',
+        routeEn: cruise.routeEn || cruise.route || '',
+        ships: String(cruise.ship || '').split('/').map((name) => name.trim()).filter(Boolean),
+        shipLine: String(cruise.ship || ''),
+        duration: cruise.duration || '',
+        durationEn: cruise.durationEn || cruise.duration || '',
+        season: cruise.season || '',
+        seasonEn: cruise.seasonEn || cruise.season || '',
+        note: cruise.note || '',
+        noteEn: cruise.noteEn || cruise.note || '',
+        image: `${image}${assetV}`,
+        href: `/cruises/${region.id}-${index}/`,
+      });
+    });
     return {
       id: region.id,
-      title: region.title,
-      titleEn: region.titleEn || region.title,
-      intro: region.intro || '',
-      introEn: region.introEn || region.intro || '',
-      cruiseCount: String(cruises.length),
-      openClass: isOpen ? ' is-open' : '',
-      expanded: isOpen ? 'true' : 'false',
-      hiddenAttr: isOpen ? '' : ' hidden',
-      regionMediaHtml,
-      mapHtml: cruiseRouteMapSvg(region.id, mapStops),
-      cruisesHtml,
+      title: region.title || '',
+      titleEn: region.titleEn || region.title || '',
     };
   });
+
+  const routesJson = JSON.stringify({
+    regions,
+    ships: ships.map((ship) => ship.name).filter(Boolean),
+    routes,
+  }).replace(/</g, '\\u003c');
 
   return {
     partner: catalog.partner || 'Swan Hellenic',
@@ -350,14 +343,8 @@ function prepareCruisesCatalog() {
     fleetLead: catalog.fleetLead || '',
     fleetLeadEn: catalog.fleetLeadEn || catalog.fleetLead || '',
     ships,
-    catalogTitle: catalog.catalogTitle || 'Направления',
-    catalogTitleEn: catalog.catalogTitleEn || 'Destinations',
-    catalogLead: catalog.catalogLead || '',
-    catalogLeadEn: catalog.catalogLeadEn || catalog.catalogLead || '',
-    ctaTitle: catalog.ctaTitle || '',
-    ctaTitleEn: catalog.ctaTitleEn || '',
-    ctaText: catalog.ctaText || '',
-    ctaTextEn: catalog.ctaTextEn || '',
+    routes,
+    routesJson,
     regions,
   };
 }
@@ -669,7 +656,7 @@ function loadBlockHtml(blockType, blockData = {}) {
       ? `<span class="lf__registry-num">№ ${escapeHtml(String(site.legal.registryNumber))}</span>`
       : '';
   }
-  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'storiesJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml', 'cruisesHtml', 'mapHtml', 'heroVideoHtml', 'regionMediaHtml', 'hiddenAttr', 'openClass'];
+  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'storiesJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml', 'cruisesHtml', 'mapHtml', 'heroVideoHtml', 'regionMediaHtml', 'routesJson', 'noteHtml', 'hiddenAttr', 'openClass'];
   html = html.replace(/\{\{#each (\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, itemTpl) => {
     const arr = merged[key];
     if (!Array.isArray(arr)) return '';
@@ -1073,15 +1060,29 @@ function generateLlmsTxt() {
 
 function generateWebManifest() {
   const bp = site.basePath || '';
+  const icon = (file, size, purpose) => ({
+    src: `${bp}/assets/icons/${file}`,
+    sizes: `${size}x${size}`,
+    type: 'image/png',
+    purpose,
+  });
   writeOut('site.webmanifest', JSON.stringify({
     name: site.name,
-    short_name: 'Culture Travel',
+    short_name: site.name,
     description: site.tagline,
+    id: `${bp}/`,
     start_url: `${bp}/`,
+    scope: `${bp}/`,
     display: 'standalone',
     background_color: '#0d0d0d',
     theme_color: '#0d0d0d',
     lang: site.language,
+    icons: [
+      icon('icon-192.png', 192, 'any'),
+      icon('icon-512.png', 512, 'any'),
+      icon('apple-touch-icon.png', 180, 'any'),
+      icon('icon-512.png', 512, 'maskable'),
+    ],
   }, null, 2));
 }
 
@@ -1188,9 +1189,9 @@ function generateSearchIndex() {
       titleEn: region.titleEn || '',
       text: region.intro || '',
       textEn: region.introEn || '',
-      href: '/cruises/',
+      href: `/cruises/#${region.id}`,
     });
-    for (const cruise of region.cruises || []) {
+    for (const [index, cruise] of (region.cruises || []).entries()) {
       add({
         type: 'cruise',
         kind: 'Круиз',
@@ -1199,7 +1200,7 @@ function generateSearchIndex() {
         titleEn: cruise.titleEn || '',
         text: [cruise.route, cruise.ship, cruise.duration, cruise.season, cruise.note].filter(Boolean).join(' · '),
         textEn: [cruise.routeEn, cruise.ship, cruise.durationEn, cruise.seasonEn, cruise.noteEn].filter(Boolean).join(' · '),
-        href: '/cruises/',
+        href: `/cruises/#${region.id}-${index}`,
       });
     }
   }

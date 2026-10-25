@@ -138,10 +138,16 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
-<!-- Иконки -->
+<!-- Иконки и ярлык «На экран Домой» -->
+<meta name="application-name" content="{{siteName}}">
+<meta name="apple-mobile-web-app-title" content="{{siteName}}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="icon" href="{{basePath}}/assets/icons/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
 <link rel="icon" href="{{basePath}}/assets/icons/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="{{basePath}}/assets/icons/favicon-light.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{basePath}}/assets/icons/apple-touch-icon.png" sizes="180x180">
 <link rel="manifest" href="{{basePath}}/site.webmanifest">
 
 <!-- Стили -->

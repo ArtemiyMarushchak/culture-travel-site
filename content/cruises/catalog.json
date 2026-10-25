@@ -58,8 +58,8 @@
       "id": "antarctica",
       "title": "Антарктида",
       "titleEn": "Antarctica",
-      "intro": "Айсберги размером с соборы, высадки на зодиаках, пингвины и киты у борта. Сезон: ноябрь–март. В программу часто входит ночь в 5★ в Буэнос-Айресе и перелёты в Ушуайю.",
-      "introEn": "Cathedral-scale icebergs, Zodiac landings, penguins and whales at the rail. Season: November–March. Often includes a 5★ night in Buenos Aires and flights to Ushuaia.",
+      "intro": "Сюда не приходят большие лайнеры. Судно идёт вдоль кромки льда, на берег сходят с зодиака, а капитан может изменить курс, если у борта киты. Сезон короткий — ноябрь–март.",
+      "introEn": "Large liners do not come here. The ship follows the ice edge, landings are by Zodiac, and the captain may alter course for whales at the rail. The season is short: November–March.",
       "image": "/assets/images/cruises/antarctica.jpg",
       "cruises": [
         {
@@ -74,7 +74,15 @@
           "seasonEn": "November–March",
           "note": "Включено: ночь в 5★ в Буэнос-Айресе, авиаперелёты в Ушуайю и обратно, трансферы.",
           "noteEn": "Included: one night in a 5★ Buenos Aires hotel, flights to Ushuaia and back, transfers.",
-          "stops": ["Ушуайя", "Полуостров", "Уэдделл", "Юж. Георгия", "Фолкленды"]
+          "stops": [
+            "Ушуайя",
+            "Полуостров",
+            "Уэдделл",
+            "Юж. Георгия",
+            "Фолкленды"
+          ],
+          "pitch": "От Ушуайи — к Антарктическому полуострову, морю Уэдделла и Южному полярному кругу. В длинных рейсах добавляются Фолкленды, Южная Георгия и Тристан-да-Кунья. Перед посадкой часто уже включены ночь в пятизвёздочном отеле Буэнос-Айреса и перелёт в Ушуайю.",
+          "pitchEn": "From Ushuaia to the Antarctic Peninsula, the Weddell Sea and the Antarctic Circle. Longer voyages add the Falklands, South Georgia and Tristan da Cunha. A five-star night in Buenos Aires and the flight to Ushuaia are often already included."
         }
       ]
     },
@@ -82,8 +90,8 @@
       "id": "africa",
       "title": "Африка",
       "titleEn": "Africa",
-      "intro": "Атлантическое побережье: дюны Намиба, остров Байя-душ-Тигреш, рынки Западной Африки и национальные парки — пешком и на каяках.",
-      "introEn": "The Atlantic coast: Namib dunes, Bahia dos Tigres, West African markets and national parks — on foot and by kayak.",
+      "intro": "Атлантический берег, не причал у сафари-парка. Дюны Намиба, остров Байя-душ-Тигреш, рынки Западной Африки и заповедники — пешком и на каяках, с палубы, где гостей меньше двухсот.",
+      "introEn": "The Atlantic shore, not a dock beside a safari park. Namib dunes, Bahia dos Tigres, West African markets and reserves — on foot and by kayak, from a deck of fewer than two hundred guests.",
       "image": "/assets/images/cruises/africa.jpg",
       "cruises": [
         {
@@ -96,7 +104,15 @@
           "durationEn": "12 days / 11 nights",
           "season": "Весна–осень",
           "seasonEn": "Spring–autumn",
-          "stops": ["Кейптаун", "Людериц", "Уолфиш-Бей", "Байя-душ-Тигреш", "Луанда"]
+          "stops": [
+            "Кейптаун",
+            "Людериц",
+            "Уолфиш-Бей",
+            "Байя-душ-Тигреш",
+            "Луанда"
+          ],
+          "pitch": "Из Кейптауна вдоль Берега скелетов: Салданья-Бей, Людериц, Уолфиш-Бей, Байя-душ-Тигреш, Намибе и финиш в Луанде. Побережье, которое с суши почти не смотрят.",
+          "pitchEn": "From Cape Town along the Skeleton Coast: Saldanha Bay, Lüderitz, Walvis Bay, Bahia dos Tigres, Namibe and a finish in Luanda. A shoreline rarely seen from land."
         },
         {
           "title": "7 стран экваториальной Африки",
@@ -108,7 +124,15 @@
           "durationEn": "14 days / 13 nights",
           "season": "Весна и осень",
           "seasonEn": "Spring and autumn",
-          "stops": ["Луанда", "Пуэнт-Нуар", "Лоанго", "Сан-Томе", "Аккра"]
+          "stops": [
+            "Луанда",
+            "Пуэнт-Нуар",
+            "Лоанго",
+            "Сан-Томе",
+            "Аккра"
+          ],
+          "pitch": "Луанда, Пуэнт-Нуар, Лоанго, Сан-Томе, Котону, Ломе и Аккра. Семь стран за две недели: экватор, лес у воды и порты без круизной очереди.",
+          "pitchEn": "Luanda, Pointe-Noire, Loango, São Tomé, Cotonou, Lomé and Accra. Seven countries in two weeks: the equator, forest at the water and ports without a cruise queue."
         }
       ]
     },
@@ -116,8 +140,8 @@
       "id": "asia-pacific",
       "title": "Азия и Тихий океан",
       "titleEn": "Asia and the Pacific",
-      "intro": "Раджа Ампат, Филиппины, Япония и Новая Зеландия — рифы Кораллового треугольника, островные культуры и фьорды.",
-      "introEn": "Raja Ampat, the Philippines, Japan and New Zealand — Coral Triangle reefs, island cultures and fiords.",
+      "intro": "Раджа Ампат, Филиппины, северная Япония и Новая Зеландия. Не круг «столицы за неделю», а рифы Кораллового треугольника, острова и фьорды на одном экспедиционном судне.",
+      "introEn": "Raja Ampat, the Philippines, northern Japan and New Zealand. Not a capitals-in-a-week loop, but Coral Triangle reefs, islands and fiords on one expedition ship.",
       "image": "/assets/images/cruises/asia-pacific.jpg",
       "cruises": [
         {
@@ -132,7 +156,14 @@
           "seasonEn": "Spring",
           "note": "Включено: ночь в отеле 4/5★, чартер Бали → Соронг → Бали, трансферы.",
           "noteEn": "Included: 4/5★ hotel night, Bali → Sorong → Bali charter, transfers.",
-          "stops": ["Соронг", "Папуа", "Раджа Ампат", "Соронг"]
+          "stops": [
+            "Соронг",
+            "Папуа",
+            "Раджа Ампат",
+            "Соронг"
+          ],
+          "pitch": "Двенадцать дней вокруг островов Папуа и Раджа Ампата: старт и финиш в Соронге. В программе ночь в отеле 4/5★ и чартер Бали — Соронг — Бали.",
+          "pitchEn": "Twelve days among the islands of Papua and Raja Ampat, starting and ending in Sorong. A 4/5★ hotel night and the Bali–Sorong–Bali charter are included."
         },
         {
           "title": "Филиппины и Раджа Ампат",
@@ -144,7 +175,14 @@
           "durationEn": "12 days / 11 nights",
           "season": "Весна",
           "seasonEn": "Spring",
-          "stops": ["Соронг", "Раджа Ампат", "Бохол", "Манила"]
+          "stops": [
+            "Соронг",
+            "Раджа Ампат",
+            "Бохол",
+            "Манила"
+          ],
+          "pitch": "Сначала рифы Раджа Ампата, затем Бохол, Мариндуке и Манила. Один переход: подводный мир и филиппинские острова, без пересадок между двумя поездками.",
+          "pitchEn": "Raja Ampat’s reefs first, then Bohol, Marinduque and Manila. One passage: the underwater world and the Philippine islands, without stitching two trips together."
         },
         {
           "title": "Другая Япония",
@@ -156,7 +194,15 @@
           "durationEn": "11 days / 10 nights",
           "season": "Лето и осень",
           "seasonEn": "Summer and autumn",
-          "stops": ["Отару", "Садо", "Майдзуру", "Пусан", "Хиросима"]
+          "stops": [
+            "Отару",
+            "Садо",
+            "Майдзуру",
+            "Пусан",
+            "Хиросима"
+          ],
+          "pitch": "Отару, Хакодате, остров Садо, Майдзуру, Пусан и Хиросима. Север Японии и переход в Корею — без Токио и без стандартного круга по храмам.",
+          "pitchEn": "Otaru, Hakodate, Sado, Maizuru, Busan and Hiroshima. Northern Japan and the crossing to Korea — without Tokyo and without the standard temple circuit."
         },
         {
           "title": "Новая Зеландия от края до края",
@@ -168,7 +214,15 @@
           "durationEn": "14 days / 13 nights",
           "season": "Весна",
           "seasonEn": "Spring",
-          "stops": ["Данидин", "Фьорды", "Стюарт", "Каикоура", "Окленд"]
+          "stops": [
+            "Данидин",
+            "Фьорды",
+            "Стюарт",
+            "Каикоура",
+            "Окленд"
+          ],
+          "pitch": "Данидин, фьорды, остров Стюарт, Каикоура, Веллингтон и Окленд. Четырнадцать дней: южный остров целиком и финиш на севере.",
+          "pitchEn": "Dunedin, the fiords, Stewart Island, Kaikoura, Wellington and Auckland. Fourteen days: the South Island in full and a finish in the north."
         }
       ]
     },
@@ -176,8 +230,8 @@
       "id": "latam",
       "title": "Латинская Америка",
       "titleEn": "Latin America",
-      "intro": "Дикая Амазонка и бразильское побережье — места, куда редко заходят большие лайнеры.",
-      "introEn": "The wild Amazon and the Brazilian coast — shores rarely visited by large liners.",
+      "intro": "Дельта Амазонки и бразильский берег. Вода, куда большие лайнеры почти не сворачивают, и города, между которыми обычно летают.",
+      "introEn": "The Amazon delta and the Brazilian coast. Water large liners rarely enter, and cities people usually fly between.",
       "image": "/assets/images/cruises/latam.jpg",
       "cruises": [
         {
@@ -190,7 +244,13 @@
           "durationEn": "10–12 days",
           "season": "Весна и осень",
           "seasonEn": "Spring and autumn",
-          "stops": ["Парамарибо", "Амазонка", "Белен"]
+          "stops": [
+            "Парамарибо",
+            "Амазонка",
+            "Белен"
+          ],
+          "pitch": "Из Бриджтауна или Форталезы — в Парамарибо, в дельту Амазонки и в Белен. Река, лес и берег Гвианы за десять–двенадцать дней.",
+          "pitchEn": "From Bridgetown or Fortaleza to Paramaribo, the Amazon delta and Belém. River, forest and the Guiana shore in ten to twelve days."
         },
         {
           "title": "Душа, самба и море",
@@ -202,7 +262,14 @@
           "durationEn": "7 days / 6 nights",
           "season": "Осень",
           "seasonEn": "Autumn",
-          "stops": ["Сальвадор", "Транкозу", "Аброльос", "Рио"]
+          "stops": [
+            "Сальвадор",
+            "Транкозу",
+            "Аброльос",
+            "Рио"
+          ],
+          "pitch": "Сальвадор, Итакаре, Транкозу, архипелаг Аброльос, Бузиос и Рио. Неделя вдоль берега, который обычно видят из самолёта.",
+          "pitchEn": "Salvador, Itacaré, Trancoso, the Abrolhos islands, Búzios and Rio. A week along a coast usually seen from a plane."
         }
       ]
     },
@@ -210,8 +277,8 @@
       "id": "europe",
       "title": "Европа",
       "titleEn": "Europe",
-      "intro": "Атлантическое побережье Европы и перекрёсток с Африкой — от Лиссабона до Касабланки.",
-      "introEn": "Europe’s Atlantic coast and the crossroads with Africa — from Lisbon to Casablanca.",
+      "intro": "Короткий переход между двумя берегами Атлантики. Европа и север Африки за одну неделю, без отдельных перелётов в каждый город.",
+      "introEn": "A short passage between two Atlantic shores. Europe and North Africa in one week, without a separate flight to every city.",
       "image": "/assets/images/cruises/europe.jpg",
       "cruises": [
         {
@@ -224,7 +291,14 @@
           "durationEn": "8 days / 7 nights",
           "season": "Осень",
           "seasonEn": "Autumn",
-          "stops": ["Лиссабон", "Севилья", "Танжер", "Касабланка"]
+          "stops": [
+            "Лиссабон",
+            "Севилья",
+            "Танжер",
+            "Касабланка"
+          ],
+          "pitch": "Лиссабон, Портиман, Севилья, Марбелья, Танжер и Касабланка. Восемь дней: города, до которых иначе собирают три поездки.",
+          "pitchEn": "Lisbon, Portimão, Seville, Marbella, Tangier and Casablanca. Eight days in cities that otherwise become three separate trips."
         }
       ]
     },
@@ -232,8 +306,8 @@
       "id": "far-east",
       "title": "Дальний Восток",
       "titleEn": "Russian Far East",
-      "intro": "Курилы, Камчатка, Командоры и Чукотка — вулканы, киты, белые медведи и остров Врангеля.",
-      "introEn": "The Kurils, Kamchatka, the Commander Islands and Chukotka — volcanoes, whales, polar bears and Wrangel Island.",
+      "intro": "Курилы, Камчатка и Чукотка. Вулканы, киты, белые медведи и остров Врангеля — на судне ледового класса, не на пароме между портами.",
+      "introEn": "The Kurils, Kamchatka and Chukotka. Volcanoes, whales, polar bears and Wrangel Island — on an ice-class ship, not a ferry between ports.",
       "image": "/assets/images/cruises/far-east.jpg",
       "cruises": [
         {
@@ -246,7 +320,15 @@
           "durationEn": "9 days / 8 nights",
           "season": "Июль и сентябрь",
           "seasonEn": "July and September",
-          "stops": ["Корсаков", "Кунашир", "Итуруп", "Парамушир", "Петропавловск"]
+          "stops": [
+            "Корсаков",
+            "Кунашир",
+            "Итуруп",
+            "Парамушир",
+            "Петропавловск"
+          ],
+          "pitch": "Из Корсакова на Кунашир и Итуруп, затем Парамушир и Петропавловск-Камчатский. Девять дней в июле или сентябре, пока пролив открыт.",
+          "pitchEn": "From Korsakov to Kunashir and Iturup, then Paramushir and Petropavlovsk-Kamchatsky. Nine days in July or September, while the strait is open."
         },
         {
           "title": "Чукотка и остров Врангеля",
@@ -258,7 +340,14 @@
           "durationEn": "13 days / 12 nights",
           "season": "Август и сентябрь",
           "seasonEn": "August and September",
-          "stops": ["Анадырь", "Дежнёва", "Врангеля", "Анадырь"]
+          "stops": [
+            "Анадырь",
+            "Дежнёва",
+            "Врангеля",
+            "Анадырь"
+          ],
+          "pitch": "Анадырь, мыс Дежнёва, остров Врангеля и обратно в Анадырь. Самый северный маршрут коллекции: тринадцать дней в августе и сентябре.",
+          "pitchEn": "Anadyr, Cape Dezhnev, Wrangel Island and back to Anadyr. The northernmost route in the collection: thirteen days in August and September."
         }
       ]
     }

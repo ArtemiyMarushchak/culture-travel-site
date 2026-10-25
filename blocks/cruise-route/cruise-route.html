@@ -1,0 +1,51 @@
+<article class="news-layout" data-block="cruise-route">
+  <div class="news-layout__shell">
+    <nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
+      <ol class="crumbs__list">
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
+        </li>
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/cruises/" data-i18n="nav.cruises">Круизы</a>
+        </li>
+        <li class="crumbs__item">
+          <span class="crumbs__current" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="ui-shape news-layout__shape">
+      <header class="news-layout__head">
+        <p class="news-layout__date" data-i18n-src data-ru="{{region}}" data-en="{{regionEn}}">{{region}}</p>
+        <h1 class="news-layout__title" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</h1>
+        <p class="news-layout__excerpt" data-i18n-src data-ru="{{pitch}}" data-en="{{pitchEn}}">{{pitch}}</p>
+      </header>
+
+      <figure class="news-layout__cover">
+        <img src="{{basePath}}{{image}}" alt="" width="1600" height="1000" decoding="async">
+      </figure>
+
+      <div class="news-layout__body">
+        <p data-i18n-src data-ru="{{route}}" data-en="{{routeEn}}">{{route}}</p>
+        <dl class="cruise-route__facts">
+          <div>
+            <dt data-i18n="cruises.ship">Судно</dt>
+            <dd>{{shipLine}}</dd>
+          </div>
+          <div>
+            <dt data-i18n="cruises.length">Срок</dt>
+            <dd data-i18n-src data-ru="{{duration}}" data-en="{{durationEn}}">{{duration}}</dd>
+          </div>
+          <div>
+            <dt data-i18n="cruises.season">Сезон</dt>
+            <dd data-i18n-src data-ru="{{season}}" data-en="{{seasonEn}}">{{season}}</dd>
+          </div>
+        </dl>
+        {{noteHtml}}
+        <p class="cruise-route__ask-row">
+          <a class="cruise-route__ask" href="{{telegram}}" target="_blank" rel="noopener noreferrer" data-i18n="cruises.ask">Запросить даты</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</article>

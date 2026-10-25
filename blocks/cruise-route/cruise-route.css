@@ -1,0 +1,53 @@
+.cruise-route__facts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.cruise-route__facts div {
+  min-width: 0;
+}
+
+.cruise-route__facts dt {
+  margin: 0 0 2px;
+  color: var(--color-ink-on-shape-muted);
+  font-size: var(--type-caption-size);
+  line-height: var(--type-caption-leading);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.cruise-route__facts dd {
+  margin: 0;
+  color: var(--color-ink-on-shape);
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-leading);
+}
+
+.cruise-route__ask-row {
+  margin: 0;
+}
+
+.cruise-route__ask {
+  color: var(--color-ink-on-shape) !important;
+  font-size: var(--type-small-size);
+  font-weight: var(--font-weight-ui);
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none !important;
+  opacity: 1;
+  transition: opacity var(--transition-fast);
+}
+
+.cruise-route__ask:hover,
+.cruise-route__ask:focus-visible {
+  opacity: var(--ui-link-hover-opacity, 0.7);
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cruise-route__ask {
+    transition: none;
+  }
+}
