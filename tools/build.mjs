@@ -711,6 +711,7 @@ function buildHead(meta) {
     robots: meta.robots || 'index, follow',
     ogType: meta.ogType || 'website',
     siteName: site.name,
+    appName: site.brandName || 'Culture Travel',
     ogTitle: meta.ogTitle || title,
     ogDescription: meta.ogDescription || description,
     ogUrl: canonical,
@@ -1067,8 +1068,8 @@ function generateWebManifest() {
     purpose,
   });
   writeOut('site.webmanifest', JSON.stringify({
-    name: site.name,
-    short_name: site.name,
+    name: site.brandName || 'Culture Travel',
+    short_name: site.brandName || 'Culture Travel',
     description: site.tagline,
     id: `${bp}/`,
     start_url: `${bp}/`,
