@@ -5,6 +5,7 @@
 
 const COPY = {
   ru: {
+    name: 'Марущак Артемий Игоревич',
     role: 'Веб-разработчик',
     note: 'Если ты из России — сайт открывай через VPN.',
     close: 'Закрыть',
@@ -13,6 +14,7 @@ const COPY = {
     site: 'Сайт',
   },
   en: {
+    name: 'Artemiy Igorevich Marushchak',
     role: 'Web developer',
     note: 'If you are in Russia, open the site through a VPN.',
     close: 'Close',
@@ -41,8 +43,8 @@ export function initFooter(root) {
   card.innerHTML = `
     <button type="button" class="ct-credit__x" data-ct-credit-close aria-label="Закрыть">×</button>
     <div class="ct-credit__head">
-      <img src="${bp}/assets/images/developer/artemiy-face.jpg" alt="Марущак Артемий Игоревич" width="72" height="72">
-      <div><b>Марущак Артемий Игоревич</b><span class="ct-credit__role" data-ct-role>Веб-разработчик</span></div>
+      <img src="${bp}/assets/images/developer/artemiy-face.jpg" alt="" width="72" height="72" data-ct-photo>
+      <div><b data-ct-name>Марущак Артемий Игоревич</b><span class="ct-credit__role" data-ct-role>Веб-разработчик</span></div>
     </div>
     <div class="ct-credit__actions">
       <a href="https://t.me/ArtemiyMarushchak" target="_blank" rel="noopener noreferrer">${icon('<path d="M15 10.5 11 14.5l6 5.5 4-16-18 7 4 2 2 6 3-4"/>')}<span><b>Telegram</b><small>@ArtemiyMarushchak</small></span></a>
@@ -55,6 +57,8 @@ export function initFooter(root) {
   document.body.appendChild(card);
 
   const roleEl = card.querySelector('[data-ct-role]');
+  const nameEl = card.querySelector('[data-ct-name]');
+  const photoEl = card.querySelector('[data-ct-photo]');
   const noteEl = card.querySelector('[data-ct-note]');
   const closeBtn = card.querySelector('[data-ct-credit-close]');
 
@@ -64,6 +68,9 @@ export function initFooter(root) {
 
   function syncCopy() {
     const copy = COPY[lang()];
+    nameEl.textContent = copy.name;
+    photoEl.alt = copy.name;
+    card.setAttribute('aria-label', copy.name);
     roleEl.textContent = copy.role;
     noteEl.textContent = copy.note;
     closeBtn.setAttribute('aria-label', copy.close);

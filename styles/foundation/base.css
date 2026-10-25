@@ -7,6 +7,8 @@ body {
   line-height: var(--line-height-text);
   font-weight: var(--font-weight-text);
   letter-spacing: var(--letter-spacing-body);
+  word-break: normal;
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

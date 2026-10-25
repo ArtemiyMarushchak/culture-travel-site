@@ -107,8 +107,8 @@
   line-height: var(--type-hero-leading);
   font-weight: var(--font-weight-title);
   letter-spacing: var(--type-hero-tracking);
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .hotel-catalog__hero-lead {
@@ -120,8 +120,8 @@
   line-height: var(--type-body-leading);
   font-weight: var(--font-weight-text);
   letter-spacing: var(--type-body-tracking, 0);
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .hotel-catalog__catalog-stage {

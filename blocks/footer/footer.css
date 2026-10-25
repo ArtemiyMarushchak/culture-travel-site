@@ -408,7 +408,7 @@ a.lf__link:focus-visible {
   font-weight: 500;
   line-height: 1.3;
   color: #6b6b6b;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .ct-credit__actions a:hover {

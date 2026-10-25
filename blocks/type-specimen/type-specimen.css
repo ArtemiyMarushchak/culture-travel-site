@@ -249,7 +249,7 @@
   font-size: var(--type-card-size);
   font-weight: var(--font-weight-text);
   line-height: var(--type-body-leading);
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 1180px) {

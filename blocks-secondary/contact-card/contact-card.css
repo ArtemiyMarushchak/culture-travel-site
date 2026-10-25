@@ -157,7 +157,7 @@
 }
 
 #ab-contact-card .ab-contact-value {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   font-size: var(--type-ui-size);
   font-weight: var(--font-weight-medium);
   line-height: var(--type-ui-leading);

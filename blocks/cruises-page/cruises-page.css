@@ -115,8 +115,8 @@
   font-weight: var(--font-weight-title);
   letter-spacing: var(--type-hero-tracking, var(--type-section-tracking));
   white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .cruises-page__lead {
@@ -126,8 +126,8 @@
   color: var(--color-white);
   font-size: var(--type-body-size);
   line-height: var(--type-body-leading);
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 /* —— Флот сразу после видео —— */
@@ -378,8 +378,8 @@
 @media (max-width: 900px) {
   .cruises-page__title {
     white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .cruises-page__ships {
