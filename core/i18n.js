@@ -229,7 +229,7 @@ export const STRINGS = {
     'footer.copyright': 'Copyright',
     'footer.copyban': 'Copying any content from the site is prohibited',
     'footer.dev': 'Designed by',
-    'footer.devName': 'Artemiy Igorevich Marushchak',
+    'footer.devName': 'Марущак Артемий Игоревич',
     'footer.inn': 'INN',
     'footer.ogrn': 'OGRN',
     'footer.phone': 'Phone',
