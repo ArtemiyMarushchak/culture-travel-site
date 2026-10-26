@@ -14,7 +14,7 @@ const COPY = {
     site: 'Сайт',
   },
   en: {
-    name: 'Марущак Артемий Игоревич',
+    name: 'Marushchak Artemiy Igorevich',
     role: 'Web developer',
     note: 'If you are in Russia, open the site through a VPN.',
     close: 'Close',
