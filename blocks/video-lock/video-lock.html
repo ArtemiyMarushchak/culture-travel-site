@@ -25,6 +25,25 @@
       <p class="video-lock__error" data-video-error hidden data-i18n="video.wrong">Неверный пароль</p>
     </form>
 
-    <div class="video-lock__stage" data-video-stage hidden></div>
+    <div class="video-lock__stage" data-video-stage hidden>
+      <header class="video-lock__head">
+        <p class="section__label" data-i18n="video.kicker">Повышение квалификации</p>
+        <h1 class="section__title" data-i18n="video.pageTitle">Мои видео</h1>
+      </header>
+      <div class="video-lock__layout">
+        <aside class="video-lock__aside" data-i18n-aria="video.sections" aria-label="Направления">
+          <p class="video-lock__aside-label" data-i18n="video.sections">Направления</p>
+          <label class="video-lock__check">
+            <input type="checkbox" data-video-group="seychelles" checked>
+            <span class="video-lock__box" aria-hidden="true"></span>
+            <span class="video-lock__check-text" data-i18n="video.seychelles">Сейшелы</span>
+          </label>
+        </aside>
+        <div class="video-lock__main">
+          <div class="video-lock__grid" data-video-grid></div>
+          <p class="video-lock__empty" data-video-empty hidden data-i18n="video.empty">Выберите направление</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
