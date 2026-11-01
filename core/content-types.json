@@ -1,5 +1,5 @@
 {
-  "_comment": "Типы контента → список + SEO-страница. /tours/ и /business-aviation/ — заглушки. /hotels/ и /cruises/ собраны, но закрыты от поиска.",
+  "_comment": "Типы контента → список + SEO-страница. /tours/, /business-aviation/, /hotels/ и /cruises/ — заглушки, noindex.",
   "types": {
     "cases": {
       "label": "Кейсы",
