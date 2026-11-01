@@ -1,0 +1,30 @@
+<section class="video-lock" data-block="video-lock" data-video-lock>
+  <div class="video-lock__rail">
+    <nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
+      <ol class="crumbs__list">
+        <li class="crumbs__item">
+          <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
+        </li>
+        <li class="crumbs__item">
+          <span class="crumbs__current" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <form class="video-lock__gate" data-video-gate>
+      <label class="video-lock__label" for="video-lock-password" data-i18n="video.password">Пароль</label>
+      <input
+        id="video-lock-password"
+        class="video-lock__input"
+        type="password"
+        name="password"
+        autocomplete="current-password"
+        required
+      >
+      <button class="ui-btn" type="submit" data-i18n="video.open">Открыть</button>
+      <p class="video-lock__error" data-video-error hidden data-i18n="video.wrong">Неверный пароль</p>
+    </form>
+
+    <div class="video-lock__stage" data-video-stage hidden></div>
+  </div>
+</section>

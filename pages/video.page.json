@@ -1,0 +1,16 @@
+{
+  "slug": "/video/",
+  "title": "Видео",
+  "titleEn": "Video",
+  "description": "Закрытая страница Culture Travel.",
+  "robots": "noindex",
+  "blocks": [
+    {
+      "type": "video-lock",
+      "data": {
+        "title": "Видео",
+        "titleEn": "Video"
+      }
+    }
+  ]
+}

@@ -109,6 +109,12 @@
       "js": false,
       "scope": "page"
     },
+    "video-lock": {
+      "label": "Закрытые видео",
+      "css": true,
+      "js": true,
+      "scope": "page"
+    },
     "cruises-page": {
       "label": "Круизы",
       "css": true,

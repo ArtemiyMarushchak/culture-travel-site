@@ -15,6 +15,7 @@ import { initNewsList } from '../blocks/news-list/news-list.js';
 import { initReviews } from '../blocks/reviews/reviews.js';
 import { initServices } from '../blocks/services/services.js';
 import { initCruisesPage } from '../blocks/cruises-page/cruises-page.js';
+import { initVideoLock } from '../blocks/video-lock/video-lock.js';
 import { initFooter } from '../blocks/footer/footer.js';
 import { initTypeSpecimen } from '../blocks/type-specimen/type-specimen.js';
 
@@ -32,6 +33,7 @@ export const blockInits = {
   reviews: initReviews,
   services: initServices,
   'cruises-page': initCruisesPage,
+  'video-lock': initVideoLock,
   'type-specimen': initTypeSpecimen,
 };
 
