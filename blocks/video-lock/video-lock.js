@@ -2,7 +2,7 @@
  * Закрытая страница видео. Код плееров с Тильды /video.
  * Ролики попадают в страницу только после пароля.
  */
-import { getLang } from '../../core/i18n.js';
+import { getLang, t } from '../../core/i18n.js';
 
 const PASS_HASH = '10fff5c657eee9c8517cf13093c785b26725c7ebc4fad089c8fd6dae541877fb';
 const SESSION_KEY = 'ct-video-gate';
@@ -88,11 +88,13 @@ export function initVideoLock(root) {
   const error = root.querySelector('[data-video-error]');
   const stage = root.querySelector('[data-video-stage]');
   const grid = root.querySelector('[data-video-grid]');
+  const hero = root.querySelector('[data-video-hero]');
   if (!form || !input || !stage || !grid) return;
 
   function open() {
     root.classList.add('is-open');
     if (error) error.hidden = true;
+    if (hero) hero.hidden = false;
     stage.hidden = false;
     renderVideos(grid);
     applyFilter(root);
@@ -107,8 +109,21 @@ export function initVideoLock(root) {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const hash = await digest(input.value);
+    if (!input.value.trim()) {
+      if (error) {
+        error.setAttribute('data-i18n', 'video.need');
+        error.textContent = t('video.need');
+        error.hidden = false;
+      }
+      input.focus();
+      return;
+    }
     if (hash !== PASS_HASH) {
-      if (error) error.hidden = false;
+      if (error) {
+        error.setAttribute('data-i18n', 'video.wrong');
+        error.textContent = t('video.wrong');
+        error.hidden = false;
+      }
       input.select();
       return;
     }
