@@ -123,12 +123,18 @@ html:has(.video-lock.is-open) #main,
   background: var(--color-header);
 }
 
+/* Плеер VK рисует кнопку фиксированного размера. Кладём его крупнее
+   и уменьшаем целиком, чтобы «плей» на превью стал маленьким. */
 .video-lock__frame iframe {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  left: 0;
+  width: calc(100% / 0.36);
+  height: calc(100% / 0.36);
+  max-width: none;
   border: 0;
+  transform: scale(0.36);
+  transform-origin: top left;
 }
 
 .video-lock__title {
