@@ -1,24 +1,6 @@
 <section class="video-lock" data-block="video-lock" data-video-lock>
-  <div class="video-lock__hero" data-video-hero hidden>
-    <img src="{{basePath}}/assets/images/hero/poster.jpg" alt="" width="1920" height="1080" decoding="async">
-    <div class="video-lock__hero-top">
-      <div class="video-lock__hero-rail">
-        <nav class="crumbs crumbs--on-media" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
-          <ol class="crumbs__list">
-            <li class="crumbs__item">
-              <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
-            </li>
-            <li class="crumbs__item">
-              <span class="crumbs__current" data-i18n-src data-ru="{{title}}" data-en="{{titleEn}}">{{title}}</span>
-            </li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-  </div>
-
   <div class="video-lock__rail">
-    <nav class="crumbs video-lock__crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
+    <nav class="crumbs" aria-label="Хлебные крошки" data-i18n-aria="legal.crumbs">
       <ol class="crumbs__list">
         <li class="crumbs__item">
           <a class="crumbs__link" href="{{basePath}}/" data-i18n="nav.home">Главная</a>
@@ -47,20 +29,7 @@
     </form>
 
     <div class="video-lock__stage" data-video-stage hidden>
-      <div class="video-lock__layout">
-        <aside class="video-lock__aside" data-i18n-aria="video.sections" aria-label="Направления">
-          <p class="video-lock__aside-label" data-i18n="video.sections">Направления</p>
-          <label class="video-lock__check">
-            <input type="checkbox" data-video-group="seychelles" checked>
-            <span class="video-lock__box" aria-hidden="true"></span>
-            <span class="video-lock__check-text" data-i18n="video.seychelles">Сейшелы</span>
-          </label>
-        </aside>
-        <div class="video-lock__main">
-          <div class="video-lock__grid" data-video-grid></div>
-          <p class="video-lock__empty" data-video-empty hidden data-i18n="video.empty">Выберите направление</p>
-        </div>
-      </div>
+      <div class="video-lock__grid" data-video-grid></div>
     </div>
   </div>
 </section>

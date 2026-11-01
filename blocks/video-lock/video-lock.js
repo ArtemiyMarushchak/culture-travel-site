@@ -64,21 +64,6 @@ function renderVideos(grid) {
   });
 }
 
-function applyFilter(root) {
-  const checked = new Set(
-    [...root.querySelectorAll('[data-video-group]:checked')].map((input) => input.getAttribute('data-video-group')),
-  );
-  const cards = [...root.querySelectorAll('[data-video-card]')];
-  let shown = 0;
-  cards.forEach((card) => {
-    const on = checked.has(card.dataset.group);
-    card.hidden = !on;
-    if (on) shown += 1;
-  });
-  const empty = root.querySelector('[data-video-empty]');
-  if (empty) empty.hidden = shown > 0;
-}
-
 export function initVideoLock(root) {
   if (!root || root.dataset.ready === 'true') return;
   root.dataset.ready = 'true';
@@ -88,21 +73,14 @@ export function initVideoLock(root) {
   const error = root.querySelector('[data-video-error]');
   const stage = root.querySelector('[data-video-stage]');
   const grid = root.querySelector('[data-video-grid]');
-  const hero = root.querySelector('[data-video-hero]');
   if (!form || !input || !stage || !grid) return;
 
   function open() {
     root.classList.add('is-open');
     if (error) error.hidden = true;
-    if (hero) hero.hidden = false;
     stage.hidden = false;
     renderVideos(grid);
-    applyFilter(root);
   }
-
-  root.querySelectorAll('[data-video-group]').forEach((box) => {
-    box.addEventListener('change', () => applyFilter(root));
-  });
 
   if (sessionStorage.getItem(SESSION_KEY) === PASS_HASH) open();
 
