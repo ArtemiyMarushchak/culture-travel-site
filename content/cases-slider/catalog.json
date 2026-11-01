@@ -142,10 +142,17 @@
         "country": "Балканы",
         "countryEn": "The Balkans",
         "flag": "🇲🇪",
-        "text": "Сараево, Мостар, Котор, Албания и красивая программа с частными гидами и логистикой.",
-        "textEn": "Sarajevo, Mostar, Kotor, Albania and a considered programme with private guides and logistics.",
-        "days": 12,
-        "image": "/assets/images/placeholder.svg"
+        "text": "Сараево, Мостар, Которский залив, Шкодер и Тирана: девять дней через три страны.",
+        "textEn": "Sarajevo, Mostar, the Bay of Kotor, Shkodër and Tirana: nine days across three countries.",
+        "image": "/assets/images/cases/balkans/cover.jpg",
+        "gallery": [
+          "/assets/images/cases/balkans/cover.jpg",
+          "/assets/images/cases/balkans/day-03/photo-02.jpg",
+          "/assets/images/cases/balkans/day-04/photo-03.jpg",
+          "/assets/images/cases/balkans/day-08/photo-01.jpg"
+        ],
+        "slug": "balkans",
+        "days": 9
       }
     ],
     "southAmerica": [

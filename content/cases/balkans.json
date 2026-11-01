@@ -1,0 +1,27 @@
+{
+  "slug": "balkans",
+  "title": "Балканы: Сараево, Мостар, Котор и Албания",
+  "titleEn": "The Balkans: Sarajevo, Mostar, Kotor and Albania",
+  "crumbTitle": "Балканы",
+  "crumbTitleEn": "The Balkans",
+  "subtitle": "Сараево · Благай · Мостар · Кравице · Котор · Шкодер · Тирана",
+  "subtitleEn": "Sarajevo · Blagaj · Mostar · Kravice · Kotor · Shkodër · Tirana",
+  "cover": "/assets/images/cases/balkans/cover.jpg",
+  "bodyFile": "content/cases/balkans/tour.html",
+  "bodyFileEn": "content/cases/balkans/tour.en.html",
+  "published": "2026-11-01",
+  "featured": true,
+  "blocks": [
+    { "type": "case-tour" }
+  ],
+  "meta": {
+    "country": "Балканы",
+    "countryEn": "The Balkans",
+    "duration": "9 дней / 8 ночей",
+    "route": "Сараево — Благай — Мостар — Кравице — Котор — Шкодер — Тирана"
+  },
+  "seo": {
+    "title": "Балканы — кейс | Culture Travel",
+    "description": "Кейс путешествия по Балканам: Сараево, Благай, Мостар, водопады Кравице, Котор, Шкодер и Тирана."
+  }
+}
