@@ -287,6 +287,7 @@ function prepareCruisesCatalog() {
   const regions = (catalog.regions || []).map((region) => {
     const image = region.image || poster;
     (region.cruises || []).forEach((cruise, index) => {
+      const shipNames = String(cruise.ship || '').split('/').map((name) => name.trim()).filter(Boolean);
       routes.push({
         id: `${region.id}-${index}`,
         regionId: region.id,
@@ -298,8 +299,9 @@ function prepareCruisesCatalog() {
         pitchEn: cruise.pitchEn || cruise.pitch || '',
         route: cruise.route || '',
         routeEn: cruise.routeEn || cruise.route || '',
-        ships: String(cruise.ship || '').split('/').map((name) => name.trim()).filter(Boolean),
-        shipLine: String(cruise.ship || ''),
+        ships: shipNames,
+        shipHtml: shipNames.map((name) => `<span>${escapeHtml(name)}</span>`).join(''),
+        shipLine: shipNames.join(' / '),
         duration: cruise.duration || '',
         durationEn: cruise.durationEn || cruise.duration || '',
         season: cruise.season || '',
@@ -656,7 +658,7 @@ function loadBlockHtml(blockType, blockData = {}) {
       ? `<span class="lf__registry-num">№ ${escapeHtml(String(site.legal.registryNumber))}</span>`
       : '';
   }
-  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'storiesJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml', 'cruisesHtml', 'mapHtml', 'heroVideoHtml', 'regionMediaHtml', 'routesJson', 'noteHtml', 'hiddenAttr', 'openClass'];
+  const rawFields = ['body', 'content', 'coverHtml', 'photoHtml', 'casesJson', 'storiesJson', 'mediaJson', 'headingHtml', 'crumbsHtml', 'crumbsMiddleHtml', 'registryNumberHtml', 'avatarHtml', 'cruisesHtml', 'mapHtml', 'heroVideoHtml', 'regionMediaHtml', 'routesJson', 'noteHtml', 'hiddenAttr', 'openClass', 'shipHtml'];
   html = html.replace(/\{\{#each (\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, itemTpl) => {
     const arr = merged[key];
     if (!Array.isArray(arr)) return '';

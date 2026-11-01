@@ -166,21 +166,21 @@
                   <p class="cruise-row__pitch" data-i18n-src data-ru="{{pitch}}" data-en="{{pitchEn}}">{{pitch}}</p>
                   <p class="cruise-row__route" data-i18n-src data-ru="{{route}}" data-en="{{routeEn}}">{{route}}</p>
                   <dl class="cruise-row__facts">
-                    <div>
+                    <div class="cruise-row__fact cruise-row__fact--ship">
                       <dt data-i18n="cruises.ship">Судно</dt>
-                      <dd>{{shipLine}}</dd>
+                      <dd class="cruise-row__ships">{{shipHtml}}</dd>
                     </div>
-                    <div>
+                    <div class="cruise-row__fact">
                       <dt data-i18n="cruises.length">Срок</dt>
                       <dd data-i18n-src data-ru="{{duration}}" data-en="{{durationEn}}">{{duration}}</dd>
                     </div>
-                    <div>
+                    <div class="cruise-row__fact">
                       <dt data-i18n="cruises.season">Сезон</dt>
                       <dd data-i18n-src data-ru="{{season}}" data-en="{{seasonEn}}">{{season}}</dd>
                     </div>
                   </dl>
                   <p class="cruise-row__note" data-i18n-src data-ru="{{note}}" data-en="{{noteEn}}">{{note}}</p>
-                  <a class="cruise-row__ask" href="{{telegram}}" target="_blank" rel="noopener noreferrer" data-i18n="cruises.ask">Запросить даты</a>
+                  <a class="ui-btn cruise-row__ask" href="{{telegram}}" target="_blank" rel="noopener noreferrer" data-i18n="cruises.ask">Запросить даты</a>
                 </div>
               </article>
               {{/each}}

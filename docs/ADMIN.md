@@ -31,13 +31,12 @@ node tools/build.mjs
 | `core/page-layout.json` | На каждой странице автоматически: шапка + подвал + модалки |
 | `core/blocks.registry.json` | Список блоков сайта (для сборки CSS/JS) |
 | `core/content-types.json` | Какие типы контента есть (новости, кейсы, отели) |
-| `pages/*.page.json` | Страницы вроде главной, заглушек, приватной программы |
+| `pages/*.page.json` | Страницы вроде главной и заглушек |
 | `content/reviews/catalog.json` | Все отзывы на главной |
 | `content/news/*.json` | Одна новость = один файл |
 | `content/cases-slider/catalog.json` | Карточки в слайдере «Мои кейсы» |
 | `content/cases/*.json` | SEO-страница кейса + ссылка на HTML программы |
 | `content/cases/.../tour.html` | Текст и фото дней тура (публичный кейс) |
-| `content/cases/.../program-full.html` | Полная программа (закрытая страница) |
 | `content/hotels/*.json` | Отель: карточка + страница |
 | `content/services/catalog.json` | Услуги на главной (текст + фото) |
 
@@ -119,8 +118,7 @@ node tools/build.mjs
 ### B. HTML программы (текст + фото по дням)
 
 Файлы рядом с кейсом, например:
-- `content/cases/south-africa/tour.html` — публичная версия;
-- `content/cases/south-africa/program-full.html` — полная (для закрытой ссылки).
+- `content/cases/south-africa/tour.html` — публичная версия кейса.
 
 Как править без поломки вёрстки:
 1. Откройте существующий день и **скопируйте** целый блок дня.
@@ -128,7 +126,7 @@ node tools/build.mjs
 3. Новые фото кладите в `assets/images/cases/south-africa/` (или папку своего кейса) и подставляйте путь.
 4. Классы (`class="..."`) не переименовывайте и не удаляйте — от них стили.
 
-Закрытая программа для туристов: страница `pages/south-africa.page.json` (сейчас `noindex`, URL `/south-africa/`). Она указывает на `program-full.html`.
+Публичная страница — только кейс `/cases/south-africa/`. Отдельной программы по адресу `/south-africa/` нет.
 
 Новый кейс «с нуля»:
 1. Скопируйте папку кейса-образца и JSON.
