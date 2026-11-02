@@ -6,7 +6,7 @@
   "crumbTitleEn": "The Balkans",
   "subtitle": "Сараево · Благай · Мостар · Кравице · Котор · Шкодер · Тирана",
   "subtitleEn": "Sarajevo · Blagaj · Mostar · Kravice · Kotor · Shkodër · Tirana",
-  "cover": "/assets/images/cases/balkans/cover.jpg",
+  "cover": "/assets/images/placeholder.svg",
   "bodyFile": "content/cases/balkans/tour.html",
   "bodyFileEn": "content/cases/balkans/tour.en.html",
   "published": "2026-11-01",

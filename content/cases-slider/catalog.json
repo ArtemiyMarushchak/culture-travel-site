@@ -144,12 +144,9 @@
         "flag": "🇲🇪",
         "text": "Сараево, Мостар, Которский залив, Шкодер и Тирана: девять дней через три страны.",
         "textEn": "Sarajevo, Mostar, the Bay of Kotor, Shkodër and Tirana: nine days across three countries.",
-        "image": "/assets/images/cases/balkans/cover.jpg",
+        "image": "/assets/images/placeholder.svg",
         "gallery": [
-          "/assets/images/cases/balkans/cover.jpg",
-          "/assets/images/cases/balkans/day-03/photo-02.jpg",
-          "/assets/images/cases/balkans/day-04/photo-03.jpg",
-          "/assets/images/cases/balkans/day-08/photo-01.jpg"
+          "/assets/images/placeholder.svg"
         ],
         "slug": "balkans",
         "days": 9
